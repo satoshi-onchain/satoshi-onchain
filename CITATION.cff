@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Satoshi On-Chain: a reproducible Patoshi classifier and coin-by-coin verdict tool"
+abstract: >-
+  A reproducible, hash-anchored tracker for the verifiable on-chain footprint of the
+  original Satoshi on the original Bitcoin chain: a three-tier epistemic model
+  (definitional genesis, forensic Patoshi cluster, attested Finney spend), a faithful
+  reproduction of Lerner's Patoshi analysis with a dormancy-validated refinement, and a
+  coin-by-coin verdict tool. Graded [forensic], never [cryptographic].
+type: software
+authors:
+  - family-names: Saxena
+    given-names: Parth Mauria
+license: MIT
+date-released: 2026-07-22
+keywords:
+  - Bitcoin
+  - Patoshi
+  - Satoshi Nakamoto
+  - UTXO
+  - blockchain forensics
+  - proof-of-work

@@ -1,0 +1,24 @@
+# Generated data — regenerate from BigQuery / node per README "Reproduce".
+# (Large and fully reproducible; not tracked.)
+early_blocks.csv
+early_blocks_merged.csv
+spent_status.csv
+patoshi_labeled.csv
+patoshi_confirmed.csv
+*.tmp.csv
+
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Owner-only operational notes — NEVER publish (these name work under blind review).
+PRIVATE-NOTES.md
+PUBLISHING.md
+
+# The generated fingerprint/era/intensity PNGs ARE tracked (illustrative results);
+# remove the next lines if you'd rather regenerate them instead.

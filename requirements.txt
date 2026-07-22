@@ -1,0 +1,3 @@
+# Only external dependency: plotting (plots.py, slots.py, patoshi_intensity via slots.py).
+# Everything else — acquire/patoshi/slots/judge/merge/anchors — is Python 3 standard library.
+matplotlib>=3.5
