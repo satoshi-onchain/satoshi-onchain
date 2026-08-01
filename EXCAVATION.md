@@ -246,6 +246,13 @@ cores).** No single integer is claimable from on-chain data alone — reported a
 cross-check: winning-nonce top-nibble = 0 in **26.3%** of blocks vs 6.25% uniform — a single low-end
 excess from frequent block rebuilds/ExtraNonce bumps, **not** K discrete thread bands; §10.)
 
+**Band-structure cross-check (`threads_model.py` §5) — the fingerprint is a counter, not a thread map.**
+If the low byte encoded a thread id (`thread = nonce mod K`), the Patoshi band {0–9}∪{19–58} would be an
+exact **union of residue classes mod K**. It is not, for **any K in 2–32** — the bands are **contiguous
+ranges**, a loop/counter artifact, not a residue partition (and within-band values are used ~uniformly,
+§4). So the nonces carry **no thread-count signal**: the ~2–5-core figure rests on the hashrate bound
+alone, and the exact count is genuinely un-pinnable from public data — a rigorous negative, not a gap.
+
 ## 14. Nonce-safety of Satoshi's keys — the ECDSA-nonce audit (`nonce_safety.py`)
 
 A reused or biased ECDSA nonce `k` recovers the private key from public signatures alone (reuse:

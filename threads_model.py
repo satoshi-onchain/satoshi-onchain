@@ -143,6 +143,27 @@ def main():
     print("   -> one low-end excess (incremental search restarting low), NOT K discrete steps.")
     print("   The winning-nonce distribution is therefore silent on the thread count.\n")
 
+    # ---- low-byte band: a residue partition (thread map), or a contiguous counter? ----
+    low = [nz[h] & 0xFF for h in heights if h in nz]
+    A, B = set(range(0, 10)), set(range(19, 59))       # the Patoshi bands
+    inband = A | B
+    n_in = sum(1 for x in low if x in inband)
+    # if the winning low-byte encoded a thread id (thread = nonce mod K), the in-band set would be an
+    # exact union of residue classes mod K. Test every K: does membership match a mod-K residue set?
+    fit_K = None
+    for K in range(2, 33):
+        classes = {x % K for x in inband}
+        if all((x % K in classes) == (x in inband) for x in range(256)):
+            fit_K = K; break
+    print("5) LOW-BYTE BAND — thread partition, or a counter artifact?")
+    print(f"   the Patoshi band is {{0-9}} U {{19-58}} (50 of 256 low-byte values); the per-block")
+    print(f"   LSB-confirmed set is 100% in-band by construction (this looser phi>=0.5 set: "
+          f"{100*n_in/len(low):.1f}%, the rest are diluted-zone blocks).")
+    print(f"   is the band a union of residue classes mod K (i.e. thread-id = nonce mod K)? "
+          f"{'yes, K='+str(fit_K) if fit_K else 'NO for any K in 2..32'}")
+    print("   -> the bands are CONTIGUOUS RANGES, not residue classes: a loop/counter artifact, not a")
+    print("      thread-id partition. So the thread count cannot be read from the nonce pattern.\n")
+
     # ---- verdict -----------------------------------------------------------
     print("=" * 78)
     print("VERDICT (honest, bounded):")
@@ -154,6 +175,8 @@ def main():
     print(f"  * Under plausible per-core rates (0.5-2.0 MH/s) the count is ~{lo_cores:.0f}-"
           f"{hi_cores:.0f} cores;")
     print("    at the likely ~1-2 MH/s/core it is a SINGLE ordinary multi-core desktop (~2-4 cores).")
+    print("  * The low-byte fingerprint is a CONTIGUOUS-RANGE counter artifact, not a mod-K residue")
+    print("    (thread-id) partition (§5) — so the nonces carry no thread-count signal either.")
     print("  * A single integer cannot be claimed from on-chain data alone. Reported as a range.")
     print("=" * 78)
 
