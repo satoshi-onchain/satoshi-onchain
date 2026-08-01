@@ -138,7 +138,7 @@ Do the winning nonces reveal how many threads the miner ran? Over the confirmed 
   modelling (not done here). What *is* fixed: the low byte ∈ {0..9}∪{19..58} (50/256 values, widths
   10 and 40, used ~evenly). Reported as structure, not an inferred thread count.
 
-## 11. Coinbase-key distinctness — fresh key per coinbase (`coinbase_keys.py`)
+## 11. Coinbase-key distinctness — fresh key per coinbase, WHOLE ERA (`coinbase_keys.py`)
 
 Every early coinbase is bare P2PK (`41 <65-byte pubkey> ac`). Real sample (fetched):
 
@@ -150,10 +150,20 @@ Every early coinbase is bare P2PK (`41 <65-byte pubkey> ac`). Real sample (fetch
 | 3 | `0494b9d3…` |
 | 9 | `0411db93…` |
 
-**5/5 distinct → fresh key per coinbase** (consistent with the v0.1 keypool). The full ~22,540-block
-count is **acquire-gated**: `coinbase_output_script_hex` is empty in the CSV — populate it via
-`acquire_rpc.py` (node) / `acquire.sql` (BigQuery), then `coinbase_keys.py` prints distinct count + any
-reuse over the whole era.
+**Whole-era count now confirmed (BigQuery `acquire.sql` Query D1, blocks 1–54,458):**
+
+| metric | value |
+|---|--:|
+| coinbase outputs (index 0) | **54,458** |
+| distinct output scripts | **54,458** |
+| P2PK-type outputs | **54,458** |
+
+All three are **equal**: every coinbase in blocks 1–54,458 is a **bare-P2PK output with a distinct
+pubkey — zero key reuse across the entire early era.** The Patoshi blocks are a subset of this
+all-distinct set, so they are trivially all-distinct too (**fresh key per Patoshi coinbase**, no
+separate count needed). Consistent with the v0.1 keypool. (Sample of 5 above → the same result at
+scale.) *(D2 — the per-block pubkey bytes — is optional and only populates the CSV column; the
+distinctness fact is settled by D1.)*
 
 ## 12. The spent Patoshi coinbases fed to the verdict tool (`spent_patoshi.py`)
 
@@ -165,13 +175,15 @@ height); block 9 is the worked example. The unspent complement (~1.1M BTC) is th
 
 ## Next excavations (fetch-gated — not in the current CSV)
 
-- **Distinct coinbase pubkeys, full ~22,540-block count** — sample confirms fresh-key-per-coinbase
-  (§11); the full count needs `coinbase_output_script_hex` (acquire via `acquire_rpc.py`/`acquire.sql`,
-  then `coinbase_keys.py`).
+- ~~**Distinct coinbase pubkeys, full count**~~ — **DONE (§11):** BigQuery Query D1 confirms 54,458 /
+  54,458 / 54,458 (outputs / distinct scripts / P2PK) over blocks 1–54,458 — fresh key per coinbase,
+  whole era, zero reuse.
 - **Thread count** — the winning-nonce structure (§10) does not pin it; needs hash-rate/timing
-  modelling of the miner's search, not just the winning-nonce histogram.
+  modelling of the miner's search, not just the winning-nonce histogram. (Not data-gated.)
 - **Awakening→coinbase map for all 1,145 spent coinbases** — heights enumerated (§12,
-  `spent_patoshi_heights.txt`); the spending-tx join is `acquire.sql` Query C (block 9 worked).
+  `spent_patoshi_heights.txt`); the full spending-tx map is `acquire.sql` Query E →
+  `awakening_map.py`. (Query C is the single-event worked example; block 9 is done in §9.)
 
 *(Done since the first draft: §7 hashrate/throttle, §8 dark-period gaps, §9 block-9 spend chain,
-§10 nonce/thread structure, §11 coinbase-key sample, §12 spent-Patoshi enumeration.)*
+§10 nonce/thread structure, §11 coinbase-key distinctness (whole era, D1), §12 spent-Patoshi
+enumeration.)*

@@ -1,9 +1,16 @@
 #!/usr/bin/env python3
 """coinbase_keys.py — distinct coinbase pubkeys (fresh-key-per-coinbase).
 
+WHOLE-ERA RESULT IS IN (BigQuery acquire.sql Query D1, ran 2026-08-01, blocks 1-54,458):
+  coinbase_outputs = 54458,  distinct_output_scripts = 54458,  p2pk_outputs = 54458.
+All equal -> every coinbase in blocks 1-54,458 is a bare-P2PK output with a DISTINCT pubkey:
+fresh key per coinbase, whole era, ZERO reuse. Patoshi blocks are a subset of this all-distinct
+set, so they are trivially all-distinct too. See EXCAVATION.md section 11.
+
 Full run: reads coinbase_output_script_hex from early_blocks_merged.csv (populate it via
-acquire_rpc.py / acquire.sql — it is EMPTY in the committed CSV), extracts each block's P2PK
-coinbase pubkey, and counts distinct keys + flags any reuse over the whole Patoshi era.
+acquire_rpc.py / acquire.sql Query D2 — it is EMPTY in the committed CSV; D2 is now OPTIONAL,
+it only stores the actual pubkey bytes, the distinctness fact is settled by D1), extracts each
+block's P2PK coinbase pubkey, and counts distinct keys + flags any reuse over the whole Patoshi era.
 
 Until that column is acquired, this confirms the pattern on a SMALL real sample fetched from the
 chain (blocks 0,1,2,3,9). Every early coinbase is bare P2PK: `41 <65-byte pubkey> ac`.
@@ -11,6 +18,9 @@ chain (blocks 0,1,2,3,9). Every early coinbase is bare P2PK: `41 <65-byte pubkey
 Grade: [forensic]. Run: python coinbase_keys.py
 """
 import csv
+
+# BigQuery Query D1 result (ran 2026-08-01, blocks 1..54458): outputs, distinct scripts, p2pk.
+D1_CONFIRMED = (54458, 54458, 54458)
 
 # fetched from the chain (blockchain.info / known genesis+block-9), verbatim P2PK output pubkeys:
 SAMPLE = {
@@ -52,6 +62,10 @@ def full_run():
     return n, len(allk), all_d, npat, len(patk), pat_d
 
 def main():
+    o, d, p = D1_CONFIRMED
+    print(f"CONFIRMED (BigQuery Query D1, blocks 1-54458): coinbase_outputs={o:,}  "
+          f"distinct_output_scripts={d:,}  p2pk_outputs={p:,}")
+    print(f"  -> {'ALL DISTINCT (fresh key per coinbase, whole era, zero reuse)' if o==d==p else 'REUSE / non-P2PK present'}\n")
     n, distinct, dupes, npat, patd, pat_dupes = full_run()
     if n:
         print("FULL RUN (coinbase_output_script_hex present):")
