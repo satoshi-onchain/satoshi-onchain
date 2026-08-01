@@ -125,16 +125,53 @@ full spend path, parsed from the raw transactions (chain-linked, self-verifying)
 - Key-reuse fact: the block-9 key signed 5 times here (nonces all distinct — verified separately). No
   other Satoshi coinbase key appears in these spends — **fresh recipient key per payment.**
 
+## 10. Nonce structure & the thread question (`threads.py`)
+
+Do the winning nonces reveal how many threads the miner ran? Over the confirmed set:
+- **High bits are NOT a clean thread partition.** The nonce is ~uniform across the 32-bit range
+  **except a ~2× excess in the lowest 1/16** (top nibble `0x0` = 11.3% vs 6.25% uniform; `0x1` slightly
+  up; `0x2..0xf` ~flat). That low-end excess is the signature of an **incremental search restarting
+  from a low nonce each block** (blocks found early land at low nonces).
+- Splitting the range into K even slices, the per-slice spread grows *smoothly* with K (15% at K=2 →
+  56% at K=8), driven by that single low-end excess — **not K discrete steps**. So a **thread count
+  cannot be uniquely read from the winning-nonce distribution**; pinning N needs hash-rate/timing
+  modelling (not done here). What *is* fixed: the low byte ∈ {0..9}∪{19..58} (50/256 values, widths
+  10 and 40, used ~evenly). Reported as structure, not an inferred thread count.
+
+## 11. Coinbase-key distinctness — fresh key per coinbase (`coinbase_keys.py`)
+
+Every early coinbase is bare P2PK (`41 <65-byte pubkey> ac`). Real sample (fetched):
+
+| block | coinbase pubkey |
+|--:|---|
+| 0 | `04678afd…` |
+| 1 | `0496b538…` |
+| 2 | `047211a8…` |
+| 3 | `0494b9d3…` |
+| 9 | `0411db93…` |
+
+**5/5 distinct → fresh key per coinbase** (consistent with the v0.1 keypool). The full ~22,540-block
+count is **acquire-gated**: `coinbase_output_script_hex` is empty in the CSV — populate it via
+`acquire_rpc.py` (node) / `acquire.sql` (BigQuery), then `coinbase_keys.py` prints distinct count + any
+reuse over the whole era.
+
+## 12. The spent Patoshi coinbases fed to the verdict tool (`spent_patoshi.py`)
+
+The **1,145** high-confidence Patoshi coinbases that were ever spent (57,250 BTC moved) — all fall in
+**blocks 9–24,182** (the dominance window); earliest is **block 9** (→ `spend_chain.py`). Heights are
+written to `spent_patoshi_heights.txt` (feed `judge.py`). The **awakening→coinbase map** (which
+spending tx spent each) is fetch-gated — resolve via `acquire.sql` Query C (spending txid → coinbase
+height); block 9 is the worked example. The unspent complement (~1.1M BTC) is the dormant hoard.
+
 ## Next excavations (fetch-gated — not in the current CSV)
 
-- **Distinct coinbase pubkeys per block** (P2PK output scripts) — to count distinct Satoshi keys over
-  the full ~22,540 blocks and confirm fresh-key-per-coinbase. The spend chain (§9) already shows
-  fresh recipient keys per payment; the full coinbase-key set needs the coinbase `scriptPubKey`
-  (empty in the current CSV — acquire via the RPC/BigQuery path in `acquire_rpc.py`/`acquire.sql`).
-- **Per-thread nonce partition** — the multi-thread reconstruction from the band densities (§4/C):
-  the 50 in-band values are used ~uniformly (density ratio {0..9}:{19..58} ≈ 0.91), consistent with
-  even coverage of a restricted range; the exact thread count is not yet pinned.
-- **Full spend-graph of every spent Patoshi coinbase** (1,145 of them) — extend `spend_chain.py`'s
-  method chain-wide to map which awakenings trace to which coinbase (feed `judge.py`).
+- **Distinct coinbase pubkeys, full ~22,540-block count** — sample confirms fresh-key-per-coinbase
+  (§11); the full count needs `coinbase_output_script_hex` (acquire via `acquire_rpc.py`/`acquire.sql`,
+  then `coinbase_keys.py`).
+- **Thread count** — the winning-nonce structure (§10) does not pin it; needs hash-rate/timing
+  modelling of the miner's search, not just the winning-nonce histogram.
+- **Awakening→coinbase map for all 1,145 spent coinbases** — heights enumerated (§12,
+  `spent_patoshi_heights.txt`); the spending-tx join is `acquire.sql` Query C (block 9 worked).
 
-*(Done since the first draft: §7 hashrate/throttle, §8 dark-period gaps, §9 the block-9 spend chain.)*
+*(Done since the first draft: §7 hashrate/throttle, §8 dark-period gaps, §9 block-9 spend chain,
+§10 nonce/thread structure, §11 coinbase-key sample, §12 spent-Patoshi enumeration.)*

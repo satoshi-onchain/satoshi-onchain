@@ -22,3 +22,4 @@ PUBLISHING.md
 
 # The generated fingerprint/era/intensity PNGs ARE tracked (illustrative results);
 # remove the next lines if you'd rather regenerate them instead.
+spent_patoshi_heights.txt
