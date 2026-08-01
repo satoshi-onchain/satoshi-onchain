@@ -253,6 +253,16 @@ ranges**, a loop/counter artifact, not a residue partition (and within-band valu
 §4). So the nonces carry **no thread-count signal**: the ~2–5-core figure rests on the hashrate bound
 alone, and the exact count is genuinely un-pinnable from public data — a rigorous negative, not a gap.
 
+**Two mining-mechanics refinements (`threads_model.py`).** (a) The hashrate now divides by the **exact**
+difficulty-1 work `2²⁵⁶/(target+1) = 4,295,032,833` (`= 2³² · 65536/65535`, the pdiff-vs-bdiff value),
+not the round `2³²` — a ~0.0015% correction that leaves the ~2–5-core conclusion intact but makes the
+number exact. (b) The **ExtraNonce sawtooth (§3) is a mining necessity, not a stylistic choice**: at
+difficulty 1 a full 32-bit nonce sweep finds a block only `1−1/e ≈ 63%` of the time, so `~37%` of sweeps
+exhaust the nonce and must roll the coinbase ExtraNonce (→ new merkle root → fresh nonce space). The
+fingerprint and the mining mechanics are the same fact from two sides. *(Both derived in the
+`bitcoin-origin-claims` mining deep-dives; the neutral difficulty-1 exactness is also in OBL's
+`retarget` module.)*
+
 ## 14. Nonce-safety of Satoshi's keys — the ECDSA-nonce audit (`nonce_safety.py`)
 
 A reused or biased ECDSA nonce `k` recovers the private key from public signatures alone (reuse:

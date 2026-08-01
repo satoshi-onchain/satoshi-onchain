@@ -28,7 +28,9 @@ import statistics as st
 from datetime import datetime, timezone
 from math import log
 
-EXP_HASHES = 2 ** 32          # expected hashes per block at difficulty 1
+EXP_HASHES = (1 << 256) // ((0xFFFF << 208) + 1)  # exact expected hashes/block at difficulty 1 =
+#   2^256/(target+1) = 4,295,032,833 = 2^32 * 65536/65535 (the pdiff-vs-bdiff gap); the round 2^32
+#   under-states the true hashrate by ~0.0015%. See bitcoin-origin-claims/verify/difficulty_one.py.
 LN2 = log(2)
 D1_ERA_END = 32256            # first difficulty retarget; every block below this is difficulty 1.0
 OUTAGE_CUTOFF_S = 7200        # gaps > 2 h are treated as idle/outage, not "actively mining"
@@ -76,8 +78,8 @@ def main():
     print(f"Span: block {heights[0]} .. {heights[-1]}  "
           f"({datetime.fromtimestamp(series[0], timezone.utc).date()} .. "
           f"{datetime.fromtimestamp(series[-1], timezone.utc).date()})")
-    print(f"Difficulty = 1.0 exact over this whole range -> expected hashes/block = 2^32 "
-          f"({EXP_HASHES:,}).\n")
+    print(f"Difficulty = 1.0 exact over this whole range -> expected hashes/block = 2^256/(target+1) "
+          f"= {EXP_HASHES:,} (= 2^32 * 65536/65535, the exact pdiff-vs-bdiff value, not the round 2^32).\n")
 
     # ---- overall hashrate --------------------------------------------------
     o = hashrate_block(gaps, "overall")
