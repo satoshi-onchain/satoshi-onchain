@@ -21,6 +21,12 @@ Finney transaction; see the `bitcoin-origin-claims` verification of that signatu
 The high-confidence set is a lower bound (counts only where Patoshi dominates); the excess-over-chance
 estimate (~22,540 / ~1.13M) is the rigorous count and matches Lerner (~22,000 / ~1.1M).
 
+**Dormancy freshness (re-checked 1 Aug 2026):** a current full-history spend snapshot (BigQuery
+`acquire.sql` Query B) vs the prior snapshot shows **0** Patoshi coinbases newly spent — the count
+holds at exactly 1,145 spent / 17,444 unspent, and total early coinbases spent is unchanged at
+32,647. The dormant hoard has not moved. (Re-run: export Query B → `spent_status.csv`, diff by
+height; any unspent→spent flip in the Patoshi set is the tripwire → `judge.py`.)
+
 ## 2. Diurnal (hour-of-day) activity — NO sleep cycle
 
 UTC hour-of-day block-production histogram is **statistically flat**:
