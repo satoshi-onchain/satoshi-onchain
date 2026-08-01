@@ -271,6 +271,34 @@ chain (§9). Reconstructing each `SIGHASH_ALL` digest from the raw bytes and ver
 - Boundary: "unspent ⇒ never-signed" is a **per-key empirical fact, not a theorem** — the block-9 key
   was itself reused as change — so it is *checked* here, per key, not assumed.
 
+## 15. What would machine-verifiably prove control of a Satoshi key? (`authorship_test.py`)
+
+The three-tier model rests on one predicate: **identity is key control, and key control is checkable.**
+The only machine-verifiable proof that someone controls a Satoshi key is a signature over a **fresh
+challenge** (fixed *after* the fact, so it can't be lifted from public data) under a known-Satoshi
+public key — or, equivalently, **moving a known-Satoshi coin**. Using only public block-9 data and no
+private key:
+
+| step | check | result |
+|---|---|:--:|
+| [1] re-verify a **public** 2009 signature by `0411db93` against its own 2009 digest | `verify(pubkey, z₂₀₀₉, sig)` | **True** ("Verified OK") |
+| [2] the **same** signature against a **fresh** challenge chosen now | `verify(pubkey, H(fresh), sig)` | **False** |
+
+- **[1] is reproducible by anyone from public bytes**, holding no private key — so a passing
+  verification of an *already-public* signature demonstrates control of **no** key. A signature binds
+  to exactly one digest (the 2009 transaction's), and re-presenting it authenticates nothing new.
+- **[2] is what a real proof requires** — signing a challenge chosen after the fact needs the private
+  key. The control predicate
+  `ECDSA_verify(known_satoshi_pubkey, H(fresh_challenge), sig) == True` (or a spend of a known-Satoshi
+  coin) **has never returned True on-chain.**
+- The **~1.1M-BTC dormant coinbases (§1) never signed at all** — there isn't even a public signature to
+  re-present; only a fresh signature or a coin move could speak for them (§14: never-signed ⇒
+  nonce-immune, quantum-only exposure).
+
+Neutral cryptographic epistemics — no person, no external source, only public bytes. This is the
+foundation under Tiers A/B/C: the tracker measures key-checkable facts and would flag instantly if any
+known-Satoshi key ever signed a fresh message or moved a coin (`judge.py`).
+
 ## Next excavations (fetch-gated — not in the current CSV)
 
 - ~~**Distinct coinbase pubkeys, full count**~~ — **DONE (§11):** BigQuery Query D1 confirms 54,458 /
@@ -286,4 +314,4 @@ chain (§9). Reconstructing each `SIGHASH_ALL` digest from the raw bytes and ver
 *(Done since the first draft: §7 hashrate/throttle, §8 dark-period gaps, §9 block-9 spend chain,
 §10 nonce/thread structure, §11 coinbase-key distinctness (whole era, D1+D2), §12 spent-Patoshi
 enumeration + full awakening map, §13 thread/core count bounded inference, §14 ECDSA-nonce safety
-audit.)*
+audit, §15 the machine-verifiable key-control standard.)*
