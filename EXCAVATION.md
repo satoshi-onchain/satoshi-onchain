@@ -246,6 +246,31 @@ cores).** No single integer is claimable from on-chain data alone — reported a
 cross-check: winning-nonce top-nibble = 0 in **26.3%** of blocks vs 6.25% uniform — a single low-end
 excess from frequent block rebuilds/ExtraNonce bumps, **not** K discrete thread bands; §10.)
 
+## 14. Nonce-safety of Satoshi's keys — the ECDSA-nonce audit (`nonce_safety.py`)
+
+A reused or biased ECDSA nonce `k` recovers the private key from public signatures alone (reuse:
+`k=(z₁−z₂)/(s₁−s₂)`, then `d=(s₁k−z₁)/r`). So "could a Satoshi key have leaked?" is a **checkable
+predicate over public data** (`GROUP BY r`), never an assumption. The only place Satoshi keys ever
+signed is the **block-9 coinbase key `0411db93`**, which signed the five spends of the block-9 change
+chain (§9). Reconstructing each `SIGHASH_ALL` digest from the raw bytes and verifying:
+
+| block | tx | verifies vs `0411db93` | nonce `r` |
+|--:|---|:--:|---|
+| 170 | `f4184fc5…` | ✓ | `4e45e169…` |
+| 181 | `a16f3ce4…` | ✓ | `27542a94…` |
+| 182 | `591e91f8…` | ✓ | `1f27e51c…` |
+| 182 | `12b5633b…` | ✓ | `52ffc192…` |
+| 183 | `828ef3b0…` | ✓ | `c12a7d54…` |
+
+- **All 5 signatures verify; all 5 nonces are distinct (5/5 unique) → no reuse, no leak.** The RNG
+  behaved. (Corroborating context: the real ECDSA-nonce key thefts — Android 2013, lattice sweeps
+  2019 — all cluster post-2012; no Satoshi-era key appears in them.)
+- **The ~1.1M-BTC unspent Patoshi coinbases (§1) are different keys that never signed at all** → no
+  nonce exists to attack → **nonce-immune**. Their only exposure is quantum (the P2PK pubkey is
+  on-chain, §11), not any classical nonce flaw.
+- Boundary: "unspent ⇒ never-signed" is a **per-key empirical fact, not a theorem** — the block-9 key
+  was itself reused as change — so it is *checked* here, per key, not assumed.
+
 ## Next excavations (fetch-gated — not in the current CSV)
 
 - ~~**Distinct coinbase pubkeys, full count**~~ — **DONE (§11):** BigQuery Query D1 confirms 54,458 /
@@ -260,4 +285,5 @@ excess from frequent block rebuilds/ExtraNonce bumps, **not** K discrete thread 
 
 *(Done since the first draft: §7 hashrate/throttle, §8 dark-period gaps, §9 block-9 spend chain,
 §10 nonce/thread structure, §11 coinbase-key distinctness (whole era, D1+D2), §12 spent-Patoshi
-enumeration + full awakening map, §13 thread/core count bounded inference.)*
+enumeration + full awakening map, §13 thread/core count bounded inference, §14 ECDSA-nonce safety
+audit.)*

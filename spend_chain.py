@@ -49,6 +49,8 @@ CHAIN = [
 # blockstream confirms 828ef3b0 vout1 (the last change) is UNSPENT to date (vout0 spent at block 496):
 TERMINUS_CHANGE_UNSPENT = True
 
+import hashlib
+
 def parse(raw):
     b = bytes.fromhex(raw); o = 5
     prev = b[o:o+32][::-1].hex(); o += 32 + 4
@@ -62,30 +64,31 @@ def parse(raw):
         outs.append((val, pub))
     return prev, outs
 
-print("Tier C — the block-9 coinbase (50 BTC, Satoshi's key 0411db93), spend path:\n")
-prev_expected = CB9_TXID
-sent, recipients = 0, set()
-for name, height, raw in CHAIN:
-    prev, outs = parse(raw)
-    assert prev == prev_expected, f"chain break at {name}"
-    line = []
-    for i,(v,pub) in enumerate(outs):
-        if pub.startswith(SATOSHI_K9):
-            line.append(f"{v/1e8:.0f} BTC change→block-9 key")
-            change = v
-        else:
-            line.append(f"{v/1e8:.0f} BTC→{pub[:12]}…")
-            sent += v; recipients.add(pub[:16])
-    print(f"  blk{height:<4} {name}: " + " | ".join(line))
-    prev_expected = None  # only the first link is checked against the coinbase; rest chain by construction
-    # recompute this tx's own txid to chain the next assert
-    import hashlib
-    txid = hashlib.sha256(hashlib.sha256(bytes.fromhex(raw)).digest()).digest()[::-1].hex()
-    prev_expected = txid
+def main():
+    print("Tier C — the block-9 coinbase (50 BTC, Satoshi's key 0411db93), spend path:\n")
+    prev_expected = CB9_TXID
+    sent, recipients, change = 0, set(), 0
+    for name, height, raw in CHAIN:
+        prev, outs = parse(raw)
+        assert prev == prev_expected, f"chain break at {name}"
+        line = []
+        for i,(v,pub) in enumerate(outs):
+            if pub.startswith(SATOSHI_K9):
+                line.append(f"{v/1e8:.0f} BTC change→block-9 key")
+                change = v
+            else:
+                line.append(f"{v/1e8:.0f} BTC→{pub[:12]}…")
+                sent += v; recipients.add(pub[:16])
+        print(f"  blk{height:<4} {name}: " + " | ".join(line))
+        # recompute this tx's own txid to chain the next assert
+        prev_expected = hashlib.sha256(hashlib.sha256(bytes.fromhex(raw)).digest()).digest()[::-1].hex()
 
-print(f"\n  block 9 coinbase: 50 BTC")
-print(f"  spent out to {len(recipients)} distinct NEW keys: {sent/1e8:.0f} BTC")
-print(f"  residual change at the reused block-9 key: {change/1e8:.0f} BTC")
-print(f"  that {change/1e8:.0f}-BTC change output (block 183) is UNSPENT to date: {TERMINUS_CHANGE_UNSPENT}")
-print("\n  Empirical: Satoshi reused ONE key (block-9 coinbase) as change through 5 spends in Jan 2009,")
-print("  paid 5 distinct new keys, and left the final 18 BTC untouched. [forensic]")
+    print(f"\n  block 9 coinbase: 50 BTC")
+    print(f"  spent out to {len(recipients)} distinct NEW keys: {sent/1e8:.0f} BTC")
+    print(f"  residual change at the reused block-9 key: {change/1e8:.0f} BTC")
+    print(f"  that {change/1e8:.0f}-BTC change output (block 183) is UNSPENT to date: {TERMINUS_CHANGE_UNSPENT}")
+    print("\n  Empirical: Satoshi reused ONE key (block-9 coinbase) as change through 5 spends in Jan 2009,")
+    print("  paid 5 distinct new keys, and left the final 18 BTC untouched. [forensic]")
+
+if __name__ == "__main__":
+    main()
