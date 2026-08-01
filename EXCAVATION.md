@@ -204,17 +204,54 @@ coins moved (by spend year):**
   `blk 357 → 728 @ 2009-01-16`. Some early coinbases stayed dormant for years before moving
   (`blk 413 → blk 130673 @ 2011-06-14`).
 
+## 13. Thread / core count — a bounded inference, not an integer (`threads_model.py`)
+
+The winning-nonce distribution cannot pin the thread count (§10), so bound it from the **hashrate**
+(chain-derived) ÷ a **per-core rate** (a 2009 hardware fact, off-chain — this is the error bar).
+
+**Hashrate (chain-derived, solid).** Over the 23,893 confirmed Patoshi blocks of the difficulty-1 era
+(all blocks < 32,256 have difficulty exactly 1.0 ⇒ expected hashes/block = 2³² = 4.295 × 10⁹; first
+retarget was block 32,256, ~30 Dec 2009, by which point Patoshi's share was ~0):
+
+| estimator (inter-Patoshi-block gap) | gap | hashrate |
+|---|--:|--:|
+| active mean (gaps ≤ 2 h) | 14.7 min | **4.88 MH/s** |
+| median, Poisson-corrected (mean = median/ln2) | 12.8 min | 3.88 MH/s |
+| all-gaps mean (counts idle → lower bound) | 16.8 min | 4.27 MH/s |
+
+**⇒ Patoshi ran at ~3.9–4.9 MH/s while active** (early-2009 monthly peak ≈ 4.6 MH/s). Monthly rate:
+4.6 (Jan) → 4.1–4.2 (Mar–May) → 2.7–2.8 (Aug–Oct). *The later decline is ambiguous:* at constant
+difficulty a constant-hashrate miner finds a constant #blocks/month, so the drop is **either a real
+throttle-down or the φ≥0.5 set undercounting Patoshi in the diluted zone** (more interleaved
+non-Patoshi blocks → lower local LSB rate → φ falls below 0.5) — not cleanly separable. The clean
+machine-capability number is the **early-2009 peak ≈ 4.5–4.9 MH/s**. It **never ramped** (cf. §7).
+
+**Implied cores = hashrate ÷ per-core rate** (Satoshi's v0.1 miner used the *unoptimized* CryptoPP
+path; the 4-way SSE2 speedup came later, ~mid-2010):
+
+| per-core (MH/s) | 0.50 | 0.75 | 1.0 | 1.5 | 2.0 |
+|---|--:|--:|--:|--:|--:|
+| implied cores (@4.88 MH/s) | 9.8 | 6.5 | 4.9 | 3.3 | 2.4 |
+
+**Verdict:** the chain pins the **hashrate** (~4–5 MH/s, un-ramped) but **not** the thread/core count,
+which equals hashrate ÷ an off-chain per-core rate. Under plausible per-core rates the count is
+**~2–10 cores**; at the likely ~1–2 MH/s/core it is a **single ordinary multi-core desktop (~2–5
+cores).** No single integer is claimable from on-chain data alone — reported as a range. (Nonce
+cross-check: winning-nonce top-nibble = 0 in **26.3%** of blocks vs 6.25% uniform — a single low-end
+excess from frequent block rebuilds/ExtraNonce bumps, **not** K discrete thread bands; §10.)
+
 ## Next excavations (fetch-gated — not in the current CSV)
 
 - ~~**Distinct coinbase pubkeys, full count**~~ — **DONE (§11):** BigQuery Query D1 confirms 54,458 /
   54,458 / 54,458 (outputs / distinct scripts / P2PK) over blocks 1–54,458 — fresh key per coinbase,
   whole era, zero reuse.
-- **Thread count** — the winning-nonce structure (§10) does not pin it; needs hash-rate/timing
-  modelling of the miner's search, not just the winning-nonce histogram. (Not data-gated.)
+- ~~**Thread count**~~ — **DONE as a bounded inference (§13, `threads_model.py`):** the chain pins
+  the hashrate (~4–5 MH/s, un-ramped) but not the core count (= hashrate ÷ off-chain per-core rate);
+  bounded to ~2–10 cores, most plausibly a single multi-core desktop (~2–5). No integer claimable.
 - ~~**Awakening→coinbase map for all 1,145 spent coinbases**~~ — **DONE (§12):** `acquire.sql`
   Query E → `awakening_map.py` → `patoshi_awakenings.csv`; all 1,145 mapped to spending tx + date,
   97% in 2009–2011, only 2 spends since 2015.
 
 *(Done since the first draft: §7 hashrate/throttle, §8 dark-period gaps, §9 block-9 spend chain,
 §10 nonce/thread structure, §11 coinbase-key distinctness (whole era, D1+D2), §12 spent-Patoshi
-enumeration + full awakening map.)*
+enumeration + full awakening map, §13 thread/core count bounded inference.)*
