@@ -14,8 +14,8 @@ preservation, so no single one is load-bearing:
 | Layer | What it preserves | Status |
 |---|---|---|
 | **Software Heritage** | full history of both satoshi-onchain repositories (`satoshi-onchain`, `.github`), in the universal source-code archive | **live** — [`.github/workflows/preserve.yml`](../.github/workflows/preserve.yml) requests archival daily and on every release, no credentials required |
-| **Content-addressed pinning (IPFS)** | the signed release bundle + `SHA256SUMS`, addressable by content hash rather than by host | **scaffolded** — the `ipfs` job pins each release's signed assets once an `IPFS_TOKEN` secret is set (below) |
-| **Radicle** | a peer-to-peer git mirror, so the repository has no single hosting dependency | **scaffolded** — publish once with `rad init` (below), then keep in sync |
+| **Content-addressed pinning (IPFS)** | the signed release bundle + `SHA256SUMS`, addressable by content hash rather than by host | **live** — `IPFS_TOKEN` is set; the `ipfs` job pins each release's signed assets. v1.1.0: `satoshi-onchain-1.1.0.tar.gz` → `QmVC79JpvswSS7in7Wde6vpt2zkXgfDoAcDAfdQWsE2W4R` (retrievable by CID from any gateway, cross-checkable against `SHA256SUMS`) |
+| **Radicle** | a peer-to-peer git mirror, so the repository has no single hosting dependency | **live** — published as `rad:z4AkHVo5aTCwsbJFR8Q1AsJqszsjL` (owned by `parthod0x`, `did:key:z6MkqZAx…`); mirror head matches GitHub `main` |
 
 Everything preserved is **hash-anchored**: the genesis re-derivation, the released source tarball, and the
 evidence CSVs all carry digests a copy either matches or does not — so redundancy multiplies availability
@@ -47,7 +47,19 @@ pins each to IPFS, and logs the CIDs — retrievable from any gateway and cross-
 3. In a clone of this repo: `rad init --public --name satoshi-onchain` — publishes the repository to
    Radicle and prints its **Repository ID** (`rad:z…`). Start the node if prompted: `rad node start`.
 4. Keep it in sync: after each GitHub push, run `git push rad` (the `rad` remote is added by `rad init`),
-   or `rad sync --announce`. Record the resulting `rad:z…` id in this file once published.
+   or `rad sync --announce`.
+
+**Published.** The satoshi-onchain repository is on Radicle as **`rad:z4AkHVo5aTCwsbJFR8Q1AsJqszsjL`**,
+owned by the `parthod0x` identity (`did:key:z6MkqZAx6fnZ3iosXhTk7K3GzyzcNC2pxy5peUAuvYL45kUA`, the same
+identity as the [genesis](https://github.com/original-bitcoin-laboratory/genesis) repo). Fetch the
+decentralized mirror with:
+
+```
+rad clone rad:z4AkHVo5aTCwsbJFR8Q1AsJqszsjL
+```
+
+The mirror's `main` head tracks GitHub `main`; durable public availability depends on a seed replicating
+the repository, so keep a node online or arrange a seed to hold the RID.
 
 *(Optional CI:* add the exported key as `RAD_KEYPAIR` (and passphrase as `RAD_PASSPHRASE`) to let the
 `radicle` job attempt an automated sync — but the local `git push rad` above is the reliable path.)*
