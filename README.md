@@ -12,7 +12,7 @@ The honest epistemics up front — three tiers, and we never blur them:
 |---|---|---|
 | **A. Definitional** | The genesis block (height 0) — hardcoded in the consensus rules; its coinbase message, key, and permanently-unspendable 50 BTC. | **Certain.** It *is* the chain's first constant. |
 | **B. Forensic** | The **Patoshi** blocks — one dominant early miner fingerprinted by block-header structure (Lerner 2013). ~22k of the first ~50k blocks, ≈1.1M BTC, still unspent. Strongly believed to be Satoshi. | **Statistical, not cryptographic.** A fingerprint, not a signature. |
-| **C. Attested spend** | Block 170 — Satoshi → Hal Finney, 10 BTC (spends block 9's Patoshi coinbase). | **On-chain certain** that block 9's coinbase was spent to Finney; "it was Satoshi" rests on B + Finney's own account. |
+| **C. Attested spend** | Block 170 — first payment, 10 BTC to `04ae1a62…` (Hal Finney), spending block 9's Patoshi coinbase; block 9's 50 BTC was then spent down through block 183 (`spend_chain.py`, `EXCAVATION.md` §9). | **On-chain certain**: block 9's coinbase was spent across 5 payments to 5 distinct new keys, reusing the block-9 key as change, leaving 18 BTC unspent to date. "It was Satoshi" rests on tier B. |
 
 **The line we do not cross.** No genesis-era or Patoshi key has *ever* produced a
 verifying signature. Only that would upgrade Tier B from *attributable* to *proven*.
@@ -194,9 +194,10 @@ visible payment paths contain no `OP_DUP`/`OP_HASH160`/`OP_EQUALVERIFY`, only ba
   (mining + the Finney tx, 2009–2010); BCH (2017) and BSV (2018) split years later, so
   every Satoshi block sits in the shared early history all three chains inherit
   identically. BTC is the direct most-work continuation from block 0.
-- **What we *cannot* get.** Satoshi's identity; cryptographic proof Patoshi = Satoshi;
-  any Satoshi spend beyond block 170 (there is no verified one — the coins sit dormant).
-  The dormancy *is* the data.
+- **What we *cannot* get.** Satoshi's identity; cryptographic proof Patoshi = Satoshi. (Satoshi
+  *did* spend on-chain in Jan 2009 — block 9's coinbase was spent down through block 183, and ~1,145
+  of the ~22,540 Patoshi coinbases were later spent; see `EXCAVATION.md` §6/§9. But the **bulk — the
+  ~1.1M-BTC Patoshi hoard — sits dormant**, and the dormancy *is* the data.)
 
 ## Sources
 - S. D. Lerner, "The Well Deserved Fortune of Satoshi Nakamoto" (bitslog, 2013) and
