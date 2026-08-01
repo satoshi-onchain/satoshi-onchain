@@ -159,19 +159,50 @@ Every early coinbase is bare P2PK (`41 <65-byte pubkey> ac`). Real sample (fetch
 | P2PK-type outputs | **54,458** |
 
 All three are **equal**: every coinbase in blocks 1–54,458 is a **bare-P2PK output with a distinct
-pubkey — zero key reuse across the entire early era.** The Patoshi blocks are a subset of this
-all-distinct set, so they are trivially all-distinct too (**fresh key per Patoshi coinbase**, no
-separate count needed). Consistent with the v0.1 keypool. (Sample of 5 above → the same result at
-scale.) *(D2 — the per-block pubkey bytes — is optional and only populates the CSV column; the
-distinctness fact is settled by D1.)*
+pubkey — zero key reuse across the entire early era.** Consistent with the v0.1 keypool. (Sample of
+5 above → the same result at scale.)
+
+**Pubkey-level cross-check (D2 exported, extracted locally by `coinbase_keys.py`):** the actual
+65-byte P2PK pubkeys were pulled and de-duplicated, not just the script strings:
+
+| set | coinbase P2PK outputs | distinct pubkeys | reused |
+|---|--:|--:|--:|
+| all early (blocks 0–54,458) | 54,459 | **54,459** | **0** |
+| high-confidence Patoshi subset (φ≥0.5) | 18,589 | **18,589** | **0** |
+
+So the **fresh-key-per-coinbase** fact holds at the key level, including the **18,589-block Patoshi
+set — every Patoshi coinbase used a brand-new key, no reuse anywhere.** (54,459 vs D1's 54,458: D2
+includes the genesis block 0 coinbase, which D1's `BETWEEN 1 AND 54458` excluded.)
 
 ## 12. The spent Patoshi coinbases fed to the verdict tool (`spent_patoshi.py`)
 
 The **1,145** high-confidence Patoshi coinbases that were ever spent (57,250 BTC moved) — all fall in
 **blocks 9–24,182** (the dominance window); earliest is **block 9** (→ `spend_chain.py`). Heights are
-written to `spent_patoshi_heights.txt` (feed `judge.py`). The **awakening→coinbase map** (which
-spending tx spent each) is fetch-gated — resolve via `acquire.sql` Query C (spending txid → coinbase
-height); block 9 is the worked example. The unspent complement (~1.1M BTC) is the dormant hoard.
+written to `spent_patoshi_heights.txt` (feed `judge.py`). The unspent complement (~1.1M BTC) is the
+dormant hoard.
+
+**The full awakening→coinbase map is now resolved** (`acquire.sql` Query E → `awakening_map.py`,
+`patoshi_awakenings.csv`): all **1,145** spent Patoshi coinbases, each joined to the exact tx that
+spent it and when. The count matches the independent enumeration above (cross-check). **When the
+coins moved (by spend year):**
+
+| year | Patoshi awakenings | | year | Patoshi awakenings |
+|--:|--:|---|--:|--:|
+| 2009 | 345 | | 2013 | 20 |
+| 2010 | 285 | | 2014 | 2 |
+| 2011 | **483** | | 2015 | 2 |
+| 2012 | 6 | | 2020 | 1 |
+| | | | 2024 | 1 |
+
+- **97% of all Patoshi awakenings happened in 2009–2011** (1,113 / 1,145); after 2012 the set is
+  essentially frozen — only **34** spends in 13 years, and just **two** since 2015 (one in 2020, one
+  in 2024). The dormant hoard is not merely unspent — the *spending* of Patoshi coins effectively
+  stopped after the early years.
+- 2011 is the single biggest awakening year (483) — spends concentrate in the earliest era, then
+  taper to near-zero, consistent with the height-banded spend-rate in §6.
+- Earliest awakenings: `blk 9 → blk 170 @ 2009-01-12` (the Finney tx), `blk 286 → 524 @ 2009-01-15`,
+  `blk 357 → 728 @ 2009-01-16`. Some early coinbases stayed dormant for years before moving
+  (`blk 413 → blk 130673 @ 2011-06-14`).
 
 ## Next excavations (fetch-gated — not in the current CSV)
 
@@ -180,10 +211,10 @@ height); block 9 is the worked example. The unspent complement (~1.1M BTC) is th
   whole era, zero reuse.
 - **Thread count** — the winning-nonce structure (§10) does not pin it; needs hash-rate/timing
   modelling of the miner's search, not just the winning-nonce histogram. (Not data-gated.)
-- **Awakening→coinbase map for all 1,145 spent coinbases** — heights enumerated (§12,
-  `spent_patoshi_heights.txt`); the full spending-tx map is `acquire.sql` Query E →
-  `awakening_map.py`. (Query C is the single-event worked example; block 9 is done in §9.)
+- ~~**Awakening→coinbase map for all 1,145 spent coinbases**~~ — **DONE (§12):** `acquire.sql`
+  Query E → `awakening_map.py` → `patoshi_awakenings.csv`; all 1,145 mapped to spending tx + date,
+  97% in 2009–2011, only 2 spends since 2015.
 
 *(Done since the first draft: §7 hashrate/throttle, §8 dark-period gaps, §9 block-9 spend chain,
-§10 nonce/thread structure, §11 coinbase-key distinctness (whole era, D1), §12 spent-Patoshi
-enumeration.)*
+§10 nonce/thread structure, §11 coinbase-key distinctness (whole era, D1+D2), §12 spent-Patoshi
+enumeration + full awakening map.)*
