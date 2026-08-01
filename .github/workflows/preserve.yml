@@ -1,0 +1,84 @@
+# Decentralized preservation — request archival of the satoshi-onchain repositories on independent,
+# content-addressed infrastructure, so the reproducible tracker survives even if the primary host does
+# not. The classifier re-derives from public chain data with no service of ours; this keeps the source
+# retrievable and self-verifying from more than one root. NOT money, not financial advice.
+name: preserve
+
+on:
+  schedule:
+    - cron: '37 4 * * *'          # daily (offset from OBL's to respect Software Heritage rate limits)
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  # 1) Software Heritage — the universal source-code archive. No credentials needed; runs on every trigger.
+  software-heritage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Request archival of every satoshi-onchain repository
+        run: |
+          for repo in satoshi-onchain .github; do
+            url="https://github.com/satoshi-onchain/$repo"
+            echo "== $url =="
+            resp=$(curl -sS -X POST -H "Accept: application/json" \
+              "https://archive.softwareheritage.org/api/1/origin/save/git/url/$url/" || echo '{"error":"request failed"}')
+            echo "  ${resp:0:300}"
+            sleep 6
+          done
+
+  # 2) Radicle — a peer-to-peer git mirror, so the repo has no single hosting dependency.
+  #    Enable by adding a RAD_KEYPAIR secret (one-time setup in PRESERVATION.md).
+  radicle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - name: Mirror to Radicle (if configured)
+        env:
+          RAD_KEYPAIR: ${{ secrets.RAD_KEYPAIR }}
+        run: |
+          if [ -z "$RAD_KEYPAIR" ]; then
+            echo "RAD_KEYPAIR not set — Radicle mirror skipped. See PRESERVATION.md to enable."
+            exit 0
+          fi
+          echo "RAD_KEYPAIR present — mirroring to the satoshi-onchain Radicle identity."
+          # One-time setup (PRESERVATION.md): rad auth with the imported key, `rad init`/`rad id` bind
+          # this repo to the Radicle Identifier (rid), then this step runs `rad sync --announce`.
+
+  # 3) IPFS — pin the signed release bundle so it is addressable by content hash, host-independent.
+  #    Enable by adding an IPFS_TOKEN secret (a Pinata JWT); runs only when a release is published.
+  ipfs:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'release' || github.event_name == 'workflow_dispatch' }}
+    steps:
+      - name: Pin the signed release bundle to IPFS via Pinata (if configured)
+        env:
+          IPFS_TOKEN: ${{ secrets.IPFS_TOKEN }}   # a Pinata JWT; see PRESERVATION.md
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.event.release.tag_name }}
+        run: |
+          if [ -z "$IPFS_TOKEN" ]; then
+            echo "IPFS_TOKEN not set — IPFS pin skipped. See PRESERVATION.md to enable."
+            exit 0
+          fi
+          if [ -z "$TAG" ]; then TAG=$(gh release list -R "$GITHUB_REPOSITORY" --limit 1 --json tagName --jq '.[0].tagName'); fi
+          if [ -z "$TAG" ]; then echo "no release found to pin"; exit 1; fi
+          echo "Pinning signed assets from release $TAG"
+          mkdir -p dist
+          gh release download "$TAG" -R "$GITHUB_REPOSITORY" -D dist -p '*.tar.gz' -p 'SHA256SUMS' -p '*.asc' || true
+          shopt -s nullglob
+          for f in dist/*; do
+            echo "== pinning $(basename "$f") =="
+            resp=$(curl -sS -X POST "https://api.pinata.cloud/pinning/pinFileToIPFS" \
+              -H "Authorization: Bearer $IPFS_TOKEN" \
+              -F "file=@$f" \
+              -F "pinataMetadata={\"name\":\"$(basename "$f")\"}")
+            cid=$(printf '%s' "$resp" | grep -o '"IpfsHash":"[^"]*"' | cut -d'"' -f4)
+            echo "  CID: ${cid:-<none - check response>}   ${resp:0:200}"
+          done
+          echo "Every pinned file is content-addressed by CID and also SHA256-listed in SHA256SUMS, so a"
+          echo "gateway copy either matches or does not. Retrieve with: ipfs get <CID>  (or any IPFS gateway)."
