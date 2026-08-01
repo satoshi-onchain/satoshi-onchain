@@ -79,3 +79,41 @@ ORDER BY height;
 -- FROM `bigquery-public-data.crypto_bitcoin.transactions`, UNNEST(outputs) o
 -- WHERE is_coinbase AND '<PASTE_ADDRESS>' IN UNNEST(o.addresses)
 -- ORDER BY height;
+
+-- ============================================================================
+-- QUERY D — COINBASE OUTPUT KEYS (fresh-key-per-coinbase). Cheap: transactions table,
+-- coinbase rows only. Two forms.
+--   D1 (instant answer): distinct coinbase output scripts over the Patoshi era.
+--   D2 (export): per-block coinbase output script hex -> merge into early_blocks_merged.csv's
+--       coinbase_output_script_hex column (by height), then run coinbase_keys.py for the
+--       Patoshi-subset distinct count.
+-- ============================================================================
+-- D1 — instant:
+-- SELECT COUNT(*) AS coinbase_outputs,
+--        COUNT(DISTINCT o.script_hex) AS distinct_output_scripts,
+--        COUNTIF(o.type = 'pubkey')   AS p2pk_outputs
+-- FROM `bigquery-public-data.crypto_bitcoin.transactions` t, UNNEST(t.outputs) o
+-- WHERE t.is_coinbase AND t.block_number BETWEEN 1 AND 54458 AND o.index = 0;
+--   -> if distinct_output_scripts == coinbase_outputs, every coinbase used a fresh key.
+--
+-- D2 — export (header: height,coinbase_output_script_hex):
+-- SELECT t.block_number AS height, o.script_hex AS coinbase_output_script_hex
+-- FROM `bigquery-public-data.crypto_bitcoin.transactions` t, UNNEST(t.outputs) o
+-- WHERE t.is_coinbase AND t.block_number <= 60000 AND o.index = 0
+-- ORDER BY height;
+
+-- ============================================================================
+-- QUERY E — AWAKENING -> COINBASE MAP for all spent early coinbases. EXPENSIVE (full-history
+-- input scan, like Query B): finds the spending tx of every early coinbase. Export to
+-- spent_map.csv, then locally join to patoshi_confirmed.csv to get the ~1,145 Patoshi map.
+-- ============================================================================
+-- SELECT cb.block_number AS coinbase_height,
+--        cb.`hash`       AS coinbase_txid,
+--        s.`hash`        AS spending_txid,
+--        s.block_number  AS spending_height,
+--        UNIX_SECONDS(s.block_timestamp) AS spending_time
+-- FROM `bigquery-public-data.crypto_bitcoin.transactions` cb
+-- JOIN `bigquery-public-data.crypto_bitcoin.transactions` s, UNNEST(s.inputs) i
+--   ON i.spent_transaction_hash = cb.`hash`
+-- WHERE cb.is_coinbase AND cb.block_number <= 54458
+-- ORDER BY coinbase_height;

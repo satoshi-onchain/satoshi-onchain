@@ -30,26 +30,38 @@ def p2pk_pubkey(spk_hex):
         return b[1:66].hex()
     return None
 
+def load_patoshi():
+    try:
+        return {int(r["height"]) for r in csv.DictReader(open("patoshi_confirmed.csv", newline=""))
+                if r["patoshi_confirmed"] == "1"}
+    except FileNotFoundError:
+        return set()
+
 def full_run():
-    keys, dupes, n = {}, [], 0
+    pat = load_patoshi()
+    allk, patk, all_d, pat_d, n, npat = {}, {}, [], [], 0, 0
     for r in csv.DictReader(open("early_blocks_merged.csv", newline="")):
         pk = p2pk_pubkey(r.get("coinbase_output_script_hex", ""))
         if pk is None:
             continue
-        n += 1
-        if pk in keys:
-            dupes.append((keys[pk], int(r["height"])))
-        else:
-            keys[pk] = int(r["height"])
-    return n, len(keys), dupes
+        h = int(r["height"]); n += 1
+        (all_d.append((allk[pk], h)) if pk in allk else allk.__setitem__(pk, h))
+        if h in pat:
+            npat += 1
+            (pat_d.append((patk[pk], h)) if pk in patk else patk.__setitem__(pk, h))
+    return n, len(allk), all_d, npat, len(patk), pat_d
 
 def main():
-    n, distinct, dupes = full_run()
+    n, distinct, dupes, npat, patd, pat_dupes = full_run()
     if n:
         print("FULL RUN (coinbase_output_script_hex present):")
-        print(f"  coinbase P2PK outputs read : {n:,}")
-        print(f"  DISTINCT pubkeys           : {distinct:,}")
-        print(f"  reused keys (height pairs) : {len(dupes)}  {dupes[:5] if dupes else '(none — fresh key per block)'}")
+        print(f"  all early coinbase P2PK outputs : {n:,}   DISTINCT keys: {distinct:,}   "
+              f"reused: {len(dupes)} {dupes[:3] if dupes else '(none)'}")
+        if npat:
+            print(f"  Patoshi-subset coinbases        : {npat:,}   DISTINCT keys: {patd:,}   "
+                  f"reused: {len(pat_dupes)} {pat_dupes[:3] if pat_dupes else '(none — fresh key per Patoshi block)'}")
+        else:
+            print("  (patoshi_confirmed.csv not found — showing whole-era count only)")
         return
     print("coinbase_output_script_hex is EMPTY in the CSV — showing the fetched real sample.\n")
     print("sample coinbase pubkeys (from the chain):")
