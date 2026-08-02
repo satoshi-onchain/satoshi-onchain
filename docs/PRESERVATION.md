@@ -14,7 +14,7 @@ preservation, so no single one is load-bearing:
 | Layer | What it preserves | Status |
 |---|---|---|
 | **Software Heritage** | full history of both satoshi-onchain repositories (`satoshi-onchain`, `.github`), in the universal source-code archive | **live** — [`.github/workflows/preserve.yml`](../.github/workflows/preserve.yml) requests archival daily and on every release, no credentials required |
-| **Content-addressed pinning (IPFS)** | the signed release bundle + `SHA256SUMS`, addressable by content hash rather than by host | **live** — `IPFS_TOKEN` is set; the `ipfs` job pins each release's signed assets. v1.1.0: `satoshi-onchain-1.1.0.tar.gz` → `QmVC79JpvswSS7in7Wde6vpt2zkXgfDoAcDAfdQWsE2W4R` (retrievable by CID from any gateway, cross-checkable against `SHA256SUMS`) |
+| **Content-addressed pinning (IPFS)** | the signed release bundle + `SHA256SUMS`, addressable by content hash rather than by host | **live** — `IPFS_TOKEN` is set; the `ipfs` job pins each release's signed assets. v1.1.0: `satoshi-onchain-1.1.0.tar.gz` → `QmVC79JpvswSS7in7Wde6vpt2zkXgfDoAcDAfdQWsE2W4R`; v1.1.1: `satoshi-onchain-1.1.1.tar.gz` → `QmeipWrkm62ptVBWV3B8ZWyGAKmcV6DS9twtZ9c4zkCswC` (retrievable by CID from any gateway, cross-checkable against `SHA256SUMS`) |
 | **Radicle** | a peer-to-peer git mirror, so the repository has no single hosting dependency | **live** — published as `rad:z4AkHVo5aTCwsbJFR8Q1AsJqszsjL` (owned by `parthod0x`, `did:key:z6MkqZAx…`); mirror head matches GitHub `main` |
 
 Everything preserved is **hash-anchored**: the genesis re-derivation, the released source tarball, and the
