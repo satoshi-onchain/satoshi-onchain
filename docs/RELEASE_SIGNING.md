@@ -34,8 +34,8 @@ git push origin vX.Y.Z
 git verify-tag vX.Y.Z        # sanity check the signature
 ```
 
-(`v1.0.0` and `v1.1.0` were cut **unsigned**; from `v1.1.0` onward, sign every tag — re-cut `v1.1.0` as a
-signed tag if you want full parity, or start signing from the next tag.)
+(`v1.0.0` was a lightweight, **unsigned** tag; `v1.1.0` onward are **annotated and GPG-signed** — check any
+of them with `git verify-tag vX.Y.Z`.)
 
 ## 3. A reproducible source archive + detached signature
 
