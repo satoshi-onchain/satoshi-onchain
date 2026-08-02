@@ -10,6 +10,10 @@ Grade: [forensic]. The block-9 key never signed anything except these spends (al
 Run: python spend_chain.py
 """
 
+import sys
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")  # render the '→' output on Windows cp1252 consoles too
+
 CB9_TXID   = "0437cd7f8525ceed2324359c2d0ba26006d92d856a9c20fa0241106ee5a597c9"  # block 9 coinbase
 SATOSHI_K9 = "0411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909a5cb2"  # its pubkey (prefix)
 
