@@ -293,13 +293,19 @@
       — and not one line of it identifies a person. Every anchored fact is about an artifact or an
       account. That is not a gap in the research; it is the state of the record.</p>
 
-    <div class="xlink">Reproduce any line ·
-      <a href="https://archive.softwareheritage.org/api/1/revision/5c085256f7dbfe999afbf10808828f0df9f877f1/log/">the 252 SVN revisions</a> ·
+    <div class="xlink"><b>Rebuild all of it yourself.</b>
+      <a href="https://github.com/satoshi-onchain/satoshi-onchain/tree/main/verify"><b>verify/</b></a>
+      holds six scripts — Python 3, standard library only, no API key and no login — that regenerate
+      every line above from its public source: the SourceForge account pages and their sequential
+      user IDs, the 252 SVN revisions from Software Heritage, all 539 forum posts with their raw
+      HTML, and a full copy of the cryptography-list archive. Each carries a README stating what it
+      establishes <b>and what it does not</b>.
+      <br><br>Or check a single line by hand ·
+      <a href="https://archive.softwareheritage.org/api/1/revision/5c085256f7dbfe999afbf10808828f0df9f877f1/log/">the SVN revisions</a> ·
       <a href="https://web.archive.org/web/20091130163943if_/http://sourceforge.net:80/users/nakamoto2">nakamoto2’s join date</a> ·
       <a href="https://www.metzdowd.com/pipermail/cryptography/2008-November/014831.html">the Section 4 quotation</a> ·
       <a href="https://bitcointalk.org/index.php?action=profile;u=3">the forum profile</a> ·
-      <a href="https://rdap.publicinterestregistry.org/rdap/domain/bitcoin.org">the domain record</a>.
-      No login, no API key, no trust in us.</div>
+      <a href="https://rdap.publicinterestregistry.org/rdap/domain/bitcoin.org">the domain record</a>.</div>
   </section>
 
   <section>
@@ -326,6 +332,7 @@
 
     <p class="sf-links">
       <a href="https://github.com/satoshi-onchain/satoshi-onchain">source</a> ·
+      <a href="https://github.com/satoshi-onchain/satoshi-onchain/tree/main/verify">verify/ — rebuild the evidence</a> ·
       <a href="https://github.com/satoshi-onchain/satoshi-onchain/releases/tag/v1.1.1">v1.1.1</a> ·
       <a href="https://github.com/satoshi-onchain/satoshi-onchain/blob/main/docs/RELEASE_SIGNING.md">verify a release</a> ·
       <a href="parthod0x-signing-key.asc" title="OpenPGP release-signing key">key B128&nbsp;526A…B78C&nbsp;F1DA</a>
