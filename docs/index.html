@@ -120,17 +120,31 @@
   footer{margin-top:70px;padding-top:24px;border-top:1px solid var(--line);
     font-size:13px;color:var(--faint);font-family:var(--mono);line-height:1.8}
   footer .k{color:var(--muted)}
+  footer a{color:var(--faint);text-decoration:none;border-bottom:1px solid var(--line)}
+  footer a:hover{color:var(--ink);border-color:var(--accent)}
+  footer p{margin:3px 0}
+  footer b{color:var(--accent);font-weight:600}
+  .sf-brand{letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+    font-size:11px;margin-bottom:10px}
+  .sf-brand a{color:inherit;border:0}
+  .sf-anchor{margin:0 0 14px !important}
+  .sf-h{color:var(--muted)}
+  .sf-links{margin-top:14px !important}
+  .sf-related{margin-top:12px !important}
+  .sf-related i{font-style:italic;opacity:.85}
+  .sf-legal{margin-top:12px !important;padding-top:12px;border-top:1px solid var(--line)}
 </style>
 </head>
 <body>
 
 <main class="wrap">
   <header>
-    <p class="eyebrow">On-chain forensics · reproducible · 2026-07-22</p>
+    <p class="eyebrow">On-chain forensics · reproducible · 2026-08-05</p>
     <h1>The verifiable footprint of the original Satoshi</h1>
-    <p class="thesis">Every figure below re-derives from the Bitcoin chain itself — a synced
-      node, or the public <span class="mono">bigquery-public-data.crypto_bitcoin</span> mirror.
-      Nothing rests on the word “Satoshi” in anyone’s mouth.</p>
+    <p class="thesis">Every on-chain figure below re-derives from the Bitcoin chain itself — a synced
+      node, or the public <span class="mono">bigquery-public-data.crypto_bitcoin</span> mirror. The
+      <a href="#offchain">off-chain record</a> is graded separately, and every line of it links to the
+      public server that carries the timestamp. Nothing rests on the word “Satoshi” in anyone’s mouth.</p>
 
     <div class="headline">
       <div class="hnum">≈1.13M<span>BTC</span></div>
@@ -256,6 +270,38 @@
       unambiguously, if the real cluster ever stirred.</p>
   </section>
 
+  <section id="offchain">
+    <h2>The off-chain record</h2>
+    <p class="lead">The chain is not the only place a third party wrote down a timestamp.</p>
+    <p class="sm">Satoshi left a trail on servers he did not run. Those records are worth exactly what
+      recorded them, so each line below is graded the same way the on-chain evidence is — and each is
+      reproducible from a public URL, by anyone, without taking our word for any of it.</p>
+
+    <div class="verdicts">
+      <div class="vd"><span class="h">2008-08-18</span><span class="tag amb">REGISTRY</span><span class="desc"><span class="mono">bitcoin.org</span> registered, 13:19:55Z — <b>but the registrant is not recorded.</b> RDAP holds no name and no historical registrant data. There is no machine-verifiable link between the domain and Satoshi at any date.</span></div>
+      <div class="vd"><span class="h">2008-10-05</span><span class="tag pat">SERVER</span><span class="desc">SourceForge account <span class="mono">nakamoto2</span> created — user ID <span class="mono">2238460</span>. Join dates are server-set; sequential IDs corroborate them independently. <b>26 days before the paper was announced.</b></span></div>
+      <div class="vd"><span class="h">2008-10-31</span><span class="tag amb">ARCHIVE</span><span class="desc">The paper announced on <span class="mono">cryptography@metzdowd.com</span>, abstract quoted inline. 18 messages through Jan 2009, in server-recorded arrival order.</span></div>
+      <div class="vd"><span class="h">2008-11-08</span><span class="tag amb">ARCHIVE</span><span class="desc">Satoshi quotes <b>Section 4 of his own paper</b>, verbatim — 41 words, identical to the PDF served today. The only body text of the whitepaper with a 2008 witness.</span></div>
+      <div class="vd"><span class="h">2008-11-09</span><span class="tag pat">SERVER</span><span class="desc"><span class="mono">nakamoto2</span> registers the Bitcoin project on SourceForge, 18:58. It later adds <span class="mono">s_nakamoto</span>, which adds <span class="mono">hal</span>.</span></div>
+      <div class="vd"><span class="h">2009-01-03</span><span class="tag gen">CHAIN</span><span class="desc">The genesis block. The only unforgeable line on this list.</span></div>
+      <div class="vd"><span class="h">2009-10-21</span><span class="tag pat">SERVER</span><span class="desc">First of <b>164 SVN commits</b> by <span class="mono">s_nakamoto</span>. Commit times are written by the server — the densest record of Satoshi working that exists off-chain.</span></div>
+      <div class="vd"><span class="h">2009-11-19</span><span class="tag pat">SERVER</span><span class="desc">bitcointalk user 3 registered, 19:12:39. <b>539 posts are publicly enumerable</b>; the profile counts 575, so 36 are counted but not listed.</span></div>
+      <div class="vd"><span class="h">2010-12-15</span><span class="tag pat">SERVER</span><span class="desc"><b>The last recorded action anywhere.</b> An SVN commit at 22:43:51Z — message: <i>“get external ip from irc”</i>. Two days after the final forum activity. Ordinary maintenance; no farewell.</span></div>
+    </div>
+
+    <p class="sm" style="margin-top:16px">Read the anchor column alone and the arc runs <b>28 months</b>
+      — and not one line of it identifies a person. Every anchored fact is about an artifact or an
+      account. That is not a gap in the research; it is the state of the record.</p>
+
+    <div class="xlink">Reproduce any line ·
+      <a href="https://archive.softwareheritage.org/api/1/revision/5c085256f7dbfe999afbf10808828f0df9f877f1/log/">the 252 SVN revisions</a> ·
+      <a href="https://web.archive.org/web/20091130163943if_/http://sourceforge.net:80/users/nakamoto2">nakamoto2’s join date</a> ·
+      <a href="https://www.metzdowd.com/pipermail/cryptography/2008-November/014831.html">the Section 4 quotation</a> ·
+      <a href="https://bitcointalk.org/index.php?action=profile;u=3">the forum profile</a> ·
+      <a href="https://rdap.publicinterestregistry.org/rdap/domain/bitcoin.org">the domain record</a>.
+      No login, no API key, no trust in us.</div>
+  </section>
+
   <section>
     <h2>The line</h2>
     <p class="close">No genesis-era or Patoshi key has ever produced a verifying signature. Only that
@@ -267,13 +313,34 @@
       quantum-exposed coin class is one dormant miner.</div>
   </section>
 
-  <footer>
+  <footer aria-label="provenance and license">
+    <div class="sf-brand"><a href="/" title="Home — Satoshi On-Chain">◆ Satoshi On-Chain</a></div>
+
+    <p class="sf-anchor">Anchored to block <b>0</b> · 3 January 2009 ·
+      <span class="sf-h">000000000019d668…0a8ce26f</span></p>
+
     <div><span class="k">pipeline</span> &nbsp;acquire → classify → refine → validate → judge</div>
     <div><span class="k">reproduce</span> &nbsp;patoshi.py · slots.py · judge.py &nbsp;·&nbsp; excavation: excavate.py · deepdig.py · spend_chain.py · nonce_safety.py · authorship_test.py</div>
     <div><span class="k">excavation (v1.1.1)</span> &nbsp;dormant ledger · diurnal null (24/7) · hashrate &amp; restraint · no thread-count signal · block-9 spend chain · 1,145 awakenings · nonce-safety · the key-control standard &nbsp;·&nbsp; <a href="https://github.com/satoshi-onchain/satoshi-onchain/blob/main/EXCAVATION.md">EXCAVATION.md §1–15</a></div>
     <div><span class="k">sources</span> &nbsp;S. D. Lerner, Patoshi analyses (2013) · the chain itself (genesis, block 170)</div>
-    <div><span class="k">related</span> &nbsp;<a href="https://bitcoin-lab.org">Original Bitcoin Laboratory</a> — executable reconstruction of the earliest Bitcoin (the essence of Bitcoin; this captures the essence of Satoshi)</div>
-    <div><span class="k">grade</span> &nbsp;[forensic], not [cryptographic] &nbsp;·&nbsp; MIT © parthod0x &nbsp;·&nbsp; not money, not financial advice</div>
+
+    <p class="sf-links">
+      <a href="https://github.com/satoshi-onchain/satoshi-onchain">source</a> ·
+      <a href="https://github.com/satoshi-onchain/satoshi-onchain/releases/tag/v1.1.1">v1.1.1</a> ·
+      <a href="https://github.com/satoshi-onchain/satoshi-onchain/blob/main/docs/RELEASE_SIGNING.md">verify a release</a> ·
+      <a href="parthod0x-signing-key.asc" title="OpenPGP release-signing key">key B128&nbsp;526A…B78C&nbsp;F1DA</a>
+      <a href="https://keys.openpgp.org/search?q=B128526AF85AE4A8F22B949FB0145F74B78CF1DA"
+         title="the same key from a keyserver, so the key and the release do not come from one host">keyserver</a> ·
+      <a href="https://github.com/satoshi-onchain/satoshi-onchain/blob/main/docs/PRESERVATION.md">preservation — IPFS · Software Heritage · Radicle</a>
+    </p>
+
+    <p class="sf-related">Related · <a href="https://bitcoin-lab.org">Original Bitcoin Laboratory</a> —
+      executable reconstruction of the earliest Bitcoin. That lab gets to the bottom of
+      <i>Bitcoin</i>; this one gets to the bottom of <i>Satoshi</i>.</p>
+
+    <p class="sf-legal">[forensic], not [cryptographic] · MIT © 2026
+      <a href="https://github.com/parthod0x">parthod0x</a> · <b>not money</b>, not financial advice ·
+      no warranty</p>
   </footer>
 </main>
 
