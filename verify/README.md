@@ -129,7 +129,7 @@ mail provider. Here both sides are present:
 
 ```
 satoshi   satoshin@gmx.com    +0000 x98    +0100 x46
-sirius    mmalmi@cc.hut.fi    +0200 x74    +0300 x42
+sirius    mmalmi@… (redacted)    +0200 x74    +0300 x42
 ```
 
 Malmi wrote from Helsinki University of Technology; Finland is EET/EEST — **+0200 winter, +0300

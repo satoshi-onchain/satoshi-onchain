@@ -205,3 +205,8 @@ visible payment paths contain no `OP_DUP`/`OP_HASH160`/`OP_EQUALVERIFY`, only ba
 - Genesis + block-170/Hal-Finney facts: the chain itself (verify via `anchors.py`).
 - Dormancy status (2026): Arkham Intelligence / Glassnode supply-by-age; the Patoshi
   cluster remains unmoved while non-Patoshi Satoshi-era coins have awakened.
+
+---
+
+**Rights, sourcing and corrections:** see [RIGHTS.md](RIGHTS.md) — what this project uses,
+where it comes from, how named people are treated, and how to ask for a correction.
