@@ -70,6 +70,15 @@ Walks each revision's tree and fetches the file bodies (content-addressed, so sh
 fetched once). Gives the full 2009–2011 source history that SourceForge no longer serves.
 Requires `svn-log.json` from the previous script.
 
+For a complete copy in one request, ask Software Heritage's vault to cook the whole history instead:
+
+```bash
+curl -X POST https://archive.softwareheritage.org/api/1/vault/git-bare/swh:1:rev:5c085256f7dbfe999afbf10808828f0df9f877f1/
+# poll the same URL until "status":"done", then GET .../raw/
+```
+
+Use the vault for the full history; use the walk above when you only want specific revisions.
+
 ### `bitcointalk_satoshi.py`
 
 Collects every publicly listed post by user 3, saving the raw HTML alongside the parse so the parse

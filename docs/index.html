@@ -293,6 +293,15 @@
       — and not one line of it identifies a person. Every anchored fact is about an artifact or an
       account. That is not a gap in the research; it is the state of the record.</p>
 
+    <h3 style="font-size:15px;margin:26px 0 8px">Three things the record does <i>not</i> support</h3>
+    <p class="sm">Stated because they circulate widely, and because a page that only lists what it
+      can prove is more useful when it also lists what it cannot.</p>
+    <div class="verdicts">
+      <div class="vd"><span class="h">+0800</span><span class="tag no">UNRESOLVED</span><span class="desc">All 18 mailing-list messages declare a UTC+8 offset, routinely cited as evidence of an Asian timezone. <b>It does not support that.</b> <span class="mono">vistomail.com</span> was anonymous webmail — webmail writes the <span class="mono">Date</span> header itself — the messages carry <span class="mono">CHILKAT-MID-…@server123</span>, and Chilkat is a <b>server-side library</b>, not a client someone types into. Whether the offset belongs to a person or to a mail service is undetermined. The one other vistomail sender in the archive posted in 2021, twelve years too late to serve as a control.</span></div>
+      <div class="vd"><span class="h">“Japan”</span><span class="tag no">SELF-DECLARED</span><span class="desc">The P2P Foundation profile says <i>Male, Japan</i>. It is a self-entered field, and the <b>earliest capture of it is July 2010</b> — seventeen months after the profile was created. It corroborates nothing.</span></div>
+      <div class="vd"><span class="h">2014-03-07</span><span class="tag amb">UNAUTHENTICATED</span><span class="desc">The same account posted <i>“I am not Dorian Nakamoto.”</i> — <b>3 years 3 months after</b> the last verifiable activity. No signature, nothing binding it to whoever held the account in 2009. So the precise claim is <b>“the last machine-verifiable action is 15 December 2010”</b>, not “Satoshi’s last communication”.</span></div>
+    </div>
+
     <div class="xlink"><b>Rebuild all of it yourself.</b>
       <a href="https://github.com/satoshi-onchain/satoshi-onchain/tree/main/verify"><b>verify/</b></a>
       holds six scripts — Python 3, standard library only, no API key and no login — that regenerate

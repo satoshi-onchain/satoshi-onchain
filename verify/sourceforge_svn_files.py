@@ -16,14 +16,23 @@ os.makedirs(os.path.join(OUT, "blobs"), exist_ok=True)
 
 
 def g(u, t=120, raw=False):
-    for attempt in range(4):
+    """Retries with backoff; 429 (rate limit) gets a long sleep rather than aborting the run."""
+    for attempt in range(8):
         try:
             r = urllib.request.urlopen(urllib.request.Request(u, headers=UA), timeout=t).read()
             return r if raw else json.loads(r)
-        except Exception as e:
-            if attempt == 3:
+        except urllib.error.HTTPError as e:
+            if e.code == 429 and attempt < 7:
+                wait = min(900, 60 * (attempt + 1))
+                time.sleep(wait)
+                continue
+            if attempt == 7:
                 raise
-            time.sleep(3 * (attempt + 1))
+            time.sleep(5 * (attempt + 1))
+        except Exception:
+            if attempt == 7:
+                raise
+            time.sleep(5 * (attempt + 1))
 
 
 def entries(d):
