@@ -117,6 +117,38 @@ so each message sits in a bracket of independently-dated messages from other peo
 
 *pipermail obfuscates addresses as `user at host`. A `From_` regex requiring `@` matches nothing.*
 
+### `malmi_satoshi_emails.py`
+
+The Satoshi ↔ Martti Malmi correspondence, 2009–2011 — released by Malmi in February 2024 as a
+witness in COPA v Wright. 260 messages, 144 of them Satoshi's. Saves the source HTML alongside the
+parse so the parse can be audited against the bytes.
+
+**This corpus contains its own control**, which is why it is worth more than a one-sided archive.
+The obvious objection to any `Date` header is whether the timezone belongs to the sender or to their
+mail provider. Here both sides are present:
+
+```
+satoshi   satoshin@gmx.com    +0000 x98    +0100 x46
+sirius    mmalmi@cc.hut.fi    +0200 x74    +0300 x42
+```
+
+Malmi wrote from Helsinki University of Technology; Finland is EET/EEST — **+0200 winter, +0300
+summer** — which is exactly what his headers say. So the offset is the **sender's machine**. And
+checking every message against the EU daylight-saving boundary:
+
+```
+satoshi   n=144   consistent with EU DST: 144   inconsistent: 0
+sirius    n=116   consistent with EU DST: 116   inconsistent: 0
+```
+
+Perfect on both sides across 22 months. Satoshi's `+0000/+0100` is **GMT/BST**, and notably *not*
+GMX's German `+0100/+0200`.
+
+**What that does not establish.** A timezone is a machine setting, and a setting is not a location.
+Read it alongside the other time signals rather than instead of them — the PDF creation offsets and
+the SVN commit-hour distribution point elsewhere, and this project publishes the disagreement rather
+than resolving it. See [the off-chain record](https://satoshioncha.in/#offchain).
+
 ### `wayback_backup.py`
 
 Pulls the **original bytes** (the `if_` suffix, which omits the Archive's toolbar wrapper) of every
