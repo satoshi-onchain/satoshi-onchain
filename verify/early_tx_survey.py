@@ -17,12 +17,30 @@ him without his address.
 
 WHY THIS SCRIPT IS BUILT THE WAY IT IS. The first version of it died silently after several hours.
 Public explorers rate-limit hard, and it treated a 429 like any other transient error -- a 2-second
-retry -- so the attempts burned out mid-sweep and the process exited having written nothing. Three
+retry -- so the attempts burned out mid-sweep and the process exited having written nothing. Four
 consequences, all deliberate here:
 
   * a 429 gets a long ESCALATING wait, not a token retry;
   * progress is CHECKPOINTED to disk, so an interrupted run resumes instead of restarting;
-  * output is line-buffered, so a long run can actually be watched.
+  * output is line-buffered, so a long run can actually be watched;
+  * UNREAD BLOCK RANGES ARE RECORDED AND THE RUN EXITS NON-ZERO. See below.
+
+THE FAILURE THAT MADE THAT LAST POINT NECESSARY. A later run *did* finish, printed "sweep complete",
+and wrote a file that was quietly missing 43 payments across four multi-thousand-block gaps. The
+cause was one line: when the retries were exhausted the loop did `h -= 10; continue`, stepping over
+the unread window and leaving no trace. Nothing in the output distinguished a complete survey from a
+holed one, and the omission was caught only by cross-checking against an unrelated data source
+(Google's BigQuery mirror), which turned out to be a strict superset -- 140/140 agreement on
+everything this script *did* see, and 43 payments it never looked at.
+
+The lesson is not "rate limits are annoying". It is that **a tool whose entire value is
+exhaustiveness must never be able to report success while holding holes.** Gaps are now tracked,
+merged, written to `<out>.gaps`, printed, and the process exits 2.
+
+**Use BigQuery instead where you can** -- see `first_year_payments.sql`, which answers the same
+question in seconds and cannot be rate-limited into silence. This script remains useful as an
+INDEPENDENT second path: it reaches the chain through an entirely different pipeline, so agreement
+between the two means something.
 
 Output: a CSV of every block containing more than a coinbase, with each transaction's inputs,
 outputs and values. No key, no node.
@@ -108,9 +126,17 @@ if os.path.exists(front):
 print(f"  scanning blocks {a.lo}-{a.hi} for non-coinbase activity", flush=True)
 seen = set()
 
+# Ranges this run could NOT read. See the note above: skipping them silently is the bug this
+# tracking exists to make impossible.
+gaps = []
+
 while h >= a.lo:
     batch = get(f"{API}/blocks/{h}")
     if not batch:
+        # Every retry was exhausted. We step over this window and keep going -- but the step is
+        # RECORDED, because an unrecorded step is what turns "exhaustive survey" into a quiet lie.
+        gaps.append((max(a.lo, h - 9), h))
+        print(f"    !! UNREAD: blocks {max(a.lo, h-9)}-{h} -- recorded as a gap", flush=True)
         h -= 10
         continue
     for b in batch:
@@ -162,3 +188,31 @@ if rows:
         w.writeheader()
         w.writerows(rows)
 print(f"  {len(rows)} payments written -> {a.out}", flush=True)
+
+# ---- completeness verdict ---------------------------------------------------------------------
+# A survey whose value is EXHAUSTIVENESS must never report success while holding holes. This block
+# exists because an earlier run of this script did exactly that: rate limiting exhausted the
+# retries, the loop stepped over the unread windows, and it printed "sweep complete" over a file
+# missing 43 payments across four multi-thousand-block gaps. The omission was only caught by
+# cross-checking against an unrelated data source. Loud failure now, every time.
+if gaps:
+    merged = []
+    for lo, hi in sorted(gaps):
+        if merged and lo <= merged[-1][1] + 1:
+            merged[-1][1] = max(merged[-1][1], hi)
+        else:
+            merged.append([lo, hi])
+    missing = sum(hi - lo + 1 for lo, hi in merged)
+    with open(a.out + ".gaps", "w", encoding="utf-8") as fh:
+        for lo, hi in merged:
+            fh.write("%d\t%d\n" % (lo, hi))
+    print(f"\n  *** INCOMPLETE: {missing:,} blocks in {len(merged)} range(s) were never read ***",
+          flush=True)
+    for lo, hi in merged[:20]:
+        print(f"      {lo:,}-{hi:,}", flush=True)
+    print(f"  ranges written to {a.out}.gaps -- rerun with --from/--to to fill them.", flush=True)
+    print("  DO NOT present this output as an exhaustive survey until the gaps are closed.",
+          flush=True)
+    sys.exit(2)
+
+print("  sweep verified complete: every block in range was read.", flush=True)
