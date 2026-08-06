@@ -969,5 +969,53 @@
     "reproduce": "satoshi-onchain/verify/first_year_payments.sql",
     "gap": false,
     "notes": "Independent confirmation from an adjudicated source. Recorded also because we held this document while believing the count was unpublished — the figure was in our own archive and we did not connect it."
+  },
+  {
+    "id": "2009-10-01-lost-forum-activity",
+    "when": "2009-10-01T14:12:00Z",
+    "precision": "minute",
+    "axis": "both",
+    "grade": "PARTY-RELEASED",
+    "title": "Recovered activity from the lost forum — October 2009",
+    "claim": "Four dated threads from the un-archived bitcoin.sourceforge.net forum survive because Satoshi reposted them verbatim to BitcoinTalk, preserving their original timestamps and usernames: 1 Oct 14:12, 8 Oct 05:49, 15 Oct 19:58 and 22 Oct 02:36 UTC.",
+    "evidence": [
+      {
+        "what": "10 reposted BitcoinTalk posts across 4 threads, with the old forum's timestamps quoted inside them",
+        "where": "archives/lost-forum-reposts/reposts.json",
+        "hash": null
+      },
+      {
+        "what": "Satoshi's migration post promising to repost selected threads",
+        "where": "https://bitcointalk.org/index.php?topic=5.0",
+        "hash": null
+      }
+    ],
+    "reproduce": null,
+    "gap": false,
+    "notes": "The old timestamps are QUOTED TEXT in a repost, not server records -- graded accordingly. Only the threads Satoshi chose to carry across survive, so this is a curated sample selected by the subject, never a representative one. The preserved date format 'Thu 01 of Oct, 2009 (14:12 UTC)' is TikiWiki's, which is evidence about what the lost board ran."
+  },
+  {
+    "id": "2009-01-10-hal-debuglog",
+    "when": "2009-01-10T11:13:00Z",
+    "precision": "minute",
+    "axis": "bitcoin",
+    "grade": "ARCHIVE-POS",
+    "title": "Hal Finney's Bitcoin debug.log is posted to the list",
+    "claim": "A 27,660-byte debug.log from an early Bitcoin node is attached to a bitcoin-list message, the day before the 'Running bitcoin' tweet.",
+    "evidence": [
+      {
+        "what": "SourceForge mailman attachment; the Gmail Message-ID 0901101113 encodes the date",
+        "where": "https://sourceforge.net/p/bitcoin/mailman/attachment/da7b3ce30901101113v2ec6bf61xf018265479eb7faf@mail.gmail.com/1/",
+        "hash": "ab02bbfe5bffdd0eab9c58fd21af246d"
+      },
+      {
+        "what": "byte-identical to the copy in a third-party compilation, independently obtained",
+        "where": "archives/bitcoin-list-attachments/",
+        "hash": null
+      }
+    ],
+    "reproduce": "sha256sum archives/bitcoin-list-attachments/da7b3ce*.bin",
+    "gap": false,
+    "notes": "Mailing-list attachments live in a URL namespace separate from message bodies and are in none of our text corpora. Of 129 archived attachments on that list, this is the ONLY one from 2009."
   }
 ]

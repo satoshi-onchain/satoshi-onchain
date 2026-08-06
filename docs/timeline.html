@@ -46,7 +46,7 @@ it. Rows we <b>cannot</b> verify are shown too, marked <b>NOT HELD</b> — becau
 only what was found looks complete when it is not.</p>
 
 <div class="incomplete"><b>This timeline is incomplete, and says so on purpose.</b>
-It currently holds <b>47</b> events. The research corpus behind it contains <b>105</b> distinct dated events across 55 written entries and 18 sealed archives, and migration into this file is deliberate rather than bulk — each row has to acquire a grade, a source and a reproduction path before it can appear. That corpus is a local research archive and is not itself published, so this number is stated, not linkable.
+It currently holds <b>49</b> events. The research corpus behind it contains <b>105</b> distinct dated events across 55 written entries and 21 sealed archives, and migration into this file is deliberate rather than bulk — each row has to acquire a grade, a source and a reproduction path before it can appear. That corpus is a local research archive and is not itself published, so this number is stated, not linkable.
 <b>Absence of a row here is not evidence that nothing happened on that date.</b>
 Applying the same standard to ourselves that we apply to everyone else.</div>
 
@@ -261,6 +261,17 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>block 0 and block 1 timestamps</b><br><span class="w">the Bitcoin blockchain</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>bigquery-public-data.crypto_bitcoin.blocks WHERE number IN (0,1)</code></div><div class="notes"><span class="lbl">caveats</span>The gap is real and nothing on-chain explains it. It is not evidence of intent in either direction.</div>
   </details>
+</article><article class="ev" data-axis="bitcoin" data-grade="ARCHIVE-POS" data-gap="false" id="2009-01-10-hal-debuglog">
+  <header>
+    <time>2009-01-10 11:13:00 UTC</time>
+    <span class="g g-ARCHIVE-POS">ARCHIVE-POS</span>
+    
+    <h3>Hal Finney&#x27;s Bitcoin debug.log is posted to the list</h3>
+  </header>
+  <p class="claim">A 27,660-byte debug.log from an early Bitcoin node is attached to a bitcoin-list message, the day before the &#x27;Running bitcoin&#x27; tweet.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>SourceForge mailman attachment; the Gmail Message-ID 0901101113 encodes the date</b><br><span class="w">https://sourceforge.net/p/bitcoin/mailman/attachment/da7b3ce30901101113v2ec6bf61xf018265479eb7faf@mail.gmail.com/1/</span><br><code class="h">ab02bbfe5bffdd0eab9c58fd21af246d</code></li><li><b>byte-identical to the copy in a third-party compilation, independently obtained</b><br><span class="w">archives/bitcoin-list-attachments/</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>sha256sum archives/bitcoin-list-attachments/da7b3ce*.bin</code></div><div class="notes"><span class="lbl">caveats</span>Mailing-list attachments live in a URL namespace separate from message bodies and are in none of our text corpora. Of 129 archived attachments on that list, this is the ONLY one from 2009.</div>
+  </details>
 </article><article class="ev" data-axis="bitcoin" data-grade="CAPTURE" data-gap="false" id="2009-01-10-exe">
   <header>
     <time>2009-01-10 23:16:00 UTC</time>
@@ -436,6 +447,17 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <p class="claim">sirius-m commits revision 2 — the first contributor other than Satoshi.</p>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>SourceForge SVN log</b><br><span class="w">archives/sourceforge-bitcoin-svn/</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/sourceforge_svn_log.py</code></div>
+  </details>
+</article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" id="2009-10-01-lost-forum-activity">
+  <header>
+    <time>2009-10-01 14:12:00 UTC</time>
+    <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
+    
+    <h3>Recovered activity from the lost forum — October 2009</h3>
+  </header>
+  <p class="claim">Four dated threads from the un-archived bitcoin.sourceforge.net forum survive because Satoshi reposted them verbatim to BitcoinTalk, preserving their original timestamps and usernames: 1 Oct 14:12, 8 Oct 05:49, 15 Oct 19:58 and 22 Oct 02:36 UTC.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>10 reposted BitcoinTalk posts across 4 threads, with the old forum&#x27;s timestamps quoted inside them</b><br><span class="w">archives/lost-forum-reposts/reposts.json</span></li><li><b>Satoshi&#x27;s migration post promising to repost selected threads</b><br><span class="w">https://bitcointalk.org/index.php?topic=5.0</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>The old timestamps are QUOTED TEXT in a repost, not server records -- graded accordingly. Only the threads Satoshi chose to carry across survive, so this is a curated sample selected by the subject, never a representative one. The preserved date format &#x27;Thu 01 of Oct, 2009 (14:12 UTC)&#x27; is TikiWiki&#x27;s, which is evidence about what the lost board ran.</div>
   </details>
 </article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2009-10-21-svn">
   <header>
