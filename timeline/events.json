@@ -1,272 +1,925 @@
 [
   {
     "id": "2008-08-18-domain",
-    "when": "2008-08-18", "precision": "day", "axis": "satoshi", "grade": "SERVER-DB",
+    "when": "2008-08-18",
+    "precision": "day",
+    "axis": "satoshi",
+    "grade": "SERVER-DB",
     "title": "bitcoin.org is registered",
     "claim": "The domain bitcoin.org is created, ten weeks before the whitepaper is announced.",
-    "evidence": [{"what": "RDAP registry record", "where": "https://rdap.publicinterestregistry.org/rdap/domain/bitcoin.org", "hash": null}],
+    "evidence": [
+      {
+        "what": "RDAP registry record",
+        "where": "https://rdap.publicinterestregistry.org/rdap/domain/bitcoin.org",
+        "hash": null
+      }
+    ],
     "reproduce": "curl -s https://rdap.publicinterestregistry.org/rdap/domain/bitcoin.org | jq '.events'",
     "gap": false,
     "notes": "A registrar's own database row. It says nothing about who registered it."
   },
   {
     "id": "2008-08-20-anonymousspeech",
-    "when": "2008-08-20", "precision": "day", "until": "2008-08-22", "axis": "satoshi", "grade": "ADJUDICATED",
+    "when": "2008-08-20",
+    "precision": "day",
+    "until": "2008-08-22",
+    "axis": "satoshi",
+    "grade": "ADJUDICATED",
     "title": "The earliest known Satoshi communication of any kind",
     "claim": "satoshi@anonymousspeech.com writes to Adam Back querying the Hashcash citation, ten weeks before the paper is public.",
-    "evidence": [{"what": "Adam Back witness statement §5, full header quoted under a statement of truth", "where": "archives/nakamoto-archive-lugaxker/src/adam-back-exhibit-ab1.pdf", "hash": null},
-                 {"what": "COPA Opening Skeleton §16", "where": "archives/copa-v-wright/", "hash": null}],
+    "evidence": [
+      {
+        "what": "Adam Back witness statement §5, full header quoted under a statement of truth",
+        "where": "archives/nakamoto-archive-lugaxker/src/adam-back-exhibit-ab1.pdf",
+        "hash": null
+      },
+      {
+        "what": "COPA Opening Skeleton §16",
+        "where": "archives/copa-v-wright/",
+        "hash": null
+      }
+    ],
     "reproduce": null,
     "gap": false,
     "notes": "Establishes the identifier sequence anonymousspeech -> vistomail -> gmx, not the reverse."
   },
   {
     "id": "2008-10-03-draft",
-    "when": "2008-10-03T20:49:58Z", "precision": "second", "axis": "both", "grade": "CAPTURE",
+    "when": "2008-10-03T20:49:58Z",
+    "precision": "second",
+    "axis": "both",
+    "grade": "CAPTURE",
     "title": "The 3 October 2008 pre-release draft exists",
     "claim": "A pre-release whitepaper PDF is created; we hold the bytes, and its two /ID halves are equal, meaning it was never re-saved after creation.",
-    "evidence": [{"what": "prerelease_2008-10-03_ia-bitcoin-foundation.pdf, 183,697 bytes", "where": "archives/whitepaper-variants/prerelease_2008-10-03_ia-bitcoin-foundation.pdf", "hash": "427c63b364c6db914cf23072a09ffd53ee078397b7c6ab2d604e12865a982faa"}],
+    "evidence": [
+      {
+        "what": "prerelease_2008-10-03_ia-bitcoin-foundation.pdf, 183,697 bytes",
+        "where": "archives/whitepaper-variants/prerelease_2008-10-03_ia-bitcoin-foundation.pdf",
+        "hash": "427c63b364c6db914cf23072a09ffd53ee078397b7c6ab2d604e12865a982faa"
+      }
+    ],
     "reproduce": "sha256sum archives/whitepaper-variants/prerelease_2008-10-03_ia-bitcoin-foundation.pdf",
     "gap": false,
     "notes": "/CreationDate D:20081003134958-07'00'. The offset is the producing machine's setting, not a location."
   },
   {
     "id": "2008-08-xx-first-draft",
-    "when": "2008-08", "precision": "month", "axis": "both", "grade": "PARTY-RELEASED",
+    "when": "2008-08",
+    "precision": "month",
+    "axis": "both",
+    "grade": "PARTY-RELEASED",
     "title": "An August 2008 whitepaper version existed — WE DO NOT HOLD IT",
     "claim": "A draft predating the October version was sent to at least Adam Back and Wei Dai. Only its abstract text survives to us.",
-    "evidence": [{"what": "abstract text only", "where": "archives/whitepaper-variants/aug2008_abstract.txt", "hash": "6dd156197af8ee359d0852a236997e843b2f8e39a20ca326d17883420d82d9bd"}],
+    "evidence": [
+      {
+        "what": "abstract text only",
+        "where": "archives/whitepaper-variants/aug2008_abstract.txt",
+        "hash": "6dd156197af8ee359d0852a236997e843b2f8e39a20ca326d17883420d82d9bd"
+      }
+    ],
     "reproduce": null,
     "gap": true,
     "notes": "NOT LOCATED. Not evidence of destruction — an absence of copies is not a proof that none survive."
   },
   {
     "id": "2008-10-31-announcement",
-    "when": "2008-10-31T18:10:00Z", "precision": "second", "axis": "both", "grade": "ARCHIVE-POS",
+    "when": "2008-10-31T18:10:00Z",
+    "precision": "second",
+    "axis": "both",
+    "grade": "ARCHIVE-POS",
     "title": "The whitepaper is announced to the cryptography list",
     "claim": "satoshi@vistomail.com posts 'Bitcoin P2P e-cash paper' to cryptography@metzdowd.com.",
-    "evidence": [{"what": "metzdowd pipermail mbox, Date: Sat, 01 Nov 2008 02:10:00 +0800", "where": "archives/metzdowd-cryptography/mbox/2008-October.txt.gz", "hash": null},
-                 {"what": "MIT's independent archive of the same list", "where": "https://diswww.mit.edu/bloom-picayune/crypto/136690", "hash": null}],
+    "evidence": [
+      {
+        "what": "metzdowd pipermail mbox, Date: Sat, 01 Nov 2008 02:10:00 +0800",
+        "where": "archives/metzdowd-cryptography/mbox/2008-October.txt.gz",
+        "hash": null
+      },
+      {
+        "what": "MIT's independent archive of the same list",
+        "where": "https://diswww.mit.edu/bloom-picayune/crypto/136690",
+        "hash": null
+      }
+    ],
     "reproduce": "python satoshi-onchain/verify/metzdowd_backup.py",
     "gap": false,
     "notes": "The +0800 offset is the mail provider's server clock, not a location — see the +0800 verdict. Message-ID is CHILKAT-MID-...@server123, a server-side library."
   },
   {
     "id": "2008-11-09-sourceforge",
-    "when": "2008-11-09T18:58:00Z", "precision": "minute", "axis": "satoshi", "grade": "SERVER-DB",
+    "when": "2008-11-09T18:58:00Z",
+    "precision": "minute",
+    "axis": "satoshi",
+    "grade": "SERVER-DB",
     "title": "The Bitcoin project is registered on SourceForge",
     "claim": "Account nakamoto2 registers the project; s_nakamoto and hal are added later.",
-    "evidence": [{"what": "SourceForge account pages and sequential user IDs", "where": "archives/flossmole-sourceforge/", "hash": null},
-                 {"what": "Wayback capture of nakamoto2's join date", "where": "https://web.archive.org/web/20091130163943if_/http://sourceforge.net:80/users/nakamoto2", "hash": null}],
+    "evidence": [
+      {
+        "what": "SourceForge account pages and sequential user IDs",
+        "where": "archives/flossmole-sourceforge/",
+        "hash": null
+      },
+      {
+        "what": "Wayback capture of nakamoto2's join date",
+        "where": "https://web.archive.org/web/20091130163943if_/http://sourceforge.net:80/users/nakamoto2",
+        "hash": null
+      }
+    ],
     "reproduce": "python satoshi-onchain/verify/sourceforge_identity.py",
     "gap": false,
     "notes": "Written by SourceForge's own database. The subject could not set it."
   },
   {
     "id": "2008-11-11-lost-version",
-    "when": "2008-11-11T16:00:34Z", "precision": "second", "axis": "both", "grade": "ADJUDICATED",
+    "when": "2008-11-11T16:00:34Z",
+    "precision": "second",
+    "axis": "both",
+    "grade": "ADJUDICATED",
     "title": "The 11 November 2008 whitepaper is created — WE DO NOT HOLD THE BYTES",
     "claim": "A whitepaper version is created at this exact second. It is the version the public could obtain in January 2009, and it is not the October draft nor the March canonical.",
-    "evidence": [{"what": "COPA Appendix PM3, giving the creation timestamp", "where": "archives/copa-appendices/", "hash": null},
-                 {"what": "identified across three exhibit references as AR3 = NB1 = BWP-NB1", "where": "bitcoin-origin-claims/45_the-appendix-and-the-correspondence.md", "hash": null}],
+    "evidence": [
+      {
+        "what": "COPA Appendix PM3, giving the creation timestamp",
+        "where": "archives/copa-appendices/",
+        "hash": null
+      },
+      {
+        "what": "identified across three exhibit references as AR3 = NB1 = BWP-NB1",
+        "where": "bitcoin-origin-claims/45_the-appendix-and-the-correspondence.md",
+        "hash": null
+      }
+    ],
     "reproduce": null,
     "gap": true,
     "notes": "THE PRINCIPAL OPEN ITEM. Dated to the second, cross-referenced three ways, no copy held. Most likely surviving location is Nicholas Bohm's Thunderbird mail profile."
   },
   {
     "id": "2008-11-17-list-closes",
-    "when": "2008-11-17T21:43:33Z", "precision": "second", "axis": "satoshi", "grade": "ARCHIVE-POS",
+    "when": "2008-11-17T21:43:33Z",
+    "precision": "second",
+    "axis": "satoshi",
+    "grade": "ARCHIVE-POS",
     "title": "The venue closes — and the 52-day silence is explained",
     "claim": "Moderator Perry E. Metzger ends the Bitcoin discussion 4h19m after Satoshi's last post. The silence that follows is a moderated list being moderated, not a withdrawal.",
-    "evidence": [{"what": "metzdowd pipermail, November 2008", "where": "archives/metzdowd-cryptography/mbox/2008-November.txt.gz", "hash": null}],
+    "evidence": [
+      {
+        "what": "metzdowd pipermail, November 2008",
+        "where": "archives/metzdowd-cryptography/mbox/2008-November.txt.gz",
+        "hash": null
+      }
+    ],
     "reproduce": "python satoshi-onchain/verify/metzdowd_backup.py",
     "gap": false,
     "notes": "Satoshi's next post to the list, 52 days later, is 'Bitcoin v0.1 released' — exactly the condition Metzger named."
   },
   {
     "id": "2009-01-03-genesis",
-    "when": "2009-01-03T18:15:05Z", "precision": "second", "axis": "both", "grade": "CHAIN",
+    "when": "2009-01-03T18:15:05Z",
+    "precision": "second",
+    "axis": "both",
+    "grade": "CHAIN",
     "title": "The genesis block",
     "claim": "Block 0 is mined, embedding The Times headline of 3 January 2009.",
-    "evidence": [{"what": "block 0, hash 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f", "where": "the Bitcoin blockchain", "hash": null}],
+    "evidence": [
+      {
+        "what": "block 0, hash 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f",
+        "where": "the Bitcoin blockchain",
+        "hash": null
+      }
+    ],
     "reproduce": "any full node, or bigquery-public-data.crypto_bitcoin.blocks WHERE number = 0",
     "gap": false,
     "notes": "The only unforgeable line on this list. Forging it would require redoing the proof-of-work."
   },
   {
     "id": "2009-01-08-v01-released",
-    "when": "2009-01-08T19:27:40Z", "precision": "second", "axis": "both", "grade": "ARCHIVE-POS",
+    "when": "2009-01-08T19:27:40Z",
+    "precision": "second",
+    "axis": "both",
+    "grade": "ARCHIVE-POS",
     "title": "Bitcoin v0.1 is announced",
     "claim": "satoshi@vistomail.com posts 'Bitcoin v0.1 released' to the cryptography list.",
-    "evidence": [{"what": "metzdowd pipermail, Date: Fri, 09 Jan 2009 03:27:40 +0800", "where": "archives/metzdowd-cryptography/mbox/2009-January.txt.gz", "hash": null},
-                 {"what": "MIT's independent archive", "where": "https://diswww.mit.edu/bloom-picayune/crypto/142102", "hash": null}],
+    "evidence": [
+      {
+        "what": "metzdowd pipermail, Date: Fri, 09 Jan 2009 03:27:40 +0800",
+        "where": "archives/metzdowd-cryptography/mbox/2009-January.txt.gz",
+        "hash": null
+      },
+      {
+        "what": "MIT's independent archive",
+        "where": "https://diswww.mit.edu/bloom-picayune/crypto/142102",
+        "hash": null
+      }
+    ],
     "reproduce": "python satoshi-onchain/verify/metzdowd_backup.py",
     "gap": false,
     "notes": null
   },
   {
     "id": "2009-01-12-block-170",
-    "when": "2009-01-12T03:30:25Z", "precision": "second", "axis": "bitcoin", "grade": "CHAIN",
+    "when": "2009-01-12T03:30:25Z",
+    "precision": "second",
+    "axis": "bitcoin",
+    "grade": "CHAIN",
     "title": "The first payment ever made",
     "claim": "Block 170 carries the first non-coinbase transaction: 50 BTC split into 10 and 40.",
-    "evidence": [{"what": "row 1 of the complete first-year payment list", "where": "https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv", "hash": null}],
+    "evidence": [
+      {
+        "what": "row 1 of the complete first-year payment list",
+        "where": "https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv",
+        "hash": null
+      }
+    ],
     "reproduce": "satoshi-onchain/verify/first_year_payments.sql",
     "gap": false,
     "notes": "Widely attributed to Satoshi sending Hal Finney. The chain shows the transaction, not the names."
   },
   {
     "id": "2009-01-15-block-593",
-    "when": "2009-01-15T15:51:56Z", "precision": "second", "axis": "bitcoin", "grade": "CHAIN",
+    "when": "2009-01-15T15:51:56Z",
+    "precision": "second",
+    "axis": "bitcoin",
+    "grade": "CHAIN",
     "title": "Block 593 — a 50 BTC send with change",
     "claim": "50 BTC is split into two 25s; one output returns to the input address, so this is a payment with change, not a split between two parties.",
-    "evidence": [{"what": "first_year_payments.csv", "where": "https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv", "hash": null}],
+    "evidence": [
+      {
+        "what": "first_year_payments.csv",
+        "where": "https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv",
+        "hash": null
+      }
+    ],
     "reproduce": "satoshi-onchain/verify/first_year_payments.sql",
     "gap": false,
     "notes": "An earlier reading of ours called this support for a 'first transfer of 25.00' account. The full transaction reverses the direction; the erratum is recorded in entry 45 §10(k)."
   },
   {
     "id": "2009-01-18-bohm-downloads",
-    "when": "2009-01-18T13:27:00Z", "precision": "minute", "axis": "both", "grade": "ADJUDICATED",
+    "when": "2009-01-18T13:27:00Z",
+    "precision": "minute",
+    "axis": "both",
+    "grade": "ADJUDICATED",
     "title": "A member of the public downloads the whitepaper",
     "claim": "The retired solicitor Nicholas Bohm, reading the cryptography list, downloads the whitepaper. His copy's creation date is 11 November 2008.",
-    "evidence": [{"what": "witness statement §19, under a statement of truth", "where": "archives/copa-v-wright/", "hash": null}],
+    "evidence": [
+      {
+        "what": "witness statement §19, under a statement of truth",
+        "where": "archives/copa-v-wright/",
+        "hash": null
+      }
+    ],
     "reproduce": null,
     "gap": false,
     "notes": "This is what fixes the 11 November version as what the public could actually get in January 2009."
   },
   {
     "id": "2009-02-01-block-2616",
-    "when": "2009-02-01T16:25:12Z", "precision": "second", "axis": "both", "grade": "CHAIN",
+    "when": "2009-02-01T16:25:12Z",
+    "precision": "second",
+    "axis": "both",
+    "grade": "CHAIN",
     "title": "100 BTC is sent to Nicholas Bohm",
     "claim": "Exactly one payment of exactly 100 BTC exists in a 1,501-block window, at the minute and address Bohm's own 2009 email quotes.",
-    "evidence": [{"what": "block 2616, tx 7d73200e...db6fc3d5, to 1CHE5JRfc5mr8ZtVUP7nnsS5HC4bWcXoc6", "where": "the Bitcoin blockchain", "hash": null},
-                 {"what": "Bohm's contemporaneous email, disclosed in court", "where": "archives/copa-v-wright/", "hash": null}],
+    "evidence": [
+      {
+        "what": "block 2616, tx 7d73200e...db6fc3d5, to 1CHE5JRfc5mr8ZtVUP7nnsS5HC4bWcXoc6",
+        "where": "the Bitcoin blockchain",
+        "hash": null
+      },
+      {
+        "what": "Bohm's contemporaneous email, disclosed in court",
+        "where": "archives/copa-v-wright/",
+        "hash": null
+      }
+    ],
     "reproduce": "python satoshi-onchain/verify/bohm_transfer.py",
     "gap": false,
     "notes": "A 2009 record and the chain agree exactly. The address was emptied in 2011 and implies nothing about Mr Bohm's estate."
   },
   {
     "id": "2009-02-03-first-fees",
-    "when": "2009-02-03T05:16:42Z", "precision": "second", "axis": "bitcoin", "grade": "CHAIN",
+    "when": "2009-02-03T05:16:42Z",
+    "precision": "second",
+    "axis": "bitcoin",
+    "grade": "CHAIN",
     "title": "The first transaction fees ever paid — a self-test",
     "claim": "Block 2817 collects 2.01 BTC across three transactions (1.00, 1.00, 0.01), all with the same address on every input and output: someone moving 1 BTC to themselves three times.",
-    "evidence": [{"what": "first_year_payments.csv, three rows at block 2817", "where": "https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv", "hash": null}],
+    "evidence": [
+      {
+        "what": "first_year_payments.csv, three rows at block 2817",
+        "where": "https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv",
+        "hash": null
+      }
+    ],
     "reproduce": "satoshi-onchain/verify/fees_2009.sql",
     "gap": false,
     "notes": "The largest single fee of 2009 is therefore 1.00 BTC on a 1.00 BTC payment. Not a donation — a test."
   },
   {
     "id": "2009-02-03-gmx-changeover",
-    "when": "2009-02-03", "precision": "day", "axis": "satoshi", "grade": "ADJUDICATED",
+    "when": "2009-02-03",
+    "precision": "day",
+    "axis": "satoshi",
+    "grade": "ADJUDICATED",
     "title": "Satoshi moves from vistomail to gmx",
     "claim": "The changeover is pinned to a few hours of one day: Bohm writes to vistomail at 11:55 and to satoshin@gmx.com at 19:14.",
-    "evidence": [{"what": "Bohm correspondence, Exhibit NB1", "where": "archives/copa-v-wright/", "hash": null}],
+    "evidence": [
+      {
+        "what": "Bohm correspondence, Exhibit NB1",
+        "where": "archives/copa-v-wright/",
+        "hash": null
+      }
+    ],
     "reproduce": null,
     "gap": false,
     "notes": "Seven weeks earlier than the canonical PDF, which had been the earliest gmx attestation."
   },
   {
     "id": "2009-02-03-19-btc",
-    "when": "2009-02-03T22:55:58Z", "precision": "second", "axis": "both", "grade": "CHAIN",
+    "when": "2009-02-03T22:55:58Z",
+    "precision": "second",
+    "axis": "both",
+    "grade": "CHAIN",
     "title": "A Satoshi address, named by Satoshi",
     "claim": "Satoshi gives Bohm 1GtkM4wviwohP192tec9g83hd9X5qtbk9j; block 2914 pays it 19 BTC and block 2915 returns 19.01 — the payment plus the promised penny.",
-    "evidence": [{"what": "blocks 2914 and 2915", "where": "the Bitcoin blockchain", "hash": null},
-                 {"what": "the correspondence naming the address", "where": "archives/copa-v-wright/", "hash": null}],
+    "evidence": [
+      {
+        "what": "blocks 2914 and 2915",
+        "where": "the Bitcoin blockchain",
+        "hash": null
+      },
+      {
+        "what": "the correspondence naming the address",
+        "where": "archives/copa-v-wright/",
+        "hash": null
+      }
+    ],
     "reproduce": "satoshi-onchain/verify/first_year_payments.sql",
     "gap": false,
     "notes": "That address has never spent a satoshi. Almost every 'Satoshi coin' is inferred from mining patterns; this one Satoshi wrote down."
   },
   {
     "id": "2009-02-11-p2p-research",
-    "when": "2009-02-11T22:30:54Z", "precision": "second", "axis": "satoshi", "grade": "ARCHIVE-POS",
+    "when": "2009-02-11T22:30:54Z",
+    "precision": "second",
+    "axis": "satoshi",
+    "grade": "ARCHIVE-POS",
     "title": "The P2P-currency announcement",
     "claim": "satoshin@gmx.com posts 'Bitcoin open source implementation of P2P currency' to the p2p-research list.",
-    "evidence": [{"what": "p2p-research February 2009 archive, Message-ID <4993519E.8080300@gmx.com>", "where": "archives/nakamoto-archive-lugaxker/src/p2p-research-mailing-list-2009-February.txt.gz", "hash": null}],
+    "evidence": [
+      {
+        "what": "p2p-research February 2009 archive, Message-ID <4993519E.8080300@gmx.com>",
+        "where": "archives/nakamoto-archive-lugaxker/src/p2p-research-mailing-list-2009-February.txt.gz",
+        "hash": null
+      }
+    ],
     "reproduce": null,
     "gap": false,
     "notes": "Date offset is +0000 here against +0800 on vistomail — the offset tracks the provider. The Mozilla Message-ID's embedded Unix timestamp decodes to the Date header exactly, an authenticity check but NOT a location check."
   },
   {
     "id": "2009-03-24-canonical",
-    "when": "2009-03-24T17:33:15Z", "precision": "second", "axis": "both", "grade": "CAPTURE",
+    "when": "2009-03-24T17:33:15Z",
+    "precision": "second",
+    "axis": "both",
+    "grade": "CAPTURE",
     "title": "The canonical whitepaper is created",
     "claim": "The whitepaper as served today is created. We hold its bytes from three independent sources, all identical.",
-    "evidence": [{"what": "canonical_2009-03-24.pdf, 184,292 bytes", "where": "archives/whitepaper-variants/canonical_2009-03-24.pdf", "hash": "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553"},
-                 {"what": "the same bytes carved out of Bitcoin block 230009", "where": "archives/whitepaper-variants/from-chain.pdf", "hash": "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553"},
-                 {"what": "the same bytes from a 2009 SourceForge mirror capture", "where": "archives/whitepaper-variants/sourceforge-voxel-mirror_2009-11-28.pdf", "hash": "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553"}],
+    "evidence": [
+      {
+        "what": "canonical_2009-03-24.pdf, 184,292 bytes",
+        "where": "archives/whitepaper-variants/canonical_2009-03-24.pdf",
+        "hash": "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553"
+      },
+      {
+        "what": "the same bytes carved out of Bitcoin block 230009",
+        "where": "archives/whitepaper-variants/from-chain.pdf",
+        "hash": "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553"
+      },
+      {
+        "what": "the same bytes from a 2009 SourceForge mirror capture",
+        "where": "archives/whitepaper-variants/sourceforge-voxel-mirror_2009-11-28.pdf",
+        "hash": "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553"
+      }
+    ],
     "reproduce": "sha256sum archives/whitepaper-variants/*.pdf",
     "gap": false,
     "notes": "Madden's court expert report §180 publishes this file's MD5 and SHA256; both match our bytes. Four independent paths, one hash."
   },
   {
     "id": "2009-05-11-block-14047",
-    "when": "2009-05-11T14:58:31Z", "precision": "second", "axis": "bitcoin", "grade": "CHAIN",
+    "when": "2009-05-11T14:58:31Z",
+    "precision": "second",
+    "axis": "bitcoin",
+    "grade": "CHAIN",
     "title": "A private miner's own block, identified",
     "claim": "Block 14047 pays a coinbase of 50.10 — the +50.10 Bohm wrote to Satoshi about, his 15:58 being BST. Only eight blocks in all of 2009 collected any fee.",
-    "evidence": [{"what": "the eight fee-bearing blocks of 2009", "where": "https://github.com/satoshi-onchain/satoshi-onchain/blob/main/verify/fees_2009.sql", "hash": null}],
+    "evidence": [
+      {
+        "what": "the eight fee-bearing blocks of 2009",
+        "where": "https://github.com/satoshi-onchain/satoshi-onchain/blob/main/verify/fees_2009.sql",
+        "hash": null
+      }
+    ],
     "reproduce": "satoshi-onchain/verify/fees_2009.sql",
     "gap": false,
     "notes": "[forensic], not [cryptographic] — he signed nothing. Predicted from the letter before the chain was queried. The coinbase address received that one coinbase and nothing else, and was emptied 28 Dec 2011."
   },
   {
     "id": "2009-06-01-block-16226",
-    "when": "2009-06-01T03:01:54Z", "precision": "second", "axis": "bitcoin", "grade": "CHAIN",
+    "when": "2009-06-01T03:01:54Z",
+    "precision": "second",
+    "axis": "bitcoin",
+    "grade": "CHAIN",
     "title": "The 0.01 that carried a message",
     "claim": "The only payment of any size in a three-day window is exactly 0.01 BTC — matching a reported receipt of 1 June 2009 03:59 BST.",
-    "evidence": [{"what": "first_year_payments.csv", "where": "https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv", "hash": null}],
+    "evidence": [
+      {
+        "what": "first_year_payments.csv",
+        "where": "https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv",
+        "hash": null
+      }
+    ],
     "reproduce": "satoshi-onchain/verify/first_year_payments.sql",
     "gap": false,
     "notes": "The transaction is identified; THE SENDER IS NOT. The sending address traces to block 11,583, which is not in the Patoshi cluster. We looked for corroboration and did not find it."
   },
   {
     "id": "2009-10-21-svn",
-    "when": "2009-10-21", "precision": "day", "axis": "satoshi", "grade": "SERVER-DB",
+    "when": "2009-10-21",
+    "precision": "day",
+    "axis": "satoshi",
+    "grade": "SERVER-DB",
     "title": "The first of 164 SVN commits",
     "claim": "s_nakamoto begins committing to SourceForge SVN; commit times are written by the server.",
-    "evidence": [{"what": "252 SVN revisions via Software Heritage", "where": "https://archive.softwareheritage.org/api/1/revision/5c085256f7dbfe999afbf10808828f0df9f877f1/log/", "hash": null}],
+    "evidence": [
+      {
+        "what": "252 SVN revisions via Software Heritage",
+        "where": "https://archive.softwareheritage.org/api/1/revision/5c085256f7dbfe999afbf10808828f0df9f877f1/log/",
+        "hash": null
+      }
+    ],
     "reproduce": "python satoshi-onchain/verify/sourceforge_svn_log.py",
     "gap": false,
     "notes": "The densest record of Satoshi working that exists off-chain."
   },
   {
     "id": "2010-08-15-overflow",
-    "when": "2010-08-15T17:05:00Z", "precision": "minute", "axis": "bitcoin", "grade": "CHAIN",
+    "when": "2010-08-15T17:05:00Z",
+    "precision": "minute",
+    "axis": "bitcoin",
+    "grade": "CHAIN",
     "title": "The day 184 billion bitcoins existed",
     "claim": "Block 74638 contains a transaction creating over 184 billion BTC through an integer overflow; the chain is forked away from it within hours.",
-    "evidence": [{"what": "block 74638", "where": "the Bitcoin blockchain", "hash": null},
-                 {"what": "Satoshi's own contemporaneous warning naming the block and time", "where": "archives/bitcointalk-satoshi/", "hash": null}],
+    "evidence": [
+      {
+        "what": "block 74638",
+        "where": "the Bitcoin blockchain",
+        "hash": null
+      },
+      {
+        "what": "Satoshi's own contemporaneous warning naming the block and time",
+        "where": "archives/bitcointalk-satoshi/",
+        "hash": null
+      }
+    ],
     "reproduce": "bigquery-public-data.crypto_bitcoin.transactions WHERE block_number = 74638",
     "gap": false,
     "notes": "The only time Bitcoin's supply rule has been broken in production."
   },
   {
     "id": "2010-12-15-last-action",
-    "when": "2010-12-15T22:43:51Z", "precision": "second", "axis": "satoshi", "grade": "SERVER-DB",
+    "when": "2010-12-15T22:43:51Z",
+    "precision": "second",
+    "axis": "satoshi",
+    "grade": "SERVER-DB",
     "title": "The last machine-verifiable action, anywhere",
     "claim": "An SVN commit with the message 'get external ip from irc'. Ordinary maintenance; no farewell.",
-    "evidence": [{"what": "SourceForge SVN log via Software Heritage", "where": "https://archive.softwareheritage.org/api/1/revision/5c085256f7dbfe999afbf10808828f0df9f877f1/log/", "hash": null}],
+    "evidence": [
+      {
+        "what": "SourceForge SVN log via Software Heritage",
+        "where": "https://archive.softwareheritage.org/api/1/revision/5c085256f7dbfe999afbf10808828f0df9f877f1/log/",
+        "hash": null
+      }
+    ],
     "reproduce": "python satoshi-onchain/verify/sourceforge_svn_log.py",
     "gap": false,
     "notes": "The 2014 'I am not Dorian Nakamoto' post is 3 years 3 months later, unsigned, and binds to nobody. The precise claim is that the last VERIFIABLE action is this one."
   },
   {
     "id": "2009-01-30-bc014",
-    "when": "2009-01-30", "precision": "day", "until": "2009-02-28", "axis": "both", "grade": "ADJUDICATED",
+    "when": "2009-01-30",
+    "precision": "day",
+    "until": "2009-02-28",
+    "axis": "both",
+    "grade": "ADJUDICATED",
     "title": "Pre-release builds bc014 / bc014a / bc015 / bc015a — NOT LOCATED",
     "claim": "Satoshi sends links to at least four pre-release Bitcoin builds between the public v0.1.3 and v0.1.5. The URLs are in disclosed correspondence; the payloads are not located.",
-    "evidence": [{"what": "upload.ae URLs quoted in the Bohm correspondence", "where": "bitcoin-origin-claims/45_the-appendix-and-the-correspondence.md", "hash": null}],
+    "evidence": [
+      {
+        "what": "upload.ae URLs quoted in the Bohm correspondence",
+        "where": "bitcoin-origin-claims/45_the-appendix-and-the-correspondence.md",
+        "hash": null
+      }
+    ],
     "reproduce": null,
     "gap": true,
     "notes": "NOT LOCATED, which is not the same as destroyed. They were also sent as mail attachments, so the likeliest surviving copy is inside Bohm's Thunderbird profile rather than on any web archive."
   },
   {
     "id": "identity-ceiling",
-    "when": "2009-01-03", "precision": "range", "until": "2010-12-15", "axis": "satoshi", "grade": "NONE",
+    "when": "2009-01-03",
+    "precision": "range",
+    "until": "2010-12-15",
+    "axis": "satoshi",
+    "grade": "NONE",
     "title": "No key has ever signed anything — the ceiling on all of this",
     "claim": "No genesis-era or Patoshi private key has ever produced a verifying signature. Every identity fact on this timeline is forensic, archival, adjudicated or party-released. None is cryptographic.",
-    "evidence": [{"what": "the absence itself; the 2016 demonstration reused a 2009 signature from block 183", "where": "bitcoin-origin-claims/01_satoshi-identity-claims.md", "hash": null}],
+    "evidence": [
+      {
+        "what": "the absence itself; the 2016 demonstration reused a 2009 signature from block 183",
+        "where": "bitcoin-origin-claims/01_satoshi-identity-claims.md",
+        "hash": null
+      }
+    ],
     "reproduce": null,
     "gap": true,
     "notes": "This is a property of the world, not a gap in the research. Only a signature would change it. Recorded as a row so the timeline cannot be read as answering 'who'."
+  },
+  {
+    "id": "2008-07-20-ecash-org",
+    "when": "2008-07-20",
+    "precision": "day",
+    "axis": "satoshi",
+    "grade": "SERVER-DB",
+    "title": "e-cash.org is registered — the earliest domain date in the register",
+    "claim": "e-cash.org is registered, a month before bitcoin.org.",
+    "evidence": [
+      {
+        "what": "registry record",
+        "where": "bitcoin-origin-claims/38_the-court-record-and-the-last-gaps.md",
+        "hash": null
+      }
+    ],
+    "reproduce": null,
+    "gap": false,
+    "notes": "Earliest verifiable domain date in the project's orbit. A registration is not an attribution."
+  },
+  {
+    "id": "2008-08-17-netcoin",
+    "when": "2008-08-17",
+    "precision": "day",
+    "axis": "satoshi",
+    "grade": "SERVER-DB",
+    "title": "netcoin.org is registered the day before bitcoin.org, same registrar",
+    "claim": "netcoin.org is registered through AnonymousSpeech one day before bitcoin.org, at the same registrar.",
+    "evidence": [
+      {
+        "what": "registry records for both domains",
+        "where": "bitcoin-origin-claims/38_the-court-record-and-the-last-gaps.md",
+        "hash": null
+      }
+    ],
+    "reproduce": null,
+    "gap": false,
+    "notes": "Suggestive of one actor trying names. Suggestive is not proof, and no name attaches to either."
+  },
+  {
+    "id": "2008-10-05-nakamoto2",
+    "when": "2008-10-05",
+    "precision": "day",
+    "axis": "satoshi",
+    "grade": "SERVER-DB",
+    "title": "The SourceForge account nakamoto2 is created",
+    "claim": "User ID 2238460 joins SourceForge, five weeks before registering the Bitcoin project.",
+    "evidence": [
+      {
+        "what": "user page captured 2009-11-30 showing Joined: 2008-10-05",
+        "where": "archives/wayback-satoshi-pages/",
+        "hash": null
+      },
+      {
+        "what": "sequential user IDs bracketing the join date",
+        "where": "archives/flossmole-sourceforge/",
+        "hash": null
+      }
+    ],
+    "reproduce": "python satoshi-onchain/verify/sourceforge_identity.py",
+    "gap": false,
+    "notes": "Server-written and bracketed by neighbouring account IDs, so it cannot have been backdated by the holder."
+  },
+  {
+    "id": "2008-10-30-pgp-key",
+    "when": "2008-10-30T18:19:19Z",
+    "precision": "second",
+    "axis": "satoshi",
+    "grade": "SELF",
+    "title": "A PGP key carries a self-dated creation time",
+    "claim": "Key 18C09E865EC948A1, later associated with satoshin@gmx.com, declares this creation timestamp.",
+    "evidence": [
+      {
+        "what": "the key's own self-assertion",
+        "where": "bitcoin-origin-claims/01_satoshi-identity-claims.md",
+        "hash": null
+      }
+    ],
+    "reproduce": null,
+    "gap": false,
+    "notes": "GRADED 'SELF' DELIBERATELY: a PGP creation date is written by the creating machine and is trivially forgeable. Period-plausible, entirely unbinding — and no Satoshi artifact was ever PGP-signed with it."
+  },
+  {
+    "id": "2008-11-08-183697",
+    "when": "2008-11-08",
+    "precision": "day",
+    "axis": "both",
+    "grade": "PARTY-RELEASED",
+    "title": "The 183,697-byte draft is in third-party hands by 8 November 2008",
+    "claim": "A correspondent states he received the 183,697-byte bitcoin.pdf on this date — the same byte-length as the pre-release draft we hold.",
+    "evidence": [
+      {
+        "what": "StealthMonger, PGP-signed, restated 2017-08-18",
+        "where": "bitcoin-origin-claims/35_the-pre-revision-draft.md",
+        "hash": null
+      },
+      {
+        "what": "Ray Dillinger, an original November 2008 participant: 'The hash matches. That's definitely it.'",
+        "where": "bitcoin-origin-claims/35_the-pre-revision-draft.md",
+        "hash": null
+      }
+    ],
+    "reproduce": "sha256sum archives/whitepaper-variants/prerelease_2008-10-03_ia-bitcoin-foundation.pdf",
+    "gap": false,
+    "notes": "Independent provenance for the pre-release draft, from people who held it in 2008 and published a matching hash years later."
+  },
+  {
+    "id": "2008-12-10-s-nakamoto",
+    "when": "2008-12-10",
+    "precision": "day",
+    "axis": "satoshi",
+    "grade": "SERVER-DB",
+    "title": "The SourceForge account s_nakamoto is created and added by nakamoto2",
+    "claim": "User ID 2321442 joins and is added to the Bitcoin project by nakamoto2.",
+    "evidence": [
+      {
+        "what": "user page captured 2009-11-29, and the project activity feed",
+        "where": "archives/wayback-satoshi-pages/",
+        "hash": null
+      }
+    ],
+    "reproduce": "python satoshi-onchain/verify/sourceforge_identity.py",
+    "gap": false,
+    "notes": "SourceForge's own feed shows two accounts under one hand's control. It does not say whose hand."
+  },
+  {
+    "id": "2009-01-09-restart",
+    "when": "2009-01-09T02:54:25Z",
+    "precision": "second",
+    "axis": "bitcoin",
+    "grade": "CHAIN",
+    "title": "The chain restarts after a 5.36-day gap",
+    "claim": "Block 1 is mined 5.36 days after the genesis block. The chain started, stopped, and restarted.",
+    "evidence": [
+      {
+        "what": "block 0 and block 1 timestamps",
+        "where": "the Bitcoin blockchain",
+        "hash": null
+      }
+    ],
+    "reproduce": "bigquery-public-data.crypto_bitcoin.blocks WHERE number IN (0,1)",
+    "gap": false,
+    "notes": "The gap is real and nothing on-chain explains it. It is not evidence of intent in either direction."
+  },
+  {
+    "id": "2009-01-10-exe",
+    "when": "2009-01-10T23:16:00Z",
+    "precision": "second",
+    "axis": "bitcoin",
+    "grade": "CAPTURE",
+    "title": "The released bitcoin.exe is linked",
+    "claim": "The v0.1 Windows binary carries PE TimeDateStamp 1231629360.",
+    "evidence": [
+      {
+        "what": "PE header of bitcoin.exe (fbcac071)",
+        "where": "archives/nakamoto-archive-lugaxker/src/",
+        "hash": null
+      }
+    ],
+    "reproduce": null,
+    "gap": false,
+    "notes": "A linker-written field. MinGW toolchain, and notably no build-path leak — nothing about the machine escaped into the binary."
+  },
+  {
+    "id": "2009-01-11-running-bitcoin",
+    "when": "2009-01-11T03:33:52Z",
+    "precision": "second",
+    "axis": "bitcoin",
+    "grade": "CAPTURE",
+    "title": "Hal Finney tweets 'Running bitcoin'",
+    "claim": "The best-known third-party record of the network acquiring a second participant.",
+    "evidence": [
+      {
+        "what": "Twitter data-time=1231644832, 2017 capture",
+        "where": "archives/wayback-satoshi-pages/",
+        "hash": null
+      }
+    ],
+    "reproduce": null,
+    "gap": false,
+    "notes": "A platform-written timestamp on a third party's account."
+  },
+  {
+    "id": "2009-03-04-vistomail-last",
+    "when": "2009-03-04",
+    "precision": "day",
+    "axis": "satoshi",
+    "grade": "ARCHIVE-POS",
+    "title": "The last public use of the vistomail address",
+    "claim": "satoshi@vistomail.com is still used publicly on bitcoin-list through 4 March 2009 — a month AFTER the private switch to gmx.",
+    "evidence": [
+      {
+        "what": "bitcoin-list archive",
+        "where": "archives/bitcoin-list/",
+        "hash": null
+      }
+    ],
+    "reproduce": null,
+    "gap": false,
+    "notes": "The two addresses ran IN PARALLEL for about a month: gmx privately from 3 February, vistomail publicly to 4 March. A clean single-changeover story is wrong."
+  },
+  {
+    "id": "2009-08-29-sirius",
+    "when": "2009-08-29",
+    "precision": "day",
+    "axis": "bitcoin",
+    "grade": "SERVER-DB",
+    "title": "Martti Malmi commits to the repository",
+    "claim": "sirius-m commits revision 2 — the first contributor other than Satoshi.",
+    "evidence": [
+      {
+        "what": "SourceForge SVN log",
+        "where": "archives/sourceforge-bitcoin-svn/",
+        "hash": null
+      }
+    ],
+    "reproduce": "python satoshi-onchain/verify/sourceforge_svn_log.py",
+    "gap": false,
+    "notes": null
+  },
+  {
+    "id": "2009-11-19-bitcointalk",
+    "when": "2009-11-19T19:12:39Z",
+    "precision": "second",
+    "axis": "satoshi",
+    "grade": "SERVER-DB",
+    "title": "bitcointalk user 3, 'satoshi', registers",
+    "claim": "The forum account is created; rank 'Founder'.",
+    "evidence": [
+      {
+        "what": "forum profile, server-written registration time",
+        "where": "archives/bitcointalk-satoshi/",
+        "hash": null
+      }
+    ],
+    "reproduce": "python satoshi-onchain/verify/bitcointalk_satoshi.py",
+    "gap": false,
+    "notes": "539 posts are publicly enumerable; the profile counts 575, so 36 are counted but not listed."
+  },
+  {
+    "id": "2010-07-04-pdf-capture",
+    "when": "2010-07-04",
+    "precision": "day",
+    "axis": "both",
+    "grade": "CAPTURE",
+    "title": "The earliest surviving capture of the whitepaper as served",
+    "claim": "The Internet Archive captures bitcoin.org/bitcoin.pdf; the bytes are identical to the file served today.",
+    "evidence": [
+      {
+        "what": "web.archive.org capture 20100704213649",
+        "where": "https://web.archive.org/web/20100704213649if_/http://www.bitcoin.org:80/bitcoin.pdf",
+        "hash": "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553"
+      }
+    ],
+    "reproduce": "sha256sum archives/whitepaper-variants/canonical_2009-03-24.pdf",
+    "gap": false,
+    "notes": "Closes the gap between the March 2009 creation date and the file anyone can fetch today."
+  },
+  {
+    "id": "2010-12-12-last-post",
+    "when": "2010-12-12T18:22:33Z",
+    "precision": "second",
+    "axis": "satoshi",
+    "grade": "SERVER-DB",
+    "title": "The last forum post",
+    "claim": "The final post by bitcointalk user 3.",
+    "evidence": [
+      {
+        "what": "forum profile and post index",
+        "where": "archives/bitcointalk-satoshi/",
+        "hash": null
+      }
+    ],
+    "reproduce": "python satoshi-onchain/verify/bitcointalk_satoshi.py",
+    "gap": false,
+    "notes": null
+  },
+  {
+    "id": "2011-02-28-asc",
+    "when": "2011-02-28",
+    "precision": "day",
+    "axis": "satoshi",
+    "grade": "CAPTURE",
+    "title": "bitcoin.org serves Satoshi_Nakamoto.asc",
+    "claim": "The PGP public key is served from bitcoin.org, byte-identical to the copy the Nakamoto Institute distributes.",
+    "evidence": [
+      {
+        "what": "Internet Archive capture",
+        "where": "archives/wayback-satoshi-pages/",
+        "hash": null
+      }
+    ],
+    "reproduce": null,
+    "gap": false,
+    "notes": "Two independent distributions of one key file. It still signs nothing."
+  },
+  {
+    "id": "2014-03-07-not-dorian",
+    "when": "2014-03-07",
+    "precision": "day",
+    "axis": "satoshi",
+    "grade": "NONE",
+    "title": "'I am not Dorian Nakamoto' — unauthenticated",
+    "claim": "The P2P Foundation account posts a denial, 3 years 3 months after the last verifiable activity.",
+    "evidence": [
+      {
+        "what": "ning comment 5218",
+        "where": "archives/wayback-satoshi-pages/",
+        "hash": null
+      }
+    ],
+    "reproduce": null,
+    "gap": false,
+    "notes": "GRADED 'NONE'. No signature, and nothing binds it to whoever held the account in 2009. This is exactly why the precise claim is 'the last machine-verifiable action is 15 December 2010', not 'Satoshi's last communication'."
+  },
+  {
+    "id": "2014-08-28-finney",
+    "when": "2014-08-28",
+    "precision": "day",
+    "axis": "satoshi",
+    "grade": "ADJUDICATED",
+    "title": "Hal Finney dies",
+    "claim": "The first person to run the software besides Satoshi dies, having been asked about the earliest draft and not answered.",
+    "evidence": [
+      {
+        "what": "public record; entry 39",
+        "where": "bitcoin-origin-claims/39_the-back-exchange-and-the-ecash-fingerprint.md",
+        "hash": null
+      }
+    ],
+    "reproduce": null,
+    "gap": false,
+    "notes": "Recorded because it closes a route: the native email files his family gave a journalist in 2014 remain unpublished."
+  },
+  {
+    "id": "2015-01-30-mixmaster",
+    "when": "2015-01-30",
+    "precision": "day",
+    "axis": "both",
+    "grade": "PARTY-RELEASED",
+    "title": "The pre-release draft is republished, and the hash matches",
+    "claim": "David Johnston receives the draft by mixmaster in ~26 parts, reassembles and republishes it; the hash matches the copy we hold.",
+    "evidence": [
+      {
+        "what": "the 2015 mailing-list exchange",
+        "where": "bitcoin-origin-claims/35_the-pre-revision-draft.md",
+        "hash": null
+      },
+      {
+        "what": "hash publication captured 2015-02-14",
+        "where": "archives/whitepaper-variants/blacksheepatorenco_2015-02-14_hash-publication.html",
+        "hash": "c146f38e1512a334f8dfd6253115250417fe86d8825bab95fda270d4142e3c7d"
+      }
+    ],
+    "reproduce": "sha256sum archives/whitepaper-variants/prerelease_2008-10-03_ia-bitcoin-foundation.pdf",
+    "gap": false,
+    "notes": "Two people who held the file in 2008 confirmed the hash independently, in 2015 and 2017."
+  },
+  {
+    "id": "2015-06-05-sf-purge",
+    "when": "2015-06-05",
+    "precision": "day",
+    "axis": "bitcoin",
+    "grade": "SERVER-DB",
+    "title": "The SourceForge file tree is purged",
+    "claim": "The project drops to a single 102-byte README.txt pointing at GitHub; the original release files stop being served.",
+    "evidence": [
+      {
+        "what": "SourceForge project state",
+        "where": "archives/flossmole-sourceforge/",
+        "hash": null
+      }
+    ],
+    "reproduce": null,
+    "gap": false,
+    "notes": "Primary hosting decays. It is why this project mirrors rather than links — and why two of the secondary sources cited by other Satoshi archives are already dead."
   }
 ]

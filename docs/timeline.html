@@ -46,7 +46,7 @@ it. Rows we <b>cannot</b> verify are shown too, marked <b>NOT HELD</b> — becau
 only what was found looks complete when it is not.</p>
 
 <div class="incomplete"><b>This timeline is incomplete, and says so on purpose.</b>
-It currently holds <b>26</b> events. The research corpus behind it contains <b>105</b> distinct dated events across 54 written entries and 17 sealed archives, and migration into this file is deliberate rather than bulk — each row has to acquire a grade, a source and a reproduction path before it can appear. That corpus is a local research archive and is not itself published, so this number is stated, not linkable.
+It currently holds <b>45</b> events. The research corpus behind it contains <b>105</b> distinct dated events across 54 written entries and 17 sealed archives, and migration into this file is deliberate rather than bulk — each row has to acquire a grade, a source and a reproduction path before it can appear. That corpus is a local research archive and is not itself published, so this number is stated, not linkable.
 <b>Absence of a row here is not evidence that nothing happened on that date.</b>
 Applying the same standard to ourselves that we apply to everyone else.</div>
 
@@ -63,7 +63,18 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
 </div>
 <p class="count" id="count"></p>
 
-<article class="ev gap" data-axis="both" data-grade="PARTY-RELEASED" data-gap="true" id="2008-08-xx-first-draft">
+<article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2008-07-20-ecash-org">
+  <header>
+    <time>2008-07-20</time>
+    <span class="g g-SERVER-DB">SERVER-DB</span>
+    
+    <h3>e-cash.org is registered — the earliest domain date in the register</h3>
+  </header>
+  <p class="claim">e-cash.org is registered, a month before bitcoin.org.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>registry record</b><br><span class="w">bitcoin-origin-claims/38_the-court-record-and-the-last-gaps.md</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Earliest verifiable domain date in the project&#x27;s orbit. A registration is not an attribution.</div>
+  </details>
+</article><article class="ev gap" data-axis="both" data-grade="PARTY-RELEASED" data-gap="true" id="2008-08-xx-first-draft">
   <header>
     <time>2008-08</time>
     <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
@@ -73,6 +84,17 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <p class="claim">A draft predating the October version was sent to at least Adam Back and Wei Dai. Only its abstract text survives to us.</p>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>abstract text only</b><br><span class="w">archives/whitepaper-variants/aug2008_abstract.txt</span><br><code class="h">6dd156197af8ee359d0852a236997e843b2f8e39a20ca326d17883420d82d9bd</code></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>NOT LOCATED. Not evidence of destruction — an absence of copies is not a proof that none survive.</div>
+  </details>
+</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2008-08-17-netcoin">
+  <header>
+    <time>2008-08-17</time>
+    <span class="g g-SERVER-DB">SERVER-DB</span>
+    
+    <h3>netcoin.org is registered the day before bitcoin.org, same registrar</h3>
+  </header>
+  <p class="claim">netcoin.org is registered through AnonymousSpeech one day before bitcoin.org, at the same registrar.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>registry records for both domains</b><br><span class="w">bitcoin-origin-claims/38_the-court-record-and-the-last-gaps.md</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Suggestive of one actor trying names. Suggestive is not proof, and no name attaches to either.</div>
   </details>
 </article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2008-08-18-domain">
   <header>
@@ -107,6 +129,28 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>prerelease_2008-10-03_ia-bitcoin-foundation.pdf, 183,697 bytes</b><br><span class="w">archives/whitepaper-variants/prerelease_2008-10-03_ia-bitcoin-foundation.pdf</span><br><code class="h">427c63b364c6db914cf23072a09ffd53ee078397b7c6ab2d604e12865a982faa</code></li></ul><div class="rep"><span class="lbl">reproduce</span><code>sha256sum archives/whitepaper-variants/prerelease_2008-10-03_ia-bitcoin-foundation.pdf</code></div><div class="notes"><span class="lbl">caveats</span>/CreationDate D:20081003134958-07&#x27;00&#x27;. The offset is the producing machine&#x27;s setting, not a location.</div>
   </details>
+</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2008-10-05-nakamoto2">
+  <header>
+    <time>2008-10-05</time>
+    <span class="g g-SERVER-DB">SERVER-DB</span>
+    
+    <h3>The SourceForge account nakamoto2 is created</h3>
+  </header>
+  <p class="claim">User ID 2238460 joins SourceForge, five weeks before registering the Bitcoin project.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>user page captured 2009-11-30 showing Joined: 2008-10-05</b><br><span class="w">archives/wayback-satoshi-pages/</span></li><li><b>sequential user IDs bracketing the join date</b><br><span class="w">archives/flossmole-sourceforge/</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/sourceforge_identity.py</code></div><div class="notes"><span class="lbl">caveats</span>Server-written and bracketed by neighbouring account IDs, so it cannot have been backdated by the holder.</div>
+  </details>
+</article><article class="ev" data-axis="satoshi" data-grade="SELF" data-gap="false" id="2008-10-30-pgp-key">
+  <header>
+    <time>2008-10-30 18:19:19 UTC</time>
+    <span class="g g-SELF">SELF</span>
+    
+    <h3>A PGP key carries a self-dated creation time</h3>
+  </header>
+  <p class="claim">Key 18C09E865EC948A1, later associated with satoshin@gmx.com, declares this creation timestamp.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>the key&#x27;s own self-assertion</b><br><span class="w">bitcoin-origin-claims/01_satoshi-identity-claims.md</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>GRADED &#x27;SELF&#x27; DELIBERATELY: a PGP creation date is written by the creating machine and is trivially forgeable. Period-plausible, entirely unbinding — and no Satoshi artifact was ever PGP-signed with it.</div>
+  </details>
 </article><article class="ev" data-axis="both" data-grade="ARCHIVE-POS" data-gap="false" id="2008-10-31-announcement">
   <header>
     <time>2008-10-31 18:10:00 UTC</time>
@@ -117,6 +161,17 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <p class="claim">satoshi@vistomail.com posts &#x27;Bitcoin P2P e-cash paper&#x27; to cryptography@metzdowd.com.</p>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>metzdowd pipermail mbox, Date: Sat, 01 Nov 2008 02:10:00 +0800</b><br><span class="w">archives/metzdowd-cryptography/mbox/2008-October.txt.gz</span></li><li><b>MIT&#x27;s independent archive of the same list</b><br><span class="w">https://diswww.mit.edu/bloom-picayune/crypto/136690</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/metzdowd_backup.py</code></div><div class="notes"><span class="lbl">caveats</span>The +0800 offset is the mail provider&#x27;s server clock, not a location — see the +0800 verdict. Message-ID is CHILKAT-MID-...@server123, a server-side library.</div>
+  </details>
+</article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" id="2008-11-08-183697">
+  <header>
+    <time>2008-11-08</time>
+    <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
+    
+    <h3>The 183,697-byte draft is in third-party hands by 8 November 2008</h3>
+  </header>
+  <p class="claim">A correspondent states he received the 183,697-byte bitcoin.pdf on this date — the same byte-length as the pre-release draft we hold.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>StealthMonger, PGP-signed, restated 2017-08-18</b><br><span class="w">bitcoin-origin-claims/35_the-pre-revision-draft.md</span></li><li><b>Ray Dillinger, an original November 2008 participant: &#x27;The hash matches. That&#x27;s definitely it.&#x27;</b><br><span class="w">bitcoin-origin-claims/35_the-pre-revision-draft.md</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>sha256sum archives/whitepaper-variants/prerelease_2008-10-03_ia-bitcoin-foundation.pdf</code></div><div class="notes"><span class="lbl">caveats</span>Independent provenance for the pre-release draft, from people who held it in 2008 and published a matching hash years later.</div>
   </details>
 </article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2008-11-09-sourceforge">
   <header>
@@ -151,6 +206,17 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>metzdowd pipermail, November 2008</b><br><span class="w">archives/metzdowd-cryptography/mbox/2008-November.txt.gz</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/metzdowd_backup.py</code></div><div class="notes"><span class="lbl">caveats</span>Satoshi&#x27;s next post to the list, 52 days later, is &#x27;Bitcoin v0.1 released&#x27; — exactly the condition Metzger named.</div>
   </details>
+</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2008-12-10-s-nakamoto">
+  <header>
+    <time>2008-12-10</time>
+    <span class="g g-SERVER-DB">SERVER-DB</span>
+    
+    <h3>The SourceForge account s_nakamoto is created and added by nakamoto2</h3>
+  </header>
+  <p class="claim">User ID 2321442 joins and is added to the Bitcoin project by nakamoto2.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>user page captured 2009-11-29, and the project activity feed</b><br><span class="w">archives/wayback-satoshi-pages/</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/sourceforge_identity.py</code></div><div class="notes"><span class="lbl">caveats</span>SourceForge&#x27;s own feed shows two accounts under one hand&#x27;s control. It does not say whose hand.</div>
+  </details>
 </article><article class="ev gap" data-axis="satoshi" data-grade="NONE" data-gap="true" id="identity-ceiling">
   <header>
     <time>2009-01-03 &rarr; 2010-12-15</time>
@@ -183,6 +249,39 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <p class="claim">satoshi@vistomail.com posts &#x27;Bitcoin v0.1 released&#x27; to the cryptography list.</p>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>metzdowd pipermail, Date: Fri, 09 Jan 2009 03:27:40 +0800</b><br><span class="w">archives/metzdowd-cryptography/mbox/2009-January.txt.gz</span></li><li><b>MIT&#x27;s independent archive</b><br><span class="w">https://diswww.mit.edu/bloom-picayune/crypto/142102</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/metzdowd_backup.py</code></div>
+  </details>
+</article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" id="2009-01-09-restart">
+  <header>
+    <time>2009-01-09 02:54:25 UTC</time>
+    <span class="g g-CHAIN">CHAIN</span>
+    
+    <h3>The chain restarts after a 5.36-day gap</h3>
+  </header>
+  <p class="claim">Block 1 is mined 5.36 days after the genesis block. The chain started, stopped, and restarted.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>block 0 and block 1 timestamps</b><br><span class="w">the Bitcoin blockchain</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>bigquery-public-data.crypto_bitcoin.blocks WHERE number IN (0,1)</code></div><div class="notes"><span class="lbl">caveats</span>The gap is real and nothing on-chain explains it. It is not evidence of intent in either direction.</div>
+  </details>
+</article><article class="ev" data-axis="bitcoin" data-grade="CAPTURE" data-gap="false" id="2009-01-10-exe">
+  <header>
+    <time>2009-01-10 23:16:00 UTC</time>
+    <span class="g g-CAPTURE">CAPTURE</span>
+    
+    <h3>The released bitcoin.exe is linked</h3>
+  </header>
+  <p class="claim">The v0.1 Windows binary carries PE TimeDateStamp 1231629360.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>PE header of bitcoin.exe (fbcac071)</b><br><span class="w">archives/nakamoto-archive-lugaxker/src/</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>A linker-written field. MinGW toolchain, and notably no build-path leak — nothing about the machine escaped into the binary.</div>
+  </details>
+</article><article class="ev" data-axis="bitcoin" data-grade="CAPTURE" data-gap="false" id="2009-01-11-running-bitcoin">
+  <header>
+    <time>2009-01-11 03:33:52 UTC</time>
+    <span class="g g-CAPTURE">CAPTURE</span>
+    
+    <h3>Hal Finney tweets &#x27;Running bitcoin&#x27;</h3>
+  </header>
+  <p class="claim">The best-known third-party record of the network acquiring a second participant.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>Twitter data-time=1231644832, 2017 capture</b><br><span class="w">archives/wayback-satoshi-pages/</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>A platform-written timestamp on a third party&#x27;s account.</div>
   </details>
 </article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" id="2009-01-12-block-170">
   <header>
@@ -283,6 +382,17 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>p2p-research February 2009 archive, Message-ID &lt;4993519E.8080300@gmx.com&gt;</b><br><span class="w">archives/nakamoto-archive-lugaxker/src/p2p-research-mailing-list-2009-February.txt.gz</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Date offset is +0000 here against +0800 on vistomail — the offset tracks the provider. The Mozilla Message-ID&#x27;s embedded Unix timestamp decodes to the Date header exactly, an authenticity check but NOT a location check.</div>
   </details>
+</article><article class="ev" data-axis="satoshi" data-grade="ARCHIVE-POS" data-gap="false" id="2009-03-04-vistomail-last">
+  <header>
+    <time>2009-03-04</time>
+    <span class="g g-ARCHIVE-POS">ARCHIVE-POS</span>
+    
+    <h3>The last public use of the vistomail address</h3>
+  </header>
+  <p class="claim">satoshi@vistomail.com is still used publicly on bitcoin-list through 4 March 2009 — a month AFTER the private switch to gmx.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>bitcoin-list archive</b><br><span class="w">archives/bitcoin-list/</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>The two addresses ran IN PARALLEL for about a month: gmx privately from 3 February, vistomail publicly to 4 March. A clean single-changeover story is wrong.</div>
+  </details>
 </article><article class="ev" data-axis="both" data-grade="CAPTURE" data-gap="false" id="2009-03-24-canonical">
   <header>
     <time>2009-03-24 17:33:15 UTC</time>
@@ -316,6 +426,17 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>first_year_payments.csv</b><br><span class="w">https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>satoshi-onchain/verify/first_year_payments.sql</code></div><div class="notes"><span class="lbl">caveats</span>The transaction is identified; THE SENDER IS NOT. The sending address traces to block 11,583, which is not in the Patoshi cluster. We looked for corroboration and did not find it.</div>
   </details>
+</article><article class="ev" data-axis="bitcoin" data-grade="SERVER-DB" data-gap="false" id="2009-08-29-sirius">
+  <header>
+    <time>2009-08-29</time>
+    <span class="g g-SERVER-DB">SERVER-DB</span>
+    
+    <h3>Martti Malmi commits to the repository</h3>
+  </header>
+  <p class="claim">sirius-m commits revision 2 — the first contributor other than Satoshi.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>SourceForge SVN log</b><br><span class="w">archives/sourceforge-bitcoin-svn/</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/sourceforge_svn_log.py</code></div>
+  </details>
 </article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2009-10-21-svn">
   <header>
     <time>2009-10-21</time>
@@ -326,6 +447,28 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <p class="claim">s_nakamoto begins committing to SourceForge SVN; commit times are written by the server.</p>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>252 SVN revisions via Software Heritage</b><br><span class="w">https://archive.softwareheritage.org/api/1/revision/5c085256f7dbfe999afbf10808828f0df9f877f1/log/</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/sourceforge_svn_log.py</code></div><div class="notes"><span class="lbl">caveats</span>The densest record of Satoshi working that exists off-chain.</div>
+  </details>
+</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2009-11-19-bitcointalk">
+  <header>
+    <time>2009-11-19 19:12:39 UTC</time>
+    <span class="g g-SERVER-DB">SERVER-DB</span>
+    
+    <h3>bitcointalk user 3, &#x27;satoshi&#x27;, registers</h3>
+  </header>
+  <p class="claim">The forum account is created; rank &#x27;Founder&#x27;.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>forum profile, server-written registration time</b><br><span class="w">archives/bitcointalk-satoshi/</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/bitcointalk_satoshi.py</code></div><div class="notes"><span class="lbl">caveats</span>539 posts are publicly enumerable; the profile counts 575, so 36 are counted but not listed.</div>
+  </details>
+</article><article class="ev" data-axis="both" data-grade="CAPTURE" data-gap="false" id="2010-07-04-pdf-capture">
+  <header>
+    <time>2010-07-04</time>
+    <span class="g g-CAPTURE">CAPTURE</span>
+    
+    <h3>The earliest surviving capture of the whitepaper as served</h3>
+  </header>
+  <p class="claim">The Internet Archive captures bitcoin.org/bitcoin.pdf; the bytes are identical to the file served today.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>web.archive.org capture 20100704213649</b><br><span class="w">https://web.archive.org/web/20100704213649if_/http://www.bitcoin.org:80/bitcoin.pdf</span><br><code class="h">b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553</code></li></ul><div class="rep"><span class="lbl">reproduce</span><code>sha256sum archives/whitepaper-variants/canonical_2009-03-24.pdf</code></div><div class="notes"><span class="lbl">caveats</span>Closes the gap between the March 2009 creation date and the file anyone can fetch today.</div>
   </details>
 </article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" id="2010-08-15-overflow">
   <header>
@@ -338,6 +481,17 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>block 74638</b><br><span class="w">the Bitcoin blockchain</span></li><li><b>Satoshi&#x27;s own contemporaneous warning naming the block and time</b><br><span class="w">archives/bitcointalk-satoshi/</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>bigquery-public-data.crypto_bitcoin.transactions WHERE block_number = 74638</code></div><div class="notes"><span class="lbl">caveats</span>The only time Bitcoin&#x27;s supply rule has been broken in production.</div>
   </details>
+</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2010-12-12-last-post">
+  <header>
+    <time>2010-12-12 18:22:33 UTC</time>
+    <span class="g g-SERVER-DB">SERVER-DB</span>
+    
+    <h3>The last forum post</h3>
+  </header>
+  <p class="claim">The final post by bitcointalk user 3.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>forum profile and post index</b><br><span class="w">archives/bitcointalk-satoshi/</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/bitcointalk_satoshi.py</code></div>
+  </details>
 </article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2010-12-15-last-action">
   <header>
     <time>2010-12-15 22:43:51 UTC</time>
@@ -348,6 +502,61 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <p class="claim">An SVN commit with the message &#x27;get external ip from irc&#x27;. Ordinary maintenance; no farewell.</p>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>SourceForge SVN log via Software Heritage</b><br><span class="w">https://archive.softwareheritage.org/api/1/revision/5c085256f7dbfe999afbf10808828f0df9f877f1/log/</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/sourceforge_svn_log.py</code></div><div class="notes"><span class="lbl">caveats</span>The 2014 &#x27;I am not Dorian Nakamoto&#x27; post is 3 years 3 months later, unsigned, and binds to nobody. The precise claim is that the last VERIFIABLE action is this one.</div>
+  </details>
+</article><article class="ev" data-axis="satoshi" data-grade="CAPTURE" data-gap="false" id="2011-02-28-asc">
+  <header>
+    <time>2011-02-28</time>
+    <span class="g g-CAPTURE">CAPTURE</span>
+    
+    <h3>bitcoin.org serves Satoshi_Nakamoto.asc</h3>
+  </header>
+  <p class="claim">The PGP public key is served from bitcoin.org, byte-identical to the copy the Nakamoto Institute distributes.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>Internet Archive capture</b><br><span class="w">archives/wayback-satoshi-pages/</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Two independent distributions of one key file. It still signs nothing.</div>
+  </details>
+</article><article class="ev" data-axis="satoshi" data-grade="NONE" data-gap="false" id="2014-03-07-not-dorian">
+  <header>
+    <time>2014-03-07</time>
+    <span class="g g-NONE">NONE</span>
+    
+    <h3>&#x27;I am not Dorian Nakamoto&#x27; — unauthenticated</h3>
+  </header>
+  <p class="claim">The P2P Foundation account posts a denial, 3 years 3 months after the last verifiable activity.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>ning comment 5218</b><br><span class="w">archives/wayback-satoshi-pages/</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>GRADED &#x27;NONE&#x27;. No signature, and nothing binds it to whoever held the account in 2009. This is exactly why the precise claim is &#x27;the last machine-verifiable action is 15 December 2010&#x27;, not &#x27;Satoshi&#x27;s last communication&#x27;.</div>
+  </details>
+</article><article class="ev" data-axis="satoshi" data-grade="ADJUDICATED" data-gap="false" id="2014-08-28-finney">
+  <header>
+    <time>2014-08-28</time>
+    <span class="g g-ADJUDICATED">ADJUDICATED</span>
+    
+    <h3>Hal Finney dies</h3>
+  </header>
+  <p class="claim">The first person to run the software besides Satoshi dies, having been asked about the earliest draft and not answered.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>public record; entry 39</b><br><span class="w">bitcoin-origin-claims/39_the-back-exchange-and-the-ecash-fingerprint.md</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Recorded because it closes a route: the native email files his family gave a journalist in 2014 remain unpublished.</div>
+  </details>
+</article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" id="2015-01-30-mixmaster">
+  <header>
+    <time>2015-01-30</time>
+    <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
+    
+    <h3>The pre-release draft is republished, and the hash matches</h3>
+  </header>
+  <p class="claim">David Johnston receives the draft by mixmaster in ~26 parts, reassembles and republishes it; the hash matches the copy we hold.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>the 2015 mailing-list exchange</b><br><span class="w">bitcoin-origin-claims/35_the-pre-revision-draft.md</span></li><li><b>hash publication captured 2015-02-14</b><br><span class="w">archives/whitepaper-variants/blacksheepatorenco_2015-02-14_hash-publication.html</span><br><code class="h">c146f38e1512a334f8dfd6253115250417fe86d8825bab95fda270d4142e3c7d</code></li></ul><div class="rep"><span class="lbl">reproduce</span><code>sha256sum archives/whitepaper-variants/prerelease_2008-10-03_ia-bitcoin-foundation.pdf</code></div><div class="notes"><span class="lbl">caveats</span>Two people who held the file in 2008 confirmed the hash independently, in 2015 and 2017.</div>
+  </details>
+</article><article class="ev" data-axis="bitcoin" data-grade="SERVER-DB" data-gap="false" id="2015-06-05-sf-purge">
+  <header>
+    <time>2015-06-05</time>
+    <span class="g g-SERVER-DB">SERVER-DB</span>
+    
+    <h3>The SourceForge file tree is purged</h3>
+  </header>
+  <p class="claim">The project drops to a single 102-byte README.txt pointing at GitHub; the original release files stop being served.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>SourceForge project state</b><br><span class="w">archives/flossmole-sourceforge/</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Primary hosting decays. It is why this project mirrors rather than links — and why two of the secondary sources cited by other Satoshi archives are already dead.</div>
   </details>
 </article>
 
