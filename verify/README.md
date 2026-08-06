@@ -159,6 +159,83 @@ merges into any existing manifest rather than replacing it.
 
 ---
 
+### `fees_2009.sql`
+
+**Not a script — a query**, because the public explorer APIs rate-limit a 32,000-block sweep into
+failure (our own `early_tx_survey.py` died mid-sweep for exactly that reason). This runs against
+Google's public mirror of the chain, `bigquery-public-data.crypto_bitcoin`, and answers in seconds.
+
+**Establishes:** exactly **eight** blocks in the whole of 2009 collected a transaction fee; the total
+paid across the year is **3.27 BTC**; every other block paid exactly 50.00. The earliest is **block
+2817, 3 February 2009, fee 2.01 BTC** — larger than the other seven combined.
+
+**Does not establish:** who mined any of them, or why any fee was set. A coinbase value is not an
+identity.
+
+**Check it without BigQuery:** there are only eight rows. Look each height up in any block explorer
+and read the coinbase output. The result is deliberately small enough to verify by hand.
+
+**Carries a warning about this repo's own data.** `early_blocks.csv` has a `coinbase_value` column in
+which every one of its 60,001 rows holds the identical `5000000000` — assumed at acquisition, never
+read from the chain. Searching it for fee-bearing blocks returns **zero**, and the conclusion that
+invites is false. Heights and timestamps in that file are sound; **`coinbase_value` is inert and must
+not be used.**
+
+### `first_year_payments.sql`
+
+**Establishes:** Bitcoin's entire first year contains **219 non-coinbase transactions** — every
+payment anyone made, listable exhaustively. That is what makes early claims checkable: an account
+saying *"N coins moved on date D"* can be held against the handful of transactions that existed that
+week. Often none fits.
+
+**Ordering caveat:** `outputs_btc` is index-ordered; `out_addresses`/`in_addresses` are **not**, so do
+not pair them positionally — identify by elimination (an address on the inputs is taking change).
+Published as-run rather than silently fixed, because the circulating CSV came from this exact text.
+
+**Does not establish:** anything about *who*. Addresses are not names.
+
+### `resolve_coinbase_addresses.py`
+
+Bitcoin's first year paid almost every coinbase to a **bare public key**, not an address — explorers
+*derive* the address for display; it is never written on the chain. This inverts that derivation
+offline, so you can ask **"which block minted the coins now at address X"** with no node, no API and
+no network, then place the answer next to the Patoshi labels.
+
+**Why that pairing matters:** the Patoshi labels come from the **nonce and ExtraNonce** fields, which
+have nothing to do with keys or addresses. When a document and a nonce pattern agree, that is two
+independent lines; when they disagree, that is worth more than either alone. **We have used it for
+both** — including one case where it declined to corroborate a tempting identification.
+
+**Does not establish:** any person. A height is not a name, and `patoshi_confirmed` is a statistical
+cluster label, not a signature.
+
+RIPEMD-160 is implemented in pure Python because OpenSSL 3 drops it from `hashlib` on many builds,
+and checking a historical claim should not require a C library. It **self-tests against the published
+RIPEMD-160 vectors and against the genesis coinbase** on every run, and aborts if either fails.
+
+### `first_year_patoshi_map.py`
+
+Joins the two early-chain datasets that are almost never joined: the **per-block Patoshi labels**
+(from nonce/ExtraNonce — nothing to do with keys) and the **complete 219-payment first-year record**.
+The usual Patoshi claim is about *balances*; this measures the same thing as **flow**.
+
+**Establishes:** coins from flagged blocks were spent at **0.26×** the rate the cluster mined them —
+19.7% of spent coins against a 76.9% base rate, a **~3.9× depletion**. Blind spending would put ~1,367
+of 1,779 spent coins in the flagged set; **351** are. Survives deleting the five largest consolidation
+transactions (19.6%, unchanged), so it is not a few miners sweeping their own wallets.
+
+**Read the docstring before trusting any number you compute from it.** `patoshi_confirmed` is **not**
+"is this a Patoshi block" — it is a high-confidence subset whose `phi` threshold means it can only be
+set up to about block **24,184**, though the era runs to ~54,458. Compare against the whole chain and
+every later block is "not Patoshi" *by construction*. **Our first run made exactly that mistake and
+reported a stronger result than the data supports.** The script now restricts to the label's valid
+range and computes the base rate over that same range.
+
+**Direction of remaining error:** false positives make the cluster look like it spent *more* than it
+did, so they bias the result **towards** the null. The true depletion is if anything stronger.
+
+**Does not establish:** any person. A cluster label is a statistical fingerprint, not a signature.
+
 ## What none of this establishes
 
 **No identity.** Every anchored fact above is about an artifact or an account. Read the anchor column

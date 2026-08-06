@@ -253,6 +253,50 @@
   </section>
 
   <section>
+    <h2>The cluster did not spend</h2>
+    <p class="lead">The usual claim is about balances. This is the same claim measured from the
+      other side — <b>flow</b>.</p>
+    <p class="sm">“~1.1M BTC mined and never moved” is a statement about coins sitting still. It can
+      be turned around: in Bitcoin’s first year, <i>when coins did move, whose were they?</i> Joining
+      the 219 first-year payments to the per-block labels answers it — and the two datasets are
+      independent, because the labels come from <b>nonce and ExtraNonce</b> fields that have nothing
+      to do with keys or addresses.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Weighting</th><th class="num">Flagged share of coins spent</th><th class="num">Base rate</th><th class="num">Ratio</th></tr></thead>
+        <tbody>
+          <tr><td>By input (351 / 1,779)</td><td class="num">19.7%</td><td class="num">76.9%</td><td class="num">0.26×</td></tr>
+          <tr><td>Dropping the 5 biggest consolidations</td><td class="num">19.6%</td><td class="num">76.9%</td><td class="num">0.26×</td></tr>
+          <tr><td>Median per transaction</td><td class="num">15.0%</td><td class="num">76.9%</td><td class="num">0.20×</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sm" style="margin-top:14px">If spending had been blind to the label you would expect
+      about <b>1,367</b> of those 1,779 spent coins to carry it. <b>351 do.</b> Coins from the flagged
+      cluster were spent at roughly <b>a quarter</b> of the rate at which the cluster mined —
+      <b>a ~3.9× depletion</b>, and it survives deleting the largest consolidation transactions
+      outright, so it is not an artifact of a few miners sweeping their own wallets.</p>
+    <p class="sm"><b>The correction that made this number honest.</b> Our own label
+      <span class="mono">patoshi_confirmed</span> is <i>not</i> “is this a Patoshi block” — it is a
+      high-confidence subset (<span class="mono">nonce_lsb_ok AND phi &gt;= CONF</span>), and the phi
+      threshold means it can only ever be set up to about block <b>24,184</b>, though the era runs to
+      ~54,458. Compare against the whole chain and every later block counts as “not Patoshi”
+      <i>by construction</i>, manufacturing an effect from nothing. <b>Our first run did exactly that
+      and reported a stronger number than the data supports.</b> The figures above are restricted to
+      the label’s valid range with the base rate computed over that same range.</p>
+    <p class="sm"><b>Which way the remaining error points.</b> The label has false positives — blocks
+      flagged that were not the cluster’s. Those make the cluster look like it spent <i>more</i> than
+      it did, so they push this result <b>towards</b> the null. The true depletion is if anything
+      stronger than 3.9×, not weaker. <b>And none of this identifies a person</b>: a cluster label is
+      a statistical fingerprint, not a signature.</p>
+    <div class="xlink"><b>Reproduce it offline.</b>
+      <a href="https://github.com/satoshi-onchain/satoshi-onchain/tree/main/verify"><b>verify/first_year_patoshi_map.py</b></a>
+      needs no node, no API and no key — early coinbases pay a <i>bare public key</i>, so the address
+      is derived rather than stored, and inverting that locally maps every spent coin back to the
+      block that minted it.</div>
+  </section>
+
+  <section>
     <h2>The judge</h2>
     <p class="lead">Is this coin Satoshi’s?</p>
     <p class="sm">A Patoshi coin is a coinbase output, so a spend consumes it directly — resolve any
@@ -297,6 +341,7 @@
         2009 record and the chain agree exactly. The address was emptied in 2011 and has held nothing
         since; it implies nothing about Mr Bohm's estate.</span></div>
       <div class="vd"><span class="h">2009-02-03</span><span class="tag gen">CHAIN</span><span class="desc"><b>A Satoshi address, named by Satoshi.</b> Bohm asks to try a payment <i>to</i> Satoshi; Satoshi replies <i>“Sure, it's <span class="mono">1GtkM4wviwohP192tec9g83hd9X5qtbk9j</span>. I'll send back +0.01 as a confirmation.”</i> The chain shows exactly that: <b>block 2914</b>, 19 BTC from Bohm's own mined coin to that address; <b>block 2915</b>, 19.01 BTC back to Bohm — the payment returned plus the promised penny. <b>That address has never spent a satoshi. It still holds 19 BTC, untouched since 3 February 2009.</b> Almost every “Satoshi coin” is inferred from the Patoshi mining pattern; <b>this one Satoshi wrote down</b>.</span></div>
+      <div class="vd"><span class="h">2009-05-11</span><span class="tag gen">CHAIN</span><span class="desc"><b>A private miner's own block, identified.</b> Bohm writes to Satoshi puzzled that one generation paid more than the rest, quoting his UI: <i>“731 blocks &nbsp; 11/05/2009 15:58 &nbsp; Generated &nbsp; +50.10 — all prior and subsequent generated packets have been of exactly 50.”</i> British Summer Time is UTC+1, so 15:58 BST predicts a block at <b>14:58 UTC paying 50.10</b>. <b>Block 14047 is at 14:58:31 UTC and pays exactly 50.10</b> — and it is the <b>only</b> candidate, because <a href="#fees2009">only eight blocks in all of 2009 collected a fee at all</a>. The prediction was made from the letter before the chain was queried. Note the internal check: his <i>“731 blocks”</i> is a <b>confirmation count</b>, not a height — the same UI column that reads <i>“35 blocks”</i> in his 1 February entry above. Satoshi's reply is the design statement behind the whole column: <i>“Including a fee is completely optional, more of a donation to nodes for helping out.”</i> <b>This is [forensic], not [cryptographic]</b> — he signed nothing, and it rests on his own contemporaneous report. The coinbase address <span class="mono">1NCAAhBr…qZeZd5</span> received <b>that one coinbase and nothing else</b>, and was emptied on <b>28 December 2011</b>; it holds nothing and implies nothing about Mr Bohm's estate.</span></div>
       <div class="vd"><span class="h">2009-10-21</span><span class="tag pat">SERVER</span><span class="desc">First of <b>164 SVN commits</b> by <span class="mono">s_nakamoto</span>. Commit times are written by the server — the densest record of Satoshi working that exists off-chain.</span></div>
       <div class="vd"><span class="h">2009-11-19</span><span class="tag pat">SERVER</span><span class="desc">bitcointalk user 3 registered, 19:12:39. <b>539 posts are publicly enumerable</b>; the profile counts 575, so 36 are counted but not listed.</span></div>
       <div class="vd"><span class="h">2010-08-15</span><span class="tag gen">CHAIN</span><span class="desc"><b>184 billion bitcoins exist for five hours.</b> Block <b>74638</b> contains a transaction whose two outputs of 92,233,720,368.54 BTC each sum past 2<sup>63</sup> and wrap negative as a signed 64-bit integer, so the conservation check <span class="mono">out &lt;= in</span> passes. Satoshi's own warning went out on the mailing list <b>3 h 33 m later</b>: <i>“*** WARNING *** We are investigating a problem. DO NOT TRUST ANY TRANSACTIONS THAT HAPPENED AFTER 15.08.2010 17:05 UTC (block 74638) until the issue is resolved.”</i> He names the same block and instant the arithmetic does. Patched within hours and <b>soft-forked out by block 74691</b> — the chain was rewritten by agreement, which is the honest account of how it survived.</span></div>
@@ -311,7 +356,7 @@
     <p class="sm">Stated because they circulate widely, and because a page that only lists what it
       can prove is more useful when it also lists what it cannot.</p>
     <div class="verdicts">
-      <div class="vd"><span class="h">+0800</span><span class="tag gen">RESOLVED</span><span class="desc">All 18 mailing-list messages declare a UTC+8 offset, <b>routinely cited as evidence of an Asian timezone. It is the mail provider's clock.</b> Dustin Trammell published his own Satoshi correspondence in 2013 as native mbox with the <span class="mono">Received:</span> chains intact — the headers a mailing-list archive strips. They show <span class="mono">satoshi@vistomail.com</span> mail leaving through <span class="mono">mail.anonymousspeech.com</span> (<span class="mono">124.217.253.42</span>), and <b>that relay stamps <span class="mono">+0800</span> on every hop it writes — 20 of them across 22 messages</b>, matching Satoshi's declared offset exactly. <span class="mono">server123</span>, the host in the <span class="mono">CHILKAT-MID</span> message IDs, is the same machine. In the same corpus Trammell's own headers read <span class="mono">−0600</span>, so the comparison is inside one archive. <b>The offset says where the webmail server was, not where its user was</b> — and it also shows <span class="mono">vistomail</span> and <span class="mono">anonymousspeech</span> shared infrastructure rather than being independent services.</span></div>
+      <div class="vd"><span class="h">+0800</span><span class="tag gen">RESOLVED</span><span class="desc">All 18 mailing-list messages declare a UTC+8 offset, <b>routinely cited as evidence of an Asian timezone. It is the mail provider's clock.</b> Dustin Trammell published his own Satoshi correspondence in 2013 as native mbox with the <span class="mono">Received:</span> chains intact — the headers a mailing-list archive strips. They show <span class="mono">satoshi@vistomail.com</span> mail leaving through <span class="mono">mail.anonymousspeech.com</span> (<span class="mono">124.217.253.42</span>), and <b>that relay stamps <span class="mono">+0800</span> on every hop it writes — 20 of them across 22 messages</b>, matching Satoshi's declared offset exactly. <span class="mono">server123</span>, the host in the <span class="mono">CHILKAT-MID</span> message IDs, is the same machine. In the same corpus Trammell's own headers read <span class="mono">−0600</span>, so the comparison is inside one archive. <b>A trap to know about:</b> <span class="mono">mail-archive.com</span>, which carries the same list, <b>renders every timestamp in US Pacific time and does not show the <span class="mono">Date:</span> header at all</b> — senders we can place in Europe display as <span class="mono">-0800</span> there too, and the offset flips across <i>all</i> senders on the US daylight-saving date. Anyone comparing the two archives will think they have found a contradiction; they have found mail-archive's server clock. <b>The offset says where the webmail server was, not where its user was</b> — and it also shows <span class="mono">vistomail</span> and <span class="mono">anonymousspeech</span> shared infrastructure rather than being independent services.</span></div>
       <div class="vd"><span class="h">“Japan”</span><span class="tag no">SELF-DECLARED</span><span class="desc">The P2P Foundation profile says <i>Male, Japan</i>. It is a self-entered field, and the <b>earliest capture of it is July 2010</b> — seventeen months after the profile was created. It corroborates nothing.</span></div>
       <div class="vd"><span class="h">2014-03-07</span><span class="tag amb">UNAUTHENTICATED</span><span class="desc">The same account posted <i>“I am not Dorian Nakamoto.”</i> — <b>3 years 3 months after</b> the last verifiable activity. No signature, nothing binding it to whoever held the account in 2009. So the precise claim is <b>“the last machine-verifiable action is 15 December 2010”</b>, not “Satoshi’s last communication”.</span></div>
     </div>
@@ -329,6 +374,75 @@
       <a href="https://www.metzdowd.com/pipermail/cryptography/2008-November/014831.html">the Section 4 quotation</a> ·
       <a href="https://bitcointalk.org/index.php?action=profile;u=3">the forum profile</a> ·
       <a href="https://rdap.publicinterestregistry.org/rdap/domain/bitcoin.org">the domain record</a>.</div>
+  </section>
+
+  <section id="fees2009">
+    <h2>Fees, 2009</h2>
+    <p class="lead">Eight blocks in Bitcoin’s entire first year collected a transaction fee. The
+      total paid across all of 2009 was <b>3.27 BTC</b>.</p>
+    <p class="sm">Out of roughly <b>32,000</b> blocks. Fees were optional and almost nobody set one,
+      so the whole of the first year’s fee record fits in a table this size. Satoshi described the
+      design to a correspondent in May 2009 — <i>“including a fee is completely optional, more of a
+      donation to nodes for helping out”</i> — and this is what that policy looked like in practice.
+      Every other 2009 block paid exactly 50.00.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Block</th><th>Time (UTC)</th><th class="num">Coinbase</th><th class="num">Fee</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">2817</td><td class="mono">2009-02-03 05:16:42</td><td class="num">52.01</td><td class="num"><b>2.01</b></td></tr>
+          <tr><td class="mono">12983</td><td class="mono">2009-05-02 05:02:21</td><td class="num">50.03</td><td class="num">0.03</td></tr>
+          <tr><td class="mono">14047</td><td class="mono">2009-05-11 14:58:31</td><td class="num">50.10</td><td class="num">0.10</td></tr>
+          <tr><td class="mono">19863</td><td class="mono">2009-07-20 22:54:07</td><td class="num">50.14</td><td class="num">0.14</td></tr>
+          <tr><td class="mono">20770</td><td class="mono">2009-08-07 22:27:45</td><td class="num">50.13</td><td class="num">0.13</td></tr>
+          <tr><td class="mono">23079</td><td class="mono">2009-09-17 16:10:30</td><td class="num">50.12</td><td class="num">0.12</td></tr>
+          <tr><td class="mono">25468</td><td class="mono">2009-10-20 22:30:46</td><td class="num">50.12</td><td class="num">0.12</td></tr>
+          <tr><td class="mono">28507</td><td class="mono">2009-12-01 21:45:59</td><td class="num">50.22</td><td class="num">0.22</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sm" style="margin-top:14px"><b>One of these eight rows has a name attached to it, and
+      it is the only such row we have.</b> Block 14047 is the <i>+50.10</i> a private miner wrote to
+      Satoshi about in May 2009 — see <a href="#offchain">the off-chain record</a> for the derivation
+      and its limits. The other seven are unattributed and we make no claim about them.</p>
+    <p class="sm"><b>The first fees were paid on 3 February 2009, and they
+      were a test.</b> Block 2817’s 2.01 is not one fee but three, in the same block — <b>1.00, 1.00
+      and 0.01</b> — and all three transactions have the <i>same</i> address on every input and every
+      output: <span class="mono">1AbHNFdKJeVL8FRZyRZoiTzG9VCmzLrtvm</span> sending to itself, three
+      times, each time moving 1 BTC and paying 1 BTC to do it. The three chain together, each
+      spending the previous one’s change. Someone was trying the software out. <b>The largest single
+      fee of 2009 was therefore 1.00 BTC, on a 1.00 BTC payment</b> — a 50% fee, and evidently not a
+      considered one.</p>
+    <p class="sm"><b>Five of the remaining seven are large consolidations</b> — 101, 111, 121 and 168
+      inputs, one miner sweeping months of 50 BTC coinbases into a single address. But <b>size alone
+      does not explain them</b>: a <b>320-input</b> transaction in December 2009 paid <b>nothing</b>,
+      and so did ones with 81, 77 and 74 inputs. Whatever set these fees, it was not a rule the chain
+      applied uniformly. We record the pattern and stop there.</p>
+    <p class="sm"><b>A trap worth naming.</b> Several published early-chain datasets — including an
+      earlier file of our own — carry a <span class="mono">coinbase_value</span> column in which every
+      row holds the identical <span class="mono">5000000000</span>. It was assumed at acquisition and
+      never read from the chain. Search such a file for fee-bearing blocks and it returns <b>zero</b>,
+      and the conclusion that invites — <i>no early block ever collected a fee</i> — is false. A column
+      that is really a constant is the kind of error that survives being copied. This table is read
+      from the chain.</p>
+    <p class="sm" style="margin-top:14px"><b>The whole first year is 219 payments.</b> For most of
+      2009 the chain is a near-unbroken run of coinbase-only blocks, so every payment anyone made can
+      be listed <i>exhaustively</i> — and we could not find that list published anywhere. By month:
+      32, 37, 21, 17, 18, 8, 5, 6, 11, 13, 15, 36. The mid-year trough is real; so is the December
+      surge. <b>That exhaustiveness is what makes early claims checkable</b>: when an account says
+      <i>N coins moved on date D</i>, you no longer weigh it against a vast chain — you look at the
+      handful of transactions that existed that week and see whether one fits. Often none does.
+      <b>The list itself is
+      <a href="https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv">published here as a CSV</a></b>
+      — block, time, txid, inputs, outputs, amounts, fee — so you do not have to run anything to use
+      it. <b>Read the ordering caveat in the header before pairing addresses with amounts:</b> the
+      amount column is index-ordered and the address columns are not, so identify by elimination (an
+      address appearing on the inputs is taking change) rather than by position.</p>
+    <div class="xlink"><b>Check it in one query.</b> The SQL is
+      <a href="https://github.com/satoshi-onchain/satoshi-onchain/tree/main/verify">in the repo</a> and
+      runs against Google’s public mirror of the chain,
+      <span class="mono">bigquery-public-data.crypto_bitcoin</span> — select every coinbase of 2009
+      whose <span class="mono">output_value</span> is not exactly 50 BTC. Eight rows come back. No API
+      key, no node, no trust in us.</div>
   </section>
 
   <section>

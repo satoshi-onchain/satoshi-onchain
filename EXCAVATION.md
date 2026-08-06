@@ -332,3 +332,55 @@ known-Satoshi key ever signed a fresh message or moved a coin (`judge.py`).
 §10 nonce/thread structure, §11 coinbase-key distinctness (whole era, D1+D2), §12 spent-Patoshi
 enumeration + full awakening map, §13 thread/core count bounded inference, §14 ECDSA-nonce safety
 audit, §15 the machine-verifiable key-control standard.)*
+
+---
+
+## The flow-side measurement: the cluster mined, and did not spend
+
+*6 Aug 2026. `verify/first_year_patoshi_map.py`, offline.*
+
+Everything above measures the cluster by **balance** — coins mined, coins never moved. This measures
+it by **flow**: across the 219 payments that make up Bitcoin's entire first year, what share of the
+coins actually being spent came from flagged blocks?
+
+| weighting | flagged share of spent coins | base rate | ratio |
+|---|---|---|---|
+| by input (351 / 1,779) | 19.7% | 76.9% | **0.26×** |
+| dropping the 5 largest consolidations | 19.6% | 76.9% | **0.26×** |
+| median per transaction | 15.0% | 76.9% | 0.20× |
+
+Blind spending would put ~1,367 of 1,779 spent coins in the flagged set. **351 are.** A **~3.9×
+depletion**, robust to deleting the biggest consolidation transactions — so it is not a few miners
+sweeping their own wallets.
+
+The two inputs are **independent**: the labels derive from **nonce/ExtraNonce**, which have nothing
+to do with keys or addresses, while the payment record is pure transaction data.
+
+### The methodological trap, recorded because we fell into it
+
+**`patoshi_confirmed` is not "is this a Patoshi block".** Per `slots.py`:
+
+```python
+r["patoshi_confirmed"] = int(r["nonce_lsb_ok"] and r["phi"] >= CONF and 1 <= r["height"] <= ee)
+```
+
+It is a **high-confidence subset**, and the `phi` threshold means it can only ever be set up to
+**block 24,184** — even though the era runs to ~54,458 and the rigorous era-wide count is ~22,540.
+Compare spent coins against the *whole* chain and every block above ~24,184 counts as "not Patoshi"
+**by construction**.
+
+**Our first run did exactly that** and reported a 4.9× depletion against a 62% baseline drawn from
+blocks 0–30,000. Both numbers were wrong. The corrected analysis restricts to funding heights inside
+the label's valid range and computes the base rate over **that same range**.
+
+*This is the second time in one day that a column meant one thing and was read as another — the first
+being `early_blocks.csv`'s inert `coinbase_value`. Both were caught by asking what actually generates
+the column rather than trusting its name.*
+
+### Direction of the remaining error
+
+The label has false positives — blocks flagged that were not the cluster's. Those make the cluster
+appear to spend **more** than it did, biasing the result **towards the null**. The true depletion is
+if anything stronger than 3.9×.
+
+**A cluster label is a statistical fingerprint, not a signature. Nothing here identifies a person.**
