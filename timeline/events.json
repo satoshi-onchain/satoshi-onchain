@@ -1025,8 +1025,8 @@
     "until": "2010-12-15",
     "axis": "satoshi",
     "grade": "NONE",
-    "title": "Satoshi's SourceForge tracker comments — ABSENT FROM THE CRAWL",
-    "claim": "The Bitcoin project ran a SourceForge bug/feature tracker during Satoshi's active period. No comment of his on it survives in any web archive.",
+    "title": "Satoshi's SourceForge tracker comments — THE PREMISE IS UNSUPPORTED",
+    "claim": "Other archives list Satoshi's SourceForge tracker comments as a known omission. SourceForge's own public API shows the project has no tracker mount at all, and no crawl contains one.",
     "evidence": [
       {
         "what": "the project navigation lists a Tracker feature",
@@ -1037,10 +1037,39 @@
         "what": "CDX: 6,000 URLs under sourceforge.net/tracker/ reference Bitcoin zero times; modern /bugs and /feature-requests namespaces return zero archived URLs",
         "where": "archives/sourceforge-project-forum/SOURCES.md",
         "hash": null
+      },
+      {
+        "what": "sourceforge.net/rest/p/bitcoin lists 8 tools — support, summary, reviews, code, mailman, files, news, activity — and no bugs/tickets/tracker mount",
+        "where": "archives/sourceforge-rest-api/SOURCES.md",
+        "hash": null
       }
     ],
-    "reproduce": "http://web.archive.org/cdx/search/cdx?url=sourceforge.net/tracker/&matchType=prefix&output=json&filter=statuscode:200",
+    "reproduce": "curl -s https://sourceforge.net/rest/p/bitcoin | jq '.tools[].mount_point'",
     "gap": true,
-    "notes": "Named by other preservation projects as a known omission. This establishes WHY: the Internet Archive never captured that namespace. Not uncollected -- absent. Recovery would need SourceForge's own database, not a web archive. Absence from a crawl is not evidence the comments never existed."
+    "notes": "Recorded as a gap because the claim circulates, but the evidence points at there being nothing to recover rather than something lost. CAVEAT: this is the CURRENT migrated tool set; a tool used in 2009 and later removed would not appear, so this lowers the probability sharply without reducing it to zero."
+  },
+  {
+    "id": "2009-01-13-sf-release-note",
+    "when": "2009-01-13",
+    "precision": "day",
+    "axis": "both",
+    "grade": "SERVER-DB",
+    "title": "The v0.1 release announcement on SourceForge — byline erased",
+    "claim": "SourceForge carries the full v0.1 release announcement, including the instruction that generated coins must wait 120 blocks to mature. A platform migration replaced the author with 'Anonymous'.",
+    "evidence": [
+      {
+        "what": "the news page, 62 KB; the words 'satoshi' and 'nakamoto' appear zero times on it",
+        "where": "archives/sourceforge-rest-api/news-2009-01-bitcoin-v01-released.html",
+        "hash": null
+      },
+      {
+        "what": "the REST API returns the post's title but empty text and author",
+        "where": "archives/sourceforge-rest-api/news.json",
+        "hash": null
+      }
+    ],
+    "reproduce": "curl -s https://sourceforge.net/rest/p/bitcoin/news",
+    "gap": false,
+    "notes": "The text is his; the attribution is gone, which is why no compilation folds it in. It independently corroborates the 120-block maturity we derived from main.cpp — COINBASE_MATURITY + 20 — in Satoshi's own words."
   }
 ]

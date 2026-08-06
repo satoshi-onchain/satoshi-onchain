@@ -46,7 +46,7 @@ it. Rows we <b>cannot</b> verify are shown too, marked <b>NOT HELD</b> — becau
 only what was found looks complete when it is not.</p>
 
 <div class="incomplete"><b>This timeline is incomplete, and says so on purpose.</b>
-It currently holds <b>50</b> events. The research corpus behind it contains <b>105</b> distinct dated events across 55 written entries and 22 sealed archives, and migration into this file is deliberate rather than bulk — each row has to acquire a grade, a source and a reproduction path before it can appear. That corpus is a local research archive and is not itself published, so this number is stated, not linkable.
+It currently holds <b>51</b> events. The research corpus behind it contains <b>105</b> distinct dated events across 55 written entries and 23 sealed archives, and migration into this file is deliberate rather than bulk — each row has to acquire a grade, a source and a reproduction path before it can appear. That corpus is a local research archive and is not itself published, so this number is stated, not linkable.
 <b>Absence of a row here is not evidence that nothing happened on that date.</b>
 Applying the same standard to ourselves that we apply to everyone else.</div>
 
@@ -305,6 +305,17 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>row 1 of the complete first-year payment list</b><br><span class="w">https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>satoshi-onchain/verify/first_year_payments.sql</code></div><div class="notes"><span class="lbl">caveats</span>Widely attributed to Satoshi sending Hal Finney. The chain shows the transaction, not the names.</div>
   </details>
+</article><article class="ev" data-axis="both" data-grade="SERVER-DB" data-gap="false" id="2009-01-13-sf-release-note">
+  <header>
+    <time>2009-01-13</time>
+    <span class="g g-SERVER-DB">SERVER-DB</span>
+    
+    <h3>The v0.1 release announcement on SourceForge — byline erased</h3>
+  </header>
+  <p class="claim">SourceForge carries the full v0.1 release announcement, including the instruction that generated coins must wait 120 blocks to mature. A platform migration replaced the author with &#x27;Anonymous&#x27;.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>the news page, 62 KB; the words &#x27;satoshi&#x27; and &#x27;nakamoto&#x27; appear zero times on it</b><br><span class="w">archives/sourceforge-rest-api/news-2009-01-bitcoin-v01-released.html</span></li><li><b>the REST API returns the post&#x27;s title but empty text and author</b><br><span class="w">archives/sourceforge-rest-api/news.json</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>curl -s https://sourceforge.net/rest/p/bitcoin/news</code></div><div class="notes"><span class="lbl">caveats</span>The text is his; the attribution is gone, which is why no compilation folds it in. It independently corroborates the 120-block maturity we derived from main.cpp — COINBASE_MATURITY + 20 — in Satoshi&#x27;s own words.</div>
+  </details>
 </article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" id="2009-01-15-block-593">
   <header>
     <time>2009-01-15 15:51:56 UTC</time>
@@ -475,11 +486,11 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
     <time>2009-10-21 &rarr; 2010-12-15</time>
     <span class="g g-NONE">NONE</span>
     <span class="gapflag">NOT HELD</span>
-    <h3>Satoshi&#x27;s SourceForge tracker comments — ABSENT FROM THE CRAWL</h3>
+    <h3>Satoshi&#x27;s SourceForge tracker comments — THE PREMISE IS UNSUPPORTED</h3>
   </header>
-  <p class="claim">The Bitcoin project ran a SourceForge bug/feature tracker during Satoshi&#x27;s active period. No comment of his on it survives in any web archive.</p>
+  <p class="claim">Other archives list Satoshi&#x27;s SourceForge tracker comments as a known omission. SourceForge&#x27;s own public API shows the project has no tracker mount at all, and no crawl contains one.</p>
   <details><summary>evidence &amp; reproduction</summary>
-    <ul class="evid"><li><b>the project navigation lists a Tracker feature</b><br><span class="w">archives/sourceforge-project-forum/forum-index.html</span></li><li><b>CDX: 6,000 URLs under sourceforge.net/tracker/ reference Bitcoin zero times; modern /bugs and /feature-requests namespaces return zero archived URLs</b><br><span class="w">archives/sourceforge-project-forum/SOURCES.md</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>http://web.archive.org/cdx/search/cdx?url=sourceforge.net/tracker/&amp;matchType=prefix&amp;output=json&amp;filter=statuscode:200</code></div><div class="notes"><span class="lbl">caveats</span>Named by other preservation projects as a known omission. This establishes WHY: the Internet Archive never captured that namespace. Not uncollected -- absent. Recovery would need SourceForge&#x27;s own database, not a web archive. Absence from a crawl is not evidence the comments never existed.</div>
+    <ul class="evid"><li><b>the project navigation lists a Tracker feature</b><br><span class="w">archives/sourceforge-project-forum/forum-index.html</span></li><li><b>CDX: 6,000 URLs under sourceforge.net/tracker/ reference Bitcoin zero times; modern /bugs and /feature-requests namespaces return zero archived URLs</b><br><span class="w">archives/sourceforge-project-forum/SOURCES.md</span></li><li><b>sourceforge.net/rest/p/bitcoin lists 8 tools — support, summary, reviews, code, mailman, files, news, activity — and no bugs/tickets/tracker mount</b><br><span class="w">archives/sourceforge-rest-api/SOURCES.md</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>curl -s https://sourceforge.net/rest/p/bitcoin | jq &#x27;.tools[].mount_point&#x27;</code></div><div class="notes"><span class="lbl">caveats</span>Recorded as a gap because the claim circulates, but the evidence points at there being nothing to recover rather than something lost. CAVEAT: this is the CURRENT migrated tool set; a tool used in 2009 and later removed would not appear, so this lowers the probability sharply without reducing it to zero.</div>
   </details>
 </article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2009-11-19-bitcointalk">
   <header>
