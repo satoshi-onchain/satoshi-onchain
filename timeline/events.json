@@ -1071,5 +1071,134 @@
     "reproduce": "curl -s https://sourceforge.net/rest/p/bitcoin/news",
     "gap": false,
     "notes": "The text is his; the attribution is gone, which is why no compilation folds it in. It independently corroborates the 120-block maturity we derived from main.cpp — COINBASE_MATURITY + 20 — in Satoshi's own words."
+  },
+  {
+    "id": "2008-09-10-nov08-genesis-ntime",
+    "when": "2008-09-10T18:02:08Z",
+    "precision": "second",
+    "axis": "bitcoin",
+    "grade": "CAPTURE",
+    "title": "The November 2008 pre-release carries its own genesis nTime",
+    "claim": "The pre-release codebase hard-codes a genesis block time of 2008-09-10 18:02:08 — nearly four months before the live genesis block.",
+    "evidence": [
+      {
+        "what": "the November 2008 pre-release source",
+        "where": "archives/nakamoto-archive-lugaxker/src/",
+        "hash": null
+      },
+      {
+        "what": "SNI's copy, dated November 15 2008",
+        "where": "https://satoshi.nakamotoinstitute.org/code/",
+        "hash": null
+      }
+    ],
+    "reproduce": null,
+    "gap": false,
+    "notes": "An integer the code sets about itself — no headline, no external commitment, so it anchors nothing outside the file. Contrast the live genesis, which embeds a newspaper front page and therefore cannot predate it."
+  },
+  {
+    "id": "2008-11-15-prerelease-code",
+    "when": "2008-11-15",
+    "precision": "day",
+    "axis": "both",
+    "grade": "PARTY-RELEASED",
+    "title": "The pre-release codebase is dated",
+    "claim": "A Bitcoin codebase predating any public release is dated 15 November 2008 and is distributed with a published MD5.",
+    "evidence": [
+      {
+        "what": "SNI's code page",
+        "where": "https://satoshi.nakamotoinstitute.org/code/",
+        "hash": null
+      },
+      {
+        "what": "an independently obtained copy",
+        "where": "archives/patoshi-and-correspondence-sources/nakamotoinstitute-bitcoin-nov08.tgz",
+        "hash": null
+      }
+    ],
+    "reproduce": null,
+    "gap": false,
+    "notes": "CAUTION: SNI's .tgz is labelled 'Compressed by SNI' — a REPACKAGING, not original bytes. It will not hash to anything Satoshi produced, and must never be cited as an original artifact. Their .rar carries a published MD5; that is the one to check against."
+  },
+  {
+    "id": "2009-02-18-p2pfoundation",
+    "when": "2009-02-18",
+    "precision": "day",
+    "axis": "satoshi",
+    "grade": "SELF",
+    "title": "The P2P Foundation profile posts",
+    "claim": "Three posts appear on the P2P Foundation profile in February 2009. The profile's 'Male, Japan' field is self-entered.",
+    "evidence": [
+      {
+        "what": "profile and posts",
+        "where": "archives/wayback-satoshi-pages/",
+        "hash": null
+      }
+    ],
+    "reproduce": null,
+    "gap": false,
+    "notes": "GRADED SELF. The earliest capture of the profile is July 2010 — seventeen months after creation — so the field corroborates nothing."
+  },
+  {
+    "id": "2011-06-19-bohm-100-leaves",
+    "when": "2011-06-19",
+    "precision": "day",
+    "axis": "bitcoin",
+    "grade": "CHAIN",
+    "title": "The 100 BTC leaves Bohm's address",
+    "claim": "The address that received Satoshi's 100 BTC gift in February 2009 is spent down; it has held nothing since 2011.",
+    "evidence": [
+      {
+        "what": "on-chain spend of 1CHE5JRfc5mr8ZtVUP7nnsS5HC4bWcXoc6",
+        "where": "the Bitcoin blockchain",
+        "hash": null
+      }
+    ],
+    "reproduce": "python satoshi-onchain/verify/bohm_transfer.py",
+    "gap": false,
+    "notes": "Matches his own account of spending the wallet down before losing access. Recorded so the address is never presented as a live holding."
+  },
+  {
+    "id": "2014-03-02-wei-dai",
+    "when": "2014-03-02",
+    "precision": "day",
+    "axis": "satoshi",
+    "grade": "PARTY-RELEASED",
+    "title": "The Satoshi–Wei Dai exchange is published",
+    "claim": "Three messages between Satoshi and Wei Dai are published, quoted in the Sunday Times.",
+    "evidence": [
+      {
+        "what": "Wei Dai correspondence, as collected by the Nakamoto Studies Institute",
+        "where": "archives/patoshi-and-correspondence-sources/nsi-wei-dai-correspondence.html",
+        "hash": null
+      }
+    ],
+    "reproduce": null,
+    "gap": false,
+    "notes": "Recovered from the Wayback Machine after nakamotostudies.org itself went to a domain-parking stub — the publisher is gone, the content survives."
+  },
+  {
+    "id": "2017-08-17-dillinger",
+    "when": "2017-08-17",
+    "precision": "day",
+    "axis": "both",
+    "grade": "PARTY-RELEASED",
+    "title": "An original 2008 participant confirms the pre-release hash",
+    "claim": "Ray Dillinger, a participant in the original November 2008 discussion, confirms the recirculated draft: \"Yes. The hash matches. That's definitely it.\"",
+    "evidence": [
+      {
+        "what": "the 2017 cryptography-list exchange",
+        "where": "bitcoin-origin-claims/35_the-pre-revision-draft.md",
+        "hash": null
+      },
+      {
+        "what": "the file whose hash he confirmed",
+        "where": "archives/whitepaper-variants/prerelease_2008-10-03_ia-bitcoin-foundation.pdf",
+        "hash": "427c63b364c6db914cf23072a09ffd53ee078397b7c6ab2d604e12865a982faa"
+      }
+    ],
+    "reproduce": "sha256sum archives/whitepaper-variants/prerelease_2008-10-03_ia-bitcoin-foundation.pdf",
+    "gap": false,
+    "notes": "Nine years after the fact, by someone who held the original. Testimony about a hash is much stronger than testimony about a document, because the hash is checkable and the memory is not load-bearing."
   }
 ]

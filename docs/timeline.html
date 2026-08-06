@@ -46,7 +46,7 @@ it. Rows we <b>cannot</b> verify are shown too, marked <b>NOT HELD</b> — becau
 only what was found looks complete when it is not.</p>
 
 <div class="incomplete"><b>This timeline is incomplete, and says so on purpose.</b>
-It currently holds <b>51</b> events. The research corpus behind it contains <b>105</b> distinct dated events across 55 written entries and 23 sealed archives, and migration into this file is deliberate rather than bulk — each row has to acquire a grade, a source and a reproduction path before it can appear. That corpus is a local research archive and is not itself published, so this number is stated, not linkable.
+It currently holds <b>57</b> events. The research corpus behind it contains <b>105</b> distinct dated events across 55 written entries and 23 sealed archives, and migration into this file is deliberate rather than bulk — each row has to acquire a grade, a source and a reproduction path before it can appear. That corpus is a local research archive and is not itself published, so this number is stated, not linkable.
 <b>Absence of a row here is not evidence that nothing happened on that date.</b>
 Applying the same standard to ourselves that we apply to everyone else.</div>
 
@@ -117,6 +117,17 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <p class="claim">satoshi@anonymousspeech.com writes to Adam Back querying the Hashcash citation, ten weeks before the paper is public.</p>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>Adam Back witness statement §5, full header quoted under a statement of truth</b><br><span class="w">archives/nakamoto-archive-lugaxker/src/adam-back-exhibit-ab1.pdf</span></li><li><b>COPA Opening Skeleton §16</b><br><span class="w">archives/copa-v-wright/</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Establishes the identifier sequence anonymousspeech -&gt; vistomail -&gt; gmx, not the reverse.</div>
+  </details>
+</article><article class="ev" data-axis="bitcoin" data-grade="CAPTURE" data-gap="false" id="2008-09-10-nov08-genesis-ntime">
+  <header>
+    <time>2008-09-10 18:02:08 UTC</time>
+    <span class="g g-CAPTURE">CAPTURE</span>
+    
+    <h3>The November 2008 pre-release carries its own genesis nTime</h3>
+  </header>
+  <p class="claim">The pre-release codebase hard-codes a genesis block time of 2008-09-10 18:02:08 — nearly four months before the live genesis block.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>the November 2008 pre-release source</b><br><span class="w">archives/nakamoto-archive-lugaxker/src/</span></li><li><b>SNI&#x27;s copy, dated November 15 2008</b><br><span class="w">https://satoshi.nakamotoinstitute.org/code/</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>An integer the code sets about itself — no headline, no external commitment, so it anchors nothing outside the file. Contrast the live genesis, which embeds a newspaper front page and therefore cannot predate it.</div>
   </details>
 </article><article class="ev" data-axis="both" data-grade="CAPTURE" data-gap="false" id="2008-10-03-draft">
   <header>
@@ -194,6 +205,17 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <p class="claim">A whitepaper version is created at this exact second. It is the version the public could obtain in January 2009, and it is not the October draft nor the March canonical.</p>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>COPA Appendix PM3, giving the creation timestamp</b><br><span class="w">archives/copa-appendices/</span></li><li><b>identified across three exhibit references as AR3 = NB1 = BWP-NB1</b><br><span class="w">bitcoin-origin-claims/45_the-appendix-and-the-correspondence.md</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>THE PRINCIPAL OPEN ITEM. Dated to the second, cross-referenced three ways, no copy held. Most likely surviving location is Nicholas Bohm&#x27;s Thunderbird mail profile.</div>
+  </details>
+</article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" id="2008-11-15-prerelease-code">
+  <header>
+    <time>2008-11-15</time>
+    <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
+    
+    <h3>The pre-release codebase is dated</h3>
+  </header>
+  <p class="claim">A Bitcoin codebase predating any public release is dated 15 November 2008 and is distributed with a published MD5.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>SNI&#x27;s code page</b><br><span class="w">https://satoshi.nakamotoinstitute.org/code/</span></li><li><b>an independently obtained copy</b><br><span class="w">archives/patoshi-and-correspondence-sources/nakamotoinstitute-bitcoin-nov08.tgz</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>CAUTION: SNI&#x27;s .tgz is labelled &#x27;Compressed by SNI&#x27; — a REPACKAGING, not original bytes. It will not hash to anything Satoshi produced, and must never be cited as an original artifact. Their .rar carries a published MD5; that is the one to check against.</div>
   </details>
 </article><article class="ev" data-axis="satoshi" data-grade="ARCHIVE-POS" data-gap="false" id="2008-11-17-list-closes">
   <header>
@@ -404,6 +426,17 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>p2p-research February 2009 archive, Message-ID &lt;4993519E.8080300@gmx.com&gt;</b><br><span class="w">archives/nakamoto-archive-lugaxker/src/p2p-research-mailing-list-2009-February.txt.gz</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Date offset is +0000 here against +0800 on vistomail — the offset tracks the provider. The Mozilla Message-ID&#x27;s embedded Unix timestamp decodes to the Date header exactly, an authenticity check but NOT a location check.</div>
   </details>
+</article><article class="ev" data-axis="satoshi" data-grade="SELF" data-gap="false" id="2009-02-18-p2pfoundation">
+  <header>
+    <time>2009-02-18</time>
+    <span class="g g-SELF">SELF</span>
+    
+    <h3>The P2P Foundation profile posts</h3>
+  </header>
+  <p class="claim">Three posts appear on the P2P Foundation profile in February 2009. The profile&#x27;s &#x27;Male, Japan&#x27; field is self-entered.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>profile and posts</b><br><span class="w">archives/wayback-satoshi-pages/</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>GRADED SELF. The earliest capture of the profile is July 2010 — seventeen months after creation — so the field corroborates nothing.</div>
+  </details>
 </article><article class="ev" data-axis="satoshi" data-grade="ARCHIVE-POS" data-gap="false" id="2009-03-04-vistomail-last">
   <header>
     <time>2009-03-04</time>
@@ -569,6 +602,28 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>Internet Archive capture</b><br><span class="w">archives/wayback-satoshi-pages/</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Two independent distributions of one key file. It still signs nothing.</div>
   </details>
+</article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" id="2011-06-19-bohm-100-leaves">
+  <header>
+    <time>2011-06-19</time>
+    <span class="g g-CHAIN">CHAIN</span>
+    
+    <h3>The 100 BTC leaves Bohm&#x27;s address</h3>
+  </header>
+  <p class="claim">The address that received Satoshi&#x27;s 100 BTC gift in February 2009 is spent down; it has held nothing since 2011.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>on-chain spend of 1CHE5JRfc5mr8ZtVUP7nnsS5HC4bWcXoc6</b><br><span class="w">the Bitcoin blockchain</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/bohm_transfer.py</code></div><div class="notes"><span class="lbl">caveats</span>Matches his own account of spending the wallet down before losing access. Recorded so the address is never presented as a live holding.</div>
+  </details>
+</article><article class="ev" data-axis="satoshi" data-grade="PARTY-RELEASED" data-gap="false" id="2014-03-02-wei-dai">
+  <header>
+    <time>2014-03-02</time>
+    <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
+    
+    <h3>The Satoshi–Wei Dai exchange is published</h3>
+  </header>
+  <p class="claim">Three messages between Satoshi and Wei Dai are published, quoted in the Sunday Times.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>Wei Dai correspondence, as collected by the Nakamoto Studies Institute</b><br><span class="w">archives/patoshi-and-correspondence-sources/nsi-wei-dai-correspondence.html</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Recovered from the Wayback Machine after nakamotostudies.org itself went to a domain-parking stub — the publisher is gone, the content survives.</div>
+  </details>
 </article><article class="ev" data-axis="satoshi" data-grade="NONE" data-gap="false" id="2014-03-07-not-dorian">
   <header>
     <time>2014-03-07</time>
@@ -612,6 +667,17 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <p class="claim">The project drops to a single 102-byte README.txt pointing at GitHub; the original release files stop being served.</p>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>SourceForge project state</b><br><span class="w">archives/flossmole-sourceforge/</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Primary hosting decays. It is why this project mirrors rather than links — and why two of the secondary sources cited by other Satoshi archives are already dead.</div>
+  </details>
+</article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" id="2017-08-17-dillinger">
+  <header>
+    <time>2017-08-17</time>
+    <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
+    
+    <h3>An original 2008 participant confirms the pre-release hash</h3>
+  </header>
+  <p class="claim">Ray Dillinger, a participant in the original November 2008 discussion, confirms the recirculated draft: &quot;Yes. The hash matches. That&#x27;s definitely it.&quot;</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>the 2017 cryptography-list exchange</b><br><span class="w">bitcoin-origin-claims/35_the-pre-revision-draft.md</span></li><li><b>the file whose hash he confirmed</b><br><span class="w">archives/whitepaper-variants/prerelease_2008-10-03_ia-bitcoin-foundation.pdf</span><br><code class="h">427c63b364c6db914cf23072a09ffd53ee078397b7c6ab2d604e12865a982faa</code></li></ul><div class="rep"><span class="lbl">reproduce</span><code>sha256sum archives/whitepaper-variants/prerelease_2008-10-03_ia-bitcoin-foundation.pdf</code></div><div class="notes"><span class="lbl">caveats</span>Nine years after the fact, by someone who held the original. Testimony about a hash is much stronger than testimony about a document, because the hash is checkable and the memory is not load-bearing.</div>
   </details>
 </article><article class="ev" data-axis="bitcoin" data-grade="ADJUDICATED" data-gap="false" id="2024-copa-219">
   <header>
