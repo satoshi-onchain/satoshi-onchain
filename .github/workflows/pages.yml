@@ -1,0 +1,52 @@
+# Deploy docs/ to GitHub Pages.
+#
+# WHY THIS FILE EXISTS. Pages was originally served by GitHub's implicit "deploy from a branch"
+# mode, which needs no workflow. On 6 Aug 2026 that path stalled: the deployment sat in
+# `deployment_queued` for ten minutes and timed out, twice, on a build that had itself succeeded --
+# with githubstatus.com reporting Pages fully operational and neighbouring deploys the same day
+# finishing in under a minute. Switching the source to "GitHub Actions" cleared it.
+#
+# But that switch introduced a WORSE failure than the one it fixed. With the source set to GitHub
+# Actions, GitHub stops deploying on push and instead waits for a workflow to call
+# actions/deploy-pages. This repository had no such workflow, so two pushes produced NO run at all
+# and the site silently kept serving an older commit while every local check looked healthy.
+#
+# That is the same shape as the three data bugs found the same day -- an artifact that looks
+# complete and is not. The fix is to make the deployment EXPLICIT and VERSIONED rather than
+# implicit: this file is the deployment, it lives in the repository, and it can be read.
+#
+# Deliberately NOT filtered on `paths: docs/**`. Filtering would save a little CI time at the cost
+# of reintroducing "why didn't the site update?" as a legitimate question. Every push to main
+# deploys; there is nothing to reason about.
+
+name: Deploy site to Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never let two deploys race; queue rather than cancel, so a push is never silently dropped.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+      - id: deployment
+        uses: actions/deploy-pages@v4
