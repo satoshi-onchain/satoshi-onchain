@@ -29,6 +29,8 @@ REQUIRED = ["id", "when", "precision", "axis", "grade", "title", "claim", "evide
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--events", default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "events.json"))
+ap.add_argument("--corpus", default=None,
+                help="root holding bitcoin-origin-claims/ and archives/; omit to infer")
 ap.add_argument("--out", default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "timeline.html"))
 a = ap.parse_args()
 
@@ -116,19 +118,34 @@ for e in events:
 </article>''')
 
 # Measure the corpus this timeline is drawn from, so the page can state its own incompleteness
-# with a real number rather than a vague hedge. Counted, not asserted.
-import glob, subprocess
-_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# with a real number rather than a vague hedge.
+#
+# IF THE CORPUS IS NOT REACHABLE, SAY SO -- DO NOT PRINT ZERO. An unmeasured count rendered as "0"
+# is indistinguishable from a measured zero, and that is precisely the failure this project keeps
+# hitting (a column of assumed constants; a truncated label; a survey reporting success over holes).
+# This exact bug shipped once: built from inside the published repo, the corpus path did not resolve
+# and the live page asserted "0 distinct dated events" as though it had counted them.
+import glob
+_root = a.corpus or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 _entries = glob.glob(os.path.join(_root, "bitcoin-origin-claims", "*.md"))
-_dates = set()
-for _f in _entries:
-    _dates |= set(re.findall(r"(?:200[7-9]|201[0-9])-\d{2}-\d{2}",
-                             open(_f, encoding="utf-8", errors="replace").read()))
-CORPUS_DATED = len(_dates)
-CORPUS_ENTRIES = len(_entries)
-CORPUS_ARCHIVES = len([d for d in glob.glob(os.path.join(_root, "archives", "*"))
-                       if os.path.isdir(d) and os.path.exists(os.path.join(d, "SHA256SUMS"))])
-print(f"  corpus behind it: {CORPUS_DATED} dated events, {CORPUS_ENTRIES} entries, {CORPUS_ARCHIVES} sealed archives")
+_archives = [d for d in glob.glob(os.path.join(_root, "archives", "*"))
+             if os.path.isdir(d) and os.path.exists(os.path.join(d, "SHA256SUMS"))]
+CORPUS_MEASURED = bool(_entries)
+if CORPUS_MEASURED:
+    _dates = set()
+    for _f in _entries:
+        _dates |= set(re.findall(r"(?:200[7-9]|201[0-9])-\d{2}-\d{2}",
+                                 open(_f, encoding="utf-8", errors="replace").read()))
+    CORPUS_LINE = (f"The research corpus behind it contains <b>{len(_dates)}</b> distinct dated events "
+                   f"across {len(_entries)} written entries and {len(_archives)} sealed archives, and "
+                   f"migration into this file is deliberate rather than bulk — each row has to acquire a "
+                   f"grade, a source and a reproduction path before it can appear. That corpus is a local "
+                   f"research archive and is not itself published, so this number is stated, not linkable.")
+    print(f"  corpus behind it: {len(_dates)} dated events, {len(_entries)} entries, {len(_archives)} sealed archives")
+else:
+    CORPUS_LINE = ("The research corpus behind it is not part of this repository, so its size is not "
+                   "stated here rather than guessed at.")
+    print("  NOTE: corpus not reachable from this path -- the page will say so instead of printing zero")
 
 built = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
 doc = f'''<title>Satoshi &amp; Bitcoin — a verifiable timeline</title>
@@ -179,10 +196,7 @@ it. Rows we <b>cannot</b> verify are shown too, marked <b>NOT HELD</b> — becau
 only what was found looks complete when it is not.</p>
 
 <div class="incomplete"><b>This timeline is incomplete, and says so on purpose.</b>
-It currently holds <b>{len(events)}</b> events. The research corpus behind it contains
-<b>{CORPUS_DATED}</b> distinct dated events across {CORPUS_ENTRIES} written entries and
-{CORPUS_ARCHIVES} sealed archives, and migration into this file is deliberate rather than bulk —
-each row has to acquire a grade, a source and a reproduction path before it can appear.
+It currently holds <b>{len(events)}</b> events. {CORPUS_LINE}
 <b>Absence of a row here is not evidence that nothing happened on that date.</b>
 Applying the same standard to ourselves that we apply to everyone else.</div>
 
