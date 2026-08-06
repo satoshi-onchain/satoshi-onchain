@@ -166,7 +166,7 @@ failure (our own `early_tx_survey.py` died mid-sweep for exactly that reason). T
 Google's public mirror of the chain, `bigquery-public-data.crypto_bitcoin`, and answers in seconds.
 
 **Establishes:** exactly **eight** blocks in the whole of 2009 collected a transaction fee; the total
-paid across the year is **3.27 BTC**; every other block paid exactly 50.00. The earliest is **block
+paid across the year is **2.87 BTC**; every other block paid exactly 50.00. The earliest is **block
 2817, 3 February 2009, fee 2.01 BTC** — larger than the other seven combined.
 
 **Does not establish:** who mined any of them, or why any fee was set. A coinbase value is not an

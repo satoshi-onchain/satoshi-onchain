@@ -921,5 +921,53 @@
     "reproduce": null,
     "gap": false,
     "notes": "Primary hosting decays. It is why this project mirrors rather than links — and why two of the secondary sources cited by other Satoshi archives are already dead."
+  },
+  {
+    "id": "2009-11-22-old-forum",
+    "when": "2009-11-22",
+    "precision": "day",
+    "axis": "satoshi",
+    "grade": "ADJUDICATED",
+    "title": "The pre-BitcoinTalk forum — SATOSHI'S OWN VENUE, NOT ARCHIVED",
+    "claim": "Satoshi ran a web forum at bitcoin.sourceforge.net/boards/ before launching the successor forum on 22 November 2009, naming the old URL in his own announcement. No capture of it survives.",
+    "evidence": [
+      {
+        "what": "Satoshi's migration post giving the old forum URL",
+        "where": "https://bitcointalk.org/index.php?topic=5.0",
+        "hash": null
+      },
+      {
+        "what": "CDX sweep of the whole domain: 27 archived URLs, none under /boards/",
+        "where": "archives/bitcoin-sourceforge-net/SOURCES.md",
+        "hash": null
+      }
+    ],
+    "reproduce": "http://web.archive.org/cdx/search/cdx?url=bitcoin.sourceforge.net*&output=json&filter=statuscode:200&fl=timestamp,original",
+    "gap": true,
+    "notes": "A Satoshi venue absent from every compilation we have checked. NOT ARCHIVED is not the same as destroyed. The remaining route is reconstruction from the 'Repost:' threads he carried across."
+  },
+  {
+    "id": "2024-copa-219",
+    "when": "2024-03-14",
+    "precision": "day",
+    "axis": "bitcoin",
+    "grade": "ADJUDICATED",
+    "title": "A court judgment states the 2009 transaction count",
+    "claim": "The COPA v Wright judgment records that there were just 219 non-coinbase transactions in the 32,489 blocks created up to the end of 2009 — the same figure our independent query returns.",
+    "evidence": [
+      {
+        "what": "judgment paragraph 716, held in our own archive",
+        "where": "archives/copa-v-wright/judgment.html",
+        "hash": null
+      },
+      {
+        "what": "our query returning 219",
+        "where": "https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv",
+        "hash": null
+      }
+    ],
+    "reproduce": "satoshi-onchain/verify/first_year_payments.sql",
+    "gap": false,
+    "notes": "Independent confirmation from an adjudicated source. Recorded also because we held this document while believing the count was unpublished — the figure was in our own archive and we did not connect it."
   }
 ]

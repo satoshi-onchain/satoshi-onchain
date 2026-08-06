@@ -261,6 +261,14 @@
       the 219 first-year payments to the per-block labels answers it — and the two datasets are
       independent, because the labels come from <b>nonce and ExtraNonce</b> fields that have nothing
       to do with keys or addresses.</p>
+    <p class="sm"><b>The question is not ours, and we should say so.</b> Sergio Lerner — who
+      identified the pattern in the first place — asked it directly in 2013, reporting that he saw
+      <i>&ldquo;only two blocks rewards (100 BTC) that seem to be part of a Satoshi mining pattern
+      being spent&rdquo;</i>, and quantified it in 2019: <i>&ldquo;99.9% of all Patoshi blocks are
+      unspent. While only 10% of all non-Patoshi blocks are unspent.&rdquo;</i> His measurement is
+      <b>per block, across the whole era</b>. The figures below are a different cut — <b>per spent
+      coin, inside the first year&rsquo;s payments</b> — and they agree with him. Agreement with
+      prior work is a result; pretending the question was new would not be.</p>
     <div class="scroll">
       <table>
         <thead><tr><th>Weighting</th><th class="num">Flagged share of coins spent</th><th class="num">Base rate</th><th class="num">Ratio</th></tr></thead>
@@ -379,7 +387,7 @@
   <section id="fees2009">
     <h2>Fees, 2009</h2>
     <p class="lead">Eight blocks in Bitcoin’s entire first year collected a transaction fee. The
-      total paid across all of 2009 was <b>3.27 BTC</b>.</p>
+      total paid across all of 2009 was <b>2.87 BTC</b>.</p>
     <p class="sm">Out of roughly <b>32,000</b> blocks. Fees were optional and almost nobody set one,
       so the whole of the first year’s fee record fits in a table this size. Satoshi described the
       design to a correspondent in May 2009 — <i>“including a fee is completely optional, more of a
@@ -426,7 +434,7 @@
       from the chain.</p>
     <p class="sm" style="margin-top:14px"><b>The whole first year is 219 payments.</b> For most of
       2009 the chain is a near-unbroken run of coinbase-only blocks, so every payment anyone made can
-      be listed <i>exhaustively</i> — and we could not find that list published anywhere. By month:
+      be listed <i>exhaustively</i>. By month:
       32, 37, 21, 17, 18, 8, 5, 6, 11, 13, 15, 36. The mid-year trough is real; so is the December
       surge. <b>That exhaustiveness is what makes early claims checkable</b>: when an account says
       <i>N coins moved on date D</i>, you no longer weigh it against a vast chain — you look at the
@@ -437,6 +445,19 @@
       it. <b>Read the ordering caveat in the header before pairing addresses with amounts:</b> the
       amount column is index-ordered and the address columns are not, so identify by elimination (an
       address appearing on the inputs is taking change) rather than by position.</p>
+    <p class="sm"><b>Prior art, and a correction to what this page used to say.</b> An earlier
+      version of this section claimed the 2009 payment list was unpublished. <b>That was wrong.</b>
+      Bitcointalk user <span class="mono">TheArchaeologist</span> enumerated
+      <i>&ldquo;all the transactions performed in 2009&rdquo;</i> in
+      <a href="https://bitcointalk.org/index.php?topic=5044418.0">topic 5044418</a> on
+      <b>5 October 2018</b>, and the exact figure of <b>219</b> non-coinbase transactions appears in
+      the BTC Core Developers&rsquo; closing submissions in <i>COPA v Wright</i> and again at
+      paragraph 716 of the judgment (2024). Earlier still, user <span class="mono">molecular</span>
+      published a Bitcoin-Abe analysis on <b>15 August 2011</b> reporting
+      <span class="mono">1,624,252.87 BTC (2.87 BTC fees)</span> —
+      <a href="https://bitcointalk.org/index.php?topic=37333.msg458390">topic 37333</a>. <b>That
+      2011 post also had the fee total right when we had it wrong.</b> What remains ours is the
+      reproducible query and the cross-checked CSV, not the discovery.</p>
     <div class="xlink"><b>Check it in one query.</b> The SQL is
       <a href="https://github.com/satoshi-onchain/satoshi-onchain/tree/main/verify">in the repo</a> and
       runs against Google’s public mirror of the chain,

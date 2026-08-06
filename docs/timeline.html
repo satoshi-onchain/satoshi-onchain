@@ -46,7 +46,7 @@ it. Rows we <b>cannot</b> verify are shown too, marked <b>NOT HELD</b> — becau
 only what was found looks complete when it is not.</p>
 
 <div class="incomplete"><b>This timeline is incomplete, and says so on purpose.</b>
-It currently holds <b>45</b> events. The research corpus behind it contains <b>105</b> distinct dated events across 54 written entries and 17 sealed archives, and migration into this file is deliberate rather than bulk — each row has to acquire a grade, a source and a reproduction path before it can appear. That corpus is a local research archive and is not itself published, so this number is stated, not linkable.
+It currently holds <b>47</b> events. The research corpus behind it contains <b>105</b> distinct dated events across 55 written entries and 18 sealed archives, and migration into this file is deliberate rather than bulk — each row has to acquire a grade, a source and a reproduction path before it can appear. That corpus is a local research archive and is not itself published, so this number is stated, not linkable.
 <b>Absence of a row here is not evidence that nothing happened on that date.</b>
 Applying the same standard to ourselves that we apply to everyone else.</div>
 
@@ -459,6 +459,17 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>forum profile, server-written registration time</b><br><span class="w">archives/bitcointalk-satoshi/</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/bitcointalk_satoshi.py</code></div><div class="notes"><span class="lbl">caveats</span>539 posts are publicly enumerable; the profile counts 575, so 36 are counted but not listed.</div>
   </details>
+</article><article class="ev gap" data-axis="satoshi" data-grade="ADJUDICATED" data-gap="true" id="2009-11-22-old-forum">
+  <header>
+    <time>2009-11-22</time>
+    <span class="g g-ADJUDICATED">ADJUDICATED</span>
+    <span class="gapflag">NOT HELD</span>
+    <h3>The pre-BitcoinTalk forum — SATOSHI&#x27;S OWN VENUE, NOT ARCHIVED</h3>
+  </header>
+  <p class="claim">Satoshi ran a web forum at bitcoin.sourceforge.net/boards/ before launching the successor forum on 22 November 2009, naming the old URL in his own announcement. No capture of it survives.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>Satoshi&#x27;s migration post giving the old forum URL</b><br><span class="w">https://bitcointalk.org/index.php?topic=5.0</span></li><li><b>CDX sweep of the whole domain: 27 archived URLs, none under /boards/</b><br><span class="w">archives/bitcoin-sourceforge-net/SOURCES.md</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>http://web.archive.org/cdx/search/cdx?url=bitcoin.sourceforge.net*&amp;output=json&amp;filter=statuscode:200&amp;fl=timestamp,original</code></div><div class="notes"><span class="lbl">caveats</span>A Satoshi venue absent from every compilation we have checked. NOT ARCHIVED is not the same as destroyed. The remaining route is reconstruction from the &#x27;Repost:&#x27; threads he carried across.</div>
+  </details>
 </article><article class="ev" data-axis="both" data-grade="CAPTURE" data-gap="false" id="2010-07-04-pdf-capture">
   <header>
     <time>2010-07-04</time>
@@ -557,6 +568,17 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <p class="claim">The project drops to a single 102-byte README.txt pointing at GitHub; the original release files stop being served.</p>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>SourceForge project state</b><br><span class="w">archives/flossmole-sourceforge/</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Primary hosting decays. It is why this project mirrors rather than links — and why two of the secondary sources cited by other Satoshi archives are already dead.</div>
+  </details>
+</article><article class="ev" data-axis="bitcoin" data-grade="ADJUDICATED" data-gap="false" id="2024-copa-219">
+  <header>
+    <time>2024-03-14</time>
+    <span class="g g-ADJUDICATED">ADJUDICATED</span>
+    
+    <h3>A court judgment states the 2009 transaction count</h3>
+  </header>
+  <p class="claim">The COPA v Wright judgment records that there were just 219 non-coinbase transactions in the 32,489 blocks created up to the end of 2009 — the same figure our independent query returns.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>judgment paragraph 716, held in our own archive</b><br><span class="w">archives/copa-v-wright/judgment.html</span></li><li><b>our query returning 219</b><br><span class="w">https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>satoshi-onchain/verify/first_year_payments.sql</code></div><div class="notes"><span class="lbl">caveats</span>Independent confirmation from an adjudicated source. Recorded also because we held this document while believing the count was unpublished — the figure was in our own archive and we did not connect it.</div>
   </details>
 </article>
 

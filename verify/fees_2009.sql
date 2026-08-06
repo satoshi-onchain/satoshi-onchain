@@ -3,7 +3,7 @@
 --
 -- WHAT THIS ESTABLISHES
 --   Exactly eight blocks in the whole of 2009 collected a transaction fee.
---   Total fees paid across the year: 3.27 BTC. Every other block paid exactly 50.00.
+--   Total fees paid across the year: 2.87 BTC. Every other block paid exactly 50.00.
 --   The earliest is block 2817 (3 Feb 2009), whose 2.01 BTC fee is larger than the
 --   other seven combined.
 --
