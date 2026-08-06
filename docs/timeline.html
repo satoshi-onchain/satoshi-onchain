@@ -1,0 +1,395 @@
+<title>Satoshi &amp; Bitcoin — a verifiable timeline</title>
+<style>
+:root{--bg:#fff;--fg:#111;--mut:#666;--line:#e3e3e3;--card:#fafafa;--gap:#fff8e1;--gapline:#e0b400}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1115;--fg:#e8e8ea;--mut:#9aa0aa;--line:#262a33;--card:#161922;--gap:#241f10;--gapline:#7a5c00}}
+:root[data-theme=dark]{--bg:#0f1115;--fg:#e8e8ea;--mut:#9aa0aa;--line:#262a33;--card:#161922;--gap:#241f10;--gapline:#7a5c00}
+:root[data-theme=light]{--bg:#fff;--fg:#111;--mut:#666;--line:#e3e3e3;--card:#fafafa;--gap:#fff8e1;--gapline:#e0b400}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:28px 18px 80px}
+h1{font-size:24px;margin:0 0 6px}
+.sub{color:var(--mut);margin:0 0 22px}
+.bar{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);padding:12px 0;margin-bottom:18px;z-index:5}
+.bar button{font:inherit;font-size:13px;padding:5px 12px;margin-right:6px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:999px;cursor:pointer}
+.bar button[aria-pressed=true]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.bar .grp{margin-top:8px}
+.bar label{font-size:13px;color:var(--mut);margin-right:10px}
+.ev{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:14px 16px;margin:0 0 12px}
+.ev.gap{background:var(--gap);border-color:var(--gapline)}
+.ev header{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ev time{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:var(--mut)}
+.ev h3{font-size:16px;margin:4px 0 0;flex-basis:100%}
+.g{font-size:10.5px;letter-spacing:.06em;padding:2px 7px;border-radius:4px;border:1px solid var(--line);color:var(--mut)}
+.g-CHAIN{background:#0a7f3f;color:#fff;border-color:#0a7f3f}
+.g-SERVER-DB{background:#1256a0;color:#fff;border-color:#1256a0}
+.g-ADJUDICATED{background:#5a3fa0;color:#fff;border-color:#5a3fa0}
+.g-PARTY-RELEASED,.g-ARCHIVE-POS,.g-CAPTURE{background:transparent}
+.g-SELF,.g-NONE{background:#8a1f1f;color:#fff;border-color:#8a1f1f}
+.gapflag{font-size:10.5px;letter-spacing:.06em;padding:2px 7px;border-radius:4px;background:var(--gapline);color:#000}
+.claim{margin:8px 0 6px}
+details summary{cursor:pointer;color:var(--mut);font-size:13px}
+.evid{margin:10px 0;padding-left:18px}
+.evid li{margin-bottom:8px;font-size:13.5px}
+.w{color:var(--mut);font-size:12.5px;word-break:break-all}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;word-break:break-all}
+.h{color:var(--mut)}
+.rep,.notes{margin-top:8px;font-size:13px}
+.rep.none i{color:var(--mut)}
+.lbl{display:inline-block;min-width:82px;color:var(--mut);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.count{color:var(--mut);font-size:13px;margin:6px 0 16px}
+.legend{border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:22px 0;font-size:13.5px;color:var(--mut)}
+</style>
+<div class="wrap">
+<h1>Satoshi &amp; Bitcoin — a verifiable timeline</h1>
+<p class="sub">Every row carries an evidence grade and, where one exists, a command that regenerates
+it. Rows we <b>cannot</b> verify are shown too, marked <b>NOT HELD</b> — because a timeline showing
+only what was found looks complete when it is not.</p>
+
+<div class="incomplete"><b>This timeline is incomplete, and says so on purpose.</b>
+It currently holds <b>26</b> events. The research corpus behind it contains
+<b>0</b> distinct dated events across 0 written entries and
+0 sealed archives, and migration into this file is deliberate rather than bulk —
+each row has to acquire a grade, a source and a reproduction path before it can appear.
+<b>Absence of a row here is not evidence that nothing happened on that date.</b>
+Applying the same standard to ourselves that we apply to everyone else.</div>
+
+<div class="bar">
+  <div>
+    <button data-view="both" aria-pressed="true">Combined</button>
+    <button data-view="satoshi" aria-pressed="false">Satoshi</button>
+    <button data-view="bitcoin" aria-pressed="false">Bitcoin</button>
+  </div>
+  <div class="grp">
+    <label><input type="checkbox" id="gapsOnly"> gaps only</label>
+    <label><input type="checkbox" id="chainOnly"> chain-grade only</label>
+  </div>
+</div>
+<p class="count" id="count"></p>
+
+<article class="ev gap" data-axis="both" data-grade="PARTY-RELEASED" data-gap="true" id="2008-08-xx-first-draft">
+  <header>
+    <time>2008-08</time>
+    <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
+    <span class="gapflag">NOT HELD</span>
+    <h3>An August 2008 whitepaper version existed — WE DO NOT HOLD IT</h3>
+  </header>
+  <p class="claim">A draft predating the October version was sent to at least Adam Back and Wei Dai. Only its abstract text survives to us.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>abstract text only</b><br><span class="w">archives/whitepaper-variants/aug2008_abstract.txt</span><br><code class="h">6dd156197af8ee359d0852a236997e843b2f8e39a20ca326d17883420d82d9bd</code></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>NOT LOCATED. Not evidence of destruction — an absence of copies is not a proof that none survive.</div>
+  </details>
+</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2008-08-18-domain">
+  <header>
+    <time>2008-08-18</time>
+    <span class="g g-SERVER-DB">SERVER-DB</span>
+    
+    <h3>bitcoin.org is registered</h3>
+  </header>
+  <p class="claim">The domain bitcoin.org is created, ten weeks before the whitepaper is announced.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>RDAP registry record</b><br><span class="w">https://rdap.publicinterestregistry.org/rdap/domain/bitcoin.org</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>curl -s https://rdap.publicinterestregistry.org/rdap/domain/bitcoin.org | jq &#x27;.events&#x27;</code></div><div class="notes"><span class="lbl">caveats</span>A registrar&#x27;s own database row. It says nothing about who registered it.</div>
+  </details>
+</article><article class="ev" data-axis="satoshi" data-grade="ADJUDICATED" data-gap="false" id="2008-08-20-anonymousspeech">
+  <header>
+    <time>2008-08-20</time>
+    <span class="g g-ADJUDICATED">ADJUDICATED</span>
+    
+    <h3>The earliest known Satoshi communication of any kind</h3>
+  </header>
+  <p class="claim">satoshi@anonymousspeech.com writes to Adam Back querying the Hashcash citation, ten weeks before the paper is public.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>Adam Back witness statement §5, full header quoted under a statement of truth</b><br><span class="w">archives/nakamoto-archive-lugaxker/src/adam-back-exhibit-ab1.pdf</span></li><li><b>COPA Opening Skeleton §16</b><br><span class="w">archives/copa-v-wright/</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Establishes the identifier sequence anonymousspeech -&gt; vistomail -&gt; gmx, not the reverse.</div>
+  </details>
+</article><article class="ev" data-axis="both" data-grade="CAPTURE" data-gap="false" id="2008-10-03-draft">
+  <header>
+    <time>2008-10-03 20:49:58 UTC</time>
+    <span class="g g-CAPTURE">CAPTURE</span>
+    
+    <h3>The 3 October 2008 pre-release draft exists</h3>
+  </header>
+  <p class="claim">A pre-release whitepaper PDF is created; we hold the bytes, and its two /ID halves are equal, meaning it was never re-saved after creation.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>prerelease_2008-10-03_ia-bitcoin-foundation.pdf, 183,697 bytes</b><br><span class="w">archives/whitepaper-variants/prerelease_2008-10-03_ia-bitcoin-foundation.pdf</span><br><code class="h">427c63b364c6db914cf23072a09ffd53ee078397b7c6ab2d604e12865a982faa</code></li></ul><div class="rep"><span class="lbl">reproduce</span><code>sha256sum archives/whitepaper-variants/prerelease_2008-10-03_ia-bitcoin-foundation.pdf</code></div><div class="notes"><span class="lbl">caveats</span>/CreationDate D:20081003134958-07&#x27;00&#x27;. The offset is the producing machine&#x27;s setting, not a location.</div>
+  </details>
+</article><article class="ev" data-axis="both" data-grade="ARCHIVE-POS" data-gap="false" id="2008-10-31-announcement">
+  <header>
+    <time>2008-10-31 18:10:00 UTC</time>
+    <span class="g g-ARCHIVE-POS">ARCHIVE-POS</span>
+    
+    <h3>The whitepaper is announced to the cryptography list</h3>
+  </header>
+  <p class="claim">satoshi@vistomail.com posts &#x27;Bitcoin P2P e-cash paper&#x27; to cryptography@metzdowd.com.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>metzdowd pipermail mbox, Date: Sat, 01 Nov 2008 02:10:00 +0800</b><br><span class="w">archives/metzdowd-cryptography/mbox/2008-October.txt.gz</span></li><li><b>MIT&#x27;s independent archive of the same list</b><br><span class="w">https://diswww.mit.edu/bloom-picayune/crypto/136690</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/metzdowd_backup.py</code></div><div class="notes"><span class="lbl">caveats</span>The +0800 offset is the mail provider&#x27;s server clock, not a location — see the +0800 verdict. Message-ID is CHILKAT-MID-...@server123, a server-side library.</div>
+  </details>
+</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2008-11-09-sourceforge">
+  <header>
+    <time>2008-11-09 18:58:00 UTC</time>
+    <span class="g g-SERVER-DB">SERVER-DB</span>
+    
+    <h3>The Bitcoin project is registered on SourceForge</h3>
+  </header>
+  <p class="claim">Account nakamoto2 registers the project; s_nakamoto and hal are added later.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>SourceForge account pages and sequential user IDs</b><br><span class="w">archives/flossmole-sourceforge/</span></li><li><b>Wayback capture of nakamoto2&#x27;s join date</b><br><span class="w">https://web.archive.org/web/20091130163943if_/http://sourceforge.net:80/users/nakamoto2</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/sourceforge_identity.py</code></div><div class="notes"><span class="lbl">caveats</span>Written by SourceForge&#x27;s own database. The subject could not set it.</div>
+  </details>
+</article><article class="ev gap" data-axis="both" data-grade="ADJUDICATED" data-gap="true" id="2008-11-11-lost-version">
+  <header>
+    <time>2008-11-11 16:00:34 UTC</time>
+    <span class="g g-ADJUDICATED">ADJUDICATED</span>
+    <span class="gapflag">NOT HELD</span>
+    <h3>The 11 November 2008 whitepaper is created — WE DO NOT HOLD THE BYTES</h3>
+  </header>
+  <p class="claim">A whitepaper version is created at this exact second. It is the version the public could obtain in January 2009, and it is not the October draft nor the March canonical.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>COPA Appendix PM3, giving the creation timestamp</b><br><span class="w">archives/copa-appendices/</span></li><li><b>identified across three exhibit references as AR3 = NB1 = BWP-NB1</b><br><span class="w">bitcoin-origin-claims/45_the-appendix-and-the-correspondence.md</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>THE PRINCIPAL OPEN ITEM. Dated to the second, cross-referenced three ways, no copy held. Most likely surviving location is Nicholas Bohm&#x27;s Thunderbird mail profile.</div>
+  </details>
+</article><article class="ev" data-axis="satoshi" data-grade="ARCHIVE-POS" data-gap="false" id="2008-11-17-list-closes">
+  <header>
+    <time>2008-11-17 21:43:33 UTC</time>
+    <span class="g g-ARCHIVE-POS">ARCHIVE-POS</span>
+    
+    <h3>The venue closes — and the 52-day silence is explained</h3>
+  </header>
+  <p class="claim">Moderator Perry E. Metzger ends the Bitcoin discussion 4h19m after Satoshi&#x27;s last post. The silence that follows is a moderated list being moderated, not a withdrawal.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>metzdowd pipermail, November 2008</b><br><span class="w">archives/metzdowd-cryptography/mbox/2008-November.txt.gz</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/metzdowd_backup.py</code></div><div class="notes"><span class="lbl">caveats</span>Satoshi&#x27;s next post to the list, 52 days later, is &#x27;Bitcoin v0.1 released&#x27; — exactly the condition Metzger named.</div>
+  </details>
+</article><article class="ev gap" data-axis="satoshi" data-grade="NONE" data-gap="true" id="identity-ceiling">
+  <header>
+    <time>2009-01-03 &rarr; 2010-12-15</time>
+    <span class="g g-NONE">NONE</span>
+    <span class="gapflag">NOT HELD</span>
+    <h3>No key has ever signed anything — the ceiling on all of this</h3>
+  </header>
+  <p class="claim">No genesis-era or Patoshi private key has ever produced a verifying signature. Every identity fact on this timeline is forensic, archival, adjudicated or party-released. None is cryptographic.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>the absence itself; the 2016 demonstration reused a 2009 signature from block 183</b><br><span class="w">bitcoin-origin-claims/01_satoshi-identity-claims.md</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>This is a property of the world, not a gap in the research. Only a signature would change it. Recorded as a row so the timeline cannot be read as answering &#x27;who&#x27;.</div>
+  </details>
+</article><article class="ev" data-axis="both" data-grade="CHAIN" data-gap="false" id="2009-01-03-genesis">
+  <header>
+    <time>2009-01-03 18:15:05 UTC</time>
+    <span class="g g-CHAIN">CHAIN</span>
+    
+    <h3>The genesis block</h3>
+  </header>
+  <p class="claim">Block 0 is mined, embedding The Times headline of 3 January 2009.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>block 0, hash 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f</b><br><span class="w">the Bitcoin blockchain</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>any full node, or bigquery-public-data.crypto_bitcoin.blocks WHERE number = 0</code></div><div class="notes"><span class="lbl">caveats</span>The only unforgeable line on this list. Forging it would require redoing the proof-of-work.</div>
+  </details>
+</article><article class="ev" data-axis="both" data-grade="ARCHIVE-POS" data-gap="false" id="2009-01-08-v01-released">
+  <header>
+    <time>2009-01-08 19:27:40 UTC</time>
+    <span class="g g-ARCHIVE-POS">ARCHIVE-POS</span>
+    
+    <h3>Bitcoin v0.1 is announced</h3>
+  </header>
+  <p class="claim">satoshi@vistomail.com posts &#x27;Bitcoin v0.1 released&#x27; to the cryptography list.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>metzdowd pipermail, Date: Fri, 09 Jan 2009 03:27:40 +0800</b><br><span class="w">archives/metzdowd-cryptography/mbox/2009-January.txt.gz</span></li><li><b>MIT&#x27;s independent archive</b><br><span class="w">https://diswww.mit.edu/bloom-picayune/crypto/142102</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/metzdowd_backup.py</code></div>
+  </details>
+</article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" id="2009-01-12-block-170">
+  <header>
+    <time>2009-01-12 03:30:25 UTC</time>
+    <span class="g g-CHAIN">CHAIN</span>
+    
+    <h3>The first payment ever made</h3>
+  </header>
+  <p class="claim">Block 170 carries the first non-coinbase transaction: 50 BTC split into 10 and 40.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>row 1 of the complete first-year payment list</b><br><span class="w">https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>satoshi-onchain/verify/first_year_payments.sql</code></div><div class="notes"><span class="lbl">caveats</span>Widely attributed to Satoshi sending Hal Finney. The chain shows the transaction, not the names.</div>
+  </details>
+</article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" id="2009-01-15-block-593">
+  <header>
+    <time>2009-01-15 15:51:56 UTC</time>
+    <span class="g g-CHAIN">CHAIN</span>
+    
+    <h3>Block 593 — a 50 BTC send with change</h3>
+  </header>
+  <p class="claim">50 BTC is split into two 25s; one output returns to the input address, so this is a payment with change, not a split between two parties.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>first_year_payments.csv</b><br><span class="w">https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>satoshi-onchain/verify/first_year_payments.sql</code></div><div class="notes"><span class="lbl">caveats</span>An earlier reading of ours called this support for a &#x27;first transfer of 25.00&#x27; account. The full transaction reverses the direction; the erratum is recorded in entry 45 §10(k).</div>
+  </details>
+</article><article class="ev" data-axis="both" data-grade="ADJUDICATED" data-gap="false" id="2009-01-18-bohm-downloads">
+  <header>
+    <time>2009-01-18 13:27:00 UTC</time>
+    <span class="g g-ADJUDICATED">ADJUDICATED</span>
+    
+    <h3>A member of the public downloads the whitepaper</h3>
+  </header>
+  <p class="claim">The retired solicitor Nicholas Bohm, reading the cryptography list, downloads the whitepaper. His copy&#x27;s creation date is 11 November 2008.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>witness statement §19, under a statement of truth</b><br><span class="w">archives/copa-v-wright/</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>This is what fixes the 11 November version as what the public could actually get in January 2009.</div>
+  </details>
+</article><article class="ev gap" data-axis="both" data-grade="ADJUDICATED" data-gap="true" id="2009-01-30-bc014">
+  <header>
+    <time>2009-01-30</time>
+    <span class="g g-ADJUDICATED">ADJUDICATED</span>
+    <span class="gapflag">NOT HELD</span>
+    <h3>Pre-release builds bc014 / bc014a / bc015 / bc015a — NOT LOCATED</h3>
+  </header>
+  <p class="claim">Satoshi sends links to at least four pre-release Bitcoin builds between the public v0.1.3 and v0.1.5. The URLs are in disclosed correspondence; the payloads are not located.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>upload.ae URLs quoted in the Bohm correspondence</b><br><span class="w">bitcoin-origin-claims/45_the-appendix-and-the-correspondence.md</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>NOT LOCATED, which is not the same as destroyed. They were also sent as mail attachments, so the likeliest surviving copy is inside Bohm&#x27;s Thunderbird profile rather than on any web archive.</div>
+  </details>
+</article><article class="ev" data-axis="both" data-grade="CHAIN" data-gap="false" id="2009-02-01-block-2616">
+  <header>
+    <time>2009-02-01 16:25:12 UTC</time>
+    <span class="g g-CHAIN">CHAIN</span>
+    
+    <h3>100 BTC is sent to Nicholas Bohm</h3>
+  </header>
+  <p class="claim">Exactly one payment of exactly 100 BTC exists in a 1,501-block window, at the minute and address Bohm&#x27;s own 2009 email quotes.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>block 2616, tx 7d73200e...db6fc3d5, to 1CHE5JRfc5mr8ZtVUP7nnsS5HC4bWcXoc6</b><br><span class="w">the Bitcoin blockchain</span></li><li><b>Bohm&#x27;s contemporaneous email, disclosed in court</b><br><span class="w">archives/copa-v-wright/</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/bohm_transfer.py</code></div><div class="notes"><span class="lbl">caveats</span>A 2009 record and the chain agree exactly. The address was emptied in 2011 and implies nothing about Mr Bohm&#x27;s estate.</div>
+  </details>
+</article><article class="ev" data-axis="satoshi" data-grade="ADJUDICATED" data-gap="false" id="2009-02-03-gmx-changeover">
+  <header>
+    <time>2009-02-03</time>
+    <span class="g g-ADJUDICATED">ADJUDICATED</span>
+    
+    <h3>Satoshi moves from vistomail to gmx</h3>
+  </header>
+  <p class="claim">The changeover is pinned to a few hours of one day: Bohm writes to vistomail at 11:55 and to satoshin@gmx.com at 19:14.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>Bohm correspondence, Exhibit NB1</b><br><span class="w">archives/copa-v-wright/</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Seven weeks earlier than the canonical PDF, which had been the earliest gmx attestation.</div>
+  </details>
+</article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" id="2009-02-03-first-fees">
+  <header>
+    <time>2009-02-03 05:16:42 UTC</time>
+    <span class="g g-CHAIN">CHAIN</span>
+    
+    <h3>The first transaction fees ever paid — a self-test</h3>
+  </header>
+  <p class="claim">Block 2817 collects 2.01 BTC across three transactions (1.00, 1.00, 0.01), all with the same address on every input and output: someone moving 1 BTC to themselves three times.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>first_year_payments.csv, three rows at block 2817</b><br><span class="w">https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>satoshi-onchain/verify/fees_2009.sql</code></div><div class="notes"><span class="lbl">caveats</span>The largest single fee of 2009 is therefore 1.00 BTC on a 1.00 BTC payment. Not a donation — a test.</div>
+  </details>
+</article><article class="ev" data-axis="both" data-grade="CHAIN" data-gap="false" id="2009-02-03-19-btc">
+  <header>
+    <time>2009-02-03 22:55:58 UTC</time>
+    <span class="g g-CHAIN">CHAIN</span>
+    
+    <h3>A Satoshi address, named by Satoshi</h3>
+  </header>
+  <p class="claim">Satoshi gives Bohm 1GtkM4wviwohP192tec9g83hd9X5qtbk9j; block 2914 pays it 19 BTC and block 2915 returns 19.01 — the payment plus the promised penny.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>blocks 2914 and 2915</b><br><span class="w">the Bitcoin blockchain</span></li><li><b>the correspondence naming the address</b><br><span class="w">archives/copa-v-wright/</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>satoshi-onchain/verify/first_year_payments.sql</code></div><div class="notes"><span class="lbl">caveats</span>That address has never spent a satoshi. Almost every &#x27;Satoshi coin&#x27; is inferred from mining patterns; this one Satoshi wrote down.</div>
+  </details>
+</article><article class="ev" data-axis="satoshi" data-grade="ARCHIVE-POS" data-gap="false" id="2009-02-11-p2p-research">
+  <header>
+    <time>2009-02-11 22:30:54 UTC</time>
+    <span class="g g-ARCHIVE-POS">ARCHIVE-POS</span>
+    
+    <h3>The P2P-currency announcement</h3>
+  </header>
+  <p class="claim">satoshin@gmx.com posts &#x27;Bitcoin open source implementation of P2P currency&#x27; to the p2p-research list.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>p2p-research February 2009 archive, Message-ID &lt;4993519E.8080300@gmx.com&gt;</b><br><span class="w">archives/nakamoto-archive-lugaxker/src/p2p-research-mailing-list-2009-February.txt.gz</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Date offset is +0000 here against +0800 on vistomail — the offset tracks the provider. The Mozilla Message-ID&#x27;s embedded Unix timestamp decodes to the Date header exactly, an authenticity check but NOT a location check.</div>
+  </details>
+</article><article class="ev" data-axis="both" data-grade="CAPTURE" data-gap="false" id="2009-03-24-canonical">
+  <header>
+    <time>2009-03-24 17:33:15 UTC</time>
+    <span class="g g-CAPTURE">CAPTURE</span>
+    
+    <h3>The canonical whitepaper is created</h3>
+  </header>
+  <p class="claim">The whitepaper as served today is created. We hold its bytes from three independent sources, all identical.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>canonical_2009-03-24.pdf, 184,292 bytes</b><br><span class="w">archives/whitepaper-variants/canonical_2009-03-24.pdf</span><br><code class="h">b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553</code></li><li><b>the same bytes carved out of Bitcoin block 230009</b><br><span class="w">archives/whitepaper-variants/from-chain.pdf</span><br><code class="h">b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553</code></li><li><b>the same bytes from a 2009 SourceForge mirror capture</b><br><span class="w">archives/whitepaper-variants/sourceforge-voxel-mirror_2009-11-28.pdf</span><br><code class="h">b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553</code></li></ul><div class="rep"><span class="lbl">reproduce</span><code>sha256sum archives/whitepaper-variants/*.pdf</code></div><div class="notes"><span class="lbl">caveats</span>Madden&#x27;s court expert report §180 publishes this file&#x27;s MD5 and SHA256; both match our bytes. Four independent paths, one hash.</div>
+  </details>
+</article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" id="2009-05-11-block-14047">
+  <header>
+    <time>2009-05-11 14:58:31 UTC</time>
+    <span class="g g-CHAIN">CHAIN</span>
+    
+    <h3>A private miner&#x27;s own block, identified</h3>
+  </header>
+  <p class="claim">Block 14047 pays a coinbase of 50.10 — the +50.10 Bohm wrote to Satoshi about, his 15:58 being BST. Only eight blocks in all of 2009 collected any fee.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>the eight fee-bearing blocks of 2009</b><br><span class="w">https://github.com/satoshi-onchain/satoshi-onchain/blob/main/verify/fees_2009.sql</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>satoshi-onchain/verify/fees_2009.sql</code></div><div class="notes"><span class="lbl">caveats</span>[forensic], not [cryptographic] — he signed nothing. Predicted from the letter before the chain was queried. The coinbase address received that one coinbase and nothing else, and was emptied 28 Dec 2011.</div>
+  </details>
+</article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" id="2009-06-01-block-16226">
+  <header>
+    <time>2009-06-01 03:01:54 UTC</time>
+    <span class="g g-CHAIN">CHAIN</span>
+    
+    <h3>The 0.01 that carried a message</h3>
+  </header>
+  <p class="claim">The only payment of any size in a three-day window is exactly 0.01 BTC — matching a reported receipt of 1 June 2009 03:59 BST.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>first_year_payments.csv</b><br><span class="w">https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>satoshi-onchain/verify/first_year_payments.sql</code></div><div class="notes"><span class="lbl">caveats</span>The transaction is identified; THE SENDER IS NOT. The sending address traces to block 11,583, which is not in the Patoshi cluster. We looked for corroboration and did not find it.</div>
+  </details>
+</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2009-10-21-svn">
+  <header>
+    <time>2009-10-21</time>
+    <span class="g g-SERVER-DB">SERVER-DB</span>
+    
+    <h3>The first of 164 SVN commits</h3>
+  </header>
+  <p class="claim">s_nakamoto begins committing to SourceForge SVN; commit times are written by the server.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>252 SVN revisions via Software Heritage</b><br><span class="w">https://archive.softwareheritage.org/api/1/revision/5c085256f7dbfe999afbf10808828f0df9f877f1/log/</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/sourceforge_svn_log.py</code></div><div class="notes"><span class="lbl">caveats</span>The densest record of Satoshi working that exists off-chain.</div>
+  </details>
+</article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" id="2010-08-15-overflow">
+  <header>
+    <time>2010-08-15 17:05:00 UTC</time>
+    <span class="g g-CHAIN">CHAIN</span>
+    
+    <h3>The day 184 billion bitcoins existed</h3>
+  </header>
+  <p class="claim">Block 74638 contains a transaction creating over 184 billion BTC through an integer overflow; the chain is forked away from it within hours.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>block 74638</b><br><span class="w">the Bitcoin blockchain</span></li><li><b>Satoshi&#x27;s own contemporaneous warning naming the block and time</b><br><span class="w">archives/bitcointalk-satoshi/</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>bigquery-public-data.crypto_bitcoin.transactions WHERE block_number = 74638</code></div><div class="notes"><span class="lbl">caveats</span>The only time Bitcoin&#x27;s supply rule has been broken in production.</div>
+  </details>
+</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2010-12-15-last-action">
+  <header>
+    <time>2010-12-15 22:43:51 UTC</time>
+    <span class="g g-SERVER-DB">SERVER-DB</span>
+    
+    <h3>The last machine-verifiable action, anywhere</h3>
+  </header>
+  <p class="claim">An SVN commit with the message &#x27;get external ip from irc&#x27;. Ordinary maintenance; no farewell.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>SourceForge SVN log via Software Heritage</b><br><span class="w">https://archive.softwareheritage.org/api/1/revision/5c085256f7dbfe999afbf10808828f0df9f877f1/log/</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/sourceforge_svn_log.py</code></div><div class="notes"><span class="lbl">caveats</span>The 2014 &#x27;I am not Dorian Nakamoto&#x27; post is 3 years 3 months later, unsigned, and binds to nobody. The precise claim is that the last VERIFIABLE action is this one.</div>
+  </details>
+</article>
+
+<div class="legend">
+<b>Grades, strongest first.</b>
+<b>CHAIN</b> — written into the blockchain; forging it would mean redoing the proof-of-work.
+<b>SERVER-DB</b> — a timestamp written by a third party's database, not by the subject.
+<b>ADJUDICATED</b> — tested in court.
+<b>PARTY-RELEASED</b> — published by a named counterparty from their own records.
+<b>ARCHIVE-POS</b> — position in an archive, independently bracketed.
+<b>CAPTURE</b> — a third-party crawl with its own clock.
+<b>SELF</b> — Satoshi's own unsigned assertion; trivially fakeable.
+<br><br><b>Nothing here is cryptographic.</b> No genesis-era or Patoshi key has ever produced a
+verifying signature, so no row on this timeline identifies a person. That is a fact about the world,
+not a gap in the research — and only a signature would change it.
+<br><br>Generated 2026-08-06 from <code>events.json</code>. The page is a function of that file.
+</div>
+</div>
+<script>
+var view="both", gapsOnly=false, chainOnly=false;
+function apply(){
+  var n=0, all=document.querySelectorAll(".ev");
+  all.forEach(function(el){
+    var ax=el.dataset.axis, ok=(view==="both")||(ax===view)||(ax==="both");
+    if(gapsOnly && el.dataset.gap!=="true") ok=false;
+    if(chainOnly && el.dataset.grade!=="CHAIN") ok=false;
+    el.style.display=ok?"":"none"; if(ok)n++;
+  });
+  var g=0; all.forEach(function(el){if(el.style.display!=="none"&&el.dataset.gap==="true")g++;});
+  document.getElementById("count").textContent=n+" events shown — "+(n-g)+" verified, "+g+" not held";
+}
+document.querySelectorAll(".bar button").forEach(function(b){
+  b.onclick=function(){
+    view=b.dataset.view;
+    document.querySelectorAll(".bar button").forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});
+    apply();
+  };
+});
+document.getElementById("gapsOnly").onchange=function(e){gapsOnly=e.target.checked;apply();};
+document.getElementById("chainOnly").onchange=function(e){chainOnly=e.target.checked;apply();};
+apply();
+</script>
