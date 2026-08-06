@@ -46,7 +46,7 @@ it. Rows we <b>cannot</b> verify are shown too, marked <b>NOT HELD</b> — becau
 only what was found looks complete when it is not.</p>
 
 <div class="incomplete"><b>This timeline is incomplete, and says so on purpose.</b>
-It currently holds <b>49</b> events. The research corpus behind it contains <b>105</b> distinct dated events across 55 written entries and 21 sealed archives, and migration into this file is deliberate rather than bulk — each row has to acquire a grade, a source and a reproduction path before it can appear. That corpus is a local research archive and is not itself published, so this number is stated, not linkable.
+It currently holds <b>50</b> events. The research corpus behind it contains <b>105</b> distinct dated events across 55 written entries and 22 sealed archives, and migration into this file is deliberate rather than bulk — each row has to acquire a grade, a source and a reproduction path before it can appear. That corpus is a local research archive and is not itself published, so this number is stated, not linkable.
 <b>Absence of a row here is not evidence that nothing happened on that date.</b>
 Applying the same standard to ourselves that we apply to everyone else.</div>
 
@@ -469,6 +469,17 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <p class="claim">s_nakamoto begins committing to SourceForge SVN; commit times are written by the server.</p>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>252 SVN revisions via Software Heritage</b><br><span class="w">https://archive.softwareheritage.org/api/1/revision/5c085256f7dbfe999afbf10808828f0df9f877f1/log/</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/sourceforge_svn_log.py</code></div><div class="notes"><span class="lbl">caveats</span>The densest record of Satoshi working that exists off-chain.</div>
+  </details>
+</article><article class="ev gap" data-axis="satoshi" data-grade="NONE" data-gap="true" id="tracker-comments-absent">
+  <header>
+    <time>2009-10-21 &rarr; 2010-12-15</time>
+    <span class="g g-NONE">NONE</span>
+    <span class="gapflag">NOT HELD</span>
+    <h3>Satoshi&#x27;s SourceForge tracker comments — ABSENT FROM THE CRAWL</h3>
+  </header>
+  <p class="claim">The Bitcoin project ran a SourceForge bug/feature tracker during Satoshi&#x27;s active period. No comment of his on it survives in any web archive.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>the project navigation lists a Tracker feature</b><br><span class="w">archives/sourceforge-project-forum/forum-index.html</span></li><li><b>CDX: 6,000 URLs under sourceforge.net/tracker/ reference Bitcoin zero times; modern /bugs and /feature-requests namespaces return zero archived URLs</b><br><span class="w">archives/sourceforge-project-forum/SOURCES.md</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>http://web.archive.org/cdx/search/cdx?url=sourceforge.net/tracker/&amp;matchType=prefix&amp;output=json&amp;filter=statuscode:200</code></div><div class="notes"><span class="lbl">caveats</span>Named by other preservation projects as a known omission. This establishes WHY: the Internet Archive never captured that namespace. Not uncollected -- absent. Recovery would need SourceForge&#x27;s own database, not a web archive. Absence from a crawl is not evidence the comments never existed.</div>
   </details>
 </article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2009-11-19-bitcointalk">
   <header>

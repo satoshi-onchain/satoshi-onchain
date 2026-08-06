@@ -1017,5 +1017,30 @@
     "reproduce": "sha256sum archives/bitcoin-list-attachments/da7b3ce*.bin",
     "gap": false,
     "notes": "Mailing-list attachments live in a URL namespace separate from message bodies and are in none of our text corpora. Of 129 archived attachments on that list, this is the ONLY one from 2009."
+  },
+  {
+    "id": "tracker-comments-absent",
+    "when": "2009-10-21",
+    "precision": "range",
+    "until": "2010-12-15",
+    "axis": "satoshi",
+    "grade": "NONE",
+    "title": "Satoshi's SourceForge tracker comments — ABSENT FROM THE CRAWL",
+    "claim": "The Bitcoin project ran a SourceForge bug/feature tracker during Satoshi's active period. No comment of his on it survives in any web archive.",
+    "evidence": [
+      {
+        "what": "the project navigation lists a Tracker feature",
+        "where": "archives/sourceforge-project-forum/forum-index.html",
+        "hash": null
+      },
+      {
+        "what": "CDX: 6,000 URLs under sourceforge.net/tracker/ reference Bitcoin zero times; modern /bugs and /feature-requests namespaces return zero archived URLs",
+        "where": "archives/sourceforge-project-forum/SOURCES.md",
+        "hash": null
+      }
+    ],
+    "reproduce": "http://web.archive.org/cdx/search/cdx?url=sourceforge.net/tracker/&matchType=prefix&output=json&filter=statuscode:200",
+    "gap": true,
+    "notes": "Named by other preservation projects as a known omission. This establishes WHY: the Internet Archive never captured that namespace. Not uncollected -- absent. Recovery would need SourceForge's own database, not a web archive. Absence from a crawl is not evidence the comments never existed."
   }
 ]
