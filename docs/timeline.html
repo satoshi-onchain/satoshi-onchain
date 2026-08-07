@@ -46,7 +46,7 @@ it. Rows we <b>cannot</b> verify are shown too, marked <b>NOT HELD</b> — becau
 only what was found looks complete when it is not.</p>
 
 <div class="incomplete"><b>This timeline is incomplete, and says so on purpose.</b>
-It currently holds <b>57</b> events. The research corpus behind it contains <b>105</b> distinct dated events across 55 written entries and 23 sealed archives, and migration into this file is deliberate rather than bulk — each row has to acquire a grade, a source and a reproduction path before it can appear. That corpus is a local research archive and is not itself published, so this number is stated, not linkable.
+It currently holds <b>58</b> events. The research corpus behind it is not part of this repository, so its size is not stated here rather than guessed at.
 <b>Absence of a row here is not evidence that nothing happened on that date.</b>
 Applying the same standard to ourselves that we apply to everyone else.</div>
 
@@ -200,11 +200,11 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
     <time>2008-11-11 16:00:34 UTC</time>
     <span class="g g-ADJUDICATED">ADJUDICATED</span>
     <span class="gapflag">NOT HELD</span>
-    <h3>The 11 November 2008 whitepaper is created — WE DO NOT HOLD THE BYTES</h3>
+    <h3>The 11 November 2008 whitepaper is created — WE DO NOT HOLD IT, BUT WE CAN NOW RECOGNISE IT</h3>
   </header>
-  <p class="claim">A whitepaper version is created at this exact second. It is the version the public could obtain in January 2009, and it is not the October draft nor the March canonical.</p>
+  <p class="claim">A whitepaper version is created at this exact second. It is the version the public could obtain in January 2009. We do not have the file -- but its MD5 and SHA256 are published in a court expert report, so any candidate copy can be tested against them.</p>
   <details><summary>evidence &amp; reproduction</summary>
-    <ul class="evid"><li><b>COPA Appendix PM3, giving the creation timestamp</b><br><span class="w">archives/copa-appendices/</span></li><li><b>identified across three exhibit references as AR3 = NB1 = BWP-NB1</b><br><span class="w">bitcoin-origin-claims/45_the-appendix-and-the-correspondence.md</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>THE PRINCIPAL OPEN ITEM. Dated to the second, cross-referenced three ways, no copy held. Most likely surviving location is Nicholas Bohm&#x27;s Thunderbird mail profile.</div>
+    <ul class="evid"><li><b>COPA Appendix PM3, giving the creation timestamp</b><br><span class="w">archives/copa-appendices/</span></li><li><b>identified across three exhibit references as AR3 = NB1 = BWP-NB1</b><br><span class="w">bitcoin-origin-claims/45_the-appendix-and-the-correspondence.md</span></li><li><b>Madden Appendix PM3 §42 publishing BWP-NB1&#x27;s hashes: MD5 3e5e11e1e3208d2829e887fb1c86bd05, SHA256 e6cc7c952c688b234f9872c3e2f50060ae6556fd27925cba503c6460048e50a9</b><br><span class="w">archives/copa-hf-dataset/SOURCES.md</span><br><code class="h">e6cc7c952c688b234f9872c3e2f50060ae6556fd27925cba503c6460048e50a9</code></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>STILL THE PRINCIPAL OPEN ITEM as an artifact -- but no longer an open-ended search. PM3 §45 records that as of the report, searching those hashes returned nothing, while the control copies&#x27; hashes returned many results. So a hash search today is a new test, not a repeat. PM3 also finds BWP-NB1 is neither in the disclosure dataset nor among the archive-sourced copies: a genuinely distinct file. VERIFIED 7 Aug 2026: both hashes were re-read from the original Appendix PM3 PDF and are present verbatim -- the SHA256 is a contiguous 64-character string. (A page header falls between the &#x27;SHA256:&#x27; label and its value in the extracted layout, which is what prompted the earlier caution; the value itself is unbroken.) The source is a court document, quoted and cited rather than re-hosted, so there is no public reproduce script for it.</div>
   </details>
 </article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" id="2008-11-15-prerelease-code">
   <header>
@@ -679,6 +679,17 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>the 2017 cryptography-list exchange</b><br><span class="w">bitcoin-origin-claims/35_the-pre-revision-draft.md</span></li><li><b>the file whose hash he confirmed</b><br><span class="w">archives/whitepaper-variants/prerelease_2008-10-03_ia-bitcoin-foundation.pdf</span><br><code class="h">427c63b364c6db914cf23072a09ffd53ee078397b7c6ab2d604e12865a982faa</code></li></ul><div class="rep"><span class="lbl">reproduce</span><code>sha256sum archives/whitepaper-variants/prerelease_2008-10-03_ia-bitcoin-foundation.pdf</code></div><div class="notes"><span class="lbl">caveats</span>Nine years after the fact, by someone who held the original. Testimony about a hash is much stronger than testimony about a document, because the hash is checkable and the memory is not load-bearing.</div>
   </details>
+</article><article class="ev" data-axis="both" data-grade="ADJUDICATED" data-gap="false" id="2024-pm3-hashes-published">
+  <header>
+    <time>2024-02-01</time>
+    <span class="g g-ADJUDICATED">ADJUDICATED</span>
+    
+    <h3>A court expert publishes the missing whitepaper&#x27;s hashes</h3>
+  </header>
+  <p class="claim">Madden&#x27;s Appendix PM3 publishes the MD5 and SHA256 of BWP-NB1, the 11 November 2008 whitepaper supplied from Nicholas Bohm&#x27;s exhibit, and records that neither hash returned any internet result.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>Appendix PM3 §§41-45</b><br><span class="w">archives/copa-hf-dataset/</span></li><li><b>PM3 confirms our own labelling of both control copies, including the 3 Oct 2008 created date</b><br><span class="w">archives/whitepaper-variants/SOURCES.md</span></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Turns the whitepaper hunt from an open-ended search into a decidable test. Also note what it does NOT give: a hash lets you recognise the file, never reconstruct it.</div>
+  </details>
 </article><article class="ev" data-axis="bitcoin" data-grade="ADJUDICATED" data-gap="false" id="2024-copa-219">
   <header>
     <time>2024-03-14</time>
@@ -704,8 +715,25 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
 <br><br><b>Nothing here is cryptographic.</b> No genesis-era or Patoshi key has ever produced a
 verifying signature, so no row on this timeline identifies a person. That is a fact about the world,
 not a gap in the research — and only a signature would change it.
-<br><br>Generated 2026-08-06 from <code>events.json</code>. The page is a function of that file.
+<br><br>Generated 2026-08-07 from <code>events.json</code>. The page is a function of that file.
 </div>
+
+<footer class="legend" style="margin-top:26px">
+<b>Status of the work.</b> Experimental research, published as it develops and provided
+<b>as is, without warranties or guarantees of any kind</b>. Findings here are provisional — several
+have been revised and more will be. A row states what the evidence supported when it was checked; it
+is not a settled fact. Re-derive it from <code>events.json</code> and the tools rather than relying
+on it.
+<br><br>[forensic], not [cryptographic] · MIT &copy; 2026
+<a href="https://github.com/parthod0x">parthod0x</a> · <b>not money</b>, not financial advice ·
+no warranty
+<br><a href="https://github.com/satoshi-onchain/satoshi-onchain/blob/main/RIGHTS.md">Rights, sourcing
+&amp; corrections</a> — independent research; not affiliated with any party; makes no claim about the
+identity of Satoshi Nakamoto. If you are named here and want something corrected or removed, ask.
+<br><br>Related · <a href="https://bitcoin-lab.org">Original Bitcoin Laboratory</a> ·
+<a href="https://bitcoinwhitepaper.online">The Bitcoin Whitepaper</a> ·
+<a href="index.html">Satoshi On-Chain</a>
+</footer>
 </div>
 <script>
 var view="both", gapsOnly=false, chainOnly=false;

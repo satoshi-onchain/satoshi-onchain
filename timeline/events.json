@@ -135,8 +135,8 @@
     "precision": "second",
     "axis": "both",
     "grade": "ADJUDICATED",
-    "title": "The 11 November 2008 whitepaper is created — WE DO NOT HOLD THE BYTES",
-    "claim": "A whitepaper version is created at this exact second. It is the version the public could obtain in January 2009, and it is not the October draft nor the March canonical.",
+    "title": "The 11 November 2008 whitepaper is created — WE DO NOT HOLD IT, BUT WE CAN NOW RECOGNISE IT",
+    "claim": "A whitepaper version is created at this exact second. It is the version the public could obtain in January 2009. We do not have the file -- but its MD5 and SHA256 are published in a court expert report, so any candidate copy can be tested against them.",
     "evidence": [
       {
         "what": "COPA Appendix PM3, giving the creation timestamp",
@@ -147,11 +147,16 @@
         "what": "identified across three exhibit references as AR3 = NB1 = BWP-NB1",
         "where": "bitcoin-origin-claims/45_the-appendix-and-the-correspondence.md",
         "hash": null
+      },
+      {
+        "what": "Madden Appendix PM3 §42 publishing BWP-NB1's hashes: MD5 3e5e11e1e3208d2829e887fb1c86bd05, SHA256 e6cc7c952c688b234f9872c3e2f50060ae6556fd27925cba503c6460048e50a9",
+        "where": "archives/copa-hf-dataset/SOURCES.md",
+        "hash": "e6cc7c952c688b234f9872c3e2f50060ae6556fd27925cba503c6460048e50a9"
       }
     ],
     "reproduce": null,
     "gap": true,
-    "notes": "THE PRINCIPAL OPEN ITEM. Dated to the second, cross-referenced three ways, no copy held. Most likely surviving location is Nicholas Bohm's Thunderbird mail profile."
+    "notes": "STILL THE PRINCIPAL OPEN ITEM as an artifact -- but no longer an open-ended search. PM3 §45 records that as of the report, searching those hashes returned nothing, while the control copies' hashes returned many results. So a hash search today is a new test, not a repeat. PM3 also finds BWP-NB1 is neither in the disclosure dataset nor among the archive-sourced copies: a genuinely distinct file. VERIFIED 7 Aug 2026: both hashes were re-read from the original Appendix PM3 PDF and are present verbatim -- the SHA256 is a contiguous 64-character string. (A page header falls between the 'SHA256:' label and its value in the extracted layout, which is what prompted the earlier caution; the value itself is unbroken.) The source is a court document, quoted and cited rather than re-hosted, so there is no public reproduce script for it."
   },
   {
     "id": "2008-11-17-list-closes",
@@ -1200,5 +1205,29 @@
     "reproduce": "sha256sum archives/whitepaper-variants/prerelease_2008-10-03_ia-bitcoin-foundation.pdf",
     "gap": false,
     "notes": "Nine years after the fact, by someone who held the original. Testimony about a hash is much stronger than testimony about a document, because the hash is checkable and the memory is not load-bearing."
+  },
+  {
+    "id": "2024-pm3-hashes-published",
+    "when": "2024-02-01",
+    "precision": "month",
+    "axis": "both",
+    "grade": "ADJUDICATED",
+    "title": "A court expert publishes the missing whitepaper's hashes",
+    "claim": "Madden's Appendix PM3 publishes the MD5 and SHA256 of BWP-NB1, the 11 November 2008 whitepaper supplied from Nicholas Bohm's exhibit, and records that neither hash returned any internet result.",
+    "evidence": [
+      {
+        "what": "Appendix PM3 §§41-45",
+        "where": "archives/copa-hf-dataset/",
+        "hash": null
+      },
+      {
+        "what": "PM3 confirms our own labelling of both control copies, including the 3 Oct 2008 created date",
+        "where": "archives/whitepaper-variants/SOURCES.md",
+        "hash": null
+      }
+    ],
+    "reproduce": null,
+    "gap": false,
+    "notes": "Turns the whitepaper hunt from an open-ended search into a decidable test. Also note what it does NOT give: a hash lets you recognise the file, never reconstruct it."
   }
 ]

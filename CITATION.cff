@@ -11,7 +11,10 @@ type: software
 authors:
   - family-names: Saxena
     given-names: Parth Mauria
+    email: parthms.id@gmail.com
 license: MIT
+repository-code: "https://github.com/satoshi-onchain/satoshi-onchain"
+url: "https://satoshioncha.in"
 date-released: 2026-07-22
 keywords:
   - Bitcoin

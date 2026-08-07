@@ -31,7 +31,10 @@ ap = argparse.ArgumentParser()
 ap.add_argument("--events", default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "events.json"))
 ap.add_argument("--corpus", default=None,
                 help="root holding bitcoin-origin-claims/ and archives/; omit to infer")
-ap.add_argument("--out", default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "timeline.html"))
+# Default to the PUBLISHED page. The previous default wrote a stray copy next to this script, so a
+# plain `python build.py` silently left the live page stale.
+ap.add_argument("--out", default=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                                              "docs", "timeline.html"))
 a = ap.parse_args()
 
 events = json.load(open(a.events, encoding="utf-8"))
@@ -229,6 +232,23 @@ verifying signature, so no row on this timeline identifies a person. That is a f
 not a gap in the research — and only a signature would change it.
 <br><br>Generated {built} from <code>events.json</code>. The page is a function of that file.
 </div>
+
+<footer class="legend" style="margin-top:26px">
+<b>Status of the work.</b> Experimental research, published as it develops and provided
+<b>as is, without warranties or guarantees of any kind</b>. Findings here are provisional — several
+have been revised and more will be. A row states what the evidence supported when it was checked; it
+is not a settled fact. Re-derive it from <code>events.json</code> and the tools rather than relying
+on it.
+<br><br>[forensic], not [cryptographic] · MIT &copy; 2026
+<a href="https://github.com/parthod0x">parthod0x</a> · <b>not money</b>, not financial advice ·
+no warranty
+<br><a href="https://github.com/satoshi-onchain/satoshi-onchain/blob/main/RIGHTS.md">Rights, sourcing
+&amp; corrections</a> — independent research; not affiliated with any party; makes no claim about the
+identity of Satoshi Nakamoto. If you are named here and want something corrected or removed, ask.
+<br><br>Related · <a href="https://bitcoin-lab.org">Original Bitcoin Laboratory</a> ·
+<a href="https://bitcoinwhitepaper.online">The Bitcoin Whitepaper</a> ·
+<a href="index.html">Satoshi On-Chain</a>
+</footer>
 </div>
 <script>
 var view="both", gapsOnly=false, chainOnly=false;
@@ -255,5 +275,7 @@ document.getElementById("chainOnly").onchange=function(e){{chainOnly=e.target.ch
 apply();
 </script>
 '''
-open(a.out, "w", encoding="utf-8").write(doc)
+# newline="\n" is load-bearing: without it Python writes CRLF on Windows while the committed blob
+# is LF, so every regeneration produced a whole-file diff of pure line-ending churn.
+open(a.out, "w", encoding="utf-8", newline="\n").write(doc)
 print(f"  written -> {a.out}  ({len(doc):,} bytes)")
