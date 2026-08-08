@@ -144,7 +144,9 @@
     <p class="thesis">Every on-chain figure below re-derives from the Bitcoin chain itself — a synced
       node, or the public <span class="mono">bigquery-public-data.crypto_bitcoin</span> mirror. The
       <a href="#offchain">off-chain record</a> is graded separately, and every line of it links to the
-      public server that carries the timestamp. Nothing rests on the word “Satoshi” in anyone’s mouth.</p>
+      public server that carries the timestamp. Nothing rests on the word “Satoshi” in anyone’s mouth.
+      A separate question — <a href="#documents">did he ever commit a document to the chain?</a> — is
+      answered the same way, and the answer is no.</p>
 
     <div class="headline">
       <div class="hnum">≈1.13M<span>BTC</span></div>
@@ -320,6 +322,65 @@
     <p class="sm" style="margin-top:16px">This is exactly what shows the 2025–26 250-BTC and 2,000-BTC
       awakenings were <b style="color:var(--ink)">not</b> Satoshi — and what would flag it instantly,
       unambiguously, if the real cluster ever stirred.</p>
+  </section>
+
+  <section id="documents">
+    <h2>Did he ever put a document on the chain?</h2>
+    <p class="lead">He knew exactly how. He wrote out the transaction himself. He never did it.</p>
+    <p class="sm">This gets asked constantly about the whitepaper, and it is answerable the same way
+      everything else here is — by reading every byte and saying what is not in them. Had Satoshi
+      committed a hash of any document to the chain, it would be the strongest dating evidence that
+      document could ever have: <b>a timestamp its author made, which nobody can backdate.</b> So the
+      absence is worth establishing rather than assuming.</p>
+
+    <h3>He described the method, in public, on 9 December 2010</h3>
+    <p class="sm">On bitcointalk, discussing whether the chain should carry non-payment data:</p>
+    <p class="sm" style="border-left:3px solid var(--line);padding-left:14px;color:var(--muted)">
+      “Timestamp hashes are still already possible:<br>
+      <span class="mono">txin: 0.01 &nbsp;•&nbsp; txout: 0.00 &lt;appid, hash&gt; OP_CHECKSIG &nbsp;•&nbsp; fee: 0.01</span><br>
+      … I like Hal Finney's idea for user-friendly timestamping. Convert the hash of a file to a
+      bitcoin address and send 0.01 to it.”</p>
+    <p class="sm">Finney had proposed that four days earlier, adding — and Satoshi endorsed the method
+      while letting the caveat stand — that it was <i>“arguably not a good use of the Bitcoin
+      distributed database”</i>. <b>So this is not a question of capability or of knowledge. Block 0's
+      own coinbase carries 77 bytes of text, so the field was never too small. It was a choice.</b></p>
+
+    <h3>Every channel, scanned</h3>
+    <p class="sm">All known whitepaper versions, in both byte orders, under MD5, SHA-1, SHA-256,
+      double-SHA-256 and HASH160 — seventeen distinct byte-strings.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>channel</th><th>scope</th><th>result</th></tr></thead>
+        <tbody>
+          <tr><td>coinbase scriptSigs</td><td>whole chain</td><td>nothing</td></tr>
+          <tr><td>non-coinbase scripts, first year</td><td>every script, by type</td><td>nothing</td></tr>
+          <tr><td>hash-to-address — Finney's method</td><td>whole chain</td><td>two — both third parties, 2013 and 2014</td></tr>
+          <tr><td>output scripts — Satoshi's own method</td><td>blocks 0–150,000</td><td>nothing</td></tr>
+          <tr><td>input scripts</td><td>blocks 0–150,000</td><td>nothing</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="verdicts">
+      <div class="vd"><span class="h">whole era</span><span class="tag no">NO COMMITMENT</span><span class="desc"><b>Nothing Satoshi put on any chain commits to the whitepaper, or to any document.</b> Established across both on-chain populations, over the whole of his active period, with a passing control behind every negative — an empty result and a broken query are indistinguishable without one.</span></div>
+      <div class="vd"><span class="h">2013-10-16</span><span class="tag amb">THIRD PARTY</span><span class="desc">An address derived from the canonical paper receives 1 satoshi — as output 65 of <b>83 one-satoshi outputs</b> in a single bulk send. A dust-spray whose address list happened to include one. Intent unknown, and almost certainly nothing to do with the whitepaper.</span></div>
+      <div class="vd"><span class="h">2014-04-22</span><span class="tag amb">THIRD PARTY</span><span class="desc">A second derived address receives 5,432 satoshi. Its sender made <b>51 transactions in eight weeks, fifty identical in shape</b>, paying <b>100 distinct addresses once each</b> — a timestamping bot working a queue, for 0.0054 BTC in total. The whitepaper was one file of a hundred.</span></div>
+      <div class="vd"><span class="h">11 Nov 2008</span><span class="tag no">NOTHING</span><span class="desc"><b>The version nobody holds was never timestamped by anyone.</b> It can be tested for without possessing a byte of it, because its SHA-256 is published in the court record. If someone had held that file and wanted to prove it, this was the cheap, publicly-endorsed way — and it cost one cent.</span></div>
+    </div>
+
+    <p class="sm"><b>Calibration, because these two hits get retold badly.</b> A payment to a
+      hash-derived address <i>dates</i> possession of a file. It does not <i>attribute</i> anything:
+      anyone can timestamp anyone's document, and Satoshi had been gone nearly three years when the
+      earlier one was made. <b>Embedding is not signing, and neither is timestamping.</b> The same
+      applies to the 2013 transaction that embedded the entire paper in block 230009 — a third
+      party's act, four years after publication.</p>
+
+    <p class="sm">Why he declined is not a mystery either. He versioned, announced and hashed his
+      <b>code</b>; he linked the paper, revised it at least twice, and <b>never once announced a
+      revision</b> — measured across every surviving corpus of his writing. In his own release
+      announcement the software download comes first and the paper is a footnote he calls
+      <i>“the design paper”</i>. <b>The code was the artifact. The paper explained it.</b> You do not
+      commit your documentation to an immutable ledger, least of all while still editing it.</p>
   </section>
 
   <section id="offchain">
