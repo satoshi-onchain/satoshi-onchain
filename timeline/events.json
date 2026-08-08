@@ -30,12 +30,12 @@
     "evidence": [
       {
         "what": "Adam Back witness statement §5, full header quoted under a statement of truth",
-        "where": "archives/nakamoto-archive-lugaxker/src/adam-back-exhibit-ab1.pdf",
+        "where": "https://github.com/lugaxker/nakamoto-archive",
         "hash": null
       },
       {
         "what": "COPA Opening Skeleton §16",
-        "where": "archives/copa-v-wright/",
+        "where": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
         "hash": null
       }
     ],
@@ -54,11 +54,11 @@
     "evidence": [
       {
         "what": "prerelease_2008-10-03_ia-bitcoin-foundation.pdf, 183,697 bytes",
-        "where": "archives/whitepaper-variants/prerelease_2008-10-03_ia-bitcoin-foundation.pdf",
+        "where": "https://github.com/original-bitcoin-laboratory/bitcoin-whitepaper",
         "hash": "427c63b364c6db914cf23072a09ffd53ee078397b7c6ab2d604e12865a982faa"
       }
     ],
-    "reproduce": "sha256sum archives/whitepaper-variants/prerelease_2008-10-03_ia-bitcoin-foundation.pdf",
+    "reproduce": "curl -sL 'https://web.archive.org/web/20140320135003id_/https://bitcoin.org/bitcoin.pdf' -o c.pdf; sha256sum c.pdf   # any copy of the 3 Oct 2008 draft must be 427c63b364c6db91…",
     "gap": false,
     "notes": "/CreationDate D:20081003134958-07'00'. The offset is the producing machine's setting, not a location."
   },
@@ -73,7 +73,7 @@
     "evidence": [
       {
         "what": "abstract text only",
-        "where": "archives/whitepaper-variants/aug2008_abstract.txt",
+        "where": "https://github.com/lugaxker/nakamoto-archive",
         "hash": "6dd156197af8ee359d0852a236997e843b2f8e39a20ca326d17883420d82d9bd"
       }
     ],
@@ -92,7 +92,7 @@
     "evidence": [
       {
         "what": "metzdowd pipermail mbox, Date: Sat, 01 Nov 2008 02:10:00 +0800",
-        "where": "archives/metzdowd-cryptography/mbox/2008-October.txt.gz",
+        "where": "https://www.metzdowd.com/pipermail/cryptography/2008-October.txt.gz",
         "hash": null
       },
       {
@@ -116,7 +116,7 @@
     "evidence": [
       {
         "what": "SourceForge account pages and sequential user IDs",
-        "where": "archives/flossmole-sourceforge/",
+        "where": "http://flossdata.syr.edu/data/sf/",
         "hash": null
       },
       {
@@ -140,17 +140,17 @@
     "evidence": [
       {
         "what": "COPA Appendix PM3, giving the creation timestamp",
-        "where": "archives/copa-appendices/",
+        "where": "https://huggingface.co/datasets/YL95/copa_v_wright_CPT_raw",
         "hash": null
       },
       {
         "what": "identified across three exhibit references as AR3 = NB1 = BWP-NB1",
-        "where": "bitcoin-origin-claims/45_the-appendix-and-the-correspondence.md",
+        "where": "https://huggingface.co/datasets/YL95/copa_v_wright_CPT_raw",
         "hash": null
       },
       {
         "what": "Madden Appendix PM3 §42 publishing BWP-NB1's hashes: MD5 3e5e11e1e3208d2829e887fb1c86bd05, SHA256 e6cc7c952c688b234f9872c3e2f50060ae6556fd27925cba503c6460048e50a9",
-        "where": "archives/copa-hf-dataset/SOURCES.md",
+        "where": "https://huggingface.co/datasets/YL95/copa_v_wright_CPT_raw",
         "hash": "e6cc7c952c688b234f9872c3e2f50060ae6556fd27925cba503c6460048e50a9"
       }
     ],
@@ -169,7 +169,7 @@
     "evidence": [
       {
         "what": "metzdowd pipermail, November 2008",
-        "where": "archives/metzdowd-cryptography/mbox/2008-November.txt.gz",
+        "where": "https://www.metzdowd.com/pipermail/cryptography/2008-November.txt.gz",
         "hash": null
       }
     ],
@@ -207,7 +207,7 @@
     "evidence": [
       {
         "what": "metzdowd pipermail, Date: Fri, 09 Jan 2009 03:27:40 +0800",
-        "where": "archives/metzdowd-cryptography/mbox/2009-January.txt.gz",
+        "where": "https://www.metzdowd.com/pipermail/cryptography/2009-January.txt.gz",
         "hash": null
       },
       {
@@ -269,7 +269,7 @@
     "evidence": [
       {
         "what": "witness statement §19, under a statement of truth",
-        "where": "archives/copa-v-wright/",
+        "where": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
         "hash": null
       }
     ],
@@ -293,7 +293,7 @@
       },
       {
         "what": "Bohm's contemporaneous email, disclosed in court",
-        "where": "archives/copa-v-wright/",
+        "where": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
         "hash": null
       }
     ],
@@ -331,7 +331,7 @@
     "evidence": [
       {
         "what": "Bohm correspondence, Exhibit NB1",
-        "where": "archives/copa-v-wright/",
+        "where": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
         "hash": null
       }
     ],
@@ -355,7 +355,7 @@
       },
       {
         "what": "the correspondence naming the address",
-        "where": "archives/copa-v-wright/",
+        "where": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
         "hash": null
       }
     ],
@@ -374,7 +374,7 @@
     "evidence": [
       {
         "what": "p2p-research February 2009 archive, Message-ID <4993519E.8080300@gmx.com>",
-        "where": "archives/nakamoto-archive-lugaxker/src/p2p-research-mailing-list-2009-February.txt.gz",
+        "where": "https://satoshi.nakamotoinstitute.org/emails/p2p-research/",
         "hash": null
       }
     ],
@@ -393,21 +393,21 @@
     "evidence": [
       {
         "what": "canonical_2009-03-24.pdf, 184,292 bytes",
-        "where": "archives/whitepaper-variants/canonical_2009-03-24.pdf",
+        "where": "https://github.com/original-bitcoin-laboratory/bitcoin-whitepaper",
         "hash": "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553"
       },
       {
         "what": "the same bytes carved out of Bitcoin block 230009",
-        "where": "archives/whitepaper-variants/from-chain.pdf",
+        "where": "https://github.com/original-bitcoin-laboratory/bitcoin-whitepaper",
         "hash": "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553"
       },
       {
         "what": "the same bytes from a 2009 SourceForge mirror capture",
-        "where": "archives/whitepaper-variants/sourceforge-voxel-mirror_2009-11-28.pdf",
+        "where": "https://github.com/original-bitcoin-laboratory/bitcoin-whitepaper",
         "hash": "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553"
       }
     ],
-    "reproduce": "sha256sum archives/whitepaper-variants/*.pdf",
+    "reproduce": "python verify/whitepaper_from_chain.py out.pdf; sha256sum out.pdf   # carves the canonical out of block 230009 -> b1674191a88ec5cd…",
     "gap": false,
     "notes": "Madden's court expert report §180 publishes this file's MD5 and SHA256; both match our bytes. Four independent paths, one hash."
   },
@@ -484,7 +484,7 @@
       },
       {
         "what": "Satoshi's own contemporaneous warning naming the block and time",
-        "where": "archives/bitcointalk-satoshi/",
+        "where": "https://bitcointalk.org/index.php?action=profile;u=3",
         "hash": null
       }
     ],
@@ -523,7 +523,7 @@
     "evidence": [
       {
         "what": "upload.ae URLs quoted in the Bohm correspondence",
-        "where": "bitcoin-origin-claims/45_the-appendix-and-the-correspondence.md",
+        "where": "https://huggingface.co/datasets/YL95/copa_v_wright_CPT_raw",
         "hash": null
       }
     ],
@@ -543,7 +543,7 @@
     "evidence": [
       {
         "what": "the absence itself; the 2016 demonstration reused a 2009 signature from block 183",
-        "where": "bitcoin-origin-claims/01_satoshi-identity-claims.md",
+        "where": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
         "hash": null
       }
     ],
@@ -562,7 +562,7 @@
     "evidence": [
       {
         "what": "registry record",
-        "where": "bitcoin-origin-claims/38_the-court-record-and-the-last-gaps.md",
+        "where": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
         "hash": null
       }
     ],
@@ -581,7 +581,7 @@
     "evidence": [
       {
         "what": "registry records for both domains",
-        "where": "bitcoin-origin-claims/38_the-court-record-and-the-last-gaps.md",
+        "where": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
         "hash": null
       }
     ],
@@ -600,12 +600,12 @@
     "evidence": [
       {
         "what": "user page captured 2009-11-30 showing Joined: 2008-10-05",
-        "where": "archives/wayback-satoshi-pages/",
+        "where": "https://web.archive.org/web/2009*/bitcoin.org*",
         "hash": null
       },
       {
         "what": "sequential user IDs bracketing the join date",
-        "where": "archives/flossmole-sourceforge/",
+        "where": "http://flossdata.syr.edu/data/sf/",
         "hash": null
       }
     ],
@@ -624,7 +624,7 @@
     "evidence": [
       {
         "what": "the key's own self-assertion",
-        "where": "bitcoin-origin-claims/01_satoshi-identity-claims.md",
+        "where": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
         "hash": null
       }
     ],
@@ -643,16 +643,16 @@
     "evidence": [
       {
         "what": "StealthMonger, PGP-signed, restated 2017-08-18",
-        "where": "bitcoin-origin-claims/35_the-pre-revision-draft.md",
+        "where": "https://www.metzdowd.com/pipermail/cryptography/2017-August/032662.html",
         "hash": null
       },
       {
         "what": "Ray Dillinger, an original November 2008 participant: 'The hash matches. That's definitely it.'",
-        "where": "bitcoin-origin-claims/35_the-pre-revision-draft.md",
+        "where": "https://www.metzdowd.com/pipermail/cryptography/2017-August/032662.html",
         "hash": null
       }
     ],
-    "reproduce": "sha256sum archives/whitepaper-variants/prerelease_2008-10-03_ia-bitcoin-foundation.pdf",
+    "reproduce": "sha256sum <your copy of the 3 Oct 2008 draft>   # the hash StealthMonger published and Dillinger confirmed: 427c63b364c6db914cf23072a09ffd53ee078397b7c6ab2d604e12865a982faa",
     "gap": false,
     "notes": "Independent provenance for the pre-release draft, from people who held it in 2008 and published a matching hash years later."
   },
@@ -667,7 +667,7 @@
     "evidence": [
       {
         "what": "user page captured 2009-11-29, and the project activity feed",
-        "where": "archives/wayback-satoshi-pages/",
+        "where": "https://web.archive.org/web/2009*/bitcoin.org*",
         "hash": null
       }
     ],
@@ -705,7 +705,7 @@
     "evidence": [
       {
         "what": "PE header of bitcoin.exe (fbcac071)",
-        "where": "archives/nakamoto-archive-lugaxker/src/",
+        "where": "https://github.com/lugaxker/nakamoto-archive",
         "hash": null
       }
     ],
@@ -724,7 +724,7 @@
     "evidence": [
       {
         "what": "Twitter data-time=1231644832, 2017 capture",
-        "where": "archives/wayback-satoshi-pages/",
+        "where": "https://web.archive.org/web/2009*/bitcoin.org*",
         "hash": null
       }
     ],
@@ -743,7 +743,7 @@
     "evidence": [
       {
         "what": "bitcoin-list archive",
-        "where": "archives/bitcoin-list/",
+        "where": "https://satoshi.nakamotoinstitute.org/emails/bitcoin-list/",
         "hash": null
       }
     ],
@@ -762,7 +762,7 @@
     "evidence": [
       {
         "what": "SourceForge SVN log",
-        "where": "archives/sourceforge-bitcoin-svn/",
+        "where": "https://sourceforge.net/projects/bitcoin/",
         "hash": null
       }
     ],
@@ -781,7 +781,7 @@
     "evidence": [
       {
         "what": "forum profile, server-written registration time",
-        "where": "archives/bitcointalk-satoshi/",
+        "where": "https://bitcointalk.org/index.php?action=profile;u=3",
         "hash": null
       }
     ],
@@ -804,7 +804,7 @@
         "hash": "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553"
       }
     ],
-    "reproduce": "sha256sum archives/whitepaper-variants/canonical_2009-03-24.pdf",
+    "reproduce": "curl -sL 'https://web.archive.org/web/20100704213649id_/http://www.bitcoin.org/bitcoin.pdf' -o c.pdf; sha256sum c.pdf   # -> b1674191a88ec5cd…",
     "gap": false,
     "notes": "Closes the gap between the March 2009 creation date and the file anyone can fetch today."
   },
@@ -819,7 +819,7 @@
     "evidence": [
       {
         "what": "forum profile and post index",
-        "where": "archives/bitcointalk-satoshi/",
+        "where": "https://bitcointalk.org/index.php?action=profile;u=3",
         "hash": null
       }
     ],
@@ -838,7 +838,7 @@
     "evidence": [
       {
         "what": "Internet Archive capture",
-        "where": "archives/wayback-satoshi-pages/",
+        "where": "https://web.archive.org/web/2009*/bitcoin.org*",
         "hash": null
       }
     ],
@@ -857,7 +857,7 @@
     "evidence": [
       {
         "what": "ning comment 5218",
-        "where": "archives/wayback-satoshi-pages/",
+        "where": "https://web.archive.org/web/2009*/bitcoin.org*",
         "hash": null
       }
     ],
@@ -876,7 +876,7 @@
     "evidence": [
       {
         "what": "public record; entry 39",
-        "where": "bitcoin-origin-claims/39_the-back-exchange-and-the-ecash-fingerprint.md",
+        "where": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
         "hash": null
       }
     ],
@@ -895,16 +895,16 @@
     "evidence": [
       {
         "what": "the 2015 mailing-list exchange",
-        "where": "bitcoin-origin-claims/35_the-pre-revision-draft.md",
+        "where": "https://www.metzdowd.com/pipermail/cryptography/2015-January/024433.html",
         "hash": null
       },
       {
         "what": "hash publication captured 2015-02-14",
-        "where": "archives/whitepaper-variants/blacksheepatorenco_2015-02-14_hash-publication.html",
+        "where": "https://www.metzdowd.com/pipermail/cryptography/2015-January/024433.html",
         "hash": "c146f38e1512a334f8dfd6253115250417fe86d8825bab95fda270d4142e3c7d"
       }
     ],
-    "reproduce": "sha256sum archives/whitepaper-variants/prerelease_2008-10-03_ia-bitcoin-foundation.pdf",
+    "reproduce": "sha256sum <your copy of the 3 Oct 2008 draft>   # matches the hash published in the Jan 2015 thread: 427c63b364c6db914cf23072a09ffd53ee078397b7c6ab2d604e12865a982faa",
     "gap": false,
     "notes": "Two people who held the file in 2008 confirmed the hash independently, in 2015 and 2017."
   },
@@ -919,7 +919,7 @@
     "evidence": [
       {
         "what": "SourceForge project state",
-        "where": "archives/flossmole-sourceforge/",
+        "where": "http://flossdata.syr.edu/data/sf/",
         "hash": null
       }
     ],
@@ -943,7 +943,7 @@
       },
       {
         "what": "CDX sweep of the whole domain: 27 archived URLs, none under /boards/",
-        "where": "archives/bitcoin-sourceforge-net/SOURCES.md",
+        "where": "https://web.archive.org/web/2009*/bitcoin.sourceforge.net*",
         "hash": null
       }
     ],
@@ -962,7 +962,7 @@
     "evidence": [
       {
         "what": "judgment paragraph 716, held in our own archive",
-        "where": "archives/copa-v-wright/judgment.html",
+        "where": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
         "hash": null
       },
       {
@@ -986,7 +986,7 @@
     "evidence": [
       {
         "what": "10 reposted BitcoinTalk posts across 4 threads, with the old forum's timestamps quoted inside them",
-        "where": "archives/lost-forum-reposts/reposts.json",
+        "where": "https://bitcointalk.org/index.php?action=profile;u=3",
         "hash": null
       },
       {
@@ -1015,11 +1015,11 @@
       },
       {
         "what": "byte-identical to the copy in a third-party compilation, independently obtained",
-        "where": "archives/bitcoin-list-attachments/",
+        "where": "https://satoshi.nakamotoinstitute.org/emails/bitcoin-list/",
         "hash": null
       }
     ],
-    "reproduce": "sha256sum archives/bitcoin-list-attachments/da7b3ce*.bin",
+    "reproduce": "download the attachment from the bitcoin-list archive at satoshi.nakamotoinstitute.org and sha256sum it",
     "gap": false,
     "notes": "Mailing-list attachments live in a URL namespace separate from message bodies and are in none of our text corpora. Of 129 archived attachments on that list, this is the ONLY one from 2009."
   },
@@ -1035,17 +1035,17 @@
     "evidence": [
       {
         "what": "the project navigation lists a Tracker feature",
-        "where": "archives/sourceforge-project-forum/forum-index.html",
+        "where": "https://sourceforge.net/projects/bitcoin/",
         "hash": null
       },
       {
         "what": "CDX: 6,000 URLs under sourceforge.net/tracker/ reference Bitcoin zero times; modern /bugs and /feature-requests namespaces return zero archived URLs",
-        "where": "archives/sourceforge-project-forum/SOURCES.md",
+        "where": "https://sourceforge.net/projects/bitcoin/",
         "hash": null
       },
       {
         "what": "sourceforge.net/rest/p/bitcoin lists 8 tools — support, summary, reviews, code, mailman, files, news, activity — and no bugs/tickets/tracker mount",
-        "where": "archives/sourceforge-rest-api/SOURCES.md",
+        "where": "https://sourceforge.net/projects/bitcoin/",
         "hash": null
       }
     ],
@@ -1064,12 +1064,12 @@
     "evidence": [
       {
         "what": "the news page, 62 KB; the words 'satoshi' and 'nakamoto' appear zero times on it",
-        "where": "archives/sourceforge-rest-api/news-2009-01-bitcoin-v01-released.html",
+        "where": "https://sourceforge.net/projects/bitcoin/",
         "hash": null
       },
       {
         "what": "the REST API returns the post's title but empty text and author",
-        "where": "archives/sourceforge-rest-api/news.json",
+        "where": "https://sourceforge.net/projects/bitcoin/",
         "hash": null
       }
     ],
@@ -1088,7 +1088,7 @@
     "evidence": [
       {
         "what": "the November 2008 pre-release source",
-        "where": "archives/nakamoto-archive-lugaxker/src/",
+        "where": "https://github.com/lugaxker/nakamoto-archive",
         "hash": null
       },
       {
@@ -1117,7 +1117,7 @@
       },
       {
         "what": "an independently obtained copy",
-        "where": "archives/patoshi-and-correspondence-sources/nakamotoinstitute-bitcoin-nov08.tgz",
+        "where": "https://satoshi.nakamotoinstitute.org/emails/",
         "hash": null
       }
     ],
@@ -1136,7 +1136,7 @@
     "evidence": [
       {
         "what": "profile and posts",
-        "where": "archives/wayback-satoshi-pages/",
+        "where": "https://web.archive.org/web/2009*/bitcoin.org*",
         "hash": null
       }
     ],
@@ -1174,7 +1174,7 @@
     "evidence": [
       {
         "what": "Wei Dai correspondence, as collected by the Nakamoto Studies Institute",
-        "where": "archives/patoshi-and-correspondence-sources/nsi-wei-dai-correspondence.html",
+        "where": "https://satoshi.nakamotoinstitute.org/emails/",
         "hash": null
       }
     ],
@@ -1193,16 +1193,16 @@
     "evidence": [
       {
         "what": "the 2017 cryptography-list exchange",
-        "where": "bitcoin-origin-claims/35_the-pre-revision-draft.md",
+        "where": "https://www.metzdowd.com/pipermail/cryptography/2017-August/032662.html",
         "hash": null
       },
       {
         "what": "the file whose hash he confirmed",
-        "where": "archives/whitepaper-variants/prerelease_2008-10-03_ia-bitcoin-foundation.pdf",
+        "where": "https://github.com/original-bitcoin-laboratory/bitcoin-whitepaper",
         "hash": "427c63b364c6db914cf23072a09ffd53ee078397b7c6ab2d604e12865a982faa"
       }
     ],
-    "reproduce": "sha256sum archives/whitepaper-variants/prerelease_2008-10-03_ia-bitcoin-foundation.pdf",
+    "reproduce": "sha256sum <your copy of the 3 Oct 2008 draft>   # the hash Dillinger confirmed in Aug 2017: 427c63b364c6db914cf23072a09ffd53ee078397b7c6ab2d604e12865a982faa",
     "gap": false,
     "notes": "Nine years after the fact, by someone who held the original. Testimony about a hash is much stronger than testimony about a document, because the hash is checkable and the memory is not load-bearing."
   },
@@ -1217,12 +1217,12 @@
     "evidence": [
       {
         "what": "Appendix PM3 §§41-45",
-        "where": "archives/copa-hf-dataset/",
+        "where": "https://huggingface.co/datasets/YL95/copa_v_wright_CPT_raw",
         "hash": null
       },
       {
         "what": "PM3 confirms our own labelling of both control copies, including the 3 Oct 2008 created date",
-        "where": "archives/whitepaper-variants/SOURCES.md",
+        "where": "https://github.com/original-bitcoin-laboratory/bitcoin-whitepaper",
         "hash": null
       }
     ],

@@ -6,7 +6,7 @@ data. **No interpretation, no narrative.** Reproduce: `python excavate.py`.
 
 Grade: **[forensic]**, never [cryptographic] — nothing here involves a key or a signature. The one
 key/signature anchor tying this footprint to "Satoshi" lives outside this file (block 9 → block 170
-Finney transaction; see the `bitcoin-origin-claims` verification of that signature).
+Finney transaction), and it is an anchor to a *key*, not to a person.
 
 ## 1. Spend / dormant ledger (high-confidence Patoshi set, phi ≥ 0.5)
 
@@ -89,7 +89,7 @@ signal is the low-byte bands, not the magnitude.
 
 - Earliest spent Patoshi coinbases (heights): `9, 286, 357, 394, 413, 624, 651, 658, 688, 702, 720, 730`.
   **Block 9 is the first** — the coinbase spent in block 170 to Hal Finney (the signature of that spend
-  is verified in `bitcoin-origin-claims`; it is the one hard key-anchor for the whole footprint).
+  is verifiable from the chain itself; it is the one hard key-anchor for the whole footprint).
 
 ## 7. Hashrate / throttle (difficulty from coinbase nBits × timestamps) — `deepdig.py`
 
@@ -259,9 +259,7 @@ not the round `2³²` — a ~0.0015% correction that leaves the ~2–5-core conc
 number exact. (b) The **ExtraNonce sawtooth (§3) is a mining necessity, not a stylistic choice**: at
 difficulty 1 a full 32-bit nonce sweep finds a block only `1−1/e ≈ 63%` of the time, so `~37%` of sweeps
 exhaust the nonce and must roll the coinbase ExtraNonce (→ new merkle root → fresh nonce space). The
-fingerprint and the mining mechanics are the same fact from two sides. *(Both derived in the
-`bitcoin-origin-claims` mining deep-dives; the neutral difficulty-1 exactness is also in OBL's
-`retarget` module.)*
+fingerprint and the mining mechanics are the same fact from two sides. *(The neutral difficulty-1 exactness is also in OBL's `retarget` module.)*
 
 ## 14. Nonce-safety of Satoshi's keys — the ECDSA-nonce audit (`nonce_safety.py`)
 

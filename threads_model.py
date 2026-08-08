@@ -30,7 +30,7 @@ from math import log
 
 EXP_HASHES = (1 << 256) // ((0xFFFF << 208) + 1)  # exact expected hashes/block at difficulty 1 =
 #   2^256/(target+1) = 4,295,032,833 = 2^32 * 65536/65535 (the pdiff-vs-bdiff gap); the round 2^32
-#   under-states the true hashrate by ~0.0015%. See bitcoin-origin-claims/verify/difficulty_one.py.
+#   under-states the true hashrate by ~0.0015%.
 LN2 = log(2)
 D1_ERA_END = 32256            # first difficulty retarget; every block below this is difficulty 1.0
 OUTAGE_CUTOFF_S = 7200        # gaps > 2 h are treated as idle/outage, not "actively mining"

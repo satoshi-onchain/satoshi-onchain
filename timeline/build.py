@@ -30,7 +30,7 @@ REQUIRED = ["id", "when", "precision", "axis", "grade", "title", "claim", "evide
 ap = argparse.ArgumentParser()
 ap.add_argument("--events", default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "events.json"))
 ap.add_argument("--corpus", default=None,
-                help="root holding bitcoin-origin-claims/ and archives/; omit to infer")
+                help="root of the local research corpus, used only for optional stats; omit to infer")
 # Default to the PUBLISHED page. The previous default wrote a stray copy next to this script, so a
 # plain `python build.py` silently left the live page stale.
 ap.add_argument("--out", default=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
@@ -96,10 +96,17 @@ def esc(s):
     return html.escape(str(s), quote=True) if s is not None else ""
 
 
+def where_html(w):
+    """Render the source pointer. A row's source has to be something the READER can open --
+    so when it is a URL, make it a link rather than text describing a link."""
+    return (f'<a class="w" href="{esc(w)}" rel="noopener nofollow">{esc(w)}</a>'
+            if w.startswith("http") else f'<span class="w">{esc(w)}</span>')
+
+
 rows = []
 for e in events:
     evid = "".join(
-        f'<li><b>{esc(x["what"])}</b><br><span class="w">{esc(x["where"])}</span>'
+        f'<li><b>{esc(x["what"])}</b><br>{where_html(x["where"])}'
         + (f'<br><code class="h">{esc(x["hash"])}</code>' if x.get("hash") else "")
         + "</li>"
         for x in e["evidence"])
@@ -184,6 +191,8 @@ details summary{{cursor:pointer;color:var(--mut);font-size:13px}}
 .evid{{margin:10px 0;padding-left:18px}}
 .evid li{{margin-bottom:8px;font-size:13.5px}}
 .w{{color:var(--mut);font-size:12.5px;word-break:break-all}}
+a.w{{text-decoration:underline;text-decoration-style:dotted;text-underline-offset:2px}}
+a.w:hover,a.w:focus-visible{{color:var(--fg);text-decoration-style:solid}}
 code{{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;word-break:break-all}}
 .h{{color:var(--mut)}}
 .rep,.notes{{margin-top:8px;font-size:13px}}
