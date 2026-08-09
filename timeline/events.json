@@ -1095,6 +1095,36 @@
   "notes": "The 2014 'I am not Dorian Nakamoto' post is 3 years 3 months later, unsigned, and binds to nobody. The precise claim is that the last VERIFIABLE action is this one."
  },
  {
+  "id": "2011-01-xx-gavin-sf-owner",
+  "when": "2010-12-28",
+  "precision": "range",
+  "until": "2011-01-21",
+  "axis": "bitcoin",
+  "grade": "SERVER-DB",
+  "title": "gavinandresen is added to the Bitcoin SourceForge project",
+  "claim": "The project's owner field reads 's_nakamoto' alone in the capture of 27 December 2010 and 'gavinandresen, s_nakamoto' in the capture of 21 January 2011. No capture of any sourceforge.net/projects/bitcoin URL exists between those dates, so the change is bracketed to 25 days and no tighter.",
+  "evidence": [
+   {
+    "what": "files page, 27 Dec 2010 - owners: s_nakamoto",
+    "where": "https://web.archive.org/web/20101227/http://sourceforge.net/projects/bitcoin/files",
+    "hash": null
+   },
+   {
+    "what": "project page, 21 Jan 2011 - owners: gavinandresen, s_nakamoto",
+    "where": "https://web.archive.org/web/20110121/http://sourceforge.net/projects/bitcoin/",
+    "hash": null
+   },
+   {
+    "what": "prefix sweep of sourceforge.net/projects/bitcoin* returns zero status-200 captures in the gap",
+    "where": "http://web.archive.org/cdx/search/cdx?url=sourceforge.net/projects/bitcoin*&matchType=prefix&from=20101228&to=20110120",
+    "hash": null
+   }
+  ],
+  "reproduce": "curl -sL 'https://web.archive.org/web/20110121/http://sourceforge.net/projects/bitcoin/' | grep -o 'gavinandresen'",
+  "gap": false,
+  "notes": "Records a MEMBERSHIP CHANGE, not a handover. SourceForge admins can add members and the page shows the result, not the actor - it cannot establish that Satoshi added him. It also does not narrow Satoshi's departure: his last machine-verifiable action is separately dated to 15 December 2010, and this row adds nothing to that. The adjacency is recorded precisely because it is the kind of fact that becomes a narrative if left uncaptioned."
+ },
+ {
   "id": "2011-02-28-asc",
   "when": "2011-02-28",
   "precision": "day",

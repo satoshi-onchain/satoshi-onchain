@@ -55,7 +55,7 @@ it. Rows we <b>cannot</b> verify are shown too, marked <b>NOT HELD</b> — becau
 only what was found looks complete when it is not.</p>
 
 <div class="incomplete"><b>This timeline is incomplete, and says so on purpose.</b>
-It currently holds <b>67</b> events. The research corpus behind it is not part of this repository, so its size is not stated here rather than guessed at.
+It currently holds <b>68</b> events. The research corpus behind it is not part of this repository, so its size is not stated here rather than guessed at.
 <b>Absence of a row here is not evidence that nothing happened on that date.</b>
 Applying the same standard to ourselves that we apply to everyone else — literally, since
 7 of these rows are about <a href="https://bitcoin-lab.org/bitcoin">a second Bitcoin, mined in
@@ -628,6 +628,17 @@ Applying the same standard to ourselves that we apply to everyone else — liter
   <p class="claim">An SVN commit with the message &#x27;get external ip from irc&#x27;. Ordinary maintenance; no farewell.</p>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>SourceForge SVN log via Software Heritage</b><br><a class="w" href="https://archive.softwareheritage.org/api/1/revision/5c085256f7dbfe999afbf10808828f0df9f877f1/log/" rel="noopener nofollow">https://archive.softwareheritage.org/api/1/revision/5c085256f7dbfe999afbf10808828f0df9f877f1/log/</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/sourceforge_svn_log.py</code></div><div class="notes"><span class="lbl">caveats</span>The 2014 &#x27;I am not Dorian Nakamoto&#x27; post is 3 years 3 months later, unsigned, and binds to nobody. The precise claim is that the last VERIFIABLE action is this one.</div>
+  </details>
+</article><article class="ev" data-axis="bitcoin" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2011-01-xx-gavin-sf-owner">
+  <header>
+    <time>2010-12-28 &rarr; 2011-01-21</time>
+    <span class="g g-SERVER-DB">SERVER-DB</span>
+    
+    <h3>gavinandresen is added to the Bitcoin SourceForge project</h3>
+  </header>
+  <p class="claim">The project&#x27;s owner field reads &#x27;s_nakamoto&#x27; alone in the capture of 27 December 2010 and &#x27;gavinandresen, s_nakamoto&#x27; in the capture of 21 January 2011. No capture of any sourceforge.net/projects/bitcoin URL exists between those dates, so the change is bracketed to 25 days and no tighter.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>files page, 27 Dec 2010 - owners: s_nakamoto</b><br><a class="w" href="https://web.archive.org/web/20101227/http://sourceforge.net/projects/bitcoin/files" rel="noopener nofollow">https://web.archive.org/web/20101227/http://sourceforge.net/projects/bitcoin/files</a></li><li><b>project page, 21 Jan 2011 - owners: gavinandresen, s_nakamoto</b><br><a class="w" href="https://web.archive.org/web/20110121/http://sourceforge.net/projects/bitcoin/" rel="noopener nofollow">https://web.archive.org/web/20110121/http://sourceforge.net/projects/bitcoin/</a></li><li><b>prefix sweep of sourceforge.net/projects/bitcoin* returns zero status-200 captures in the gap</b><br><a class="w" href="http://web.archive.org/cdx/search/cdx?url=sourceforge.net/projects/bitcoin*&amp;matchType=prefix&amp;from=20101228&amp;to=20110120" rel="noopener nofollow">http://web.archive.org/cdx/search/cdx?url=sourceforge.net/projects/bitcoin*&amp;matchType=prefix&amp;from=20101228&amp;to=20110120</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>curl -sL &#x27;https://web.archive.org/web/20110121/http://sourceforge.net/projects/bitcoin/&#x27; | grep -o &#x27;gavinandresen&#x27;</code></div><div class="notes"><span class="lbl">caveats</span>Records a MEMBERSHIP CHANGE, not a handover. SourceForge admins can add members and the page shows the result, not the actor - it cannot establish that Satoshi added him. It also does not narrow Satoshi&#x27;s departure: his last machine-verifiable action is separately dated to 15 December 2010, and this row adds nothing to that. The adjacency is recorded precisely because it is the kind of fact that becomes a narrative if left uncaptioned.</div>
   </details>
 </article><article class="ev" data-axis="satoshi" data-grade="CAPTURE" data-gap="false" data-era="origin" id="2011-02-28-asc">
   <header>
