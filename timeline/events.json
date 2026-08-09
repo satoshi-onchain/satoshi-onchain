@@ -116,12 +116,12 @@
   "precision": "day",
   "axis": "satoshi",
   "grade": "ARCHIVE-POS",
-  "title": "The file id Satoshi linked is bracketed by an unrelated crawl",
-  "claim": "Satoshi emailed a LINK, not an attachment, to Adam Back on 20 Aug 2008 and Wei Dai on 22 Aug 2008: upload.ae/file/6157/ecash-pdf.html. That host's file ids are sequential, and the Internet Archive crawled it through 2008 for unrelated reasons. Id 5873 was captured on 14 August 2008 and id 10003 on 19 October 2008, placing id 6157's upload between them — six days after the lower bracket.",
+  "title": "The file id Satoshi linked is bracketed to within days by an unrelated crawl",
+  "claim": "Satoshi emailed a LINK, not an attachment, to Adam Back on 20 Aug 2008 and Wei Dai on 22 Aug 2008: upload.ae/file/6157/ecash-pdf.html. That host's file ids are sequential, and the Internet Archive crawled it through 2008 for unrelated reasons. Ids 6145, 6160 and 6161 - immediately either side of 6157 - were all first captured on 23 August 2008, placing 6157's upload on or before that date.",
   "evidence": [
    {
-    "what": "1,513 upload.ae file ids captured 2008-2009, range 105-14987, via the Wayback CDX API",
-    "where": "http://web.archive.org/cdx/search/cdx?url=upload.ae&matchType=domain&output=json&from=2008&to=2009&fl=timestamp,original&limit=8000",
+    "what": "2,421 upload.ae file ids across 14,810 captures (2008-2010) via the Wayback CDX API; independently corroborated by a third party's own extraction of 17,255 upload.ae URLs listing the same nearest neighbours, 6145 and 6160",
+    "where": "http://web.archive.org/cdx/search/cdx?url=upload.ae&matchType=domain&output=json&from=2008&to=2010&fl=timestamp,original&limit=40000",
     "hash": null
    },
    {
@@ -130,9 +130,9 @@
     "hash": null
    }
   ],
-  "reproduce": "curl -s 'http://web.archive.org/cdx/search/cdx?url=upload.ae&matchType=domain&output=json&from=2008&to=2009&fl=timestamp,original&limit=8000'",
+  "reproduce": "curl -s 'http://web.archive.org/cdx/search/cdx?url=upload.ae&matchType=domain&output=json&from=2008&to=2010&fl=timestamp,original&limit=40000'   # use a HIGH limit; at 8000 the neighbours truncate away",
   "gap": false,
-  "notes": "Corroborates TIMING only. It does not recover the file, say anything about its contents, or identify who uploaded it. Its value is that the bracketing party had no interest in the question: the Internet Archive crawled an Emirati file host in 2008 for its own reasons, and its incidental record of unrelated files dates Satoshi's id. The file itself was never archived and structurally could not be - the download sat behind a form POST, which crawlers do not submit. Every capture of id 6157 is from 2020 or later and returns 302/404/406."
+  "notes": "Corroborates TIMING only. It does not recover the file, say anything about its contents, or identify who uploaded it. Its value is that the bracketing party had no interest in the question: the Internet Archive crawled an Emirati file host in 2008 for its own reasons. Note also that it captured 6145, 6160 and 6161 that day and never captured 6157 - consistent with an unlisted upload whose URL travelled only by private email, though a crawl gap has many innocent causes. The file itself was never archived and structurally could not be: the download sat behind a form POST, which crawlers do not submit."
  },
  {
   "id": "2008-09-10-nov08-genesis-ntime",
