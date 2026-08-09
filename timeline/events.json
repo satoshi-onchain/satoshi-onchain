@@ -1351,13 +1351,13 @@
   "notes": "What the binding establishes is that a process running a binary of a known hash was alive before and after the block's timestamp - NOT that this process mined this block. No artifact can tie a nonce to a PID. A narrow bracket is a stronger statement than a wide one; it is not a proof. The same claim this project makes about Satoshi's fbcac071…, made about ours, at the same strength and with the same limit stated."
  },
  {
-  "id": "2026-08-09-blocks-5-7",
-  "when": "2026-08-09",
-  "precision": "day",
+  "id": "2026-08-08-unsealed-blocks",
+  "when": "2026-08-08T23:18:52Z",
+  "precision": "second",
   "axis": "bitcoin",
   "grade": "NONE",
-  "title": "Blocks 5–7 of the 2026 chain are mined — NOT YET SEALED",
-  "claim": "The public anchor reports the 2026 chain at height 7, but the sealed evidence set stops at block 4. Blocks 5, 6 and 7 have no published findings, no hash manifest and no binding record.",
+  "title": "The chain outruns its evidence set — NOT YET SEALED",
+  "claim": "The sealed evidence set for the 2026 chain stops at block 4. Block 5 was mined at this timestamp and the chain has continued past it; every block beyond 4 has no published findings, no hash manifest and no binding record. This row deliberately names no current height — the height moves, the gap is what persists.",
   "evidence": [
    {
     "what": "the live anchor's reported tip",
@@ -1367,7 +1367,7 @@
   ],
   "reproduce": "curl -s https://raw.githubusercontent.com/original-bitcoin-laboratory/genesis/status/status.json | jq '.chains.bitcoin.height'",
   "gap": true,
-  "notes": "Marked NOT HELD against ourselves, on the same rule applied to everyone else on this page: the event demonstrably happened and we do not hold the artifact in publishable form. Graded NONE because a status file we generate is not independent support for our own chain. It will be upgraded when the blocks are captured and sealed, and not before."
+  "notes": "Marked NOT HELD against ourselves, on the same rule applied to everyone else on this page: the event demonstrably happened and we do not hold the artifact in publishable form. Graded NONE because a status file we generate is not independent support for our own chain. The reproduce command reads the live height rather than this row asserting one, so the row cannot go stale while the miner runs. It will be upgraded when the blocks are captured and sealed, and not before."
  },
  {
   "id": "2026-08-09-anchor",
