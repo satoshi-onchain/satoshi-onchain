@@ -590,9 +590,12 @@
 
 <!-- GoatCounter, same account as bitcoin-lab.org. Both sites serve a page at "/", so the path
      is prefixed with the host: without it the two would merge into one indistinguishable row
-     in the dashboard. No cookies and no cross-site identifier -- it counts pageviews. -->
+     in the dashboard. No cookies and no cross-site identifier. Since 10 Aug 2026 analytics.js
+     adds EVENTS on top of the pageview -- outbound links, downloads, evidence expansion, read
+     depth, copies, and this page's filters. More KINDS of event; never more identification. -->
 <script>window.goatcounter = { path: function (p) { return 'satoshioncha.in' + p } }</script>
 <script data-goatcounter="https://parthod0x.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="analytics.js"></script>
 
 </body>
 </html>

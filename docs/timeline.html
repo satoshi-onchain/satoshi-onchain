@@ -60,7 +60,7 @@ it. Rows we <b>cannot</b> verify are shown too, marked <b>NOT HELD</b> — becau
 only what was found looks complete when it is not.</p>
 
 <div class="incomplete"><b>This timeline is incomplete, and says so on purpose.</b>
-It currently holds <b>70</b> events. The research corpus behind it contains <b>158</b> distinct dated events across 89 written entries and 52 sealed archives, and migration into this file is deliberate rather than bulk — each row has to acquire a grade, a source and a reproduction path before it can appear. That corpus is a local research archive and is not itself published, so this number is stated, not linkable.
+It currently holds <b>70</b> events. The research corpus behind it contains <b>158</b> distinct dated events across 89 written entries and 53 sealed archives, and migration into this file is deliberate rather than bulk — each row has to acquire a grade, a source and a reproduction path before it can appear. That corpus is a local research archive and is not itself published, so this number is stated, not linkable.
 <b>Absence of a row here is not evidence that nothing happened on that date.</b>
 Applying the same standard to ourselves that we apply to everyone else — literally, since
 7 of these rows are about <a href="https://bitcoin-lab.org/bitcoin">a second Bitcoin, mined in
@@ -997,6 +997,7 @@ document.querySelectorAll(".bar button[data-view]").forEach(function(b){
     view=b.dataset.view;
     document.querySelectorAll(".bar button[data-view]").forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});
     apply();
+    if(window.gcEvent) gcEvent("timeline: axis "+view,"timeline filter");
   };
 });
 document.querySelectorAll(".bar button.era").forEach(function(b){
@@ -1004,9 +1005,26 @@ document.querySelectorAll(".bar button.era").forEach(function(b){
     era=b.dataset.era;
     document.querySelectorAll(".bar button.era").forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});
     apply();
+    // Which ERA readers filter to is the one thing this page most wants to know: it says
+    // whether the 2026 pair is being read as a curiosity, ignored, or taken as the subject.
+    if(window.gcEvent) gcEvent("timeline: era "+era,"timeline filter");
   };
 });
-document.getElementById("gapsOnly").onchange=function(e){gapsOnly=e.target.checked;apply();};
-document.getElementById("chainOnly").onchange=function(e){chainOnly=e.target.checked;apply();};
+document.getElementById("gapsOnly").onchange=function(e){
+  gapsOnly=e.target.checked;apply();
+  if(window.gcEvent) gcEvent("timeline: gaps-only "+(gapsOnly?"on":"off"),"timeline filter");
+};
+document.getElementById("chainOnly").onchange=function(e){
+  chainOnly=e.target.checked;apply();
+  if(window.gcEvent) gcEvent("timeline: chain-only "+(chainOnly?"on":"off"),"timeline filter");
+};
 apply();
 </script>
+
+<!-- Analytics. This page had NONE until 10 Aug 2026 - it is generated, and the snippet lived only
+     in the hand-written index.html, so the site's most detailed page was the one page nobody was
+     counting. The prefix must be set INLINE and BEFORE count.js: count.js is async and a prefix
+     applied later would mis-file the pageview under the account default (bitcoin-lab.org). -->
+<script>window.goatcounter = { path: function (p) { return 'satoshioncha.in' + p } }</script>
+<script data-goatcounter="https://parthod0x.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="analytics.js"></script>

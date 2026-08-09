@@ -343,6 +343,7 @@ document.querySelectorAll(".bar button[data-view]").forEach(function(b){{
     view=b.dataset.view;
     document.querySelectorAll(".bar button[data-view]").forEach(function(x){{x.setAttribute("aria-pressed",String(x===b));}});
     apply();
+    if(window.gcEvent) gcEvent("timeline: axis "+view,"timeline filter");
   }};
 }});
 document.querySelectorAll(".bar button.era").forEach(function(b){{
@@ -350,12 +351,29 @@ document.querySelectorAll(".bar button.era").forEach(function(b){{
     era=b.dataset.era;
     document.querySelectorAll(".bar button.era").forEach(function(x){{x.setAttribute("aria-pressed",String(x===b));}});
     apply();
+    // Which ERA readers filter to is the one thing this page most wants to know: it says
+    // whether the 2026 pair is being read as a curiosity, ignored, or taken as the subject.
+    if(window.gcEvent) gcEvent("timeline: era "+era,"timeline filter");
   }};
 }});
-document.getElementById("gapsOnly").onchange=function(e){{gapsOnly=e.target.checked;apply();}};
-document.getElementById("chainOnly").onchange=function(e){{chainOnly=e.target.checked;apply();}};
+document.getElementById("gapsOnly").onchange=function(e){{
+  gapsOnly=e.target.checked;apply();
+  if(window.gcEvent) gcEvent("timeline: gaps-only "+(gapsOnly?"on":"off"),"timeline filter");
+}};
+document.getElementById("chainOnly").onchange=function(e){{
+  chainOnly=e.target.checked;apply();
+  if(window.gcEvent) gcEvent("timeline: chain-only "+(chainOnly?"on":"off"),"timeline filter");
+}};
 apply();
 </script>
+
+<!-- Analytics. This page had NONE until 10 Aug 2026 - it is generated, and the snippet lived only
+     in the hand-written index.html, so the site's most detailed page was the one page nobody was
+     counting. The prefix must be set INLINE and BEFORE count.js: count.js is async and a prefix
+     applied later would mis-file the pageview under the account default (bitcoin-lab.org). -->
+<script>window.goatcounter = {{ path: function (p) {{ return 'satoshioncha.in' + p }} }}</script>
+<script data-goatcounter="https://parthod0x.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="analytics.js"></script>
 '''
 # newline="\n" is load-bearing: without it Python writes CRLF on Windows while the committed blob
 # is LF, so every regeneration produced a whole-file diff of pure line-ending churn.
