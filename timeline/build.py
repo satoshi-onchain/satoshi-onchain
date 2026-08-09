@@ -103,8 +103,33 @@ def where_html(w):
             if w.startswith("http") else f'<span class="w">{esc(w)}</span>')
 
 
+ERA_NOTE = '''<div class="eradiv" id="era-2026">
+  <h2>2026 &mdash; a second pair, documented to the same standard</h2>
+  <p>Everything above concerns the Bitcoin that launched in January 2009 and the pseudonym that
+  released it. Everything below concerns <b>a different chain and a different author</b>: a second
+  Bitcoin genesis, mined in August 2026 by the same January 2009 client, on its own network, with
+  its own signed releases. <b>It is not a fork of the chain above and shares no history, no balances
+  and no units with it.</b></p>
+  <p><b>The rows are graded by the same table, and it does not flatter them.</b> Six of the seven are
+  <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span> &mdash; our own record of our own runs, the
+  same grade this timeline gives Satoshi&rsquo;s own releases. Exactly one reaches
+  <span class="g g-CHAIN">CHAIN</span>, and it earns that on the 2009 chain rather than on ours. One
+  is marked <b>NOT HELD</b> against us.</p>
+  <p><b>Which of the two chains &ldquo;is&rdquo; Bitcoin has no factual answer &mdash; only
+  convention</b>, so neither is ranked here. What can be compared is the evidence, and that
+  comparison runs in an unexpected direction: no key from 2009 has ever signed anything, while every
+  artifact below is hashed, timestamped and anchored. <b>The 2026 pair is not offered as a rival. It
+  is a control &mdash; what a fully documented origin looks like, which is what makes the gaps above
+  measurable.</b></p>
+</div>'''
+
 rows = []
+_era_marked = False
 for e in events:
+    era = "lab" if e["when"] >= "2026" else "origin"
+    if era == "lab" and not _era_marked:
+        rows.append(ERA_NOTE)
+        _era_marked = True
     evid = "".join(
         f'<li><b>{esc(x["what"])}</b><br>{where_html(x["where"])}'
         + (f'<br><code class="h">{esc(x["hash"])}</code>' if x.get("hash") else "")
@@ -114,7 +139,7 @@ for e in events:
            if e.get("reproduce") else
            '<div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div>')
     notes = f'<div class="notes"><span class="lbl">caveats</span>{esc(e["notes"])}</div>' if e.get("notes") else ""
-    rows.append(f'''<article class="ev{' gap' if e['gap'] else ''}" data-axis="{e['axis']}" data-grade="{e['grade']}" data-gap="{str(e['gap']).lower()}" id="{esc(e['id'])}">
+    rows.append(f'''<article class="ev{' gap' if e['gap'] else ''}" data-axis="{e['axis']}" data-grade="{e['grade']}" data-gap="{str(e['gap']).lower()}" data-era="{era}" id="{esc(e['id'])}">
   <header>
     <time>{fmt(e)}</time>
     <span class="g g-{e['grade']}">{e['grade']}</span>
@@ -157,6 +182,7 @@ else:
                    "stated here rather than guessed at.")
     print("  NOTE: corpus not reachable from this path -- the page will say so instead of printing zero")
 
+N_LAB = sum(1 for e in events if e["when"] >= "2026")
 built = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
 doc = f'''<title>Satoshi &amp; Bitcoin — a verifiable timeline</title>
 <style>
@@ -200,6 +226,13 @@ code{{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;wor
 .lbl{{display:inline-block;min-width:82px;color:var(--mut);font-size:11px;letter-spacing:.06em;text-transform:uppercase}}
 .count{{color:var(--mut);font-size:13px;margin:6px 0 16px}}
 .legend{{border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:22px 0;font-size:13.5px;color:var(--mut)}}
+.eradiv{{border:1px solid var(--line);border-left:3px solid var(--fg);border-radius:10px;
+  padding:16px 20px;margin:34px 0 26px;background:var(--card)}}
+.eradiv h2{{font-size:15px;margin:0 0 10px;letter-spacing:.01em}}
+.eradiv p{{font-size:13.5px;line-height:1.7;color:var(--mut);margin:0 0 10px}}
+.eradiv p:last-child{{margin-bottom:0}}
+.eradiv b{{color:var(--fg)}}
+.eradiv .g{{font-size:10px;vertical-align:baseline}}
 </style>
 <div class="wrap">
 <h1>Satoshi &amp; Bitcoin — a verifiable timeline</h1>
@@ -210,13 +243,20 @@ only what was found looks complete when it is not.</p>
 <div class="incomplete"><b>This timeline is incomplete, and says so on purpose.</b>
 It currently holds <b>{len(events)}</b> events. {CORPUS_LINE}
 <b>Absence of a row here is not evidence that nothing happened on that date.</b>
-Applying the same standard to ourselves that we apply to everyone else.</div>
+Applying the same standard to ourselves that we apply to everyone else — literally, since
+{N_LAB} of these rows are about <a href="https://bitcoin-lab.org/bitcoin">a second Bitcoin, mined in
+2026</a>, and they are graded by the same table and carry a NOT HELD of their own.</div>
 
 <div class="bar">
   <div>
     <button data-view="both" aria-pressed="true">Combined</button>
     <button data-view="satoshi" aria-pressed="false">Satoshi</button>
     <button data-view="bitcoin" aria-pressed="false">Bitcoin</button>
+  </div>
+  <div class="grp">
+    <button class="era" data-era="all" aria-pressed="true">Both eras</button>
+    <button class="era" data-era="origin" aria-pressed="false">2008&ndash;2024</button>
+    <button class="era" data-era="lab" aria-pressed="false">2026</button>
   </div>
   <div class="grp">
     <label><input type="checkbox" id="gapsOnly"> gaps only</label>
@@ -260,22 +300,32 @@ identity of Satoshi Nakamoto. If you are named here and want something corrected
 </footer>
 </div>
 <script>
-var view="both", gapsOnly=false, chainOnly=false;
+var view="both", gapsOnly=false, chainOnly=false, era="all";
 function apply(){{
   var n=0, all=document.querySelectorAll(".ev");
   all.forEach(function(el){{
     var ax=el.dataset.axis, ok=(view==="both")||(ax===view)||(ax==="both");
+    if(era!=="all" && el.dataset.era!==era) ok=false;
     if(gapsOnly && el.dataset.gap!=="true") ok=false;
     if(chainOnly && el.dataset.grade!=="CHAIN") ok=false;
     el.style.display=ok?"":"none"; if(ok)n++;
   }});
   var g=0; all.forEach(function(el){{if(el.style.display!=="none"&&el.dataset.gap==="true")g++;}});
   document.getElementById("count").textContent=n+" events shown — "+(n-g)+" verified, "+g+" not held";
+  var d=document.getElementById("era-2026");
+  if(d) d.style.display=(era==="all" && !gapsOnly && !chainOnly)?"":"none";
 }}
-document.querySelectorAll(".bar button").forEach(function(b){{
+document.querySelectorAll(".bar button[data-view]").forEach(function(b){{
   b.onclick=function(){{
     view=b.dataset.view;
-    document.querySelectorAll(".bar button").forEach(function(x){{x.setAttribute("aria-pressed",String(x===b));}});
+    document.querySelectorAll(".bar button[data-view]").forEach(function(x){{x.setAttribute("aria-pressed",String(x===b));}});
+    apply();
+  }};
+}});
+document.querySelectorAll(".bar button.era").forEach(function(b){{
+  b.onclick=function(){{
+    era=b.dataset.era;
+    document.querySelectorAll(".bar button.era").forEach(function(x){{x.setAttribute("aria-pressed",String(x===b));}});
     apply();
   }};
 }});

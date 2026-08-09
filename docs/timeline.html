@@ -40,6 +40,13 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;word
 .lbl{display:inline-block;min-width:82px;color:var(--mut);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
 .count{color:var(--mut);font-size:13px;margin:6px 0 16px}
 .legend{border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:22px 0;font-size:13.5px;color:var(--mut)}
+.eradiv{border:1px solid var(--line);border-left:3px solid var(--fg);border-radius:10px;
+  padding:16px 20px;margin:34px 0 26px;background:var(--card)}
+.eradiv h2{font-size:15px;margin:0 0 10px;letter-spacing:.01em}
+.eradiv p{font-size:13.5px;line-height:1.7;color:var(--mut);margin:0 0 10px}
+.eradiv p:last-child{margin-bottom:0}
+.eradiv b{color:var(--fg)}
+.eradiv .g{font-size:10px;vertical-align:baseline}
 </style>
 <div class="wrap">
 <h1>Satoshi &amp; Bitcoin — a verifiable timeline</h1>
@@ -48,9 +55,11 @@ it. Rows we <b>cannot</b> verify are shown too, marked <b>NOT HELD</b> — becau
 only what was found looks complete when it is not.</p>
 
 <div class="incomplete"><b>This timeline is incomplete, and says so on purpose.</b>
-It currently holds <b>58</b> events. The research corpus behind it is not part of this repository, so its size is not stated here rather than guessed at.
+It currently holds <b>65</b> events. The research corpus behind it is not part of this repository, so its size is not stated here rather than guessed at.
 <b>Absence of a row here is not evidence that nothing happened on that date.</b>
-Applying the same standard to ourselves that we apply to everyone else.</div>
+Applying the same standard to ourselves that we apply to everyone else — literally, since
+7 of these rows are about <a href="https://bitcoin-lab.org/bitcoin">a second Bitcoin, mined in
+2026</a>, and they are graded by the same table and carry a NOT HELD of their own.</div>
 
 <div class="bar">
   <div>
@@ -59,13 +68,18 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
     <button data-view="bitcoin" aria-pressed="false">Bitcoin</button>
   </div>
   <div class="grp">
+    <button class="era" data-era="all" aria-pressed="true">Both eras</button>
+    <button class="era" data-era="origin" aria-pressed="false">2008&ndash;2024</button>
+    <button class="era" data-era="lab" aria-pressed="false">2026</button>
+  </div>
+  <div class="grp">
     <label><input type="checkbox" id="gapsOnly"> gaps only</label>
     <label><input type="checkbox" id="chainOnly"> chain-grade only</label>
   </div>
 </div>
 <p class="count" id="count"></p>
 
-<article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2008-07-20-ecash-org">
+<article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2008-07-20-ecash-org">
   <header>
     <time>2008-07-20</time>
     <span class="g g-SERVER-DB">SERVER-DB</span>
@@ -76,7 +90,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>registry record</b><br><a class="w" href="https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198" rel="noopener nofollow">https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Earliest verifiable domain date in the project&#x27;s orbit. A registration is not an attribution.</div>
   </details>
-</article><article class="ev gap" data-axis="both" data-grade="PARTY-RELEASED" data-gap="true" id="2008-08-xx-first-draft">
+</article><article class="ev gap" data-axis="both" data-grade="PARTY-RELEASED" data-gap="true" data-era="origin" id="2008-08-xx-first-draft">
   <header>
     <time>2008-08</time>
     <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
@@ -87,7 +101,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>abstract text only</b><br><a class="w" href="https://github.com/lugaxker/nakamoto-archive" rel="noopener nofollow">https://github.com/lugaxker/nakamoto-archive</a><br><code class="h">6dd156197af8ee359d0852a236997e843b2f8e39a20ca326d17883420d82d9bd</code></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>NOT LOCATED. Not evidence of destruction — an absence of copies is not a proof that none survive.</div>
   </details>
-</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2008-08-17-netcoin">
+</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2008-08-17-netcoin">
   <header>
     <time>2008-08-17</time>
     <span class="g g-SERVER-DB">SERVER-DB</span>
@@ -98,7 +112,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>registry records for both domains</b><br><a class="w" href="https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198" rel="noopener nofollow">https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Suggestive of one actor trying names. Suggestive is not proof, and no name attaches to either.</div>
   </details>
-</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2008-08-18-domain">
+</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2008-08-18-domain">
   <header>
     <time>2008-08-18</time>
     <span class="g g-SERVER-DB">SERVER-DB</span>
@@ -109,7 +123,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>RDAP registry record</b><br><a class="w" href="https://rdap.publicinterestregistry.org/rdap/domain/bitcoin.org" rel="noopener nofollow">https://rdap.publicinterestregistry.org/rdap/domain/bitcoin.org</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>curl -s https://rdap.publicinterestregistry.org/rdap/domain/bitcoin.org | jq &#x27;.events&#x27;</code></div><div class="notes"><span class="lbl">caveats</span>A registrar&#x27;s own database row. It says nothing about who registered it.</div>
   </details>
-</article><article class="ev" data-axis="satoshi" data-grade="ADJUDICATED" data-gap="false" id="2008-08-20-anonymousspeech">
+</article><article class="ev" data-axis="satoshi" data-grade="ADJUDICATED" data-gap="false" data-era="origin" id="2008-08-20-anonymousspeech">
   <header>
     <time>2008-08-20</time>
     <span class="g g-ADJUDICATED">ADJUDICATED</span>
@@ -120,7 +134,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>Adam Back witness statement §5, full header quoted under a statement of truth</b><br><a class="w" href="https://github.com/lugaxker/nakamoto-archive" rel="noopener nofollow">https://github.com/lugaxker/nakamoto-archive</a></li><li><b>COPA Opening Skeleton §16</b><br><a class="w" href="https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198" rel="noopener nofollow">https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Establishes the identifier sequence anonymousspeech -&gt; vistomail -&gt; gmx, not the reverse.</div>
   </details>
-</article><article class="ev" data-axis="bitcoin" data-grade="CAPTURE" data-gap="false" id="2008-09-10-nov08-genesis-ntime">
+</article><article class="ev" data-axis="bitcoin" data-grade="CAPTURE" data-gap="false" data-era="origin" id="2008-09-10-nov08-genesis-ntime">
   <header>
     <time>2008-09-10 18:02:08 UTC</time>
     <span class="g g-CAPTURE">CAPTURE</span>
@@ -131,7 +145,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>the November 2008 pre-release source</b><br><a class="w" href="https://github.com/lugaxker/nakamoto-archive" rel="noopener nofollow">https://github.com/lugaxker/nakamoto-archive</a></li><li><b>SNI&#x27;s copy, dated November 15 2008</b><br><a class="w" href="https://satoshi.nakamotoinstitute.org/code/" rel="noopener nofollow">https://satoshi.nakamotoinstitute.org/code/</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>An integer the code sets about itself — no headline, no external commitment, so it anchors nothing outside the file. Contrast the live genesis, which embeds a newspaper front page and therefore cannot predate it.</div>
   </details>
-</article><article class="ev" data-axis="both" data-grade="CAPTURE" data-gap="false" id="2008-10-03-draft">
+</article><article class="ev" data-axis="both" data-grade="CAPTURE" data-gap="false" data-era="origin" id="2008-10-03-draft">
   <header>
     <time>2008-10-03 20:49:58 UTC</time>
     <span class="g g-CAPTURE">CAPTURE</span>
@@ -142,7 +156,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>prerelease_2008-10-03_ia-bitcoin-foundation.pdf, 183,697 bytes</b><br><a class="w" href="https://github.com/original-bitcoin-laboratory/bitcoin-whitepaper" rel="noopener nofollow">https://github.com/original-bitcoin-laboratory/bitcoin-whitepaper</a><br><code class="h">427c63b364c6db914cf23072a09ffd53ee078397b7c6ab2d604e12865a982faa</code></li></ul><div class="rep"><span class="lbl">reproduce</span><code>curl -sL &#x27;https://web.archive.org/web/20140320135003id_/https://bitcoin.org/bitcoin.pdf&#x27; -o c.pdf; sha256sum c.pdf   # any copy of the 3 Oct 2008 draft must be 427c63b364c6db91…</code></div><div class="notes"><span class="lbl">caveats</span>/CreationDate D:20081003134958-07&#x27;00&#x27;. The offset is the producing machine&#x27;s setting, not a location.</div>
   </details>
-</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2008-10-05-nakamoto2">
+</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2008-10-05-nakamoto2">
   <header>
     <time>2008-10-05</time>
     <span class="g g-SERVER-DB">SERVER-DB</span>
@@ -153,7 +167,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>user page captured 2009-11-30 showing Joined: 2008-10-05</b><br><a class="w" href="https://web.archive.org/web/2009*/bitcoin.org*" rel="noopener nofollow">https://web.archive.org/web/2009*/bitcoin.org*</a></li><li><b>sequential user IDs bracketing the join date</b><br><a class="w" href="http://flossdata.syr.edu/data/sf/" rel="noopener nofollow">http://flossdata.syr.edu/data/sf/</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/sourceforge_identity.py</code></div><div class="notes"><span class="lbl">caveats</span>Server-written and bracketed by neighbouring account IDs, so it cannot have been backdated by the holder.</div>
   </details>
-</article><article class="ev" data-axis="satoshi" data-grade="SELF" data-gap="false" id="2008-10-30-pgp-key">
+</article><article class="ev" data-axis="satoshi" data-grade="SELF" data-gap="false" data-era="origin" id="2008-10-30-pgp-key">
   <header>
     <time>2008-10-30 18:19:19 UTC</time>
     <span class="g g-SELF">SELF</span>
@@ -164,7 +178,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>the key&#x27;s own self-assertion</b><br><a class="w" href="https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198" rel="noopener nofollow">https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>GRADED &#x27;SELF&#x27; DELIBERATELY: a PGP creation date is written by the creating machine and is trivially forgeable. Period-plausible, entirely unbinding — and no Satoshi artifact was ever PGP-signed with it.</div>
   </details>
-</article><article class="ev" data-axis="both" data-grade="ARCHIVE-POS" data-gap="false" id="2008-10-31-announcement">
+</article><article class="ev" data-axis="both" data-grade="ARCHIVE-POS" data-gap="false" data-era="origin" id="2008-10-31-announcement">
   <header>
     <time>2008-10-31 18:10:00 UTC</time>
     <span class="g g-ARCHIVE-POS">ARCHIVE-POS</span>
@@ -175,7 +189,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>metzdowd pipermail mbox, Date: Sat, 01 Nov 2008 02:10:00 +0800</b><br><a class="w" href="https://www.metzdowd.com/pipermail/cryptography/2008-October.txt.gz" rel="noopener nofollow">https://www.metzdowd.com/pipermail/cryptography/2008-October.txt.gz</a></li><li><b>MIT&#x27;s independent archive of the same list</b><br><a class="w" href="https://diswww.mit.edu/bloom-picayune/crypto/136690" rel="noopener nofollow">https://diswww.mit.edu/bloom-picayune/crypto/136690</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/metzdowd_backup.py</code></div><div class="notes"><span class="lbl">caveats</span>The +0800 offset is the mail provider&#x27;s server clock, not a location — see the +0800 verdict. Message-ID is CHILKAT-MID-...@server123, a server-side library.</div>
   </details>
-</article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" id="2008-11-08-183697">
+</article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" data-era="origin" id="2008-11-08-183697">
   <header>
     <time>2008-11-08</time>
     <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
@@ -186,7 +200,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>StealthMonger, PGP-signed, restated 2017-08-18</b><br><a class="w" href="https://www.metzdowd.com/pipermail/cryptography/2017-August/032662.html" rel="noopener nofollow">https://www.metzdowd.com/pipermail/cryptography/2017-August/032662.html</a></li><li><b>Ray Dillinger, an original November 2008 participant: &#x27;The hash matches. That&#x27;s definitely it.&#x27;</b><br><a class="w" href="https://www.metzdowd.com/pipermail/cryptography/2017-August/032662.html" rel="noopener nofollow">https://www.metzdowd.com/pipermail/cryptography/2017-August/032662.html</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>sha256sum &lt;your copy of the 3 Oct 2008 draft&gt;   # the hash StealthMonger published and Dillinger confirmed: 427c63b364c6db914cf23072a09ffd53ee078397b7c6ab2d604e12865a982faa</code></div><div class="notes"><span class="lbl">caveats</span>Independent provenance for the pre-release draft, from people who held it in 2008 and published a matching hash years later.</div>
   </details>
-</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2008-11-09-sourceforge">
+</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2008-11-09-sourceforge">
   <header>
     <time>2008-11-09 18:58:00 UTC</time>
     <span class="g g-SERVER-DB">SERVER-DB</span>
@@ -197,7 +211,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>SourceForge account pages and sequential user IDs</b><br><a class="w" href="http://flossdata.syr.edu/data/sf/" rel="noopener nofollow">http://flossdata.syr.edu/data/sf/</a></li><li><b>Wayback capture of nakamoto2&#x27;s join date</b><br><a class="w" href="https://web.archive.org/web/20091130163943if_/http://sourceforge.net:80/users/nakamoto2" rel="noopener nofollow">https://web.archive.org/web/20091130163943if_/http://sourceforge.net:80/users/nakamoto2</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/sourceforge_identity.py</code></div><div class="notes"><span class="lbl">caveats</span>Written by SourceForge&#x27;s own database. The subject could not set it.</div>
   </details>
-</article><article class="ev gap" data-axis="both" data-grade="ADJUDICATED" data-gap="true" id="2008-11-11-lost-version">
+</article><article class="ev gap" data-axis="both" data-grade="ADJUDICATED" data-gap="true" data-era="origin" id="2008-11-11-lost-version">
   <header>
     <time>2008-11-11 16:00:34 UTC</time>
     <span class="g g-ADJUDICATED">ADJUDICATED</span>
@@ -208,7 +222,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>COPA Appendix PM3, giving the creation timestamp</b><br><a class="w" href="https://huggingface.co/datasets/YL95/copa_v_wright_CPT_raw" rel="noopener nofollow">https://huggingface.co/datasets/YL95/copa_v_wright_CPT_raw</a></li><li><b>identified across three exhibit references as AR3 = NB1 = BWP-NB1</b><br><a class="w" href="https://huggingface.co/datasets/YL95/copa_v_wright_CPT_raw" rel="noopener nofollow">https://huggingface.co/datasets/YL95/copa_v_wright_CPT_raw</a></li><li><b>Madden Appendix PM3 §42 publishing BWP-NB1&#x27;s hashes: MD5 3e5e11e1e3208d2829e887fb1c86bd05, SHA256 e6cc7c952c688b234f9872c3e2f50060ae6556fd27925cba503c6460048e50a9</b><br><a class="w" href="https://huggingface.co/datasets/YL95/copa_v_wright_CPT_raw" rel="noopener nofollow">https://huggingface.co/datasets/YL95/copa_v_wright_CPT_raw</a><br><code class="h">e6cc7c952c688b234f9872c3e2f50060ae6556fd27925cba503c6460048e50a9</code></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>STILL THE PRINCIPAL OPEN ITEM as an artifact -- but no longer an open-ended search. PM3 §45 records that as of the report, searching those hashes returned nothing, while the control copies&#x27; hashes returned many results. So a hash search today is a new test, not a repeat. PM3 also finds BWP-NB1 is neither in the disclosure dataset nor among the archive-sourced copies: a genuinely distinct file. VERIFIED 7 Aug 2026: both hashes were re-read from the original Appendix PM3 PDF and are present verbatim -- the SHA256 is a contiguous 64-character string. (A page header falls between the &#x27;SHA256:&#x27; label and its value in the extracted layout, which is what prompted the earlier caution; the value itself is unbroken.) The source is a court document, quoted and cited rather than re-hosted, so there is no public reproduce script for it.</div>
   </details>
-</article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" id="2008-11-15-prerelease-code">
+</article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" data-era="origin" id="2008-11-15-prerelease-code">
   <header>
     <time>2008-11-15</time>
     <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
@@ -219,7 +233,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>SNI&#x27;s code page</b><br><a class="w" href="https://satoshi.nakamotoinstitute.org/code/" rel="noopener nofollow">https://satoshi.nakamotoinstitute.org/code/</a></li><li><b>an independently obtained copy</b><br><a class="w" href="https://satoshi.nakamotoinstitute.org/emails/" rel="noopener nofollow">https://satoshi.nakamotoinstitute.org/emails/</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>CAUTION: SNI&#x27;s .tgz is labelled &#x27;Compressed by SNI&#x27; — a REPACKAGING, not original bytes. It will not hash to anything Satoshi produced, and must never be cited as an original artifact. Their .rar carries a published MD5; that is the one to check against.</div>
   </details>
-</article><article class="ev" data-axis="satoshi" data-grade="ARCHIVE-POS" data-gap="false" id="2008-11-17-list-closes">
+</article><article class="ev" data-axis="satoshi" data-grade="ARCHIVE-POS" data-gap="false" data-era="origin" id="2008-11-17-list-closes">
   <header>
     <time>2008-11-17 21:43:33 UTC</time>
     <span class="g g-ARCHIVE-POS">ARCHIVE-POS</span>
@@ -230,7 +244,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>metzdowd pipermail, November 2008</b><br><a class="w" href="https://www.metzdowd.com/pipermail/cryptography/2008-November.txt.gz" rel="noopener nofollow">https://www.metzdowd.com/pipermail/cryptography/2008-November.txt.gz</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/metzdowd_backup.py</code></div><div class="notes"><span class="lbl">caveats</span>Satoshi&#x27;s next post to the list, 52 days later, is &#x27;Bitcoin v0.1 released&#x27; — exactly the condition Metzger named.</div>
   </details>
-</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2008-12-10-s-nakamoto">
+</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2008-12-10-s-nakamoto">
   <header>
     <time>2008-12-10</time>
     <span class="g g-SERVER-DB">SERVER-DB</span>
@@ -241,7 +255,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>user page captured 2009-11-29, and the project activity feed</b><br><a class="w" href="https://web.archive.org/web/2009*/bitcoin.org*" rel="noopener nofollow">https://web.archive.org/web/2009*/bitcoin.org*</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/sourceforge_identity.py</code></div><div class="notes"><span class="lbl">caveats</span>SourceForge&#x27;s own feed shows two accounts under one hand&#x27;s control. It does not say whose hand.</div>
   </details>
-</article><article class="ev gap" data-axis="satoshi" data-grade="NONE" data-gap="true" id="identity-ceiling">
+</article><article class="ev gap" data-axis="satoshi" data-grade="NONE" data-gap="true" data-era="origin" id="identity-ceiling">
   <header>
     <time>2009-01-03 &rarr; 2010-12-15</time>
     <span class="g g-NONE">NONE</span>
@@ -252,7 +266,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>the absence itself; the 2016 demonstration reused a 2009 signature from block 183</b><br><a class="w" href="https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198" rel="noopener nofollow">https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>This is a property of the world, not a gap in the research. Only a signature would change it. Recorded as a row so the timeline cannot be read as answering &#x27;who&#x27;.</div>
   </details>
-</article><article class="ev" data-axis="both" data-grade="CHAIN" data-gap="false" id="2009-01-03-genesis">
+</article><article class="ev" data-axis="both" data-grade="CHAIN" data-gap="false" data-era="origin" id="2009-01-03-genesis">
   <header>
     <time>2009-01-03 18:15:05 UTC</time>
     <span class="g g-CHAIN">CHAIN</span>
@@ -263,7 +277,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>block 0, hash 000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f</b><br><span class="w">the Bitcoin blockchain</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>any full node, or bigquery-public-data.crypto_bitcoin.blocks WHERE number = 0</code></div><div class="notes"><span class="lbl">caveats</span>The only unforgeable line on this list. Forging it would require redoing the proof-of-work.</div>
   </details>
-</article><article class="ev" data-axis="both" data-grade="ARCHIVE-POS" data-gap="false" id="2009-01-08-v01-released">
+</article><article class="ev" data-axis="both" data-grade="ARCHIVE-POS" data-gap="false" data-era="origin" id="2009-01-08-v01-released">
   <header>
     <time>2009-01-08 19:27:40 UTC</time>
     <span class="g g-ARCHIVE-POS">ARCHIVE-POS</span>
@@ -274,7 +288,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>metzdowd pipermail, Date: Fri, 09 Jan 2009 03:27:40 +0800</b><br><a class="w" href="https://www.metzdowd.com/pipermail/cryptography/2009-January.txt.gz" rel="noopener nofollow">https://www.metzdowd.com/pipermail/cryptography/2009-January.txt.gz</a></li><li><b>MIT&#x27;s independent archive</b><br><a class="w" href="https://diswww.mit.edu/bloom-picayune/crypto/142102" rel="noopener nofollow">https://diswww.mit.edu/bloom-picayune/crypto/142102</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/metzdowd_backup.py</code></div>
   </details>
-</article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" id="2009-01-09-restart">
+</article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" data-era="origin" id="2009-01-09-restart">
   <header>
     <time>2009-01-09 02:54:25 UTC</time>
     <span class="g g-CHAIN">CHAIN</span>
@@ -285,7 +299,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>block 0 and block 1 timestamps</b><br><span class="w">the Bitcoin blockchain</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>bigquery-public-data.crypto_bitcoin.blocks WHERE number IN (0,1)</code></div><div class="notes"><span class="lbl">caveats</span>The gap is real and nothing on-chain explains it. It is not evidence of intent in either direction.</div>
   </details>
-</article><article class="ev" data-axis="bitcoin" data-grade="ARCHIVE-POS" data-gap="false" id="2009-01-10-hal-debuglog">
+</article><article class="ev" data-axis="bitcoin" data-grade="ARCHIVE-POS" data-gap="false" data-era="origin" id="2009-01-10-hal-debuglog">
   <header>
     <time>2009-01-10 11:13:00 UTC</time>
     <span class="g g-ARCHIVE-POS">ARCHIVE-POS</span>
@@ -296,18 +310,18 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>SourceForge mailman attachment; the Gmail Message-ID 0901101113 encodes the date</b><br><a class="w" href="https://sourceforge.net/p/bitcoin/mailman/attachment/da7b3ce30901101113v2ec6bf61xf018265479eb7faf@mail.gmail.com/1/" rel="noopener nofollow">https://sourceforge.net/p/bitcoin/mailman/attachment/da7b3ce30901101113v2ec6bf61xf018265479eb7faf@mail.gmail.com/1/</a><br><code class="h">ab02bbfe5bffdd0eab9c58fd21af246d</code></li><li><b>byte-identical to the copy in a third-party compilation, independently obtained</b><br><a class="w" href="https://satoshi.nakamotoinstitute.org/emails/bitcoin-list/" rel="noopener nofollow">https://satoshi.nakamotoinstitute.org/emails/bitcoin-list/</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>download the attachment from the bitcoin-list archive at satoshi.nakamotoinstitute.org and sha256sum it</code></div><div class="notes"><span class="lbl">caveats</span>Mailing-list attachments live in a URL namespace separate from message bodies and are in none of our text corpora. Of 129 archived attachments on that list, this is the ONLY one from 2009.</div>
   </details>
-</article><article class="ev" data-axis="bitcoin" data-grade="CAPTURE" data-gap="false" id="2009-01-10-exe">
+</article><article class="ev" data-axis="bitcoin" data-grade="CAPTURE" data-gap="false" data-era="origin" id="2009-01-10-exe">
   <header>
     <time>2009-01-10 23:16:00 UTC</time>
     <span class="g g-CAPTURE">CAPTURE</span>
     
-    <h3>The released bitcoin.exe is linked</h3>
+    <h3>The released bitcoin.exe is linked — two days AFTER v0.1.0 was announced</h3>
   </header>
-  <p class="claim">The v0.1 Windows binary carries PE TimeDateStamp 1231629360.</p>
+  <p class="claim">The Windows binary in the archive distributed everywhere as bitcoin-0.1.0.rar carries PE TimeDateStamp 1231629360 = 2009-01-10 23:16:00 UTC. v0.1 was announced on 8 January, so this binary cannot be in the release of the 8th: the archive is v0.1.1.</p>
   <details><summary>evidence &amp; reproduction</summary>
-    <ul class="evid"><li><b>PE header of bitcoin.exe (fbcac071)</b><br><a class="w" href="https://github.com/lugaxker/nakamoto-archive" rel="noopener nofollow">https://github.com/lugaxker/nakamoto-archive</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>A linker-written field. MinGW toolchain, and notably no build-path leak — nothing about the machine escaped into the binary.</div>
+    <ul class="evid"><li><b>PE header of bitcoin.exe (fbcac071…)</b><br><a class="w" href="https://github.com/lugaxker/nakamoto-archive" rel="noopener nofollow">https://github.com/lugaxker/nakamoto-archive</a></li><li><b>Satoshi names the file and its size to Hal Finney, 10 Jan 2009: &quot;bitcoin-0.1.1.rar (filesize 2,132,686)&quot;</b><br><a class="w" href="https://github.com/original-bitcoin-laboratory/common/blob/main/VERSION_LABEL.md" rel="noopener nofollow">https://github.com/original-bitcoin-laboratory/common/blob/main/VERSION_LABEL.md</a></li><li><b>six independent checks, incl. serialize.h VERSION 101 and the deleted mapAddresses.count line</b><br><a class="w" href="https://github.com/original-bitcoin-laboratory/common/blob/main/VERSION_LABEL.md" rel="noopener nofollow">https://github.com/original-bitcoin-laboratory/common/blob/main/VERSION_LABEL.md</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python -c &quot;import struct;d=open(&#x27;bitcoin.exe&#x27;,&#x27;rb&#x27;).read();o=struct.unpack_from(&#x27;&lt;I&#x27;,d,0x3c)[0];print(struct.unpack_from(&#x27;&lt;I&#x27;,d,o+8)[0])&quot;  # 1231629360</code></div><div class="notes"><span class="lbl">caveats</span>A linker-written field. MinGW toolchain, and notably no build-path leak - nothing about the machine escaped into the binary. The 0.1.0 -&gt; 0.1.1 delta is irc.cpp and serialize.h, both networking: main.cpp, main.h and script.cpp are dated 7 January and untouched, so every consensus rule and the genesis are unaffected. Only the label was wrong, and it was inherited from the ecosystem rather than read off the bytes.</div>
   </details>
-</article><article class="ev" data-axis="bitcoin" data-grade="CAPTURE" data-gap="false" id="2009-01-11-running-bitcoin">
+</article><article class="ev" data-axis="bitcoin" data-grade="CAPTURE" data-gap="false" data-era="origin" id="2009-01-11-running-bitcoin">
   <header>
     <time>2009-01-11 03:33:52 UTC</time>
     <span class="g g-CAPTURE">CAPTURE</span>
@@ -318,7 +332,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>Twitter data-time=1231644832, 2017 capture</b><br><a class="w" href="https://web.archive.org/web/2009*/bitcoin.org*" rel="noopener nofollow">https://web.archive.org/web/2009*/bitcoin.org*</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>A platform-written timestamp on a third party&#x27;s account.</div>
   </details>
-</article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" id="2009-01-12-block-170">
+</article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" data-era="origin" id="2009-01-12-block-170">
   <header>
     <time>2009-01-12 03:30:25 UTC</time>
     <span class="g g-CHAIN">CHAIN</span>
@@ -329,7 +343,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>row 1 of the complete first-year payment list</b><br><a class="w" href="https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv" rel="noopener nofollow">https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>satoshi-onchain/verify/first_year_payments.sql</code></div><div class="notes"><span class="lbl">caveats</span>Widely attributed to Satoshi sending Hal Finney. The chain shows the transaction, not the names.</div>
   </details>
-</article><article class="ev" data-axis="both" data-grade="SERVER-DB" data-gap="false" id="2009-01-13-sf-release-note">
+</article><article class="ev" data-axis="both" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2009-01-13-sf-release-note">
   <header>
     <time>2009-01-13</time>
     <span class="g g-SERVER-DB">SERVER-DB</span>
@@ -340,7 +354,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>the news page, 62 KB; the words &#x27;satoshi&#x27; and &#x27;nakamoto&#x27; appear zero times on it</b><br><a class="w" href="https://sourceforge.net/projects/bitcoin/" rel="noopener nofollow">https://sourceforge.net/projects/bitcoin/</a></li><li><b>the REST API returns the post&#x27;s title but empty text and author</b><br><a class="w" href="https://sourceforge.net/projects/bitcoin/" rel="noopener nofollow">https://sourceforge.net/projects/bitcoin/</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>curl -s https://sourceforge.net/rest/p/bitcoin/news</code></div><div class="notes"><span class="lbl">caveats</span>The text is his; the attribution is gone, which is why no compilation folds it in. It independently corroborates the 120-block maturity we derived from main.cpp — COINBASE_MATURITY + 20 — in Satoshi&#x27;s own words.</div>
   </details>
-</article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" id="2009-01-15-block-593">
+</article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" data-era="origin" id="2009-01-15-block-593">
   <header>
     <time>2009-01-15 15:51:56 UTC</time>
     <span class="g g-CHAIN">CHAIN</span>
@@ -351,7 +365,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>first_year_payments.csv</b><br><a class="w" href="https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv" rel="noopener nofollow">https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>satoshi-onchain/verify/first_year_payments.sql</code></div><div class="notes"><span class="lbl">caveats</span>An earlier reading of ours called this support for a &#x27;first transfer of 25.00&#x27; account. The full transaction reverses the direction; the erratum is recorded in entry 45 §10(k).</div>
   </details>
-</article><article class="ev" data-axis="both" data-grade="ADJUDICATED" data-gap="false" id="2009-01-18-bohm-downloads">
+</article><article class="ev" data-axis="both" data-grade="ADJUDICATED" data-gap="false" data-era="origin" id="2009-01-18-bohm-downloads">
   <header>
     <time>2009-01-18 13:27:00 UTC</time>
     <span class="g g-ADJUDICATED">ADJUDICATED</span>
@@ -362,7 +376,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>witness statement §19, under a statement of truth</b><br><a class="w" href="https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198" rel="noopener nofollow">https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>This is what fixes the 11 November version as what the public could actually get in January 2009.</div>
   </details>
-</article><article class="ev gap" data-axis="both" data-grade="ADJUDICATED" data-gap="true" id="2009-01-30-bc014">
+</article><article class="ev gap" data-axis="both" data-grade="ADJUDICATED" data-gap="true" data-era="origin" id="2009-01-30-bc014">
   <header>
     <time>2009-01-30</time>
     <span class="g g-ADJUDICATED">ADJUDICATED</span>
@@ -373,7 +387,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>upload.ae URLs quoted in the Bohm correspondence</b><br><a class="w" href="https://huggingface.co/datasets/YL95/copa_v_wright_CPT_raw" rel="noopener nofollow">https://huggingface.co/datasets/YL95/copa_v_wright_CPT_raw</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>NOT LOCATED, which is not the same as destroyed. They were also sent as mail attachments, so the likeliest surviving copy is inside Bohm&#x27;s Thunderbird profile rather than on any web archive.</div>
   </details>
-</article><article class="ev" data-axis="both" data-grade="CHAIN" data-gap="false" id="2009-02-01-block-2616">
+</article><article class="ev" data-axis="both" data-grade="CHAIN" data-gap="false" data-era="origin" id="2009-02-01-block-2616">
   <header>
     <time>2009-02-01 16:25:12 UTC</time>
     <span class="g g-CHAIN">CHAIN</span>
@@ -384,7 +398,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>block 2616, tx 7d73200e...db6fc3d5, to 1CHE5JRfc5mr8ZtVUP7nnsS5HC4bWcXoc6</b><br><span class="w">the Bitcoin blockchain</span></li><li><b>Bohm&#x27;s contemporaneous email, disclosed in court</b><br><a class="w" href="https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198" rel="noopener nofollow">https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/bohm_transfer.py</code></div><div class="notes"><span class="lbl">caveats</span>A 2009 record and the chain agree exactly. The address was emptied in 2011 and implies nothing about Mr Bohm&#x27;s estate.</div>
   </details>
-</article><article class="ev" data-axis="satoshi" data-grade="ADJUDICATED" data-gap="false" id="2009-02-03-gmx-changeover">
+</article><article class="ev" data-axis="satoshi" data-grade="ADJUDICATED" data-gap="false" data-era="origin" id="2009-02-03-gmx-changeover">
   <header>
     <time>2009-02-03</time>
     <span class="g g-ADJUDICATED">ADJUDICATED</span>
@@ -395,7 +409,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>Bohm correspondence, Exhibit NB1</b><br><a class="w" href="https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198" rel="noopener nofollow">https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Seven weeks earlier than the canonical PDF, which had been the earliest gmx attestation.</div>
   </details>
-</article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" id="2009-02-03-first-fees">
+</article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" data-era="origin" id="2009-02-03-first-fees">
   <header>
     <time>2009-02-03 05:16:42 UTC</time>
     <span class="g g-CHAIN">CHAIN</span>
@@ -406,7 +420,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>first_year_payments.csv, three rows at block 2817</b><br><a class="w" href="https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv" rel="noopener nofollow">https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>satoshi-onchain/verify/fees_2009.sql</code></div><div class="notes"><span class="lbl">caveats</span>The largest single fee of 2009 is therefore 1.00 BTC on a 1.00 BTC payment. Not a donation — a test.</div>
   </details>
-</article><article class="ev" data-axis="both" data-grade="CHAIN" data-gap="false" id="2009-02-03-19-btc">
+</article><article class="ev" data-axis="both" data-grade="CHAIN" data-gap="false" data-era="origin" id="2009-02-03-19-btc">
   <header>
     <time>2009-02-03 22:55:58 UTC</time>
     <span class="g g-CHAIN">CHAIN</span>
@@ -417,7 +431,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>blocks 2914 and 2915</b><br><span class="w">the Bitcoin blockchain</span></li><li><b>the correspondence naming the address</b><br><a class="w" href="https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198" rel="noopener nofollow">https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>satoshi-onchain/verify/first_year_payments.sql</code></div><div class="notes"><span class="lbl">caveats</span>That address has never spent a satoshi. Almost every &#x27;Satoshi coin&#x27; is inferred from mining patterns; this one Satoshi wrote down.</div>
   </details>
-</article><article class="ev" data-axis="satoshi" data-grade="ARCHIVE-POS" data-gap="false" id="2009-02-11-p2p-research">
+</article><article class="ev" data-axis="satoshi" data-grade="ARCHIVE-POS" data-gap="false" data-era="origin" id="2009-02-11-p2p-research">
   <header>
     <time>2009-02-11 22:30:54 UTC</time>
     <span class="g g-ARCHIVE-POS">ARCHIVE-POS</span>
@@ -428,7 +442,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>p2p-research February 2009 archive, Message-ID &lt;4993519E.8080300@gmx.com&gt;</b><br><a class="w" href="https://satoshi.nakamotoinstitute.org/emails/p2p-research/" rel="noopener nofollow">https://satoshi.nakamotoinstitute.org/emails/p2p-research/</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Date offset is +0000 here against +0800 on vistomail — the offset tracks the provider. The Mozilla Message-ID&#x27;s embedded Unix timestamp decodes to the Date header exactly, an authenticity check but NOT a location check.</div>
   </details>
-</article><article class="ev" data-axis="satoshi" data-grade="SELF" data-gap="false" id="2009-02-18-p2pfoundation">
+</article><article class="ev" data-axis="satoshi" data-grade="SELF" data-gap="false" data-era="origin" id="2009-02-18-p2pfoundation">
   <header>
     <time>2009-02-18</time>
     <span class="g g-SELF">SELF</span>
@@ -439,7 +453,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>profile and posts</b><br><a class="w" href="https://web.archive.org/web/2009*/bitcoin.org*" rel="noopener nofollow">https://web.archive.org/web/2009*/bitcoin.org*</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>GRADED SELF. The earliest capture of the profile is July 2010 — seventeen months after creation — so the field corroborates nothing.</div>
   </details>
-</article><article class="ev" data-axis="satoshi" data-grade="ARCHIVE-POS" data-gap="false" id="2009-03-04-vistomail-last">
+</article><article class="ev" data-axis="satoshi" data-grade="ARCHIVE-POS" data-gap="false" data-era="origin" id="2009-03-04-vistomail-last">
   <header>
     <time>2009-03-04</time>
     <span class="g g-ARCHIVE-POS">ARCHIVE-POS</span>
@@ -450,7 +464,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>bitcoin-list archive</b><br><a class="w" href="https://satoshi.nakamotoinstitute.org/emails/bitcoin-list/" rel="noopener nofollow">https://satoshi.nakamotoinstitute.org/emails/bitcoin-list/</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>The two addresses ran IN PARALLEL for about a month: gmx privately from 3 February, vistomail publicly to 4 March. A clean single-changeover story is wrong.</div>
   </details>
-</article><article class="ev" data-axis="both" data-grade="CAPTURE" data-gap="false" id="2009-03-24-canonical">
+</article><article class="ev" data-axis="both" data-grade="CAPTURE" data-gap="false" data-era="origin" id="2009-03-24-canonical">
   <header>
     <time>2009-03-24 17:33:15 UTC</time>
     <span class="g g-CAPTURE">CAPTURE</span>
@@ -461,7 +475,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>canonical_2009-03-24.pdf, 184,292 bytes</b><br><a class="w" href="https://github.com/original-bitcoin-laboratory/bitcoin-whitepaper" rel="noopener nofollow">https://github.com/original-bitcoin-laboratory/bitcoin-whitepaper</a><br><code class="h">b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553</code></li><li><b>the same bytes carved out of Bitcoin block 230009</b><br><a class="w" href="https://github.com/original-bitcoin-laboratory/bitcoin-whitepaper" rel="noopener nofollow">https://github.com/original-bitcoin-laboratory/bitcoin-whitepaper</a><br><code class="h">b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553</code></li><li><b>the same bytes from a 2009 SourceForge mirror capture</b><br><a class="w" href="https://github.com/original-bitcoin-laboratory/bitcoin-whitepaper" rel="noopener nofollow">https://github.com/original-bitcoin-laboratory/bitcoin-whitepaper</a><br><code class="h">b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553</code></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python verify/whitepaper_from_chain.py out.pdf; sha256sum out.pdf   # carves the canonical out of block 230009 -&gt; b1674191a88ec5cd…</code></div><div class="notes"><span class="lbl">caveats</span>Madden&#x27;s court expert report §180 publishes this file&#x27;s MD5 and SHA256; both match our bytes. Four independent paths, one hash.</div>
   </details>
-</article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" id="2009-05-11-block-14047">
+</article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" data-era="origin" id="2009-05-11-block-14047">
   <header>
     <time>2009-05-11 14:58:31 UTC</time>
     <span class="g g-CHAIN">CHAIN</span>
@@ -472,7 +486,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>the eight fee-bearing blocks of 2009</b><br><a class="w" href="https://github.com/satoshi-onchain/satoshi-onchain/blob/main/verify/fees_2009.sql" rel="noopener nofollow">https://github.com/satoshi-onchain/satoshi-onchain/blob/main/verify/fees_2009.sql</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>satoshi-onchain/verify/fees_2009.sql</code></div><div class="notes"><span class="lbl">caveats</span>[forensic], not [cryptographic] — he signed nothing. Predicted from the letter before the chain was queried. The coinbase address received that one coinbase and nothing else, and was emptied 28 Dec 2011.</div>
   </details>
-</article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" id="2009-06-01-block-16226">
+</article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" data-era="origin" id="2009-06-01-block-16226">
   <header>
     <time>2009-06-01 03:01:54 UTC</time>
     <span class="g g-CHAIN">CHAIN</span>
@@ -483,7 +497,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>first_year_payments.csv</b><br><a class="w" href="https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv" rel="noopener nofollow">https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>satoshi-onchain/verify/first_year_payments.sql</code></div><div class="notes"><span class="lbl">caveats</span>The transaction is identified; THE SENDER IS NOT. The sending address traces to block 11,583, which is not in the Patoshi cluster. We looked for corroboration and did not find it.</div>
   </details>
-</article><article class="ev" data-axis="bitcoin" data-grade="SERVER-DB" data-gap="false" id="2009-08-29-sirius">
+</article><article class="ev" data-axis="bitcoin" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2009-08-29-sirius">
   <header>
     <time>2009-08-29</time>
     <span class="g g-SERVER-DB">SERVER-DB</span>
@@ -494,7 +508,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>SourceForge SVN log</b><br><a class="w" href="https://sourceforge.net/projects/bitcoin/" rel="noopener nofollow">https://sourceforge.net/projects/bitcoin/</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/sourceforge_svn_log.py</code></div>
   </details>
-</article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" id="2009-10-01-lost-forum-activity">
+</article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" data-era="origin" id="2009-10-01-lost-forum-activity">
   <header>
     <time>2009-10-01 14:12:00 UTC</time>
     <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
@@ -505,7 +519,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>10 reposted BitcoinTalk posts across 4 threads, with the old forum&#x27;s timestamps quoted inside them</b><br><a class="w" href="https://bitcointalk.org/index.php?action=profile;u=3" rel="noopener nofollow">https://bitcointalk.org/index.php?action=profile;u=3</a></li><li><b>Satoshi&#x27;s migration post promising to repost selected threads</b><br><a class="w" href="https://bitcointalk.org/index.php?topic=5.0" rel="noopener nofollow">https://bitcointalk.org/index.php?topic=5.0</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>The old timestamps are QUOTED TEXT in a repost, not server records -- graded accordingly. Only the threads Satoshi chose to carry across survive, so this is a curated sample selected by the subject, never a representative one. The preserved date format &#x27;Thu 01 of Oct, 2009 (14:12 UTC)&#x27; is TikiWiki&#x27;s, which is evidence about what the lost board ran.</div>
   </details>
-</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2009-10-21-svn">
+</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2009-10-21-svn">
   <header>
     <time>2009-10-21</time>
     <span class="g g-SERVER-DB">SERVER-DB</span>
@@ -516,7 +530,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>252 SVN revisions via Software Heritage</b><br><a class="w" href="https://archive.softwareheritage.org/api/1/revision/5c085256f7dbfe999afbf10808828f0df9f877f1/log/" rel="noopener nofollow">https://archive.softwareheritage.org/api/1/revision/5c085256f7dbfe999afbf10808828f0df9f877f1/log/</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/sourceforge_svn_log.py</code></div><div class="notes"><span class="lbl">caveats</span>The densest record of Satoshi working that exists off-chain.</div>
   </details>
-</article><article class="ev gap" data-axis="satoshi" data-grade="NONE" data-gap="true" id="tracker-comments-absent">
+</article><article class="ev gap" data-axis="satoshi" data-grade="NONE" data-gap="true" data-era="origin" id="tracker-comments-absent">
   <header>
     <time>2009-10-21 &rarr; 2010-12-15</time>
     <span class="g g-NONE">NONE</span>
@@ -527,7 +541,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>the project navigation lists a Tracker feature</b><br><a class="w" href="https://sourceforge.net/projects/bitcoin/" rel="noopener nofollow">https://sourceforge.net/projects/bitcoin/</a></li><li><b>CDX: 6,000 URLs under sourceforge.net/tracker/ reference Bitcoin zero times; modern /bugs and /feature-requests namespaces return zero archived URLs</b><br><a class="w" href="https://sourceforge.net/projects/bitcoin/" rel="noopener nofollow">https://sourceforge.net/projects/bitcoin/</a></li><li><b>sourceforge.net/rest/p/bitcoin lists 8 tools — support, summary, reviews, code, mailman, files, news, activity — and no bugs/tickets/tracker mount</b><br><a class="w" href="https://sourceforge.net/projects/bitcoin/" rel="noopener nofollow">https://sourceforge.net/projects/bitcoin/</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>curl -s https://sourceforge.net/rest/p/bitcoin | jq &#x27;.tools[].mount_point&#x27;</code></div><div class="notes"><span class="lbl">caveats</span>Recorded as a gap because the claim circulates, but the evidence points at there being nothing to recover rather than something lost. CAVEAT: this is the CURRENT migrated tool set; a tool used in 2009 and later removed would not appear, so this lowers the probability sharply without reducing it to zero.</div>
   </details>
-</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2009-11-19-bitcointalk">
+</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2009-11-19-bitcointalk">
   <header>
     <time>2009-11-19 19:12:39 UTC</time>
     <span class="g g-SERVER-DB">SERVER-DB</span>
@@ -538,7 +552,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>forum profile, server-written registration time</b><br><a class="w" href="https://bitcointalk.org/index.php?action=profile;u=3" rel="noopener nofollow">https://bitcointalk.org/index.php?action=profile;u=3</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/bitcointalk_satoshi.py</code></div><div class="notes"><span class="lbl">caveats</span>539 posts are publicly enumerable; the profile counts 575, so 36 are counted but not listed.</div>
   </details>
-</article><article class="ev gap" data-axis="satoshi" data-grade="ADJUDICATED" data-gap="true" id="2009-11-22-old-forum">
+</article><article class="ev gap" data-axis="satoshi" data-grade="ADJUDICATED" data-gap="true" data-era="origin" id="2009-11-22-old-forum">
   <header>
     <time>2009-11-22</time>
     <span class="g g-ADJUDICATED">ADJUDICATED</span>
@@ -549,7 +563,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>Satoshi&#x27;s migration post giving the old forum URL</b><br><a class="w" href="https://bitcointalk.org/index.php?topic=5.0" rel="noopener nofollow">https://bitcointalk.org/index.php?topic=5.0</a></li><li><b>CDX sweep of the whole domain: 27 archived URLs, none under /boards/</b><br><a class="w" href="https://web.archive.org/web/2009*/bitcoin.sourceforge.net*" rel="noopener nofollow">https://web.archive.org/web/2009*/bitcoin.sourceforge.net*</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>http://web.archive.org/cdx/search/cdx?url=bitcoin.sourceforge.net*&amp;output=json&amp;filter=statuscode:200&amp;fl=timestamp,original</code></div><div class="notes"><span class="lbl">caveats</span>A Satoshi venue absent from every compilation we have checked. NOT ARCHIVED is not the same as destroyed. The remaining route is reconstruction from the &#x27;Repost:&#x27; threads he carried across.</div>
   </details>
-</article><article class="ev" data-axis="both" data-grade="CAPTURE" data-gap="false" id="2010-07-04-pdf-capture">
+</article><article class="ev" data-axis="both" data-grade="CAPTURE" data-gap="false" data-era="origin" id="2010-07-04-pdf-capture">
   <header>
     <time>2010-07-04</time>
     <span class="g g-CAPTURE">CAPTURE</span>
@@ -560,7 +574,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>web.archive.org capture 20100704213649</b><br><a class="w" href="https://web.archive.org/web/20100704213649if_/http://www.bitcoin.org:80/bitcoin.pdf" rel="noopener nofollow">https://web.archive.org/web/20100704213649if_/http://www.bitcoin.org:80/bitcoin.pdf</a><br><code class="h">b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553</code></li></ul><div class="rep"><span class="lbl">reproduce</span><code>curl -sL &#x27;https://web.archive.org/web/20100704213649id_/http://www.bitcoin.org/bitcoin.pdf&#x27; -o c.pdf; sha256sum c.pdf   # -&gt; b1674191a88ec5cd…</code></div><div class="notes"><span class="lbl">caveats</span>Closes the gap between the March 2009 creation date and the file anyone can fetch today.</div>
   </details>
-</article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" id="2010-08-15-overflow">
+</article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" data-era="origin" id="2010-08-15-overflow">
   <header>
     <time>2010-08-15 17:05:00 UTC</time>
     <span class="g g-CHAIN">CHAIN</span>
@@ -571,7 +585,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>block 74638</b><br><span class="w">the Bitcoin blockchain</span></li><li><b>Satoshi&#x27;s own contemporaneous warning naming the block and time</b><br><a class="w" href="https://bitcointalk.org/index.php?action=profile;u=3" rel="noopener nofollow">https://bitcointalk.org/index.php?action=profile;u=3</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>bigquery-public-data.crypto_bitcoin.transactions WHERE block_number = 74638</code></div><div class="notes"><span class="lbl">caveats</span>The only time Bitcoin&#x27;s supply rule has been broken in production.</div>
   </details>
-</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2010-12-12-last-post">
+</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2010-12-12-last-post">
   <header>
     <time>2010-12-12 18:22:33 UTC</time>
     <span class="g g-SERVER-DB">SERVER-DB</span>
@@ -582,7 +596,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>forum profile and post index</b><br><a class="w" href="https://bitcointalk.org/index.php?action=profile;u=3" rel="noopener nofollow">https://bitcointalk.org/index.php?action=profile;u=3</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/bitcointalk_satoshi.py</code></div>
   </details>
-</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" id="2010-12-15-last-action">
+</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2010-12-15-last-action">
   <header>
     <time>2010-12-15 22:43:51 UTC</time>
     <span class="g g-SERVER-DB">SERVER-DB</span>
@@ -593,7 +607,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>SourceForge SVN log via Software Heritage</b><br><a class="w" href="https://archive.softwareheritage.org/api/1/revision/5c085256f7dbfe999afbf10808828f0df9f877f1/log/" rel="noopener nofollow">https://archive.softwareheritage.org/api/1/revision/5c085256f7dbfe999afbf10808828f0df9f877f1/log/</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/sourceforge_svn_log.py</code></div><div class="notes"><span class="lbl">caveats</span>The 2014 &#x27;I am not Dorian Nakamoto&#x27; post is 3 years 3 months later, unsigned, and binds to nobody. The precise claim is that the last VERIFIABLE action is this one.</div>
   </details>
-</article><article class="ev" data-axis="satoshi" data-grade="CAPTURE" data-gap="false" id="2011-02-28-asc">
+</article><article class="ev" data-axis="satoshi" data-grade="CAPTURE" data-gap="false" data-era="origin" id="2011-02-28-asc">
   <header>
     <time>2011-02-28</time>
     <span class="g g-CAPTURE">CAPTURE</span>
@@ -604,7 +618,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>Internet Archive capture</b><br><a class="w" href="https://web.archive.org/web/2009*/bitcoin.org*" rel="noopener nofollow">https://web.archive.org/web/2009*/bitcoin.org*</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Two independent distributions of one key file. It still signs nothing.</div>
   </details>
-</article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" id="2011-06-19-bohm-100-leaves">
+</article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" data-era="origin" id="2011-06-19-bohm-100-leaves">
   <header>
     <time>2011-06-19</time>
     <span class="g g-CHAIN">CHAIN</span>
@@ -615,7 +629,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>on-chain spend of 1CHE5JRfc5mr8ZtVUP7nnsS5HC4bWcXoc6</b><br><span class="w">the Bitcoin blockchain</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/bohm_transfer.py</code></div><div class="notes"><span class="lbl">caveats</span>Matches his own account of spending the wallet down before losing access. Recorded so the address is never presented as a live holding.</div>
   </details>
-</article><article class="ev" data-axis="satoshi" data-grade="PARTY-RELEASED" data-gap="false" id="2014-03-02-wei-dai">
+</article><article class="ev" data-axis="satoshi" data-grade="PARTY-RELEASED" data-gap="false" data-era="origin" id="2014-03-02-wei-dai">
   <header>
     <time>2014-03-02</time>
     <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
@@ -626,7 +640,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>Wei Dai correspondence, as collected by the Nakamoto Studies Institute</b><br><a class="w" href="https://satoshi.nakamotoinstitute.org/emails/" rel="noopener nofollow">https://satoshi.nakamotoinstitute.org/emails/</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Recovered from the Wayback Machine after nakamotostudies.org itself went to a domain-parking stub — the publisher is gone, the content survives.</div>
   </details>
-</article><article class="ev" data-axis="satoshi" data-grade="NONE" data-gap="false" id="2014-03-07-not-dorian">
+</article><article class="ev" data-axis="satoshi" data-grade="NONE" data-gap="false" data-era="origin" id="2014-03-07-not-dorian">
   <header>
     <time>2014-03-07</time>
     <span class="g g-NONE">NONE</span>
@@ -637,7 +651,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>ning comment 5218</b><br><a class="w" href="https://web.archive.org/web/2009*/bitcoin.org*" rel="noopener nofollow">https://web.archive.org/web/2009*/bitcoin.org*</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>GRADED &#x27;NONE&#x27;. No signature, and nothing binds it to whoever held the account in 2009. This is exactly why the precise claim is &#x27;the last machine-verifiable action is 15 December 2010&#x27;, not &#x27;Satoshi&#x27;s last communication&#x27;.</div>
   </details>
-</article><article class="ev" data-axis="satoshi" data-grade="ADJUDICATED" data-gap="false" id="2014-08-28-finney">
+</article><article class="ev" data-axis="satoshi" data-grade="ADJUDICATED" data-gap="false" data-era="origin" id="2014-08-28-finney">
   <header>
     <time>2014-08-28</time>
     <span class="g g-ADJUDICATED">ADJUDICATED</span>
@@ -648,7 +662,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>public record; entry 39</b><br><a class="w" href="https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198" rel="noopener nofollow">https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Recorded because it closes a route: the native email files his family gave a journalist in 2014 remain unpublished.</div>
   </details>
-</article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" id="2015-01-30-mixmaster">
+</article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" data-era="origin" id="2015-01-30-mixmaster">
   <header>
     <time>2015-01-30</time>
     <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
@@ -659,7 +673,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>the 2015 mailing-list exchange</b><br><a class="w" href="https://www.metzdowd.com/pipermail/cryptography/2015-January/024433.html" rel="noopener nofollow">https://www.metzdowd.com/pipermail/cryptography/2015-January/024433.html</a></li><li><b>hash publication captured 2015-02-14</b><br><a class="w" href="https://www.metzdowd.com/pipermail/cryptography/2015-January/024433.html" rel="noopener nofollow">https://www.metzdowd.com/pipermail/cryptography/2015-January/024433.html</a><br><code class="h">c146f38e1512a334f8dfd6253115250417fe86d8825bab95fda270d4142e3c7d</code></li></ul><div class="rep"><span class="lbl">reproduce</span><code>sha256sum &lt;your copy of the 3 Oct 2008 draft&gt;   # matches the hash published in the Jan 2015 thread: 427c63b364c6db914cf23072a09ffd53ee078397b7c6ab2d604e12865a982faa</code></div><div class="notes"><span class="lbl">caveats</span>Two people who held the file in 2008 confirmed the hash independently, in 2015 and 2017.</div>
   </details>
-</article><article class="ev" data-axis="bitcoin" data-grade="SERVER-DB" data-gap="false" id="2015-06-05-sf-purge">
+</article><article class="ev" data-axis="bitcoin" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2015-06-05-sf-purge">
   <header>
     <time>2015-06-05</time>
     <span class="g g-SERVER-DB">SERVER-DB</span>
@@ -670,7 +684,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>SourceForge project state</b><br><a class="w" href="http://flossdata.syr.edu/data/sf/" rel="noopener nofollow">http://flossdata.syr.edu/data/sf/</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Primary hosting decays. It is why this project mirrors rather than links — and why two of the secondary sources cited by other Satoshi archives are already dead.</div>
   </details>
-</article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" id="2017-08-17-dillinger">
+</article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" data-era="origin" id="2017-08-17-dillinger">
   <header>
     <time>2017-08-17</time>
     <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
@@ -681,7 +695,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>the 2017 cryptography-list exchange</b><br><a class="w" href="https://www.metzdowd.com/pipermail/cryptography/2017-August/032662.html" rel="noopener nofollow">https://www.metzdowd.com/pipermail/cryptography/2017-August/032662.html</a></li><li><b>the file whose hash he confirmed</b><br><a class="w" href="https://github.com/original-bitcoin-laboratory/bitcoin-whitepaper" rel="noopener nofollow">https://github.com/original-bitcoin-laboratory/bitcoin-whitepaper</a><br><code class="h">427c63b364c6db914cf23072a09ffd53ee078397b7c6ab2d604e12865a982faa</code></li></ul><div class="rep"><span class="lbl">reproduce</span><code>sha256sum &lt;your copy of the 3 Oct 2008 draft&gt;   # the hash Dillinger confirmed in Aug 2017: 427c63b364c6db914cf23072a09ffd53ee078397b7c6ab2d604e12865a982faa</code></div><div class="notes"><span class="lbl">caveats</span>Nine years after the fact, by someone who held the original. Testimony about a hash is much stronger than testimony about a document, because the hash is checkable and the memory is not load-bearing.</div>
   </details>
-</article><article class="ev" data-axis="both" data-grade="ADJUDICATED" data-gap="false" id="2024-pm3-hashes-published">
+</article><article class="ev" data-axis="both" data-grade="ADJUDICATED" data-gap="false" data-era="origin" id="2024-pm3-hashes-published">
   <header>
     <time>2024-02-01</time>
     <span class="g g-ADJUDICATED">ADJUDICATED</span>
@@ -692,7 +706,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>Appendix PM3 §§41-45</b><br><a class="w" href="https://huggingface.co/datasets/YL95/copa_v_wright_CPT_raw" rel="noopener nofollow">https://huggingface.co/datasets/YL95/copa_v_wright_CPT_raw</a></li><li><b>PM3 confirms our own labelling of both control copies, including the 3 Oct 2008 created date</b><br><a class="w" href="https://github.com/original-bitcoin-laboratory/bitcoin-whitepaper" rel="noopener nofollow">https://github.com/original-bitcoin-laboratory/bitcoin-whitepaper</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Turns the whitepaper hunt from an open-ended search into a decidable test. Also note what it does NOT give: a hash lets you recognise the file, never reconstruct it.</div>
   </details>
-</article><article class="ev" data-axis="bitcoin" data-grade="ADJUDICATED" data-gap="false" id="2024-copa-219">
+</article><article class="ev" data-axis="bitcoin" data-grade="ADJUDICATED" data-gap="false" data-era="origin" id="2024-copa-219">
   <header>
     <time>2024-03-14</time>
     <span class="g g-ADJUDICATED">ADJUDICATED</span>
@@ -702,6 +716,101 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
   <p class="claim">The COPA v Wright judgment records that there were just 219 non-coinbase transactions in the 32,489 blocks created up to the end of 2009 — the same figure our independent query returns.</p>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>judgment paragraph 716, held in our own archive</b><br><a class="w" href="https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198" rel="noopener nofollow">https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198</a></li><li><b>our query returning 219</b><br><a class="w" href="https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv" rel="noopener nofollow">https://github.com/satoshi-onchain/satoshi-onchain/blob/main/first_year_payments.csv</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>satoshi-onchain/verify/first_year_payments.sql</code></div><div class="notes"><span class="lbl">caveats</span>Independent confirmation from an adjudicated source. Recorded also because we held this document while believing the count was unpublished — the figure was in our own archive and we did not connect it.</div>
+  </details>
+</article><div class="eradiv" id="era-2026">
+  <h2>2026 &mdash; a second pair, documented to the same standard</h2>
+  <p>Everything above concerns the Bitcoin that launched in January 2009 and the pseudonym that
+  released it. Everything below concerns <b>a different chain and a different author</b>: a second
+  Bitcoin genesis, mined in August 2026 by the same January 2009 client, on its own network, with
+  its own signed releases. <b>It is not a fork of the chain above and shares no history, no balances
+  and no units with it.</b></p>
+  <p><b>The rows are graded by the same table, and it does not flatter them.</b> Six of the seven are
+  <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span> &mdash; our own record of our own runs, the
+  same grade this timeline gives Satoshi&rsquo;s own releases. Exactly one reaches
+  <span class="g g-CHAIN">CHAIN</span>, and it earns that on the 2009 chain rather than on ours. One
+  is marked <b>NOT HELD</b> against us.</p>
+  <p><b>Which of the two chains &ldquo;is&rdquo; Bitcoin has no factual answer &mdash; only
+  convention</b>, so neither is ranked here. What can be compared is the evidence, and that
+  comparison runs in an unexpected direction: no key from 2009 has ever signed anything, while every
+  artifact below is hashed, timestamped and anchored. <b>The 2026 pair is not offered as a rival. It
+  is a control &mdash; what a fully documented origin looks like, which is what makes the gaps above
+  measurable.</b></p>
+</div><article class="ev" data-axis="bitcoin" data-grade="PARTY-RELEASED" data-gap="false" data-era="lab" id="2026-07-31-twonode-witness">
+  <header>
+    <time>2026-07-31</time>
+    <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
+    
+    <h3>Two unmodified 2009 binaries mine and relay a block on the historical genesis</h3>
+  </header>
+  <p class="claim">Two copies of the released January 2009 bitcoin.exe (fbcac071…), in network-isolated VMs discovering each other over the client&#x27;s own hard-coded IRC path, re-derive genesis 000000000019d668…; one mines block 1 at real difficulty 1 and the other validates and accepts it, ending with byte-identical block files.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>the two-node witness, with the raw block-file digests</b><br><a class="w" href="https://bitcoin-lab.org/witness.html" rel="noopener nofollow">https://bitcoin-lab.org/witness.html</a></li><li><b>both nodes&#x27; blk0001.dat after the run</b><br><a class="w" href="https://github.com/original-bitcoin-laboratory/genesis/tree/main/r3-findings" rel="noopener nofollow">https://github.com/original-bitcoin-laboratory/genesis/tree/main/r3-findings</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Graded PARTY-RELEASED, not CHAIN: this is our own record of our own run. What a reader can check independently is the binary&#x27;s hash and that the genesis it re-derives is the real one. It establishes behaviour of the 2009 client, and nothing about who wrote it.</div>
+  </details>
+</article><article class="ev" data-axis="bitcoin" data-grade="PARTY-RELEASED" data-gap="false" data-era="lab" id="2026-08-02-reorg">
+  <header>
+    <time>2026-08-02</time>
+    <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
+    
+    <h3>The 2009 client performs a real chain reorganisation</h3>
+  </header>
+  <p class="claim">Partitioned, the two nodes mine competing chains; on reconnect the shorter node&#x27;s unmodified binary fires *** REORGANIZE ***, orphans its own valid block and adopts the longer chain, both converging on tip 000000004e442b… at height 15.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>the reorganisation run</b><br><a class="w" href="https://bitcoin-lab.org/witness.html" rel="noopener nofollow">https://bitcoin-lab.org/witness.html</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>The losing node retains its orphan rather than discarding it - an exact +223-byte on-disk delta, one v0.1 block. Difficulty never left 1, so nothing here measures hashrate or difficulty dynamics.</div>
+  </details>
+</article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" data-era="lab" id="2026-08-03-second-genesis">
+  <header>
+    <time>2026-08-03 18:22:55 UTC</time>
+    <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
+    
+    <h3>A second Bitcoin genesis is mined, on a chain of its own</h3>
+  </header>
+  <p class="claim">Genesis 00000000ad12f3ecd9b14e4276ac98936fb0d658f05dce95ad35d18fceee208a is mined at difficulty 1 by the released January 2009 client, its coinbase quoting The Times of 3 August 2026 - a separate chain, network magic f00ba726, not interoperable with the 2009 one.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>the chain, its parameters and its release</b><br><a class="w" href="https://bitcoin-lab.org/bitcoin.html" rel="noopener nofollow">https://bitcoin-lab.org/bitcoin.html</a></li><li><b>re-derive either genesis in the browser, same code path for both</b><br><a class="w" href="https://bitcoin-lab.org/verify-genesis.html" rel="noopener nofollow">https://bitcoin-lab.org/verify-genesis.html</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python derivatives/bitcoin/net.py   # re-derives the genesis from its parameters</code></div><div class="notes"><span class="lbl">caveats</span>Not the 2009 chain and not a fork of it: its own genesis, its own network, no inherited balances, and its units are not historical satoshis. NOT money - no premine, no sale, no value assigned. The coinbase headline is a newspaper front page of that day, which fixes the earliest date the block can have been made; the OpenTimestamps row fixes the latest.</div>
+  </details>
+</article><article class="ev" data-axis="bitcoin" data-grade="PARTY-RELEASED" data-gap="false" data-era="lab" id="2026-08-06-relayed-spend">
+  <header>
+    <time>2026-08-06</time>
+    <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
+    
+    <h3>A matured coinbase is spent and relayed — and maturity is 120 blocks, not 100</h3>
+  </header>
+  <p class="claim">Transaction f4309c… spends a coinbase that matured under the client&#x27;s own rule - main.h sets COINBASE_MATURITY = 100 but main.cpp:544 withholds a generated coin for twenty blocks beyond it - created on one node, accepted by the other across the wire, and mined into block 00000000b4ca03f9… at height 122.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>the relayed spend, both nodes&#x27; logs and the block it landed in</b><br><a class="w" href="https://bitcoin-lab.org/witness.html" rel="noopener nofollow">https://bitcoin-lab.org/witness.html</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>The 100-vs-120 discrepancy is a property of the 2009 source, not of this run: the constant and the code that uses it disagree, and the code wins. Value transfer on the unmodified 2009 client is executed here rather than modelled - on a chain where the value is zero.</div>
+  </details>
+</article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" data-era="lab" id="2026-08-08-released-client-mines">
+  <header>
+    <time>2026-08-08 22:19:22 UTC</time>
+    <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
+    
+    <h3>A published Bitcoin client is shown to have mined its own chain&#x27;s blocks</h3>
+  </header>
+  <p class="claim">Blocks 2, 3 and 4 of the 2026 chain were produced by bitcoin-0.1.3 (c3f15fc5…), the client published under that tag; block 4 sits inside a 39-minute window bracketed by before-and-after captures sharing one PID and one process start time.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>the release, its signature and its timestamp proofs</b><br><a class="w" href="https://github.com/original-bitcoin-laboratory/genesis/releases/tag/Bitcoin-v0.1.4" rel="noopener nofollow">https://github.com/original-bitcoin-laboratory/genesis/releases/tag/Bitcoin-v0.1.4</a></li><li><b>block 4 and its binding record</b><br><a class="w" href="https://bitcoin-lab.org/bitcoin.html" rel="noopener nofollow">https://bitcoin-lab.org/bitcoin.html</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>sha256sum bitcoin.exe   # c3f15fc5b7bd80f4d08fe5ff356256214734eb1a3e4a7c953c9e8fc8453d2c7d</code></div><div class="notes"><span class="lbl">caveats</span>What the binding establishes is that a process running a binary of a known hash was alive before and after the block&#x27;s timestamp - NOT that this process mined this block. No artifact can tie a nonce to a PID. A narrow bracket is a stronger statement than a wide one; it is not a proof. The same claim this project makes about Satoshi&#x27;s fbcac071…, made about ours, at the same strength and with the same limit stated.</div>
+  </details>
+</article><article class="ev gap" data-axis="bitcoin" data-grade="NONE" data-gap="true" data-era="lab" id="2026-08-09-blocks-5-7">
+  <header>
+    <time>2026-08-09</time>
+    <span class="g g-NONE">NONE</span>
+    <span class="gapflag">NOT HELD</span>
+    <h3>Blocks 5–7 of the 2026 chain are mined — NOT YET SEALED</h3>
+  </header>
+  <p class="claim">The public anchor reports the 2026 chain at height 7, but the sealed evidence set stops at block 4. Blocks 5, 6 and 7 have no published findings, no hash manifest and no binding record.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>the live anchor&#x27;s reported tip</b><br><a class="w" href="https://bitcoin-lab.org/status.html" rel="noopener nofollow">https://bitcoin-lab.org/status.html</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>curl -s https://raw.githubusercontent.com/original-bitcoin-laboratory/genesis/status/status.json | jq &#x27;.chains.bitcoin.height&#x27;</code></div><div class="notes"><span class="lbl">caveats</span>Marked NOT HELD against ourselves, on the same rule applied to everyone else on this page: the event demonstrably happened and we do not hold the artifact in publishable form. Graded NONE because a status file we generate is not independent support for our own chain. It will be upgraded when the blocks are captured and sealed, and not before.</div>
+  </details>
+</article><article class="ev" data-axis="both" data-grade="CHAIN" data-gap="false" data-era="lab" id="2026-08-09-anchor">
+  <header>
+    <time>2026-08-09 00:16:42 UTC</time>
+    <span class="g g-CHAIN">CHAIN</span>
+    
+    <h3>The 2026 chain&#x27;s release is anchored in the 2009 chain</h3>
+  </header>
+  <p class="claim">The Bitcoin-v0.1.4 release artifacts are committed to Bitcoin block 961652 (00000000000000000000b286970ddbb501ced552e95c7ceda6ab92cf0f44fdbc) through OpenTimestamps, proving they existed no later than that block.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>block 961652 - merkle root the proofs resolve to</b><br><a class="w" href="https://blockstream.info/block/00000000000000000000b286970ddbb501ced552e95c7ceda6ab92cf0f44fdbc" rel="noopener nofollow">https://blockstream.info/block/00000000000000000000b286970ddbb501ced552e95c7ceda6ab92cf0f44fdbc</a><br><code class="h">9f989be977da16156acd44eac5fc92a52b235b2fb7addddde766f0b35b264a86</code></li><li><b>.ots proofs published with the release</b><br><a class="w" href="https://github.com/original-bitcoin-laboratory/genesis/releases/tag/Bitcoin-v0.1.4" rel="noopener nofollow">https://github.com/original-bitcoin-laboratory/genesis/releases/tag/Bitcoin-v0.1.4</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>ots verify bitcoin-0.1.4.tar.gz.ots   # or walk the proof and match block 961652&#x27;s merkle root</code></div><div class="notes"><span class="lbl">caveats</span>The only 2026 row graded CHAIN, and it earns it on the 2009 chain rather than on ours - the proof is backed by mainnet proof-of-work, not by us. It fixes the LATEST date these artifacts can have; the newspaper in the 2026 coinbase fixes the earliest. This project declines to treat the satoshin@gmx.com key&#x27;s self-asserted 2008 date as evidence, so it anchors its own artifacts rather than asking for a weaker ruler than it hands everyone else.</div>
   </details>
 </article>
 
@@ -717,7 +826,7 @@ Applying the same standard to ourselves that we apply to everyone else.</div>
 <br><br><b>Nothing here is cryptographic.</b> No genesis-era or Patoshi key has ever produced a
 verifying signature, so no row on this timeline identifies a person. That is a fact about the world,
 not a gap in the research — and only a signature would change it.
-<br><br>Generated 2026-08-08 from <code>events.json</code>. The page is a function of that file.
+<br><br>Generated 2026-08-09 from <code>events.json</code>. The page is a function of that file.
 </div>
 
 <footer class="legend" style="margin-top:26px">
@@ -738,22 +847,32 @@ identity of Satoshi Nakamoto. If you are named here and want something corrected
 </footer>
 </div>
 <script>
-var view="both", gapsOnly=false, chainOnly=false;
+var view="both", gapsOnly=false, chainOnly=false, era="all";
 function apply(){
   var n=0, all=document.querySelectorAll(".ev");
   all.forEach(function(el){
     var ax=el.dataset.axis, ok=(view==="both")||(ax===view)||(ax==="both");
+    if(era!=="all" && el.dataset.era!==era) ok=false;
     if(gapsOnly && el.dataset.gap!=="true") ok=false;
     if(chainOnly && el.dataset.grade!=="CHAIN") ok=false;
     el.style.display=ok?"":"none"; if(ok)n++;
   });
   var g=0; all.forEach(function(el){if(el.style.display!=="none"&&el.dataset.gap==="true")g++;});
   document.getElementById("count").textContent=n+" events shown — "+(n-g)+" verified, "+g+" not held";
+  var d=document.getElementById("era-2026");
+  if(d) d.style.display=(era==="all" && !gapsOnly && !chainOnly)?"":"none";
 }
-document.querySelectorAll(".bar button").forEach(function(b){
+document.querySelectorAll(".bar button[data-view]").forEach(function(b){
   b.onclick=function(){
     view=b.dataset.view;
-    document.querySelectorAll(".bar button").forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});
+    document.querySelectorAll(".bar button[data-view]").forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});
+    apply();
+  };
+});
+document.querySelectorAll(".bar button.era").forEach(function(b){
+  b.onclick=function(){
+    era=b.dataset.era;
+    document.querySelectorAll(".bar button.era").forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});
     apply();
   };
 });
