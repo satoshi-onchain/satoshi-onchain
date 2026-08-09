@@ -221,6 +221,31 @@
   "notes": "GRADED 'SELF' DELIBERATELY: a PGP creation date is written by the creating machine and is trivially forgeable. Period-plausible, entirely unbinding — and no Satoshi artifact was ever PGP-signed with it."
  },
  {
+  "id": "2008-10-30-pgp-key-created",
+  "when": "2008-10-30T18:19:19Z",
+  "precision": "second",
+  "axis": "satoshi",
+  "grade": "SELF",
+  "title": "The PGP key of the 2008–2010 Satoshi Nakamoto asserts its own creation date",
+  "claim": "The key served as Satoshi_Nakamoto.asc from bitcoin.org — DSA primary with an ElGamal subkey, user ID \"Satoshi Nakamoto <satoshin@gmx.com>\", fingerprint DE4E FCA3 E1AB 9E41 CE96 CECB 18C0 9E86 5EC9 48A1 — carries a self-asserted creation timestamp of 2008-10-30 18:19:19 UTC in its own key packet, and the Version header reads GnuPG v1.4.7 (MingW32).",
+  "caption": "SELF is the weakest grade on this page, and this row is the reason it exists. A PGP creation timestamp is written by whoever generated the key, from their own clock, and can be set to anything. It is NOT evidence that the key was made on that date. What is independently checked is only this: a key bearing that timestamp was served from bitcoin.org, was captured there, and is byte-identical to the copy held in a separate third-party archive.",
+  "evidence": [
+   {
+    "what": "the key as served from bitcoin.org, recovered from the Internet Archive",
+    "where": "https://web.archive.org/web/20110228054007id_/http://www.bitcoin.org/Satoshi_Nakamoto.asc",
+    "hash": "sha256:f918c6368fe1ba8ceaa9d15c73fb601c68eb3fc542979d04eb34fd5f3b0502e3"
+   },
+   {
+    "what": "34 successful captures of that URL, all one digest — the file never changed",
+    "where": "https://web.archive.org/cdx/search/cdx?url=bitcoin.org/Satoshi_Nakamoto.asc&output=json",
+    "hash": null
+   }
+  ],
+  "reproduce": "Fetch the .asc above, strip the armour, base64-decode, and read the OpenPGP packets: tag 6 (public key) and tag 14 (subkey) each begin with version byte 0x04 followed by a 4-byte big-endian creation time. Both decode to 1225390759 = 2008-10-30 18:19:19 UTC. The v4 fingerprint is SHA-1 over 0x99 || 2-byte length || packet body.",
+  "notes": "The user ID already carries satoshin@gmx.com — the address on the March 2009 whitepaper — rather than the satoshi@vistomail.com of the August 2008 emails. Timing against the 31 October 2008 announcement is deliberately NOT stated as a finding here: one side of that comparison is self-asserted, so the interval is not a measurement.",
+  "gap": false
+ },
+ {
   "id": "2008-10-31-announcement",
   "when": "2008-10-31T18:10:00Z",
   "precision": "second",
@@ -578,7 +603,7 @@
   ],
   "reproduce": "curl -s https://sourceforge.net/rest/p/bitcoin/news",
   "gap": false,
-  "notes": "The text is his; the attribution is gone, which is why no compilation folds it in. It independently corroborates the 120-block maturity we derived from main.cpp — COINBASE_MATURITY + 20 — in Satoshi's own words."
+  "notes": "The text is theirs; the attribution is gone, which is why no compilation folds it in. It independently corroborates the 120-block maturity we derived from main.cpp — COINBASE_MATURITY + 20 — in Satoshi's own words."
  },
  {
   "id": "2009-01-15-block-593",
@@ -817,7 +842,7 @@
   "axis": "bitcoin",
   "grade": "CHAIN",
   "title": "A private miner's own block, identified",
-  "claim": "Block 14047 pays a coinbase of 50.10 — the +50.10 Bohm wrote to Satoshi about, his 15:58 being BST. Only eight blocks in all of 2009 collected any fee.",
+  "claim": "Block 14047 pays a coinbase of 50.10 — the +50.10 Bohm wrote to Satoshi about, their 15:58 being BST. Only eight blocks in all of 2009 collected any fee.",
   "evidence": [
    {
     "what": "the eight fee-bearing blocks of 2009",
@@ -827,7 +852,7 @@
   ],
   "reproduce": "satoshi-onchain/verify/fees_2009.sql",
   "gap": false,
-  "notes": "[forensic], not [cryptographic] — he signed nothing. Predicted from the letter before the chain was queried. The coinbase address received that one coinbase and nothing else, and was emptied 28 Dec 2011."
+  "notes": "[forensic], not [cryptographic] — they signed nothing. Predicted from the letter before the chain was queried. The coinbase address received that one coinbase and nothing else, and was emptied 28 Dec 2011."
  },
  {
   "id": "2009-06-01-block-16226",
@@ -966,7 +991,7 @@
   "axis": "satoshi",
   "grade": "ADJUDICATED",
   "title": "The pre-BitcoinTalk forum — SATOSHI'S OWN VENUE, NOT ARCHIVED",
-  "claim": "Satoshi ran a web forum at bitcoin.sourceforge.net/boards/ before launching the successor forum on 22 November 2009, naming the old URL in his own announcement. No capture of it survives.",
+  "claim": "Satoshi ran a web forum at bitcoin.sourceforge.net/boards/ before launching the successor forum on 22 November 2009, naming the old URL in their own announcement. No capture of it survives.",
   "evidence": [
    {
     "what": "Satoshi's migration post giving the old forum URL",
@@ -981,7 +1006,7 @@
   ],
   "reproduce": "http://web.archive.org/cdx/search/cdx?url=bitcoin.sourceforge.net*&output=json&filter=statuscode:200&fl=timestamp,original",
   "gap": true,
-  "notes": "A Satoshi venue absent from every compilation we have checked. NOT ARCHIVED is not the same as destroyed. The remaining route is reconstruction from the 'Repost:' threads he carried across."
+  "notes": "A Satoshi venue absent from every compilation we have checked. NOT ARCHIVED is not the same as destroyed. The remaining route is reconstruction from the 'Repost:' threads they carried across."
  },
  {
   "id": "2009-12-xx-sf-project-edit",
@@ -1057,6 +1082,31 @@
   "notes": "The only time Bitcoin's supply rule has been broken in production."
  },
  {
+  "id": "2010-09-10-uistring-address-funded",
+  "when": "2010-09-10",
+  "precision": "day",
+  "axis": "bitcoin",
+  "grade": "CHAIN",
+  "title": "An example address printed in the 2009 Bitcoin client's UI begins receiving real coin",
+  "claim": "1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L is a hard-coded placeholder in the Send Coins dialog of the January 2009 client (v0.1.0 src/uibase.cpp line 495, unchanged in v0.1.3). On the 2009 chain it received its first payment on 2010-09-10, has since received 102 payments totalling 900.85217683 BTC, and has never spent a single satoshi. Its largest single receipt is 777.00000000 BTC in block 104662, 2011-01-26.",
+  "caption": "This is an address Satoshi published as example text in a form label — not a wallet, and not a holding. WHO, IF ANYONE, HOLDS ITS PRIVATE KEY IS UNKNOWN, and nothing here suggests Satoshi did. The first payment arrives twenty months after the source was published, so the coin was sent by strangers who read the address out of the code. Published in source, funded by others, never spent.",
+  "evidence": [
+   {
+    "what": "the string in the released v0.1.0 source",
+    "where": "https://bitcoin-lab.org/V010_TO_V013.html",
+    "hash": null
+   },
+   {
+    "what": "the address's full chain history",
+    "where": "https://blockstream.info/address/1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L",
+    "hash": null
+   }
+  ],
+  "reproduce": "curl -s https://blockstream.info/api/address/1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L and read chain_stats: funded_txo_sum 90085217683, spent_txo_sum 0. Page the full history with /txs/chain and sort by status.block_height; the earliest confirmed receipt is at height 79021.",
+  "notes": "Not decidable for the November 2008 pre-release: that artifact is five files (main.cpp, main.h, node.cpp, node.h, readme.txt) and contains no UI source at all, so the string can be neither confirmed nor denied there. The earliest artifact carrying it is v0.1.0.",
+  "gap": false
+ },
+ {
   "id": "2010-12-12-last-post",
   "when": "2010-12-12T18:22:33Z",
   "precision": "second",
@@ -1122,7 +1172,7 @@
   ],
   "reproduce": "curl -sL 'https://web.archive.org/web/20110121/http://sourceforge.net/projects/bitcoin/' | grep -o 'gavinandresen'",
   "gap": false,
-  "notes": "Records a MEMBERSHIP CHANGE, not a handover. SourceForge admins can add members and the page shows the result, not the actor - it cannot establish that Satoshi added him. It also does not narrow Satoshi's departure: his last machine-verifiable action is separately dated to 15 December 2010, and this row adds nothing to that. The adjacency is recorded precisely because it is the kind of fact that becomes a narrative if left uncaptioned."
+  "notes": "Records a MEMBERSHIP CHANGE, not a handover. SourceForge admins can add members and the page shows the result, not the actor - it cannot establish that Satoshi added them. It also does not narrow Satoshi's departure: their last machine-verifiable action is separately dated to 15 December 2010, and this row adds nothing to that. The adjacency is recorded precisely because it is the kind of fact that becomes a narrative if left uncaptioned."
  },
  {
   "id": "2011-02-28-asc",

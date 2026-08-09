@@ -19,6 +19,8 @@ h1{font-size:24px;margin:0 0 6px}
 .ev header{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .ev time{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:var(--mut)}
 .ev h3{font-size:16px;margin:4px 0 0;flex-basis:100%}
+.era{font-size:10.5px;letter-spacing:.04em;padding:2px 7px;border-radius:4px;
+  border:1px dashed var(--line);color:var(--mut);background:transparent;white-space:nowrap;cursor:help}
 .g{font-size:10.5px;letter-spacing:.06em;padding:2px 7px;border-radius:4px;border:1px solid var(--line);color:var(--mut)}
 .g-CHAIN{background:#0a7f3f;color:#fff;border-color:#0a7f3f}
 .g-SERVER-DB{background:#1256a0;color:#fff;border-color:#1256a0}
@@ -27,6 +29,9 @@ h1{font-size:24px;margin:0 0 6px}
 .g-SELF,.g-NONE{background:#8a1f1f;color:#fff;border-color:#8a1f1f}
 .gapflag{font-size:10.5px;letter-spacing:.06em;padding:2px 7px;border-radius:4px;background:var(--gapline);color:#000}
 .claim{margin:8px 0 6px}
+.caption{margin:0 0 6px;font-size:13px;line-height:1.65;color:var(--mut);
+  border-left:2px solid var(--line);padding:2px 0 2px 10px}
+.ev[data-grade="SELF"] .caption,.ev[data-grade="NONE"] .caption{border-left-color:#8a1f1f}
 details summary{cursor:pointer;color:var(--mut);font-size:13px}
 .evid{margin:10px 0;padding-left:18px}
 .evid li{margin-bottom:8px;font-size:13.5px}
@@ -55,7 +60,7 @@ it. Rows we <b>cannot</b> verify are shown too, marked <b>NOT HELD</b> — becau
 only what was found looks complete when it is not.</p>
 
 <div class="incomplete"><b>This timeline is incomplete, and says so on purpose.</b>
-It currently holds <b>68</b> events. The research corpus behind it is not part of this repository, so its size is not stated here rather than guessed at.
+It currently holds <b>70</b> events. The research corpus behind it contains <b>158</b> distinct dated events across 89 written entries and 50 sealed archives, and migration into this file is deliberate rather than bulk — each row has to acquire a grade, a source and a reproduction path before it can appear. That corpus is a local research archive and is not itself published, so this number is stated, not linkable.
 <b>Absence of a row here is not evidence that nothing happened on that date.</b>
 Applying the same standard to ourselves that we apply to everyone else — literally, since
 7 of these rows are about <a href="https://bitcoin-lab.org/bitcoin">a second Bitcoin, mined in
@@ -82,6 +87,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 <article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2008-07-20-ecash-org">
   <header>
     <time>2008-07-20</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-SERVER-DB">SERVER-DB</span>
     
     <h3>e-cash.org is registered — the earliest domain date in the register</h3>
@@ -93,6 +99,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev gap" data-axis="both" data-grade="ADJUDICATED" data-gap="true" data-era="origin" id="2008-08-xx-first-draft">
   <header>
     <time>2008-08</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-ADJUDICATED">ADJUDICATED</span>
     <span class="gapflag">NOT HELD</span>
     <h3>An August 2008 draft existed — title and abstract survive; the FILE does not</h3>
@@ -104,6 +111,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2008-08-17-netcoin">
   <header>
     <time>2008-08-17</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-SERVER-DB">SERVER-DB</span>
     
     <h3>netcoin.org is registered the day before bitcoin.org, same registrar</h3>
@@ -115,6 +123,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2008-08-18-domain">
   <header>
     <time>2008-08-18</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-SERVER-DB">SERVER-DB</span>
     
     <h3>bitcoin.org is registered</h3>
@@ -126,6 +135,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="satoshi" data-grade="ADJUDICATED" data-gap="false" data-era="origin" id="2008-08-20-anonymousspeech">
   <header>
     <time>2008-08-20</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-ADJUDICATED">ADJUDICATED</span>
     
     <h3>The earliest known Satoshi communication of any kind</h3>
@@ -137,6 +147,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="satoshi" data-grade="ARCHIVE-POS" data-gap="false" data-era="origin" id="2008-08-20-upload-host">
   <header>
     <time>2008-08-20</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-ARCHIVE-POS">ARCHIVE-POS</span>
     
     <h3>The file id Satoshi linked is bracketed to within days by an unrelated crawl</h3>
@@ -148,6 +159,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="bitcoin" data-grade="CAPTURE" data-gap="false" data-era="origin" id="2008-09-10-nov08-genesis-ntime">
   <header>
     <time>2008-09-10 18:02:08 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-CAPTURE">CAPTURE</span>
     
     <h3>The November 2008 pre-release carries its own genesis nTime</h3>
@@ -159,6 +171,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="both" data-grade="CAPTURE" data-gap="false" data-era="origin" id="2008-10-03-draft">
   <header>
     <time>2008-10-03 20:49:58 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-CAPTURE">CAPTURE</span>
     
     <h3>The 3 October 2008 pre-release draft exists</h3>
@@ -170,6 +183,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2008-10-05-nakamoto2">
   <header>
     <time>2008-10-05</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-SERVER-DB">SERVER-DB</span>
     
     <h3>The SourceForge account nakamoto2 is created</h3>
@@ -181,6 +195,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="satoshi" data-grade="SELF" data-gap="false" data-era="origin" id="2008-10-30-pgp-key">
   <header>
     <time>2008-10-30 18:19:19 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-SELF">SELF</span>
     
     <h3>A PGP key carries a self-dated creation time</h3>
@@ -189,9 +204,22 @@ Applying the same standard to ourselves that we apply to everyone else — liter
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>the key&#x27;s own self-assertion</b><br><a class="w" href="https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198" rel="noopener nofollow">https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>GRADED &#x27;SELF&#x27; DELIBERATELY: a PGP creation date is written by the creating machine and is trivially forgeable. Period-plausible, entirely unbinding — and no Satoshi artifact was ever PGP-signed with it.</div>
   </details>
+</article><article class="ev" data-axis="satoshi" data-grade="SELF" data-gap="false" data-era="origin" id="2008-10-30-pgp-key-created">
+  <header>
+    <time>2008-10-30 18:19:19 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
+    <span class="g g-SELF">SELF</span>
+    
+    <h3>The PGP key of the 2008–2010 Satoshi Nakamoto asserts its own creation date</h3>
+  </header>
+  <p class="claim">The key served as Satoshi_Nakamoto.asc from bitcoin.org — DSA primary with an ElGamal subkey, user ID &quot;Satoshi Nakamoto &lt;satoshin@gmx.com&gt;&quot;, fingerprint DE4E FCA3 E1AB 9E41 CE96 CECB 18C0 9E86 5EC9 48A1 — carries a self-asserted creation timestamp of 2008-10-30 18:19:19 UTC in its own key packet, and the Version header reads GnuPG v1.4.7 (MingW32).</p><p class="caption">SELF is the weakest grade on this page, and this row is the reason it exists. A PGP creation timestamp is written by whoever generated the key, from their own clock, and can be set to anything. It is NOT evidence that the key was made on that date. What is independently checked is only this: a key bearing that timestamp was served from bitcoin.org, was captured there, and is byte-identical to the copy held in a separate third-party archive.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>the key as served from bitcoin.org, recovered from the Internet Archive</b><br><a class="w" href="https://web.archive.org/web/20110228054007id_/http://www.bitcoin.org/Satoshi_Nakamoto.asc" rel="noopener nofollow">https://web.archive.org/web/20110228054007id_/http://www.bitcoin.org/Satoshi_Nakamoto.asc</a><br><code class="h">sha256:f918c6368fe1ba8ceaa9d15c73fb601c68eb3fc542979d04eb34fd5f3b0502e3</code></li><li><b>34 successful captures of that URL, all one digest — the file never changed</b><br><a class="w" href="https://web.archive.org/cdx/search/cdx?url=bitcoin.org/Satoshi_Nakamoto.asc&amp;output=json" rel="noopener nofollow">https://web.archive.org/cdx/search/cdx?url=bitcoin.org/Satoshi_Nakamoto.asc&amp;output=json</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>Fetch the .asc above, strip the armour, base64-decode, and read the OpenPGP packets: tag 6 (public key) and tag 14 (subkey) each begin with version byte 0x04 followed by a 4-byte big-endian creation time. Both decode to 1225390759 = 2008-10-30 18:19:19 UTC. The v4 fingerprint is SHA-1 over 0x99 || 2-byte length || packet body.</code></div><div class="notes"><span class="lbl">caveats</span>The user ID already carries satoshin@gmx.com — the address on the March 2009 whitepaper — rather than the satoshi@vistomail.com of the August 2008 emails. Timing against the 31 October 2008 announcement is deliberately NOT stated as a finding here: one side of that comparison is self-asserted, so the interval is not a measurement.</div>
+  </details>
 </article><article class="ev" data-axis="both" data-grade="ARCHIVE-POS" data-gap="false" data-era="origin" id="2008-10-31-announcement">
   <header>
     <time>2008-10-31 18:10:00 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-ARCHIVE-POS">ARCHIVE-POS</span>
     
     <h3>The whitepaper is announced to the cryptography list</h3>
@@ -203,6 +231,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" data-era="origin" id="2008-11-08-183697">
   <header>
     <time>2008-11-08</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
     
     <h3>The 183,697-byte draft is in third-party hands by 8 November 2008</h3>
@@ -214,6 +243,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2008-11-09-sourceforge">
   <header>
     <time>2008-11-09 18:58:00 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-SERVER-DB">SERVER-DB</span>
     
     <h3>The Bitcoin project is registered on SourceForge</h3>
@@ -225,6 +255,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev gap" data-axis="both" data-grade="ADJUDICATED" data-gap="true" data-era="origin" id="2008-11-11-lost-version">
   <header>
     <time>2008-11-11 16:00:34 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-ADJUDICATED">ADJUDICATED</span>
     <span class="gapflag">NOT HELD</span>
     <h3>The 11 November 2008 whitepaper is created — WE DO NOT HOLD IT, BUT WE CAN NOW RECOGNISE IT</h3>
@@ -236,6 +267,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" data-era="origin" id="2008-11-15-prerelease-code">
   <header>
     <time>2008-11-15</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
     
     <h3>The pre-release codebase is dated</h3>
@@ -247,6 +279,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="satoshi" data-grade="ARCHIVE-POS" data-gap="false" data-era="origin" id="2008-11-17-list-closes">
   <header>
     <time>2008-11-17 21:43:33 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-ARCHIVE-POS">ARCHIVE-POS</span>
     
     <h3>The venue closes — and the 52-day silence is explained</h3>
@@ -258,6 +291,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2008-12-10-s-nakamoto">
   <header>
     <time>2008-12-10</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-SERVER-DB">SERVER-DB</span>
     
     <h3>The SourceForge account s_nakamoto is created and added by nakamoto2</h3>
@@ -269,6 +303,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev gap" data-axis="satoshi" data-grade="NONE" data-gap="true" data-era="origin" id="identity-ceiling">
   <header>
     <time>2009-01-03 &rarr; 2010-12-15</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-NONE">NONE</span>
     <span class="gapflag">NOT HELD</span>
     <h3>No key has ever signed anything — the ceiling on all of this</h3>
@@ -280,6 +315,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="both" data-grade="CHAIN" data-gap="false" data-era="origin" id="2009-01-03-genesis">
   <header>
     <time>2009-01-03 18:15:05 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-CHAIN">CHAIN</span>
     
     <h3>The genesis block</h3>
@@ -291,6 +327,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="both" data-grade="ARCHIVE-POS" data-gap="false" data-era="origin" id="2009-01-08-v01-released">
   <header>
     <time>2009-01-08 19:27:40 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-ARCHIVE-POS">ARCHIVE-POS</span>
     
     <h3>Bitcoin v0.1 is announced</h3>
@@ -302,6 +339,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" data-era="origin" id="2009-01-09-restart">
   <header>
     <time>2009-01-09 02:54:25 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-CHAIN">CHAIN</span>
     
     <h3>The chain restarts after a 5.36-day gap</h3>
@@ -313,6 +351,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="bitcoin" data-grade="ARCHIVE-POS" data-gap="false" data-era="origin" id="2009-01-10-hal-debuglog">
   <header>
     <time>2009-01-10 11:13:00 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-ARCHIVE-POS">ARCHIVE-POS</span>
     
     <h3>Hal Finney&#x27;s Bitcoin debug.log is posted to the list</h3>
@@ -324,6 +363,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="bitcoin" data-grade="CAPTURE" data-gap="false" data-era="origin" id="2009-01-10-exe">
   <header>
     <time>2009-01-10 23:16:00 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-CAPTURE">CAPTURE</span>
     
     <h3>The released bitcoin.exe is linked — two days AFTER v0.1.0 was announced</h3>
@@ -335,6 +375,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="bitcoin" data-grade="CAPTURE" data-gap="false" data-era="origin" id="2009-01-11-running-bitcoin">
   <header>
     <time>2009-01-11 03:33:52 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-CAPTURE">CAPTURE</span>
     
     <h3>Hal Finney tweets &#x27;Running bitcoin&#x27;</h3>
@@ -346,6 +387,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" data-era="origin" id="2009-01-12-block-170">
   <header>
     <time>2009-01-12 03:30:25 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-CHAIN">CHAIN</span>
     
     <h3>The first payment ever made</h3>
@@ -357,17 +399,19 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="both" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2009-01-13-sf-release-note">
   <header>
     <time>2009-01-13</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-SERVER-DB">SERVER-DB</span>
     
     <h3>The v0.1 release announcement on SourceForge — byline erased</h3>
   </header>
   <p class="claim">SourceForge carries the full v0.1 release announcement, including the instruction that generated coins must wait 120 blocks to mature. A platform migration replaced the author with &#x27;Anonymous&#x27;.</p>
   <details><summary>evidence &amp; reproduction</summary>
-    <ul class="evid"><li><b>the news page, 62 KB; the words &#x27;satoshi&#x27; and &#x27;nakamoto&#x27; appear zero times on it</b><br><a class="w" href="https://sourceforge.net/projects/bitcoin/" rel="noopener nofollow">https://sourceforge.net/projects/bitcoin/</a></li><li><b>the REST API returns the post&#x27;s title but empty text and author</b><br><a class="w" href="https://sourceforge.net/projects/bitcoin/" rel="noopener nofollow">https://sourceforge.net/projects/bitcoin/</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>curl -s https://sourceforge.net/rest/p/bitcoin/news</code></div><div class="notes"><span class="lbl">caveats</span>The text is his; the attribution is gone, which is why no compilation folds it in. It independently corroborates the 120-block maturity we derived from main.cpp — COINBASE_MATURITY + 20 — in Satoshi&#x27;s own words.</div>
+    <ul class="evid"><li><b>the news page, 62 KB; the words &#x27;satoshi&#x27; and &#x27;nakamoto&#x27; appear zero times on it</b><br><a class="w" href="https://sourceforge.net/projects/bitcoin/" rel="noopener nofollow">https://sourceforge.net/projects/bitcoin/</a></li><li><b>the REST API returns the post&#x27;s title but empty text and author</b><br><a class="w" href="https://sourceforge.net/projects/bitcoin/" rel="noopener nofollow">https://sourceforge.net/projects/bitcoin/</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>curl -s https://sourceforge.net/rest/p/bitcoin/news</code></div><div class="notes"><span class="lbl">caveats</span>The text is theirs; the attribution is gone, which is why no compilation folds it in. It independently corroborates the 120-block maturity we derived from main.cpp — COINBASE_MATURITY + 20 — in Satoshi&#x27;s own words.</div>
   </details>
 </article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" data-era="origin" id="2009-01-15-block-593">
   <header>
     <time>2009-01-15 15:51:56 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-CHAIN">CHAIN</span>
     
     <h3>Block 593 — a 50 BTC send with change</h3>
@@ -379,6 +423,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="both" data-grade="ADJUDICATED" data-gap="false" data-era="origin" id="2009-01-18-bohm-downloads">
   <header>
     <time>2009-01-18 13:27:00 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-ADJUDICATED">ADJUDICATED</span>
     
     <h3>A member of the public downloads the whitepaper</h3>
@@ -390,6 +435,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev gap" data-axis="both" data-grade="ADJUDICATED" data-gap="true" data-era="origin" id="2009-01-30-bc014">
   <header>
     <time>2009-01-30</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-ADJUDICATED">ADJUDICATED</span>
     <span class="gapflag">NOT HELD</span>
     <h3>Pre-release builds bc014 / bc014a / bc015 / bc015a — NOT LOCATED</h3>
@@ -401,6 +447,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="both" data-grade="CHAIN" data-gap="false" data-era="origin" id="2009-02-01-block-2616">
   <header>
     <time>2009-02-01 16:25:12 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-CHAIN">CHAIN</span>
     
     <h3>100 BTC is sent to Nicholas Bohm</h3>
@@ -412,6 +459,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="satoshi" data-grade="ADJUDICATED" data-gap="false" data-era="origin" id="2009-02-03-gmx-changeover">
   <header>
     <time>2009-02-03</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-ADJUDICATED">ADJUDICATED</span>
     
     <h3>Satoshi moves from vistomail to gmx</h3>
@@ -423,6 +471,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" data-era="origin" id="2009-02-03-first-fees">
   <header>
     <time>2009-02-03 05:16:42 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-CHAIN">CHAIN</span>
     
     <h3>The first transaction fees ever paid — a self-test</h3>
@@ -434,6 +483,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="both" data-grade="CHAIN" data-gap="false" data-era="origin" id="2009-02-03-19-btc">
   <header>
     <time>2009-02-03 22:55:58 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-CHAIN">CHAIN</span>
     
     <h3>A Satoshi address, named by Satoshi</h3>
@@ -445,6 +495,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="satoshi" data-grade="ARCHIVE-POS" data-gap="false" data-era="origin" id="2009-02-11-p2p-research">
   <header>
     <time>2009-02-11 22:30:54 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-ARCHIVE-POS">ARCHIVE-POS</span>
     
     <h3>The P2P-currency announcement</h3>
@@ -456,6 +507,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="satoshi" data-grade="SELF" data-gap="false" data-era="origin" id="2009-02-18-p2pfoundation">
   <header>
     <time>2009-02-18</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-SELF">SELF</span>
     
     <h3>The P2P Foundation profile posts</h3>
@@ -467,6 +519,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="satoshi" data-grade="ARCHIVE-POS" data-gap="false" data-era="origin" id="2009-03-04-vistomail-last">
   <header>
     <time>2009-03-04</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-ARCHIVE-POS">ARCHIVE-POS</span>
     
     <h3>The last public use of the vistomail address</h3>
@@ -478,6 +531,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="both" data-grade="CAPTURE" data-gap="false" data-era="origin" id="2009-03-24-canonical">
   <header>
     <time>2009-03-24 17:33:15 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-CAPTURE">CAPTURE</span>
     
     <h3>The canonical whitepaper is created</h3>
@@ -489,17 +543,19 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" data-era="origin" id="2009-05-11-block-14047">
   <header>
     <time>2009-05-11 14:58:31 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-CHAIN">CHAIN</span>
     
     <h3>A private miner&#x27;s own block, identified</h3>
   </header>
-  <p class="claim">Block 14047 pays a coinbase of 50.10 — the +50.10 Bohm wrote to Satoshi about, his 15:58 being BST. Only eight blocks in all of 2009 collected any fee.</p>
+  <p class="claim">Block 14047 pays a coinbase of 50.10 — the +50.10 Bohm wrote to Satoshi about, their 15:58 being BST. Only eight blocks in all of 2009 collected any fee.</p>
   <details><summary>evidence &amp; reproduction</summary>
-    <ul class="evid"><li><b>the eight fee-bearing blocks of 2009</b><br><a class="w" href="https://github.com/satoshi-onchain/satoshi-onchain/blob/main/verify/fees_2009.sql" rel="noopener nofollow">https://github.com/satoshi-onchain/satoshi-onchain/blob/main/verify/fees_2009.sql</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>satoshi-onchain/verify/fees_2009.sql</code></div><div class="notes"><span class="lbl">caveats</span>[forensic], not [cryptographic] — he signed nothing. Predicted from the letter before the chain was queried. The coinbase address received that one coinbase and nothing else, and was emptied 28 Dec 2011.</div>
+    <ul class="evid"><li><b>the eight fee-bearing blocks of 2009</b><br><a class="w" href="https://github.com/satoshi-onchain/satoshi-onchain/blob/main/verify/fees_2009.sql" rel="noopener nofollow">https://github.com/satoshi-onchain/satoshi-onchain/blob/main/verify/fees_2009.sql</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>satoshi-onchain/verify/fees_2009.sql</code></div><div class="notes"><span class="lbl">caveats</span>[forensic], not [cryptographic] — they signed nothing. Predicted from the letter before the chain was queried. The coinbase address received that one coinbase and nothing else, and was emptied 28 Dec 2011.</div>
   </details>
 </article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" data-era="origin" id="2009-06-01-block-16226">
   <header>
     <time>2009-06-01 03:01:54 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-CHAIN">CHAIN</span>
     
     <h3>The 0.01 that carried a message</h3>
@@ -511,6 +567,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="bitcoin" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2009-08-29-sirius">
   <header>
     <time>2009-08-29</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-SERVER-DB">SERVER-DB</span>
     
     <h3>Martti Malmi commits to the repository</h3>
@@ -522,6 +579,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" data-era="origin" id="2009-10-01-lost-forum-activity">
   <header>
     <time>2009-10-01 14:12:00 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
     
     <h3>Recovered activity from the lost forum — October 2009</h3>
@@ -533,6 +591,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2009-10-21-svn">
   <header>
     <time>2009-10-21</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-SERVER-DB">SERVER-DB</span>
     
     <h3>The first of 164 SVN commits</h3>
@@ -544,6 +603,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev gap" data-axis="satoshi" data-grade="NONE" data-gap="true" data-era="origin" id="tracker-comments-absent">
   <header>
     <time>2009-10-21 &rarr; 2010-12-15</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-NONE">NONE</span>
     <span class="gapflag">NOT HELD</span>
     <h3>Satoshi&#x27;s SourceForge tracker comments — THE PREMISE IS UNSUPPORTED</h3>
@@ -555,6 +615,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2009-11-19-bitcointalk">
   <header>
     <time>2009-11-19 19:12:39 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-SERVER-DB">SERVER-DB</span>
     
     <h3>bitcointalk user 3, &#x27;satoshi&#x27;, registers</h3>
@@ -566,17 +627,19 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev gap" data-axis="satoshi" data-grade="ADJUDICATED" data-gap="true" data-era="origin" id="2009-11-22-old-forum">
   <header>
     <time>2009-11-22</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-ADJUDICATED">ADJUDICATED</span>
     <span class="gapflag">NOT HELD</span>
     <h3>The pre-BitcoinTalk forum — SATOSHI&#x27;S OWN VENUE, NOT ARCHIVED</h3>
   </header>
-  <p class="claim">Satoshi ran a web forum at bitcoin.sourceforge.net/boards/ before launching the successor forum on 22 November 2009, naming the old URL in his own announcement. No capture of it survives.</p>
+  <p class="claim">Satoshi ran a web forum at bitcoin.sourceforge.net/boards/ before launching the successor forum on 22 November 2009, naming the old URL in their own announcement. No capture of it survives.</p>
   <details><summary>evidence &amp; reproduction</summary>
-    <ul class="evid"><li><b>Satoshi&#x27;s migration post giving the old forum URL</b><br><a class="w" href="https://bitcointalk.org/index.php?topic=5.0" rel="noopener nofollow">https://bitcointalk.org/index.php?topic=5.0</a></li><li><b>CDX sweep of the whole domain: 27 archived URLs, none under /boards/</b><br><a class="w" href="https://web.archive.org/web/2009*/bitcoin.sourceforge.net*" rel="noopener nofollow">https://web.archive.org/web/2009*/bitcoin.sourceforge.net*</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>http://web.archive.org/cdx/search/cdx?url=bitcoin.sourceforge.net*&amp;output=json&amp;filter=statuscode:200&amp;fl=timestamp,original</code></div><div class="notes"><span class="lbl">caveats</span>A Satoshi venue absent from every compilation we have checked. NOT ARCHIVED is not the same as destroyed. The remaining route is reconstruction from the &#x27;Repost:&#x27; threads he carried across.</div>
+    <ul class="evid"><li><b>Satoshi&#x27;s migration post giving the old forum URL</b><br><a class="w" href="https://bitcointalk.org/index.php?topic=5.0" rel="noopener nofollow">https://bitcointalk.org/index.php?topic=5.0</a></li><li><b>CDX sweep of the whole domain: 27 archived URLs, none under /boards/</b><br><a class="w" href="https://web.archive.org/web/2009*/bitcoin.sourceforge.net*" rel="noopener nofollow">https://web.archive.org/web/2009*/bitcoin.sourceforge.net*</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>http://web.archive.org/cdx/search/cdx?url=bitcoin.sourceforge.net*&amp;output=json&amp;filter=statuscode:200&amp;fl=timestamp,original</code></div><div class="notes"><span class="lbl">caveats</span>A Satoshi venue absent from every compilation we have checked. NOT ARCHIVED is not the same as destroyed. The remaining route is reconstruction from the &#x27;Repost:&#x27; threads they carried across.</div>
   </details>
 </article><article class="ev" data-axis="bitcoin" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2009-12-xx-sf-project-edit">
   <header>
     <time>2009-12-01 &rarr; 2010-01-08</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-SERVER-DB">SERVER-DB</span>
     
     <h3>nakamoto2 drops off the SourceForge project, and the paper&#x27;s folder is renamed</h3>
@@ -588,6 +651,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="both" data-grade="CAPTURE" data-gap="false" data-era="origin" id="2010-07-04-pdf-capture">
   <header>
     <time>2010-07-04</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-CAPTURE">CAPTURE</span>
     
     <h3>The earliest surviving capture of the whitepaper as served</h3>
@@ -599,6 +663,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" data-era="origin" id="2010-08-15-overflow">
   <header>
     <time>2010-08-15 17:05:00 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-CHAIN">CHAIN</span>
     
     <h3>The day 184 billion bitcoins existed</h3>
@@ -607,9 +672,22 @@ Applying the same standard to ourselves that we apply to everyone else — liter
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>block 74638</b><br><span class="w">the Bitcoin blockchain</span></li><li><b>Satoshi&#x27;s own contemporaneous warning naming the block and time</b><br><a class="w" href="https://bitcointalk.org/index.php?action=profile;u=3" rel="noopener nofollow">https://bitcointalk.org/index.php?action=profile;u=3</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>bigquery-public-data.crypto_bitcoin.transactions WHERE block_number = 74638</code></div><div class="notes"><span class="lbl">caveats</span>The only time Bitcoin&#x27;s supply rule has been broken in production.</div>
   </details>
+</article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" data-era="origin" id="2010-09-10-uistring-address-funded">
+  <header>
+    <time>2010-09-10</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
+    <span class="g g-CHAIN">CHAIN</span>
+    
+    <h3>An example address printed in the 2009 Bitcoin client&#x27;s UI begins receiving real coin</h3>
+  </header>
+  <p class="claim">1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L is a hard-coded placeholder in the Send Coins dialog of the January 2009 client (v0.1.0 src/uibase.cpp line 495, unchanged in v0.1.3). On the 2009 chain it received its first payment on 2010-09-10, has since received 102 payments totalling 900.85217683 BTC, and has never spent a single satoshi. Its largest single receipt is 777.00000000 BTC in block 104662, 2011-01-26.</p><p class="caption">This is an address Satoshi published as example text in a form label — not a wallet, and not a holding. WHO, IF ANYONE, HOLDS ITS PRIVATE KEY IS UNKNOWN, and nothing here suggests Satoshi did. The first payment arrives twenty months after the source was published, so the coin was sent by strangers who read the address out of the code. Published in source, funded by others, never spent.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>the string in the released v0.1.0 source</b><br><a class="w" href="https://bitcoin-lab.org/V010_TO_V013.html" rel="noopener nofollow">https://bitcoin-lab.org/V010_TO_V013.html</a></li><li><b>the address&#x27;s full chain history</b><br><a class="w" href="https://blockstream.info/address/1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L" rel="noopener nofollow">https://blockstream.info/address/1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>curl -s https://blockstream.info/api/address/1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L and read chain_stats: funded_txo_sum 90085217683, spent_txo_sum 0. Page the full history with /txs/chain and sort by status.block_height; the earliest confirmed receipt is at height 79021.</code></div><div class="notes"><span class="lbl">caveats</span>Not decidable for the November 2008 pre-release: that artifact is five files (main.cpp, main.h, node.cpp, node.h, readme.txt) and contains no UI source at all, so the string can be neither confirmed nor denied there. The earliest artifact carrying it is v0.1.0.</div>
+  </details>
 </article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2010-12-12-last-post">
   <header>
     <time>2010-12-12 18:22:33 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-SERVER-DB">SERVER-DB</span>
     
     <h3>The last forum post</h3>
@@ -621,6 +699,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2010-12-15-last-action">
   <header>
     <time>2010-12-15 22:43:51 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-SERVER-DB">SERVER-DB</span>
     
     <h3>The last machine-verifiable action, anywhere</h3>
@@ -632,17 +711,19 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="bitcoin" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2011-01-xx-gavin-sf-owner">
   <header>
     <time>2010-12-28 &rarr; 2011-01-21</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-SERVER-DB">SERVER-DB</span>
     
     <h3>gavinandresen is added to the Bitcoin SourceForge project</h3>
   </header>
   <p class="claim">The project&#x27;s owner field reads &#x27;s_nakamoto&#x27; alone in the capture of 27 December 2010 and &#x27;gavinandresen, s_nakamoto&#x27; in the capture of 21 January 2011. No capture of any sourceforge.net/projects/bitcoin URL exists between those dates, so the change is bracketed to 25 days and no tighter.</p>
   <details><summary>evidence &amp; reproduction</summary>
-    <ul class="evid"><li><b>files page, 27 Dec 2010 - owners: s_nakamoto</b><br><a class="w" href="https://web.archive.org/web/20101227/http://sourceforge.net/projects/bitcoin/files" rel="noopener nofollow">https://web.archive.org/web/20101227/http://sourceforge.net/projects/bitcoin/files</a></li><li><b>project page, 21 Jan 2011 - owners: gavinandresen, s_nakamoto</b><br><a class="w" href="https://web.archive.org/web/20110121/http://sourceforge.net/projects/bitcoin/" rel="noopener nofollow">https://web.archive.org/web/20110121/http://sourceforge.net/projects/bitcoin/</a></li><li><b>prefix sweep of sourceforge.net/projects/bitcoin* returns zero status-200 captures in the gap</b><br><a class="w" href="http://web.archive.org/cdx/search/cdx?url=sourceforge.net/projects/bitcoin*&amp;matchType=prefix&amp;from=20101228&amp;to=20110120" rel="noopener nofollow">http://web.archive.org/cdx/search/cdx?url=sourceforge.net/projects/bitcoin*&amp;matchType=prefix&amp;from=20101228&amp;to=20110120</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>curl -sL &#x27;https://web.archive.org/web/20110121/http://sourceforge.net/projects/bitcoin/&#x27; | grep -o &#x27;gavinandresen&#x27;</code></div><div class="notes"><span class="lbl">caveats</span>Records a MEMBERSHIP CHANGE, not a handover. SourceForge admins can add members and the page shows the result, not the actor - it cannot establish that Satoshi added him. It also does not narrow Satoshi&#x27;s departure: his last machine-verifiable action is separately dated to 15 December 2010, and this row adds nothing to that. The adjacency is recorded precisely because it is the kind of fact that becomes a narrative if left uncaptioned.</div>
+    <ul class="evid"><li><b>files page, 27 Dec 2010 - owners: s_nakamoto</b><br><a class="w" href="https://web.archive.org/web/20101227/http://sourceforge.net/projects/bitcoin/files" rel="noopener nofollow">https://web.archive.org/web/20101227/http://sourceforge.net/projects/bitcoin/files</a></li><li><b>project page, 21 Jan 2011 - owners: gavinandresen, s_nakamoto</b><br><a class="w" href="https://web.archive.org/web/20110121/http://sourceforge.net/projects/bitcoin/" rel="noopener nofollow">https://web.archive.org/web/20110121/http://sourceforge.net/projects/bitcoin/</a></li><li><b>prefix sweep of sourceforge.net/projects/bitcoin* returns zero status-200 captures in the gap</b><br><a class="w" href="http://web.archive.org/cdx/search/cdx?url=sourceforge.net/projects/bitcoin*&amp;matchType=prefix&amp;from=20101228&amp;to=20110120" rel="noopener nofollow">http://web.archive.org/cdx/search/cdx?url=sourceforge.net/projects/bitcoin*&amp;matchType=prefix&amp;from=20101228&amp;to=20110120</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>curl -sL &#x27;https://web.archive.org/web/20110121/http://sourceforge.net/projects/bitcoin/&#x27; | grep -o &#x27;gavinandresen&#x27;</code></div><div class="notes"><span class="lbl">caveats</span>Records a MEMBERSHIP CHANGE, not a handover. SourceForge admins can add members and the page shows the result, not the actor - it cannot establish that Satoshi added them. It also does not narrow Satoshi&#x27;s departure: their last machine-verifiable action is separately dated to 15 December 2010, and this row adds nothing to that. The adjacency is recorded precisely because it is the kind of fact that becomes a narrative if left uncaptioned.</div>
   </details>
 </article><article class="ev" data-axis="satoshi" data-grade="CAPTURE" data-gap="false" data-era="origin" id="2011-02-28-asc">
   <header>
     <time>2011-02-28</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-CAPTURE">CAPTURE</span>
     
     <h3>bitcoin.org serves Satoshi_Nakamoto.asc</h3>
@@ -654,6 +735,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" data-era="origin" id="2011-06-19-bohm-100-leaves">
   <header>
     <time>2011-06-19</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-CHAIN">CHAIN</span>
     
     <h3>The 100 BTC leaves Bohm&#x27;s address</h3>
@@ -665,6 +747,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="satoshi" data-grade="PARTY-RELEASED" data-gap="false" data-era="origin" id="2014-03-02-wei-dai">
   <header>
     <time>2014-03-02</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
     
     <h3>The Satoshi–Wei Dai exchange is published</h3>
@@ -676,6 +759,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="satoshi" data-grade="NONE" data-gap="false" data-era="origin" id="2014-03-07-not-dorian">
   <header>
     <time>2014-03-07</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-NONE">NONE</span>
     
     <h3>&#x27;I am not Dorian Nakamoto&#x27; — unauthenticated</h3>
@@ -687,6 +771,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="satoshi" data-grade="ADJUDICATED" data-gap="false" data-era="origin" id="2014-08-28-finney">
   <header>
     <time>2014-08-28</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-ADJUDICATED">ADJUDICATED</span>
     
     <h3>Hal Finney dies</h3>
@@ -698,6 +783,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" data-era="origin" id="2015-01-30-mixmaster">
   <header>
     <time>2015-01-30</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
     
     <h3>The pre-release draft is republished, and the hash matches</h3>
@@ -709,6 +795,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="bitcoin" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2015-06-05-sf-purge">
   <header>
     <time>2015-06-05</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-SERVER-DB">SERVER-DB</span>
     
     <h3>The SourceForge file tree is purged</h3>
@@ -720,6 +807,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" data-era="origin" id="2017-08-17-dillinger">
   <header>
     <time>2017-08-17</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
     
     <h3>An original 2008 participant confirms the pre-release hash</h3>
@@ -731,6 +819,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="both" data-grade="ADJUDICATED" data-gap="false" data-era="origin" id="2024-pm3-hashes-published">
   <header>
     <time>2024-02-01</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-ADJUDICATED">ADJUDICATED</span>
     
     <h3>A court expert publishes the missing whitepaper&#x27;s hashes</h3>
@@ -742,6 +831,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="bitcoin" data-grade="ADJUDICATED" data-gap="false" data-era="origin" id="2024-copa-219">
   <header>
     <time>2024-03-14</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-ADJUDICATED">ADJUDICATED</span>
     
     <h3>A court judgment states the 2009 transaction count</h3>
@@ -771,6 +861,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </div><article class="ev" data-axis="bitcoin" data-grade="PARTY-RELEASED" data-gap="false" data-era="lab" id="2026-07-31-twonode-witness">
   <header>
     <time>2026-07-31</time>
+    <span class="era era-lab" title="A different chain and a different author: the second Bitcoin genesis, mined August 2026 on its own network. Not a fork of the 2009 chain and not a claim about it.">2026 pair</span>
     <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
     
     <h3>Two unmodified 2009 binaries mine and relay a block on the historical genesis</h3>
@@ -782,6 +873,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="bitcoin" data-grade="PARTY-RELEASED" data-gap="false" data-era="lab" id="2026-08-02-reorg">
   <header>
     <time>2026-08-02</time>
+    <span class="era era-lab" title="A different chain and a different author: the second Bitcoin genesis, mined August 2026 on its own network. Not a fork of the 2009 chain and not a claim about it.">2026 pair</span>
     <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
     
     <h3>The 2009 client performs a real chain reorganisation</h3>
@@ -793,6 +885,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" data-era="lab" id="2026-08-03-second-genesis">
   <header>
     <time>2026-08-03 18:22:55 UTC</time>
+    <span class="era era-lab" title="A different chain and a different author: the second Bitcoin genesis, mined August 2026 on its own network. Not a fork of the 2009 chain and not a claim about it.">2026 pair</span>
     <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
     
     <h3>A second Bitcoin genesis is mined, on a chain of its own</h3>
@@ -804,6 +897,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="bitcoin" data-grade="PARTY-RELEASED" data-gap="false" data-era="lab" id="2026-08-06-relayed-spend">
   <header>
     <time>2026-08-06</time>
+    <span class="era era-lab" title="A different chain and a different author: the second Bitcoin genesis, mined August 2026 on its own network. Not a fork of the 2009 chain and not a claim about it.">2026 pair</span>
     <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
     
     <h3>A matured coinbase is spent and relayed — and maturity is 120 blocks, not 100</h3>
@@ -815,6 +909,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" data-era="lab" id="2026-08-08-released-client-mines">
   <header>
     <time>2026-08-08 22:19:22 UTC</time>
+    <span class="era era-lab" title="A different chain and a different author: the second Bitcoin genesis, mined August 2026 on its own network. Not a fork of the 2009 chain and not a claim about it.">2026 pair</span>
     <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
     
     <h3>A published Bitcoin client is shown to have mined its own chain&#x27;s blocks</h3>
@@ -826,6 +921,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev gap" data-axis="bitcoin" data-grade="NONE" data-gap="true" data-era="lab" id="2026-08-08-unsealed-blocks">
   <header>
     <time>2026-08-08 23:18:52 UTC</time>
+    <span class="era era-lab" title="A different chain and a different author: the second Bitcoin genesis, mined August 2026 on its own network. Not a fork of the 2009 chain and not a claim about it.">2026 pair</span>
     <span class="g g-NONE">NONE</span>
     <span class="gapflag">NOT HELD</span>
     <h3>The chain outruns its evidence set — NOT YET SEALED</h3>
@@ -837,6 +933,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 </article><article class="ev" data-axis="both" data-grade="CHAIN" data-gap="false" data-era="lab" id="2026-08-09-anchor">
   <header>
     <time>2026-08-09 00:16:42 UTC</time>
+    <span class="era era-lab" title="A different chain and a different author: the second Bitcoin genesis, mined August 2026 on its own network. Not a fork of the 2009 chain and not a claim about it.">2026 pair</span>
     <span class="g g-CHAIN">CHAIN</span>
     
     <h3>The 2026 chain&#x27;s release is anchored in the 2009 chain</h3>

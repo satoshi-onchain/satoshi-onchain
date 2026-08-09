@@ -124,6 +124,19 @@ ERA_NOTE = '''<div class="eradiv" id="era-2026">
 </div>'''
 
 rows = []
+# Every row carries its own era chip. The divider below explains the two pairs, but a row can be
+# deep-linked by id or isolated by a filter, and then the divider is nowhere near it. A reader who
+# lands on one row must still be able to tell WHICH Bitcoin and WHICH Satoshi it is about -- several
+# 2026 rows legitimately mention "2009" because they RUN the 2009 client, which is exactly the
+# sentence that misleads when read alone. Both eras are chipped, identically styled: neither is the
+# default, neither is the qualified exception.
+ERA_TAG = {"origin": "2009 pair", "lab": "2026 pair"}
+ERA_TIP = {
+    "origin": "The Bitcoin that launched in January 2009, and the pseudonym that released it.",
+    "lab": "A different chain and a different author: the second Bitcoin genesis, mined August 2026 "
+           "on its own network. Not a fork of the 2009 chain and not a claim about it.",
+}
+
 _era_marked = False
 for e in events:
     era = "lab" if e["when"] >= "2026" else "origin"
@@ -139,14 +152,19 @@ for e in events:
            if e.get("reproduce") else
            '<div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div>')
     notes = f'<div class="notes"><span class="lbl">caveats</span>{esc(e["notes"])}</div>' if e.get("notes") else ""
+    # A caveat that only exists inside a collapsed <details> is a caveat most readers never see.
+    # `caption` renders ALWAYS-VISIBLE, directly under the claim. It is what stops a weakly-graded
+    # row from being quoted as though it were a strong one.
+    caption = f'<p class="caption">{esc(e["caption"])}</p>' if e.get("caption") else ""
     rows.append(f'''<article class="ev{' gap' if e['gap'] else ''}" data-axis="{e['axis']}" data-grade="{e['grade']}" data-gap="{str(e['gap']).lower()}" data-era="{era}" id="{esc(e['id'])}">
   <header>
     <time>{fmt(e)}</time>
+    <span class="era era-{era}" title="{ERA_TIP[era]}">{ERA_TAG[era]}</span>
     <span class="g g-{e['grade']}">{e['grade']}</span>
     {'<span class="gapflag">NOT HELD</span>' if e['gap'] else ''}
     <h3>{esc(e['title'])}</h3>
   </header>
-  <p class="claim">{esc(e['claim'])}</p>
+  <p class="claim">{esc(e['claim'])}</p>{caption}
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid">{evid}</ul>{rep}{notes}
   </details>
@@ -205,6 +223,8 @@ h1{{font-size:24px;margin:0 0 6px}}
 .ev header{{display:flex;flex-wrap:wrap;gap:8px;align-items:center}}
 .ev time{{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:var(--mut)}}
 .ev h3{{font-size:16px;margin:4px 0 0;flex-basis:100%}}
+.era{{font-size:10.5px;letter-spacing:.04em;padding:2px 7px;border-radius:4px;
+  border:1px dashed var(--line);color:var(--mut);background:transparent;white-space:nowrap;cursor:help}}
 .g{{font-size:10.5px;letter-spacing:.06em;padding:2px 7px;border-radius:4px;border:1px solid var(--line);color:var(--mut)}}
 .g-CHAIN{{background:#0a7f3f;color:#fff;border-color:#0a7f3f}}
 .g-SERVER-DB{{background:#1256a0;color:#fff;border-color:#1256a0}}
@@ -213,6 +233,9 @@ h1{{font-size:24px;margin:0 0 6px}}
 .g-SELF,.g-NONE{{background:#8a1f1f;color:#fff;border-color:#8a1f1f}}
 .gapflag{{font-size:10.5px;letter-spacing:.06em;padding:2px 7px;border-radius:4px;background:var(--gapline);color:#000}}
 .claim{{margin:8px 0 6px}}
+.caption{{margin:0 0 6px;font-size:13px;line-height:1.65;color:var(--mut);
+  border-left:2px solid var(--line);padding:2px 0 2px 10px}}
+.ev[data-grade="SELF"] .caption,.ev[data-grade="NONE"] .caption{{border-left-color:#8a1f1f}}
 details summary{{cursor:pointer;color:var(--mut);font-size:13px}}
 .evid{{margin:10px 0;padding-left:18px}}
 .evid li{{margin-bottom:8px;font-size:13.5px}}
