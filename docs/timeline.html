@@ -55,7 +55,7 @@ it. Rows we <b>cannot</b> verify are shown too, marked <b>NOT HELD</b> — becau
 only what was found looks complete when it is not.</p>
 
 <div class="incomplete"><b>This timeline is incomplete, and says so on purpose.</b>
-It currently holds <b>66</b> events. The research corpus behind it is not part of this repository, so its size is not stated here rather than guessed at.
+It currently holds <b>67</b> events. The research corpus behind it is not part of this repository, so its size is not stated here rather than guessed at.
 <b>Absence of a row here is not evidence that nothing happened on that date.</b>
 Applying the same standard to ourselves that we apply to everyone else — literally, since
 7 of these rows are about <a href="https://bitcoin-lab.org/bitcoin">a second Bitcoin, mined in
@@ -573,6 +573,17 @@ Applying the same standard to ourselves that we apply to everyone else — liter
   <p class="claim">Satoshi ran a web forum at bitcoin.sourceforge.net/boards/ before launching the successor forum on 22 November 2009, naming the old URL in his own announcement. No capture of it survives.</p>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>Satoshi&#x27;s migration post giving the old forum URL</b><br><a class="w" href="https://bitcointalk.org/index.php?topic=5.0" rel="noopener nofollow">https://bitcointalk.org/index.php?topic=5.0</a></li><li><b>CDX sweep of the whole domain: 27 archived URLs, none under /boards/</b><br><a class="w" href="https://web.archive.org/web/2009*/bitcoin.sourceforge.net*" rel="noopener nofollow">https://web.archive.org/web/2009*/bitcoin.sourceforge.net*</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>http://web.archive.org/cdx/search/cdx?url=bitcoin.sourceforge.net*&amp;output=json&amp;filter=statuscode:200&amp;fl=timestamp,original</code></div><div class="notes"><span class="lbl">caveats</span>A Satoshi venue absent from every compilation we have checked. NOT ARCHIVED is not the same as destroyed. The remaining route is reconstruction from the &#x27;Repost:&#x27; threads he carried across.</div>
+  </details>
+</article><article class="ev" data-axis="bitcoin" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2009-12-xx-sf-project-edit">
+  <header>
+    <time>2009-12-01 &rarr; 2010-01-08</time>
+    <span class="g g-SERVER-DB">SERVER-DB</span>
+    
+    <h3>nakamoto2 drops off the SourceForge project, and the paper&#x27;s folder is renamed</h3>
+  </header>
+  <p class="claim">Between 28 November 2009 and 8 January 2010 three fields on the Bitcoin SourceForge project page changed: the owner list went from &#x27;nakamoto2, s_nakamoto&#x27; to &#x27;s_nakamoto&#x27; alone, the development stage moved Alpha to Beta, and the whitepaper&#x27;s folder was renamed from &#x27;Research Paper&#x27; to &#x27;Design Paper&#x27;.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>Wayback capture 27 Nov 2009 - &#x27;Bitcoin Alpha by nakamoto2, s_nakamoto&#x27;, folder &#x27;Research Paper&#x27;</b><br><a class="w" href="https://web.archive.org/web/20091127010808/http://sourceforge.net/projects/bitcoin/files" rel="noopener nofollow">https://web.archive.org/web/20091127010808/http://sourceforge.net/projects/bitcoin/files</a></li><li><b>Wayback capture 8 Jan 2010 - all three already changed</b><br><a class="w" href="https://web.archive.org/web/20100108/http://sourceforge.net/projects/bitcoin/files" rel="noopener nofollow">https://web.archive.org/web/20100108/http://sourceforge.net/projects/bitcoin/files</a></li><li><b>/develop page, 28 Nov 2009, still lists both accounts - sets the lower bound</b><br><a class="w" href="https://web.archive.org/web/20091128/http://sourceforge.net/projects/bitcoin/develop" rel="noopener nofollow">https://web.archive.org/web/20091128/http://sourceforge.net/projects/bitcoin/develop</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>curl -sL &#x27;https://web.archive.org/web/20091127010808/http://sourceforge.net/projects/bitcoin/files&#x27; | grep -o &#x27;by nakamoto2[^&lt;]*&#x27;</code></div><div class="notes"><span class="lbl">caveats</span>Records what the page said, not who changed it or why. A name leaving an owner list is a page edit - it does not establish that the account was deleted or abandoned, and Satoshi&#x27;s own last machine-verifiable activity is separately dated nearly a year later. The three changes share a 41-day bracket, which is consistent with one editing session and does not prove one. The window cannot be narrowed further: no capture of the files page exists between those two dates.</div>
   </details>
 </article><article class="ev" data-axis="both" data-grade="CAPTURE" data-gap="false" data-era="origin" id="2010-07-04-pdf-capture">
   <header>

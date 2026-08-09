@@ -984,6 +984,36 @@
   "notes": "A Satoshi venue absent from every compilation we have checked. NOT ARCHIVED is not the same as destroyed. The remaining route is reconstruction from the 'Repost:' threads he carried across."
  },
  {
+  "id": "2009-12-xx-sf-project-edit",
+  "when": "2009-12-01",
+  "precision": "range",
+  "until": "2010-01-08",
+  "axis": "bitcoin",
+  "grade": "SERVER-DB",
+  "title": "nakamoto2 drops off the SourceForge project, and the paper's folder is renamed",
+  "claim": "Between 28 November 2009 and 8 January 2010 three fields on the Bitcoin SourceForge project page changed: the owner list went from 'nakamoto2, s_nakamoto' to 's_nakamoto' alone, the development stage moved Alpha to Beta, and the whitepaper's folder was renamed from 'Research Paper' to 'Design Paper'.",
+  "evidence": [
+   {
+    "what": "Wayback capture 27 Nov 2009 - 'Bitcoin Alpha by nakamoto2, s_nakamoto', folder 'Research Paper'",
+    "where": "https://web.archive.org/web/20091127010808/http://sourceforge.net/projects/bitcoin/files",
+    "hash": null
+   },
+   {
+    "what": "Wayback capture 8 Jan 2010 - all three already changed",
+    "where": "https://web.archive.org/web/20100108/http://sourceforge.net/projects/bitcoin/files",
+    "hash": null
+   },
+   {
+    "what": "/develop page, 28 Nov 2009, still lists both accounts - sets the lower bound",
+    "where": "https://web.archive.org/web/20091128/http://sourceforge.net/projects/bitcoin/develop",
+    "hash": null
+   }
+  ],
+  "reproduce": "curl -sL 'https://web.archive.org/web/20091127010808/http://sourceforge.net/projects/bitcoin/files' | grep -o 'by nakamoto2[^<]*'",
+  "gap": false,
+  "notes": "Records what the page said, not who changed it or why. A name leaving an owner list is a page edit - it does not establish that the account was deleted or abandoned, and Satoshi's own last machine-verifiable activity is separately dated nearly a year later. The three changes share a 41-day bracket, which is consistent with one editing session and does not prove one. The window cannot be narrowed further: no capture of the files page exists between those two dates."
+ },
+ {
   "id": "2010-07-04-pdf-capture",
   "when": "2010-07-04",
   "precision": "day",
