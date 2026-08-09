@@ -842,7 +842,7 @@
   "axis": "bitcoin",
   "grade": "CHAIN",
   "title": "A private miner's own block, identified",
-  "claim": "Block 14047 pays a coinbase of 50.10 — the +50.10 Bohm wrote to Satoshi about, their 15:58 being BST. Only eight blocks in all of 2009 collected any fee.",
+  "claim": "Block 14047 pays a coinbase of 50.10 — the +50.10 Bohm wrote to Satoshi about, his 15:58 being BST. Only eight blocks in all of 2009 collected any fee.",
   "evidence": [
    {
     "what": "the eight fee-bearing blocks of 2009",
@@ -1172,7 +1172,7 @@
   ],
   "reproduce": "curl -sL 'https://web.archive.org/web/20110121/http://sourceforge.net/projects/bitcoin/' | grep -o 'gavinandresen'",
   "gap": false,
-  "notes": "Records a MEMBERSHIP CHANGE, not a handover. SourceForge admins can add members and the page shows the result, not the actor - it cannot establish that Satoshi added them. It also does not narrow Satoshi's departure: their last machine-verifiable action is separately dated to 15 December 2010, and this row adds nothing to that. The adjacency is recorded precisely because it is the kind of fact that becomes a narrative if left uncaptioned."
+  "notes": "Records a MEMBERSHIP CHANGE, not a handover. SourceForge admins can add members and the page shows the result, not the actor - it cannot establish that Satoshi added him. It also does not narrow Satoshi's departure: their last machine-verifiable action is separately dated to 15 December 2010, and this row adds nothing to that. The adjacency is recorded precisely because it is the kind of fact that becomes a narrative if left uncaptioned."
  },
  {
   "id": "2011-02-28-asc",
