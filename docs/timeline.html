@@ -55,7 +55,7 @@ it. Rows we <b>cannot</b> verify are shown too, marked <b>NOT HELD</b> — becau
 only what was found looks complete when it is not.</p>
 
 <div class="incomplete"><b>This timeline is incomplete, and says so on purpose.</b>
-It currently holds <b>65</b> events. The research corpus behind it is not part of this repository, so its size is not stated here rather than guessed at.
+It currently holds <b>66</b> events. The research corpus behind it is not part of this repository, so its size is not stated here rather than guessed at.
 <b>Absence of a row here is not evidence that nothing happened on that date.</b>
 Applying the same standard to ourselves that we apply to everyone else — literally, since
 7 of these rows are about <a href="https://bitcoin-lab.org/bitcoin">a second Bitcoin, mined in
@@ -133,6 +133,17 @@ Applying the same standard to ourselves that we apply to everyone else — liter
   <p class="claim">satoshi@anonymousspeech.com writes to Adam Back querying the Hashcash citation, ten weeks before the paper is public.</p>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>Adam Back witness statement §5, full header quoted under a statement of truth</b><br><a class="w" href="https://github.com/lugaxker/nakamoto-archive" rel="noopener nofollow">https://github.com/lugaxker/nakamoto-archive</a></li><li><b>COPA Opening Skeleton §16</b><br><a class="w" href="https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198" rel="noopener nofollow">https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Establishes the identifier sequence anonymousspeech -&gt; vistomail -&gt; gmx, not the reverse.</div>
+  </details>
+</article><article class="ev" data-axis="satoshi" data-grade="ARCHIVE-POS" data-gap="false" data-era="origin" id="2008-08-20-upload-host">
+  <header>
+    <time>2008-08-20</time>
+    <span class="g g-ARCHIVE-POS">ARCHIVE-POS</span>
+    
+    <h3>The file id Satoshi linked is bracketed by an unrelated crawl</h3>
+  </header>
+  <p class="claim">Satoshi emailed a LINK, not an attachment, to Adam Back on 20 Aug 2008 and Wei Dai on 22 Aug 2008: upload.ae/file/6157/ecash-pdf.html. That host&#x27;s file ids are sequential, and the Internet Archive crawled it through 2008 for unrelated reasons. Id 5873 was captured on 14 August 2008 and id 10003 on 19 October 2008, placing id 6157&#x27;s upload between them — six days after the lower bracket.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>1,513 upload.ae file ids captured 2008-2009, range 105-14987, via the Wayback CDX API</b><br><a class="w" href="http://web.archive.org/cdx/search/cdx?url=upload.ae&amp;matchType=domain&amp;output=json&amp;from=2008&amp;to=2009&amp;fl=timestamp,original&amp;limit=8000" rel="noopener nofollow">http://web.archive.org/cdx/search/cdx?url=upload.ae&amp;matchType=domain&amp;output=json&amp;from=2008&amp;to=2009&amp;fl=timestamp,original&amp;limit=8000</a></li><li><b>Satoshi&#x27;s emails quoting the URL (Exhibit AB1; Wei Dai correspondence)</b><br><span class="w">archives/august-2008-draft/SOURCES.md</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>curl -s &#x27;http://web.archive.org/cdx/search/cdx?url=upload.ae&amp;matchType=domain&amp;output=json&amp;from=2008&amp;to=2009&amp;fl=timestamp,original&amp;limit=8000&#x27;</code></div><div class="notes"><span class="lbl">caveats</span>Corroborates TIMING only. It does not recover the file, say anything about its contents, or identify who uploaded it. Its value is that the bracketing party had no interest in the question: the Internet Archive crawled an Emirati file host in 2008 for its own reasons, and its incidental record of unrelated files dates Satoshi&#x27;s id. The file itself was never archived and structurally could not be - the download sat behind a form POST, which crawlers do not submit. Every capture of id 6157 is from 2020 or later and returns 302/404/406.</div>
   </details>
 </article><article class="ev" data-axis="bitcoin" data-grade="CAPTURE" data-gap="false" data-era="origin" id="2008-09-10-nov08-genesis-ntime">
   <header>

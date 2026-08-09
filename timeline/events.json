@@ -101,6 +101,30 @@
   "notes": "Establishes the identifier sequence anonymousspeech -> vistomail -> gmx, not the reverse."
  },
  {
+  "id": "2008-08-20-upload-host",
+  "when": "2008-08-20",
+  "precision": "day",
+  "axis": "satoshi",
+  "grade": "ARCHIVE-POS",
+  "title": "The file id Satoshi linked is bracketed by an unrelated crawl",
+  "claim": "Satoshi emailed a LINK, not an attachment, to Adam Back on 20 Aug 2008 and Wei Dai on 22 Aug 2008: upload.ae/file/6157/ecash-pdf.html. That host's file ids are sequential, and the Internet Archive crawled it through 2008 for unrelated reasons. Id 5873 was captured on 14 August 2008 and id 10003 on 19 October 2008, placing id 6157's upload between them — six days after the lower bracket.",
+  "evidence": [
+   {
+    "what": "1,513 upload.ae file ids captured 2008-2009, range 105-14987, via the Wayback CDX API",
+    "where": "http://web.archive.org/cdx/search/cdx?url=upload.ae&matchType=domain&output=json&from=2008&to=2009&fl=timestamp,original&limit=8000",
+    "hash": null
+   },
+   {
+    "what": "Satoshi's emails quoting the URL (Exhibit AB1; Wei Dai correspondence)",
+    "where": "archives/august-2008-draft/SOURCES.md",
+    "hash": null
+   }
+  ],
+  "reproduce": "curl -s 'http://web.archive.org/cdx/search/cdx?url=upload.ae&matchType=domain&output=json&from=2008&to=2009&fl=timestamp,original&limit=8000'",
+  "gap": false,
+  "notes": "Corroborates TIMING only. It does not recover the file, say anything about its contents, or identify who uploaded it. Its value is that the bracketing party had no interest in the question: the Internet Archive crawled an Emirati file host in 2008 for its own reasons, and its incidental record of unrelated files dates Satoshi's id. The file itself was never archived and structurally could not be - the download sat behind a form POST, which crawlers do not submit. Every capture of id 6157 is from 2020 or later and returns 302/404/406."
+ },
+ {
   "id": "2008-09-10-nov08-genesis-ntime",
   "when": "2008-09-10T18:02:08Z",
   "precision": "second",
