@@ -23,19 +23,29 @@
   "when": "2008-08",
   "precision": "month",
   "axis": "both",
-  "grade": "PARTY-RELEASED",
-  "title": "An August 2008 whitepaper version existed — WE DO NOT HOLD IT",
-  "claim": "A draft predating the October version was sent to at least Adam Back and Wei Dai. Only its abstract text survives to us.",
+  "grade": "ADJUDICATED",
+  "title": "An August 2008 draft existed — title and abstract survive; the FILE does not",
+  "claim": "A draft titled \"Electronic Cash Without a Trusted Third Party\" was linked, not attached, to Adam Back on 20 Aug 2008 and Wei Dai on 22 Aug 2008. Its title, full abstract and Hashcash citation at [5] are preserved verbatim inside Back's witness statement. Back downloaded it, later searched for it, and swore he could not find it.",
   "evidence": [
    {
-    "what": "abstract text only",
-    "where": "https://github.com/lugaxker/nakamoto-archive",
+    "what": "First Witness Statement of Dr Adam Back, 17 July 2023 — §5 quotes Satoshi's email in full (title, abstract, Hashcash at [5]); §6 'I believe I did download the paper at the time'; §7 b-money 'was not mentioned in the pre-release draft he sent me'; §11 'I don't think I have a copy … I haven't been able to find one from the checks I have made'",
+    "where": "COPA v Wright [2024] EWHC 1198 (Ch), Exhibit AB1 / witness statement C/9",
+    "hash": null
+   },
+   {
+    "what": "Wei Dai to Bird & Bird, Oct 2023: the three published emails are the entirety of his communications with Satoshi",
+    "where": "archives/copa-hf-dataset/",
+    "hash": null
+   },
+   {
+    "what": "abstract text as preserved (hash of the text, not of the file)",
+    "where": "archives/august-2008-draft/SOURCES.md",
     "hash": "6dd156197af8ee359d0852a236997e843b2f8e39a20ca326d17883420d82d9bd"
    }
   ],
   "reproduce": null,
   "gap": true,
-  "notes": "NOT LOCATED. Not evidence of destruction — an absence of copies is not a proof that none survive."
+  "notes": "NOT LOCATED, and now closed against both named recipients by their own sworn or published words. What is lost is the FILE - the bytes, and whatever the body said between abstract and references. What survives is adjudicated: the title, the complete abstract, the Hashcash citation at [5], and sworn confirmation from its only known reader that b-money was absent. No hash of the file exists anywhere, so a recovered candidate could never be verified cryptographically - only by those four discriminators plus custody. A reconstruction built from the correspondence is already in circulation and would pass the wording tests by construction; the reference numbering is the discriminator that matters."
  },
  {
   "id": "2008-08-17-netcoin",
