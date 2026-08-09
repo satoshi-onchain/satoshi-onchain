@@ -31,10 +31,26 @@ permissions:
   pages: write
   id-token: write
 
-# Never let two deploys race; queue rather than cancel, so a push is never silently dropped.
+# CORRECTED 9 Aug 2026 -- `cancel-in-progress: false` is what broke this site for three days.
+#
+# The original reasoning was "queue rather than cancel, so a push is never silently dropped." That
+# reasoning is wrong FOR THIS WORKFLOW, and the failure it caused was worse than the one it guarded
+# against. Run #9 entered `waiting` on 6 Aug 17:23 with a wedged github-pages deployment -- no
+# reviewers, no wait timer, not approvable -- and never completed. With cancel-in-progress: false
+# every later run queued behind it. Six commits over three days reported "pushed" and deployed
+# NOTHING, while the site kept serving 6 August and every local check looked healthy.
+#
+# WHY CANCELLING IS SAFE HERE, AND THE OLD COMMENT MISSED IT. This job publishes the WHOLE docs/
+# directory at HEAD. It is not an incremental or per-commit deploy. So a superseded run loses
+# nothing: the run that replaces it publishes a strict superset of what the cancelled one would
+# have. "A push is silently dropped" cannot happen -- only "an older full publish is replaced by a
+# newer full publish", which is the desired behaviour.
+#
+# The head-of-line block, by contrast, is unbounded and silent. Prefer the failure that is
+# self-correcting on the next push over the one that needs a human to notice.
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   deploy:
