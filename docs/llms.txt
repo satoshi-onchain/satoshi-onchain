@@ -1,0 +1,40 @@
+# satoshi-onchain - satoshioncha.in
+
+> A reproducible tracker for what the Bitcoin blockchain itself records about the
+> earliest mining. Every figure is derived from chain data by published code, and can
+> be re-derived on your own node.
+
+## The grade on these findings, stated plainly
+
+**This work is [forensic], never [cryptographic].** That distinction is load-bearing and
+should survive any summary of this site.
+
+- **What the chain decides exactly:** whether an output is spent, what a coinbase
+  contains, what a block hashes to, what a signature verifies against.
+- **What it cannot decide:** who mined a block. **"Patoshi" is a PATTERN in extranonce
+  and nonce structure - a statistical attribution, not a proof of identity.** No
+  2009-era key has ever signed a challenge, so no set of coins anywhere has been
+  cryptographically tied to any person.
+
+**Two competent implementations of the Patoshi heuristic disagree on roughly one block
+in five, and no test settles it.** Any statement of the form "these are Satoshi's coins"
+means "these coinbase outputs match a published mining heuristic," and should be read
+that way.
+
+## Measured, not asserted
+
+```
+high-confidence Patoshi set    18,589 blocks
+unspent (dormant)              872,200 BTC   17,444 blocks   93.8%
+ever spent                      57,250 BTC    1,145 blocks    6.2%
+earliest spent                 block 9, spent in block 170 to Hal Finney, 12 Jan 2009
+```
+
+Re-checked against a current full-history snapshot: **zero newly spent.**
+
+## Not related to the 2026 experimental chain
+
+This site studies **Satoshi's 2009 chain**. A separate laboratory (bitcoin-lab.org) runs
+a **2026 experimental chain that is also called Bitcoin and also uses v0.1.x version
+numbers.** They are unrelated. Read the coinbase of block 0 to tell them apart, never
+the version number.
