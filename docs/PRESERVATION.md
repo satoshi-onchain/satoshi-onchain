@@ -21,6 +21,30 @@ Everything preserved is **hash-anchored**: the genesis re-derivation, the releas
 evidence CSVs all carry digests a copy either matches or does not — so redundancy multiplies availability
 without multiplying trust.
 
+## The identity manifest — one signed answer for the whole periphery
+
+Preservation spreads the work across hosts nobody here controls, which raises a question the mirrors
+themselves cannot answer: **who says this Radicle repository, this organisation, this domain is
+ours?** Until 12 August 2026 the answer was prose in this file — worth nothing to a reader with a
+reason to doubt it.
+
+[`IDENTITY-MANIFEST.txt`](IDENTITY-MANIFEST.txt) replaces that prose with one signature. It is
+**GPG-signed, SLH-DSA counter-signed, and Bitcoin-anchored**, and it covers this project as well as
+the Laboratory: the OpenPGP key, the post-quantum counter-signing key, the GitHub account and both
+organisations, the three sites, and the Radicle identity including this repository's
+`rad:z4AkHVo5aTCwsbJFR8Q1AsJqszsjL`.
+
+```
+IDENTITY-MANIFEST.txt          11,394 B   sha256 11b3f7db9497374d99e58873fc4d0c46740a292587c5cbc5cc9473d130816f94
+IDENTITY-MANIFEST.txt.asc         273 B   OpenPGP, B128526AF85AE4A8F22B949FB0145F74B78CF1DA
+IDENTITY-MANIFEST.txt.slhdsa    7,856 B   SLH-DSA-SHA2-128s, verified against the published pk
+  + a .ots proof over each of the three
+```
+
+**This copy is byte-identical to the one on `bitcoin-lab.org`** — same sha256, same signatures — so
+either host serves a copy that verifies, and neither is load-bearing. That is the whole point of
+publishing it twice.
+
 ## Why this is faithful to what the tracker is
 
 This adds nothing to the *classification* and attaches no value to anything — it only makes the existing,
