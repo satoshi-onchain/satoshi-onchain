@@ -41,9 +41,21 @@ IDENTITY-MANIFEST.txt.slhdsa    7,856 B   SLH-DSA-SHA2-128s, verified against th
   + a .ots proof over each of the three
 ```
 
-**This copy is byte-identical to the one on `bitcoin-lab.org`** — same sha256, same signatures — so
-either host serves a copy that verifies, and neither is load-bearing. That is the whole point of
-publishing it twice.
+**Anchored 11 August 2026 in Bitcoin block 962049** — all three proofs upgraded from pending to
+complete, each carrying `BitcoinBlockHeaderAttestation(962049)`:
+
+```
+block hash     00000000000000000000b1914635ada20cd0992856ebba4ba21b5ea4815eda1b
+merkle root    cf62d5d80f9e0a2fecdba1c129eff6fb42ce259572649c163e42e8641ea90864
+block time     2026-08-11 20:03:25 UTC
+```
+
+**The merkle root was read off the chain and compared, not taken from the `ots` output** — which is
+the point of an anchor: checkable against Bitcoin by anyone, trusting neither the calendars nor us.
+
+**This copy is byte-identical to the one on `bitcoin-lab.org`** — same sha256, same signatures, same
+anchored proofs — so either host serves a copy that verifies, and neither is load-bearing. That is
+the whole point of publishing it twice.
 
 ## Why this is faithful to what the tracker is
 
