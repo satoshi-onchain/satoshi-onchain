@@ -44,7 +44,22 @@ IDENTITY-MANIFEST.txt.slhdsa    7,856 B   SLH-DSA-SHA2-128s, verified against th
 > **Revision 2, 12 August 2026** — adds the agent's post-quantum successor key and its succession
 > certificate. **Revision 1 (`11b3f7db…`, 11,394 B) is anchored in Bitcoin block 962049 and that
 > anchor stands**; it proves revision 1 existed before that block and is not withdrawn.
-> ⚠️ The DNS TXT records pin the revision-1 hash and are stale until updated.
+**Proof of domain control.** Each of the three domains answers a TXT query at its apex with the same
+record — only the domain's controller can set it:
+
+```
+$ dig +short TXT satoshioncha.in
+parthod0x-pgp=B128526AF85AE4A8F22B949FB0145F74B78CF1DA; manifest=https://bitcoin-lab.org/IDENTITY-MANIFEST.txt https://satoshioncha.in/IDENTITY-MANIFEST.txt
+```
+
+> ★ **It pins the KEY FINGERPRINT, not a manifest hash.** The first version pinned
+> `parthod0x-manifest=<sha256>` and went stale within a day when the manifest was revised. **A
+> binding that breaks whenever the thing it binds is improved is the wrong binding.** The record
+> proves domain control and publishes only a fingerprint, which is already public — never a key.
+>
+> ⚠️ **Check it against the authoritative nameservers, not a public resolver — a cached answer is not
+> the zone.** One domain's change read as "not applied" on both `1.1.1.1` and `8.8.8.8` while
+> `dns1`/`dns2.registrar-servers.com` already served it, with 1,755 s of TTL still to run.
 
 **Anchored 11 August 2026 in Bitcoin block 962049** — all three proofs upgraded from pending to
 complete, each carrying `BitcoinBlockHeaderAttestation(962049)`:
