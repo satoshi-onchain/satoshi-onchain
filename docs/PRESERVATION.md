@@ -35,11 +35,16 @@ organisations, the three sites, and the Radicle identity including this reposito
 `rad:z4AkHVo5aTCwsbJFR8Q1AsJqszsjL`.
 
 ```
-IDENTITY-MANIFEST.txt          11,394 B   sha256 11b3f7db9497374d99e58873fc4d0c46740a292587c5cbc5cc9473d130816f94
+IDENTITY-MANIFEST.txt          12,930 B   sha256 4825c4c0984209bf64c478d011a1933dd28d186ad1659101aa4098f77deb72b7
 IDENTITY-MANIFEST.txt.asc         273 B   OpenPGP, B128526AF85AE4A8F22B949FB0145F74B78CF1DA
 IDENTITY-MANIFEST.txt.slhdsa    7,856 B   SLH-DSA-SHA2-128s, verified against the published pk
   + a .ots proof over each of the three
 ```
+
+> **Revision 2, 12 August 2026** — adds the agent's post-quantum successor key and its succession
+> certificate. **Revision 1 (`11b3f7db…`, 11,394 B) is anchored in Bitcoin block 962049 and that
+> anchor stands**; it proves revision 1 existed before that block and is not withdrawn.
+> ⚠️ The DNS TXT records pin the revision-1 hash and are stale until updated.
 
 **Anchored 11 August 2026 in Bitcoin block 962049** — all three proofs upgraded from pending to
 complete, each carrying `BitcoinBlockHeaderAttestation(962049)`:
