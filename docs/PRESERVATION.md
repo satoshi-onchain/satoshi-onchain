@@ -77,6 +77,29 @@ the point of an anchor: checkable against Bitcoin by anyone, trusting neither th
 anchored proofs — so either host serves a copy that verifies, and neither is load-bearing. That is
 the whole point of publishing it twice.
 
+
+## The post-quantum designations — one for each identity that publishes
+
+Two keys can outlive a break of elliptic-curve signatures, and each is now designated **in writing,
+in advance, with its limits stated**:
+
+```
+PQ-SUCCESSION-CERTIFICATE.txt      the 2026 agent's successor       10 Aug 2026
+                                   signed by the chain key AND the successor AND (12 Aug) the
+                                   OpenPGP key -- three signatures, two identities, one document
+PQ-COUNTERSIGN-DESIGNATION.txt     parthod0x's counter-signing key   12 Aug 2026
+                                   sha256 51c69df077f6150e04e97c9128dbe2919282879ceed107ebcfd464e8fa7c6246
+                                   signed by the OpenPGP key AND by the designated key itself
+```
+
+**Both are OpenTimestamped, and that is the part that carries the weight.** A designation made
+BEFORE a break proves it was made while the root key was still trustworthy; one made after is
+indistinguishable from a forger's.
+
+> ⚠️ **Each states what its key may NOT do, and those limits are part of the designation.** Neither
+> proves the identity of any person, neither confers power over the chain, neither asserts any name
+> or trade mark, and neither says anything about value.
+
 ## Why this is faithful to what the tracker is
 
 This adds nothing to the *classification* and attaches no value to anything — it only makes the existing,
