@@ -321,6 +321,20 @@
       sit in completely different exposure classes</b>, and an argument that treats age as the
       variable has picked the wrong one.</p>
 
+    <p class="sm"><b>One precision, because script type is a proxy rather than the thing itself.</b>
+      The variable that actually decides this is <b>public-key exposure state</b>. Script type sets
+      the default &mdash; P2PK exposed from creation, P2PKH concealed until spent &mdash; but two
+      things move an output out of its default class. <b>Address reuse:</b> once any output paying
+      that key has been spent, the key is public and every remaining output under it is exposed.
+      <b>And a public key is not chain-local:</b> the same key controls the same address on every
+      fork that inherited the UTXO set, so a spend on Bitcoin Cash, Bitcoin Gold or Bitcoin SV
+      publishes the key while the Bitcoin output sits untouched.</p>
+
+    <p class="sm">⚠️ <b>So &ldquo;never spent on Bitcoin&rdquo; is not the same claim as &ldquo;never
+      exposed&rdquo;</b>, and only the first of those is answerable from Bitcoin alone. Anyone
+      reasoning about a specific dormant balance has to check the forks too &mdash; and can only ever
+      report the chains actually checked.</p>
+
     <p class="sm"><b>2. Inbound transactions say nothing about a holder.</b> Anyone can pay any
       address, and well-known addresses attract a steady rain of dust and
       <span class="mono">OP_RETURN</span> messages from strangers. Those appear in the
