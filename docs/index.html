@@ -304,6 +304,33 @@
       needs no node, no API and no key — early coinbases pay a <i>bare public key</i>, so the address
       is derived rather than stored, and inverting that locally maps every spent coin back to the
       block that minted it.</div>
+
+    <h3 style="font-size:15px;margin:26px 0 8px">Two things that follow, and are worth stating plainly</h3>
+
+    <p class="sm"><b>1. &ldquo;Old dormant coins&rdquo; is not one risk class &mdash; the script type
+      decides.</b> An early coinbase of this era pays a <i>bare public key</i> (P2PK): the key itself
+      is the output script, so it has been on the chain, in the open, since the day the block was
+      mined. A pay-to-public-key-<i>hash</i> output (P2PKH) publishes only
+      <span class="mono">HASH160(pubkey)</span>; the public key does not appear until the output is
+      <i>spent</i>.</p>
+
+    <p class="sm">This matters for any argument about elliptic-curve cryptography being broken. Such
+      an attack needs the <b>public key</b> &mdash; it does not invert SHA-256 or RIPEMD-160. So a
+      long-dormant P2PKH balance that has never been spent from has published no key to attack, while
+      a 2009 P2PK coinbase has published one for over a decade. <b>Two balances of the same age can
+      sit in completely different exposure classes</b>, and an argument that treats age as the
+      variable has picked the wrong one.</p>
+
+    <p class="sm"><b>2. Inbound transactions say nothing about a holder.</b> Anyone can pay any
+      address, and well-known addresses attract a steady rain of dust and
+      <span class="mono">OP_RETURN</span> messages from strangers. Those appear in the
+      address&rsquo;s transaction history exactly like anything else. <b>An inbound payment is
+      written by the sender, not the recipient</b> &mdash; it carries no signature from the key that
+      controls the coins, and it establishes nothing about who does. Only a <i>spend</i> demonstrates
+      key control, and even a spend demonstrates control rather than identity.</p>
+
+    <p class="sm" style="opacity:.85">Both points are mechanical, checkable against any block
+      explorer, and make no claim about any particular address, holder or dispute.</p>
   </section>
 
   <section>
