@@ -335,6 +335,26 @@
       reasoning about a specific dormant balance has to check the forks too &mdash; and can only ever
       report the chains actually checked.</p>
 
+    <p class="sm"><b>Prior art, because none of the above is ours.</b> The distinction stated here
+      &mdash; that quantum exposure is decided by <i>script type and public-key exposure</i> rather
+      than by how long a balance has sat still &mdash; was published before we wrote any of it, and
+      before the July 2025 movement that made it topical. <b>Milton and Shikhelman,
+      <i>Bitcoin and Quantum Computing: Current Status and Future Directions</i>, Chaincode Labs,
+      May 2025</b> sets out the same taxonomy and the long-range / short-range attack distinction it
+      rests on. Later, clearer statements of the P2PK-versus-P2PKH split appear from
+      <b>Project Eleven</b> (July 2025) and <b>Chainalysis</b>.</p>
+
+    <p class="sm">★ <b>And one formulation is better than ours, so it is worth borrowing rather than
+      restating.</b> <b>Coin Metrics</b> observes that a Taproot output embeds a tweaked public key
+      directly &mdash; so <b>Bitcoin&rsquo;s <i>newest</i> script type is exposed at rest while a
+      2011 P2PKH is not.</b> That disposes of the age argument in a single sentence, running down the
+      timeline rather than up it, and needs no reasoning about 2009 at all.</p>
+
+    <p class="sm">We record this because the rule we apply to everyone else applies here:
+      <b>precedence belongs to whoever published, and a page that states a known result without
+      citing it is claiming something it has not earned.</b> What this site adds is the
+      <i>measured</i> case and the fork-exposure caveat above &mdash; not the distinction itself.</p>
+
     <p class="sm"><b>2. Inbound transactions say nothing about a holder.</b> Anyone can pay any
       address, and well-known addresses attract a steady rain of dust and
       <span class="mono">OP_RETURN</span> messages from strangers. Those appear in the
