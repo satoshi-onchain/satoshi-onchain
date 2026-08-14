@@ -1,3 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Satoshi &amp; Bitcoin, a verifiable timeline: every row carries an evidence grade and, where one exists, a command that regenerates it. Forensic, not cryptographic. Not money.">
+<link rel="canonical" href="https://satoshioncha.in/timeline.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Satoshi On-Chain">
+<meta property="og:url" content="https://satoshioncha.in/timeline.html">
+<meta property="og:title" content="Satoshi &amp; Bitcoin — a verifiable timeline">
+<meta property="og:description" content="Every row carries an evidence grade and, where one exists, a command that regenerates it. Forensic, not cryptographic. Not money.">
+<meta name="twitter:card" content="summary">
 <title>Satoshi &amp; Bitcoin — a verifiable timeline</title>
 <style>
 :root{--bg:#fff;--fg:#111;--mut:#666;--line:#e3e3e3;--card:#fafafa;--gap:#fff8e1;--gapline:#e0b400}
@@ -53,6 +66,8 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;word
 .eradiv b{color:var(--fg)}
 .eradiv .g{font-size:10px;vertical-align:baseline}
 </style>
+</head>
+<body>
 <div class="wrap">
 <h1>Satoshi &amp; Bitcoin — a verifiable timeline</h1>
 <p class="sub">Every row carries an evidence grade and, where one exists, a command that regenerates
@@ -682,7 +697,7 @@ our own, mined in 2026</a>, and they are graded by the same table and carry a NO
   </header>
   <p class="claim">1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L is a hard-coded placeholder in the Send Coins dialog of the January 2009 client (v0.1.0 src/uibase.cpp line 495, unchanged in v0.1.3). On the 2009 chain it received its first payment on 2010-09-10, has since received 102 payments totalling 900.85217683 BTC, and has never spent a single satoshi. Its largest single receipt is 777.00000000 BTC in block 104662, 2011-01-26.</p><p class="caption">This is an address Satoshi published as example text in a form label — not a wallet, and not a holding. WHO, IF ANYONE, HOLDS ITS PRIVATE KEY IS UNKNOWN, and nothing here suggests Satoshi did. The first payment arrives twenty months after the source was published, so the coin was sent by strangers who read the address out of the code. Published in source, funded by others, never spent.</p>
   <details><summary>evidence &amp; reproduction</summary>
-    <ul class="evid"><li><b>the string in the released v0.1.0 source</b><br><a class="w" href="https://bitcoin-lab.org/V010_TO_V013.html" rel="noopener nofollow">https://bitcoin-lab.org/V010_TO_V013.html</a></li><li><b>the address&#x27;s full chain history</b><br><a class="w" href="https://blockstream.info/address/1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L" rel="noopener nofollow">https://blockstream.info/address/1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>curl -s https://blockstream.info/api/address/1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L and read chain_stats: funded_txo_sum 90085217683, spent_txo_sum 0. Page the full history with /txs/chain and sort by status.block_height; the earliest confirmed receipt is at height 79021.</code></div><div class="notes"><span class="lbl">caveats</span>Not decidable for the November 2008 pre-release: that artifact is five files (main.cpp, main.h, node.cpp, node.h, readme.txt) and contains no UI source at all, so the string can be neither confirmed nor denied there. The earliest artifact carrying it is v0.1.0.</div>
+    <ul class="evid"><li><b>the string in the released v0.1.0 source</b><br><a class="w" href="https://bitcoin-lab.org/V010_TO_V013.md" rel="noopener nofollow">https://bitcoin-lab.org/V010_TO_V013.md</a></li><li><b>the address&#x27;s full chain history</b><br><a class="w" href="https://blockstream.info/address/1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L" rel="noopener nofollow">https://blockstream.info/address/1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>curl -s https://blockstream.info/api/address/1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L and read chain_stats: funded_txo_sum 90085217683, spent_txo_sum 0. Page the full history with /txs/chain and sort by status.block_height; the earliest confirmed receipt is at height 79021.</code></div><div class="notes"><span class="lbl">caveats</span>Not decidable for the November 2008 pre-release: that artifact is five files (main.cpp, main.h, node.cpp, node.h, readme.txt) and contains no UI source at all, so the string can be neither confirmed nor denied there. The earliest artifact carrying it is v0.1.0.</div>
   </details>
 </article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2010-12-12-last-post">
   <header>
@@ -1028,3 +1043,5 @@ apply();
 <script>window.goatcounter = { path: function (p) { return 'satoshioncha.in' + p } }</script>
 <script data-goatcounter="https://parthod0x.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="analytics.js"></script>
+</body>
+</html>
