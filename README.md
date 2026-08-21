@@ -26,6 +26,7 @@ strongest ongoing statement: the keys don't speak, and no impostor can make them
 
 | File | Role |
 |---|---|
+| `TIEBREAKER-CONSEQUENCES.md` | Three previously-unpublished consequences of Lerner's disclosed unspent-coinbase tiebreaker (time-unstable membership; circularity of dormancy-keyed freeze policies; spent-subsample error rates as a structural worst case). Original analysis, prior-art-checked 21 Aug 2026. |
 | `anchors.py` | The Tier-A/C verified anchors (genesis, block 9→170) as checkable claims + a `verify()` that confirms them against real block/tx data you supply. |
 | `acquire.sql` | BigQuery: pull `height, timestamp, nonce, coinbase_script_hex, coinbase_value, coinbase_spent` for blocks 0–60,000. |
 | `acquire_rpc.py` | The authoritative alternative: build the same CSV from a synced Bitcoin Core node via `getblock` RPC (node-derived, [C-chain]-grade). |
