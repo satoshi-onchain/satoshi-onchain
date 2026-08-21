@@ -58,5 +58,24 @@ This repository's evidence-tier discipline already labels the Patoshi set **[for
 rather than proven, its *membership rule itself is time-dependent* for the doubt cases. Nothing
 in this repository keys any claim on dormancy, and the tier table in `README.md` is unaffected.
 
+## A live instance, added the same day
+
+Hours after this document was first published, a review of primary sources for the LayerTwo Labs
+"eCash" (ECX) hard fork — `ecash-com/fast-facts` and Paul Sztorc's own posts — showed the exact
+structure Consequences 1 and 2 describe, deployed: *"220 whitelisted 'repurpose' transactions
+reassign Satoshi-era (Patoshi) coins without signatures"* (`setRepurposeTx`, `src/repo_txns.h`),
+with the subset selected, in Sztorc's words, because *"having never availed the opportunity to
+sell any portion of them … makes it nearly certain they were abandoned."*
+
+That is dormancy used as an input to the attribution and as the justification of the
+reassignment (Consequence 2), executed through a hard-coded transaction list that freezes one
+evaluation of a time-dependent membership function (Consequence 1). We quote the project's own
+materials and characterise nothing beyond what the structure entails; whether the policy is wise
+is not this document's question. What it demonstrates is that these consequences are not
+hypothetical: reassignment policies keyed on dormancy over Patoshi-derived sets exist in shipping
+code, and their soundness turns on exactly the properties analysed above.
+
+---
+
 Anyone citing these consequences should cite Lerner's 2022 disclosure for the design and this
 document for the consequences — that is the entire public chain as of the search date above.
