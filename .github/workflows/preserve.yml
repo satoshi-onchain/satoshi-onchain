@@ -10,6 +10,11 @@ on:
   release:
     types: [published]
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag to (re-)pin. Blank = the latest release.'
+        required: false
+        default: ''
 
 permissions:
   contents: read
@@ -59,7 +64,10 @@ jobs:
         env:
           IPFS_TOKEN: ${{ secrets.IPFS_TOKEN }}   # a Pinata JWT; see PRESERVATION.md
           GH_TOKEN: ${{ github.token }}
-          TAG: ${{ github.event.release.tag_name }}
+          # a dispatch may name a tag, so an OLD release can be re-pinned when a pin is found
+          # missing -- v1.2.0's SHA256SUMS returned 404 from Pinata's OWN gateway on 23 Aug 2026
+          # while its sibling tarball from the same release returned 200.
+          TAG: ${{ github.event.release.tag_name || inputs.tag }}
         run: |
           if [ -z "$IPFS_TOKEN" ]; then
             echo "IPFS_TOKEN not set — IPFS pin skipped. See PRESERVATION.md to enable."
