@@ -188,3 +188,37 @@ on it — the mirror is real and local, and the network copy is a week stale.
 redundant host.** Making it live needs the node reachable — inbound listening plus a forwarded port,
 or a hosted seed that pulls. Until then, **treat GitHub + IPFS + Software Heritage as the real
 redundancy** and do not lean on the "no single hosting dependency" claim.
+
+## ⚠️ A pin that was listed but no longer retrievable — found and restored, 23 August 2026
+
+The audit fetches every CID this file records instead of trusting the list. One did not come back:
+
+```
+satoshi-onchain-1.2.0.tar.gz   QmVPbQw5Hu…   HTTP 200, 1,152,699 B   fine
+SHA256SUMS  (v1.2.0)           QmWXhPWbgU…   HTTP 404 from PINATA'S OWN GATEWAY
+```
+
+★ **The asymmetry is what made it a finding rather than a flaky gateway.** Two objects from the same
+release, fetched the same way, one served and one 404 — and the 404 came from the gateway of the
+service holding the pin, not from a public mirror under load. **A pin that is recorded is not a pin
+that retrieves, and only fetching tells you which you have.**
+
+Restored by dispatching `preserve.yml` against the v1.2.0 tag; it returned **the same CID this file
+already recorded** (`QmWXhPWbgULBJJSTvpUss2vg17wyKBmWLNydsdciCGZYWW`), so the record was right and
+only the object had gone. The retrieved bytes are identical to the cold copy held at
+`OBL-BACKUP/01-keys-SECRET/pq-counter-signing/satoshi-onchain-1.2.0.SHA256SUMS`.
+
+The same run pinned v1.2.0's post-quantum artifacts for the first time — they were never covered
+before the workflow fix above:
+
+```
+SHA256SUMS.asc        QmTVxxSicWV45WabhB1jqGBu333tdGuUCXRvX73ZwDYiZm
+SHA256SUMS.asc.ots    QmeUmkY5yFeo56Ge4tVJnXBDxiy9kDszKopFzbCL5EV3aK
+SHA256SUMS.ots        QmVeG4HqtXBZKUsFcD2JNVMLShfwqys421zpyj923sWiGd
+SHA256SUMS.slhdsa     QmYJhj9Kk2rGW2AKo8KgqaH5yhXRoFEmpJpZug3wjjsRUu
+SHA256SUMS.slhdsa.ots QmWZMQrEqrRKBQMhT7wh8TFLPYMbeWuLbBP7sMBaBPKpYR
+```
+
+⇒ **Re-run the retrieval check periodically.** `python _audit_public.py ipfs` in the workspace
+fetches every recorded CID; a listing that is never exercised will eventually be wrong without
+anyone noticing.
