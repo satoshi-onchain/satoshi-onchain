@@ -14,7 +14,7 @@ preservation, so no single one is load-bearing:
 | Layer | What it preserves | Status |
 |---|---|---|
 | **Software Heritage** | full history of both satoshi-onchain repositories (`satoshi-onchain`, `.github`), in the universal source-code archive | **live** — [`.github/workflows/preserve.yml`](../.github/workflows/preserve.yml) requests archival daily and on every release, no credentials required |
-| **Content-addressed pinning (IPFS)** | the signed release bundle + `SHA256SUMS`, addressable by content hash rather than by host | **live** — `IPFS_TOKEN` is set; the `ipfs` job pins each release's signed assets. v1.1.0: `satoshi-onchain-1.1.0.tar.gz` → `QmVC79JpvswSS7in7Wde6vpt2zkXgfDoAcDAfdQWsE2W4R`; v1.1.1: `satoshi-onchain-1.1.1.tar.gz` → `QmeipWrkm62ptVBWV3B8ZWyGAKmcV6DS9twtZ9c4zkCswC`; v1.2.0: `satoshi-onchain-1.2.0.tar.gz` → `QmVPbQw5HuJeRhuM61DrgoWttBbjijwEsEBTtZh7vAXNfp` (with `SHA256SUMS` → `QmWXhPWbgULBJJSTvpUss2vg17wyKBmWLNydsdciCGZYWW` and the two `.asc` detached signatures also pinned) (retrievable by CID from any gateway, cross-checkable against `SHA256SUMS`) |
+| **Content-addressed pinning (IPFS)** | the signed release bundle + `SHA256SUMS`, addressable by content hash rather than by host | **live** — `IPFS_TOKEN` is set; the `ipfs` job pins each release's signed assets. v1.1.0: `satoshi-onchain-1.1.0.tar.gz` → `QmVC79JpvswSS7in7Wde6vpt2zkXgfDoAcDAfdQWsE2W4R`; v1.1.1: `satoshi-onchain-1.1.1.tar.gz` → `QmeipWrkm62ptVBWV3B8ZWyGAKmcV6DS9twtZ9c4zkCswC`; v1.2.0: `satoshi-onchain-1.2.0.tar.gz` → `QmVPbQw5HuJeRhuM61DrgoWttBbjijwEsEBTtZh7vAXNfp` (with `SHA256SUMS` → `QmWXhPWbgULBJJSTvpUss2vg17wyKBmWLNydsdciCGZYWW` and the two `.asc` detached signatures also pinned); **v1.3.0**: `satoshi-onchain-1.3.0.tar.gz` → `Qmeh6TQPcqPCtm7GcCQsoTqpa74H8uG4tguCJWBkGmVJ4K`, `SHA256SUMS` → `QmVm9ZxGpsor2st3xXwuyb5WpYhqtMseAKbAwyuzc773h7`, `SHA256SUMS.asc` → `QmdohKx5fRvWhcQLwza3GGjoBnfaC9YbLbvRZRwMWbsih2`, `satoshi-onchain-1.3.0.tar.gz.asc` → `QmbCoUKz1WiujbuQhcbgwWbbnDFaNVZLURnv6UeuK67A77` (all three large-enough assets re-fetched from a gateway and byte-compared to the local copies, not merely listed) (retrievable by CID from any gateway, cross-checkable against `SHA256SUMS`) |
 | **Radicle** | a peer-to-peer git mirror, so the repository has no single hosting dependency | **live** — `rad:z4AkHVo5aTCwsbJFR8Q1AsJqszsjL` (owned by `parthod0x`, `did:key:z6MkqZAx…`). **Synced 12 Aug 2026 to `50c18e4`.** ⚠️ *Before that sync the mirror sat at `07c14ae` while this table claimed it matched `main` — it did not. The local clone had no `rad` remote configured at all, so every "sync after each push" silently did nothing. Found by audit, not by the routine; the check is now [`_verify_self_sufficient.py`](#)'s job rather than a habit's.* |
 
 Everything preserved is **hash-anchored**: the genesis re-derivation, the released source tarball, and the
@@ -148,3 +148,13 @@ Until the secrets/identity are set, the scaffolded jobs log "skipped — not con
 archival runs regardless.
 
 **NOT money.**
+
+## ⚠️ Fixed at v1.3.0 — the post-quantum artifacts were not being pinned
+
+Through v1.2.0 the `preserve` workflow downloaded `*.tar.gz`, `SHA256SUMS` and `*.asc`. It did
+**not** download `*.slhdsa` or `*.ots`, so the **post-quantum counter-signature and its
+OpenTimestamps proof had no content-addressed copy** — the two artifacts whose entire purpose is to
+outlive a break of the Ed25519 key were the only release assets not preserved by content address.
+
+The durable half was the half that was not being kept. Fixed in `preserve.yml` from v1.3.0; the
+v1.3.0 `.slhdsa`/`.ots` will be pinned on the next run of the workflow and their CIDs recorded here.

@@ -69,7 +69,11 @@ jobs:
           if [ -z "$TAG" ]; then echo "no release found to pin"; exit 1; fi
           echo "Pinning signed assets from release $TAG"
           mkdir -p dist
-          gh release download "$TAG" -R "$GITHUB_REPOSITORY" -D dist -p '*.tar.gz' -p 'SHA256SUMS' -p '*.asc' || true
+          # ⚠️ The post-quantum artifacts were MISSING from this list until v1.3.0. The .slhdsa
+          #    counter-signature and its .ots are precisely the pair meant to outlive a quantum
+          #    break -- and they were the only release assets with no content-addressed copy.
+          #    The durable half was the one not being preserved.
+          gh release download "$TAG" -R "$GITHUB_REPOSITORY" -D dist             -p '*.tar.gz' -p 'SHA256SUMS' -p '*.asc' -p '*.slhdsa' -p '*.ots' || true
           shopt -s nullglob
           for f in dist/*; do
             echo "== pinning $(basename "$f") =="
