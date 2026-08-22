@@ -158,3 +158,33 @@ outlive a break of the Ed25519 key were the only release assets not preserved by
 
 The durable half was the half that was not being kept. Fixed in `preserve.yml` from v1.3.0; the
 v1.3.0 `.slhdsa`/`.ots` will be pinned on the next run of the workflow and their CIDs recorded here.
+
+## ⚠️ Radicle, measured rather than assumed — 22 August 2026
+
+Checked while cutting v1.3.0, and the row above overstates it. **The local Radicle store is
+current; the seed network is not.**
+
+```
+local (you)         sigrefs ccbcb02   main e3cb690, tags through v1.3.0
+17 known seeds      sigrefs 4371db8   5 days to 1 week old, EVERY ONE of them
+push to rad         succeeded         "Synced with 0 seed(s)"
+rad sync --announce failed            "All seeds timed out" -- twice, 180s, 12 peers connected
+node                                  "not configured to listen for inbound connections"
+```
+
+★★ **Two traps worth writing down.**
+
+**1. `rad sync` reports success while doing nothing.** Run before `git push rad`, it printed
+*"Nothing to announce, already in sync with 17 seed(s)"* — while the mirror sat **nine commits
+behind**. It announces what the node already has; it does not push the working repo. **`git push rad`
+is the step that moves commits**, and a routine that says only "Radicle push" invites exactly this.
+The same mirror was found behind once before (commit `730ef1f`).
+
+**2. Announcing is not propagating.** A seed learns of an update by **fetching from you**, which
+needs your node reachable. With no inbound listener the announcement goes out and no seed can act
+on it — the mirror is real and local, and the network copy is a week stale.
+
+⇒ **Stated honestly: Radicle is currently a local mirror with a stale public copy, not a live
+redundant host.** Making it live needs the node reachable — inbound listening plus a forwarded port,
+or a hosted seed that pulls. Until then, **treat GitHub + IPFS + Software Heritage as the real
+redundancy** and do not lean on the "no single hosting dependency" claim.
