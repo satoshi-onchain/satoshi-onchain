@@ -222,3 +222,28 @@ SHA256SUMS.slhdsa.ots QmWZMQrEqrRKBQMhT7wh8TFLPYMbeWuLbBP7sMBaBPKpYR
 ⇒ **Re-run the retrieval check periodically.** `python _audit_public.py ipfs` in the workspace
 fetches every recorded CID; a listing that is never exercised will eventually be wrong without
 anyone noticing.
+
+## v1.3.0's timestamp is anchored — Bitcoin block 963620
+
+Stamped 22 August 2026 and upgraded 23 August once a calendar folded it into a block:
+
+```
+SHA256SUMS.slhdsa.ots     600 B pending  ->  2,534 B, Bitcoin block 963620
+```
+
+The proof still carries pending markers for two of the three calendars it was submitted to. **That
+is normal and is not a defect** — a proof branches per calendar, and one Bitcoin attestation is what
+makes it verifiable. The release asset was replaced with the upgraded proof, so anyone downloading
+now gets the anchored one rather than a promise, and the same bytes are in the cold backup.
+
+**Post-quantum artifacts, pinned for v1.3.0 for the first time** (the workflow could not reach them
+before the fix above):
+
+```
+SHA256SUMS.slhdsa      QmfXyGiJ2S8kQWd3fMpssQTFsjbNRBdvUimSr2PHh9MFfH
+SHA256SUMS.slhdsa.ots  QmawXftYvbVbcpP4r3bjXAGLrJmGMw7RySfYxVa3ZGH3v4
+```
+
+⇒ **The counter-signature and its Bitcoin anchor are now content-addressed, signed and archived in
+three independent places.** That is the state this file always claimed and, until today, did not
+have.
