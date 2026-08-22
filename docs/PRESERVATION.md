@@ -205,8 +205,8 @@ that retrieves, and only fetching tells you which you have.**
 
 Restored by dispatching `preserve.yml` against the v1.2.0 tag; it returned **the same CID this file
 already recorded** (`QmWXhPWbgULBJJSTvpUss2vg17wyKBmWLNydsdciCGZYWW`), so the record was right and
-only the object had gone. The retrieved bytes are identical to the cold copy held at
-`OBL-BACKUP/01-keys-SECRET/pq-counter-signing/satoshi-onchain-1.2.0.SHA256SUMS`.
+only the object had gone. The retrieved bytes are identical to the offline copy of that manifest held in the project's cold
+backup (path deliberately not named here — it is a secret store).
 
 The same run pinned v1.2.0's post-quantum artifacts for the first time — they were never covered
 before the workflow fix above:
