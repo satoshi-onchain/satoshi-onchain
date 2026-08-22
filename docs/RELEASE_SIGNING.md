@@ -14,13 +14,21 @@ stand on their own reproducibility. This is authenticity, not authority. **Not m
 A signature over broken results just authenticates broken results. From a clean checkout:
 
 ```bash
-python anchors.py           # genesis + block-170 anchors re-derive from their own source bytes
+python anchors.py --blocks early_blocks.csv     # genesis anchors, from the CSV's own bytes
+python anchors.py --rpc  http://user:pass@127.0.0.1:8332   # block-170, node-derived
 python nonce_safety.py      # section 14 — Satoshi's block-9 key signed 5x with distinct nonces
 python authorship_test.py   # section 15 — the machine-verifiable key-control standard
 python spend_chain.py       # section 9  — the block-9 spend chain, from raw tx bytes
 # the full excavation (sections 1-13) regenerates from public chain data — see README "Reproduce"
 # + acquire.sql (BigQuery) / acquire_rpc.py (node); the derived CSVs are gitignored, not shipped.
 ```
+
+> ⚠️ **`anchors.py` takes an argument, and its input is gitignored.** With no flag it exits **2**
+> and verifies nothing — and `early_blocks.csv` is in `.gitignore`, so on the clean checkout this
+> section asks for, the file is absent. **Regenerate it first** (`acquire.sql` via BigQuery, or
+> `acquire_rpc.py` against a synced node — see the README's *Reproduce*), or point `--rpc` at a
+> node. This line read `python anchors.py` until v1.3.0: a checklist step that had only ever been
+> run in a working directory where the ignored CSV happened to exist.
 
 Confirm the tree is clean (`git status`), the author is correct (`parthod0x`), and there are **no**
 secrets, keys, or generated CSVs staged (`git ls-files | grep -Ei 'key|secret|\.env|early_blocks|spent_'`
@@ -72,7 +80,7 @@ git verify-tag vX.Y.Z
 gpg --verify satoshi-onchain-X.Y.Z.tar.gz.asc satoshi-onchain-X.Y.Z.tar.gz
 gpg --verify SHA256SUMS.asc SHA256SUMS && sha256sum -c SHA256SUMS
 # then the content itself — the part that matters:
-python anchors.py            # re-derive the genesis anchor from source
+python anchors.py --blocks early_blocks.csv   # re-derive the genesis anchor (regenerate the CSV first)
 python nonce_safety.py ; python authorship_test.py ; python spend_chain.py
 ```
 
