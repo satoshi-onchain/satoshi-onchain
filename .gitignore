@@ -34,3 +34,12 @@ cb_outputs.csv
 .env.*
 *.token
 BLOCKSTREAM_TOKEN*
+
+# Release artifacts are built by `git archive` FROM this repository and published on the
+# release, on IPFS and in the cold backup. Committing them is circular -- the next tarball
+# would contain the previous one -- and it was done by accident in e3cb690 by a `git add -A`.
+# They belong nowhere in the source tree.
+/SHA256SUMS
+/SHA256SUMS.*
+/satoshi-onchain-*.tar.gz
+/satoshi-onchain-*.tar.gz.asc
