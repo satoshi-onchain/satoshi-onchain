@@ -170,35 +170,22 @@ for e in events:
   </details>
 </article>''')
 
-# Measure the corpus this timeline is drawn from, so the page can state its own incompleteness
-# with a real number rather than a vague hedge.
+# This page is a curated subset of unpublished research, and it says so WITHOUT quantifying it.
 #
-# IF THE CORPUS IS NOT REACHABLE, SAY SO -- DO NOT PRINT ZERO. An unmeasured count rendered as "0"
-# is indistinguishable from a measured zero, and that is precisely the failure this project keeps
-# hitting (a column of assumed constants; a truncated label; a survey reporting success over holes).
-# This exact bug shipped once: built from inside the published repo, the corpus path did not resolve
-# and the live page asserted "0 distinct dated events" as though it had counted them.
-import glob
-_root = a.corpus or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-_entries = glob.glob(os.path.join(_root, "bitcoin-origin-claims", "*.md"))
-_archives = [d for d in glob.glob(os.path.join(_root, "archives", "*"))
-             if os.path.isdir(d) and os.path.exists(os.path.join(d, "SHA256SUMS"))]
-CORPUS_MEASURED = bool(_entries)
-if CORPUS_MEASURED:
-    _dates = set()
-    for _f in _entries:
-        _dates |= set(re.findall(r"(?:200[7-9]|201[0-9])-\d{2}-\d{2}",
-                                 open(_f, encoding="utf-8", errors="replace").read()))
-    CORPUS_LINE = (f"The research corpus behind it contains <b>{len(_dates)}</b> distinct dated events "
-                   f"across {len(_entries)} written entries and {len(_archives)} sealed archives, and "
-                   f"migration into this file is deliberate rather than bulk — each row has to acquire a "
-                   f"grade, a source and a reproduction path before it can appear. That corpus is a local "
-                   f"research archive and is not itself published, so this number is stated, not linkable.")
-    print(f"  corpus behind it: {len(_dates)} dated events, {len(_entries)} entries, {len(_archives)} sealed archives")
-else:
-    CORPUS_LINE = ("The research corpus behind it is not part of this repository, so its size is not "
-                   "stated here rather than guessed at.")
-    print("  NOTE: corpus not reachable from this path -- the page will say so instead of printing zero")
+# An earlier version measured the local research corpus at build time and printed its size into the
+# live page. That was removed deliberately. The size of an unpublished archive is not a finding,
+# no reader can check it, and stating it describes a filesystem rather than Bitcoin's history.
+# What a reader actually needs is the epistemic warning below -- that absence of a row is not
+# absence of an event -- and that stands on its own with no number attached.
+#
+# The guard the measurement carried is preserved by construction rather than by branching: it
+# existed so an unreachable corpus could not be published as a measured zero, and a build that
+# measures nothing has no zero to mistake for a count.
+CORPUS_MEASURED = False
+CORPUS_LINE = ("It is a deliberate subset of unpublished research rather than a bulk export — each row "
+               "has to acquire a grade, a source and a reproduction path before it can appear here. "
+               "The material behind it is not published, and its extent is deliberately not "
+               "characterised: a figure nobody can verify is not evidence.")
 
 N_LAB = sum(1 for e in events if e["when"] >= "2026")
 built = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")

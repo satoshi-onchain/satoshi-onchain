@@ -29,7 +29,11 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 HEX64 = re.compile(r"\b([0-9a-f]{64})\b")
 DOCEXT = (".md", ".html", ".txt")
-SKIP_DIRS = {".git", "node_modules", "__pycache__", "OBL-BACKUP"}
+# Directories never walked. Only the generic ones are named here; anything specific to one
+# machine belongs in the environment, because a skip list is also a description of the tree it
+# was written against.
+SKIP_DIRS = {".git", "node_modules", "__pycache__"}
+SKIP_DIRS |= {d for d in os.environ.get("AUDIT_SKIP_DIRS", "").split(os.pathsep) if d}
 
 argv = sys.argv[1:]
 if "--artifacts" in argv:

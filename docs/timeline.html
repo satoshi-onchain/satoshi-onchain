@@ -1,16 +1,3 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Satoshi &amp; Bitcoin, a verifiable timeline: every row carries an evidence grade and, where one exists, a command that regenerates it. Forensic, not cryptographic. Not money.">
-<link rel="canonical" href="https://satoshioncha.in/timeline.html">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Satoshi On-Chain">
-<meta property="og:url" content="https://satoshioncha.in/timeline.html">
-<meta property="og:title" content="Satoshi &amp; Bitcoin — a verifiable timeline">
-<meta property="og:description" content="Every row carries an evidence grade and, where one exists, a command that regenerates it. Forensic, not cryptographic. Not money.">
-<meta name="twitter:card" content="summary">
 <title>Satoshi &amp; Bitcoin — a verifiable timeline</title>
 <style>
 :root{--bg:#fff;--fg:#111;--mut:#666;--line:#e3e3e3;--card:#fafafa;--gap:#fff8e1;--gapline:#e0b400}
@@ -66,8 +53,6 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;word
 .eradiv b{color:var(--fg)}
 .eradiv .g{font-size:10px;vertical-align:baseline}
 </style>
-</head>
-<body>
 <div class="wrap">
 <h1>Satoshi &amp; Bitcoin — a verifiable timeline</h1>
 <p class="sub">Every row carries an evidence grade and, where one exists, a command that regenerates
@@ -75,11 +60,11 @@ it. Rows we <b>cannot</b> verify are shown too, marked <b>NOT HELD</b> — becau
 only what was found looks complete when it is not.</p>
 
 <div class="incomplete"><b>This timeline is incomplete, and says so on purpose.</b>
-It currently holds <b>70</b> events. The research corpus behind it contains <b>158</b> distinct dated events across 89 written entries and 53 sealed archives, and migration into this file is deliberate rather than bulk — each row has to acquire a grade, a source and a reproduction path before it can appear. That corpus is a local research archive and is not itself published, so this number is stated, not linkable.
+It currently holds <b>70</b> events. It is a deliberate subset of unpublished research rather than a bulk export — each row has to acquire a grade, a source and a reproduction path before it can appear here. The material behind it is not published, and its extent is deliberately not characterised: a figure nobody can verify is not evidence.
 <b>Absence of a row here is not evidence that nothing happened on that date.</b>
 Applying the same standard to ourselves that we apply to everyone else — literally, since
-7 of these rows are about <a href="https://bitcoin-lab.org/bitcoin">a separate Bitcoin chain of
-our own, mined in 2026</a>, and they are graded by the same table and carry a NOT HELD of their own.</div>
+7 of these rows are about <a href="https://bitcoin-lab.org/bitcoin">a second Bitcoin, mined in
+2026</a>, and they are graded by the same table and carry a NOT HELD of their own.</div>
 
 <div class="bar">
   <div>
@@ -121,7 +106,7 @@ our own, mined in 2026</a>, and they are graded by the same table and carry a NO
   </header>
   <p class="claim">A draft titled &quot;Electronic Cash Without a Trusted Third Party&quot; was linked, not attached, to Adam Back on 20 Aug 2008 and Wei Dai on 22 Aug 2008. Its title, full abstract and Hashcash citation at [5] are preserved verbatim inside Back&#x27;s witness statement. Back downloaded it, later searched for it, and swore he could not find it.</p>
   <details><summary>evidence &amp; reproduction</summary>
-    <ul class="evid"><li><b>First Witness Statement of Dr Adam Back, 17 July 2023 — §5 quotes Satoshi&#x27;s email in full (title, abstract, Hashcash at [5]); §6 &#x27;I believe I did download the paper at the time&#x27;; §7 b-money &#x27;was not mentioned in the pre-release draft he sent me&#x27;; §11 &#x27;I don&#x27;t think I have a copy … I haven&#x27;t been able to find one from the checks I have made&#x27;</b><br><span class="w">COPA v Wright [2024] EWHC 1198 (Ch), Exhibit AB1 / witness statement C/9</span></li><li><b>Wei Dai to Bird &amp; Bird, Oct 2023: the three published emails are the entirety of his communications with Satoshi</b><br><span class="w">archives/copa-hf-dataset/</span></li><li><b>abstract text as preserved (hash of the text, not of the file)</b><br><span class="w">archives/august-2008-draft/SOURCES.md</span><br><code class="h">6dd156197af8ee359d0852a236997e843b2f8e39a20ca326d17883420d82d9bd</code></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>NOT LOCATED, and now closed against both named recipients by their own sworn or published words. What is lost is the FILE - the bytes, and whatever the body said between abstract and references. What survives is adjudicated: the title, the complete abstract, the Hashcash citation at [5], and sworn confirmation from its only known reader that b-money was absent. No hash of the file exists anywhere, so a recovered candidate could never be verified cryptographically - only by those four discriminators plus custody. A reconstruction built from the correspondence is already in circulation and would pass the wording tests by construction; the reference numbering is the discriminator that matters.</div>
+    <ul class="evid"><li><b>First Witness Statement of Dr Adam Back, 17 July 2023 — §5 quotes Satoshi&#x27;s email in full (title, abstract, Hashcash at [5]); §6 &#x27;I believe I did download the paper at the time&#x27;; §7 b-money &#x27;was not mentioned in the pre-release draft he sent me&#x27;; §11 &#x27;I don&#x27;t think I have a copy … I haven&#x27;t been able to find one from the checks I have made&#x27;</b><br><span class="w">COPA v Wright [2024] EWHC 1198 (Ch), Exhibit AB1 / witness statement C/9</span></li><li><b>Wei Dai to Bird &amp; Bird, Oct 2023: the three published emails are the entirety of his communications with Satoshi</b><br><span class="w">COPA v Wright, trial disclosure — https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198</span></li><li><b>abstract text as preserved (hash of the text, not of the file)</b><br><span class="w">First Witness Statement of Dr Adam Back, 17 July 2023, COPA v Wright — reproduced at https://github.com/lugaxker/nakamoto-archive</span><br><code class="h">6dd156197af8ee359d0852a236997e843b2f8e39a20ca326d17883420d82d9bd</code></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>NOT LOCATED, and now closed against both named recipients by their own sworn or published words. What is lost is the FILE - the bytes, and whatever the body said between abstract and references. What survives is adjudicated: the title, the complete abstract, the Hashcash citation at [5], and sworn confirmation from its only known reader that b-money was absent. No hash of the file exists anywhere, so a recovered candidate could never be verified cryptographically - only by those four discriminators plus custody. A reconstruction built from the correspondence is already in circulation and would pass the wording tests by construction; the reference numbering is the discriminator that matters.</div>
   </details>
 </article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2008-08-17-netcoin">
   <header>
@@ -169,7 +154,7 @@ our own, mined in 2026</a>, and they are graded by the same table and carry a NO
   </header>
   <p class="claim">Satoshi emailed a LINK, not an attachment, to Adam Back on 20 Aug 2008 and Wei Dai on 22 Aug 2008: upload.ae/file/6157/ecash-pdf.html. That host&#x27;s file ids are sequential, and the Internet Archive crawled it through 2008 for unrelated reasons. Ids 6145, 6160 and 6161 - immediately either side of 6157 - were all first captured on 23 August 2008, placing 6157&#x27;s upload on or before that date.</p>
   <details><summary>evidence &amp; reproduction</summary>
-    <ul class="evid"><li><b>2,421 upload.ae file ids across 14,810 captures (2008-2010) via the Wayback CDX API; independently corroborated by a third party&#x27;s own extraction of 17,255 upload.ae URLs listing the same nearest neighbours, 6145 and 6160</b><br><a class="w" href="http://web.archive.org/cdx/search/cdx?url=upload.ae&amp;matchType=domain&amp;output=json&amp;from=2008&amp;to=2010&amp;fl=timestamp,original&amp;limit=40000" rel="noopener nofollow">http://web.archive.org/cdx/search/cdx?url=upload.ae&amp;matchType=domain&amp;output=json&amp;from=2008&amp;to=2010&amp;fl=timestamp,original&amp;limit=40000</a></li><li><b>Satoshi&#x27;s emails quoting the URL (Exhibit AB1; Wei Dai correspondence)</b><br><span class="w">archives/august-2008-draft/SOURCES.md</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>curl -s &#x27;http://web.archive.org/cdx/search/cdx?url=upload.ae&amp;matchType=domain&amp;output=json&amp;from=2008&amp;to=2010&amp;fl=timestamp,original&amp;limit=40000&#x27;   # use a HIGH limit; at 8000 the neighbours truncate away</code></div><div class="notes"><span class="lbl">caveats</span>Corroborates TIMING only. It does not recover the file, say anything about its contents, or identify who uploaded it. Its value is that the bracketing party had no interest in the question: the Internet Archive crawled an Emirati file host in 2008 for its own reasons. Note also that it captured 6145, 6160 and 6161 that day and never captured 6157 - consistent with an unlisted upload whose URL travelled only by private email, though a crawl gap has many innocent causes. The file itself was never archived and structurally could not be: the download sat behind a form POST, which crawlers do not submit.</div>
+    <ul class="evid"><li><b>2,421 upload.ae file ids across 14,810 captures (2008-2010) via the Wayback CDX API; independently corroborated by a third party&#x27;s own extraction of 17,255 upload.ae URLs listing the same nearest neighbours, 6145 and 6160</b><br><a class="w" href="http://web.archive.org/cdx/search/cdx?url=upload.ae&amp;matchType=domain&amp;output=json&amp;from=2008&amp;to=2010&amp;fl=timestamp,original&amp;limit=40000" rel="noopener nofollow">http://web.archive.org/cdx/search/cdx?url=upload.ae&amp;matchType=domain&amp;output=json&amp;from=2008&amp;to=2010&amp;fl=timestamp,original&amp;limit=40000</a></li><li><b>Satoshi&#x27;s emails quoting the URL (Exhibit AB1; Wei Dai correspondence)</b><br><span class="w">First Witness Statement of Dr Adam Back, 17 July 2023, COPA v Wright — reproduced at https://github.com/lugaxker/nakamoto-archive</span></li></ul><div class="rep"><span class="lbl">reproduce</span><code>curl -s &#x27;http://web.archive.org/cdx/search/cdx?url=upload.ae&amp;matchType=domain&amp;output=json&amp;from=2008&amp;to=2010&amp;fl=timestamp,original&amp;limit=40000&#x27;   # use a HIGH limit; at 8000 the neighbours truncate away</code></div><div class="notes"><span class="lbl">caveats</span>Corroborates TIMING only. It does not recover the file, say anything about its contents, or identify who uploaded it. Its value is that the bracketing party had no interest in the question: the Internet Archive crawled an Emirati file host in 2008 for its own reasons. Note also that it captured 6145, 6160 and 6161 that day and never captured 6157 - consistent with an unlisted upload whose URL travelled only by private email, though a crawl gap has many innocent causes. The file itself was never archived and structurally could not be: the download sat behind a form POST, which crawlers do not submit.</div>
   </details>
 </article><article class="ev" data-axis="bitcoin" data-grade="CAPTURE" data-gap="false" data-era="origin" id="2008-09-10-nov08-genesis-ntime">
   <header>
@@ -685,7 +670,7 @@ our own, mined in 2026</a>, and they are graded by the same table and carry a NO
   </header>
   <p class="claim">Block 74638 contains a transaction creating over 184 billion BTC through an integer overflow; the chain is forked away from it within hours.</p>
   <details><summary>evidence &amp; reproduction</summary>
-    <ul class="evid"><li><b>block 74638</b><br><span class="w">the Bitcoin blockchain</span></li><li><b>Satoshi&#x27;s own contemporaneous warning naming the block and time</b><br><a class="w" href="https://bitcointalk.org/index.php?action=profile;u=3" rel="noopener nofollow">https://bitcointalk.org/index.php?action=profile;u=3</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>bigquery-public-data.crypto_bitcoin.transactions WHERE block_number = 74638</code></div><div class="notes"><span class="lbl">caveats</span>The only known time Bitcoin&#x27;s supply rule has been broken in production.</div>
+    <ul class="evid"><li><b>block 74638</b><br><span class="w">the Bitcoin blockchain</span></li><li><b>Satoshi&#x27;s own contemporaneous warning naming the block and time</b><br><a class="w" href="https://bitcointalk.org/index.php?action=profile;u=3" rel="noopener nofollow">https://bitcointalk.org/index.php?action=profile;u=3</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>bigquery-public-data.crypto_bitcoin.transactions WHERE block_number = 74638</code></div><div class="notes"><span class="lbl">caveats</span>The only time Bitcoin&#x27;s supply rule has been broken in production.</div>
   </details>
 </article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" data-era="origin" id="2010-09-10-uistring-address-funded">
   <header>
@@ -697,7 +682,7 @@ our own, mined in 2026</a>, and they are graded by the same table and carry a NO
   </header>
   <p class="claim">1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L is a hard-coded placeholder in the Send Coins dialog of the January 2009 client (v0.1.0 src/uibase.cpp line 495, unchanged in v0.1.3). On the 2009 chain it received its first payment on 2010-09-10, has since received 102 payments totalling 900.85217683 BTC, and has never spent a single satoshi. Its largest single receipt is 777.00000000 BTC in block 104662, 2011-01-26.</p><p class="caption">This is an address Satoshi published as example text in a form label — not a wallet, and not a holding. WHO, IF ANYONE, HOLDS ITS PRIVATE KEY IS UNKNOWN, and nothing here suggests Satoshi did. The first payment arrives twenty months after the source was published, so the coin was sent by strangers who read the address out of the code. Published in source, funded by others, never spent.</p>
   <details><summary>evidence &amp; reproduction</summary>
-    <ul class="evid"><li><b>the string in the released v0.1.0 source</b><br><a class="w" href="https://bitcoin-lab.org/V010_TO_V013.md" rel="noopener nofollow">https://bitcoin-lab.org/V010_TO_V013.md</a></li><li><b>the address&#x27;s full chain history</b><br><a class="w" href="https://blockstream.info/address/1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L" rel="noopener nofollow">https://blockstream.info/address/1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>curl -s https://blockstream.info/api/address/1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L and read chain_stats: funded_txo_sum 90085217683, spent_txo_sum 0. Page the full history with /txs/chain and sort by status.block_height; the earliest confirmed receipt is at height 79021.</code></div><div class="notes"><span class="lbl">caveats</span>Not decidable for the November 2008 pre-release: that artifact is five files (main.cpp, main.h, node.cpp, node.h, readme.txt) and contains no UI source at all, so the string can be neither confirmed nor denied there. The earliest artifact carrying it is v0.1.0.</div>
+    <ul class="evid"><li><b>the string in the released v0.1.0 source</b><br><a class="w" href="https://bitcoin-lab.org/V010_TO_V013.html" rel="noopener nofollow">https://bitcoin-lab.org/V010_TO_V013.html</a></li><li><b>the address&#x27;s full chain history</b><br><a class="w" href="https://blockstream.info/address/1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L" rel="noopener nofollow">https://blockstream.info/address/1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>curl -s https://blockstream.info/api/address/1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L and read chain_stats: funded_txo_sum 90085217683, spent_txo_sum 0. Page the full history with /txs/chain and sort by status.block_height; the earliest confirmed receipt is at height 79021.</code></div><div class="notes"><span class="lbl">caveats</span>Not decidable for the November 2008 pre-release: that artifact is five files (main.cpp, main.h, node.cpp, node.h, readme.txt) and contains no UI source at all, so the string can be neither confirmed nor denied there. The earliest artifact carrying it is v0.1.0.</div>
   </details>
 </article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2010-12-12-last-post">
   <header>
@@ -876,7 +861,7 @@ our own, mined in 2026</a>, and they are graded by the same table and carry a NO
 </div><article class="ev" data-axis="bitcoin" data-grade="PARTY-RELEASED" data-gap="false" data-era="lab" id="2026-07-31-twonode-witness">
   <header>
     <time>2026-07-31</time>
-    <span class="era era-lab" title="A different chain and a different author: a separate Bitcoin genesis, mined August 2026 on its own network. Not a fork of the 2009 chain, not a claim about it, and no claim about how many others may exist.">2026 pair</span>
+    <span class="era era-lab" title="A different chain and a different author: the second Bitcoin genesis, mined August 2026 on its own network. Not a fork of the 2009 chain and not a claim about it.">2026 pair</span>
     <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
     
     <h3>Two unmodified 2009 binaries mine and relay a block on the historical genesis</h3>
@@ -888,7 +873,7 @@ our own, mined in 2026</a>, and they are graded by the same table and carry a NO
 </article><article class="ev" data-axis="bitcoin" data-grade="PARTY-RELEASED" data-gap="false" data-era="lab" id="2026-08-02-reorg">
   <header>
     <time>2026-08-02</time>
-    <span class="era era-lab" title="A different chain and a different author: a separate Bitcoin genesis, mined August 2026 on its own network. Not a fork of the 2009 chain, not a claim about it, and no claim about how many others may exist.">2026 pair</span>
+    <span class="era era-lab" title="A different chain and a different author: the second Bitcoin genesis, mined August 2026 on its own network. Not a fork of the 2009 chain and not a claim about it.">2026 pair</span>
     <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
     
     <h3>The 2009 client performs a real chain reorganisation</h3>
@@ -900,10 +885,10 @@ our own, mined in 2026</a>, and they are graded by the same table and carry a NO
 </article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" data-era="lab" id="2026-08-03-second-genesis">
   <header>
     <time>2026-08-03 18:22:55 UTC</time>
-    <span class="era era-lab" title="A different chain and a different author: a separate Bitcoin genesis, mined August 2026 on its own network. Not a fork of the 2009 chain, not a claim about it, and no claim about how many others may exist.">2026 pair</span>
+    <span class="era era-lab" title="A different chain and a different author: the second Bitcoin genesis, mined August 2026 on its own network. Not a fork of the 2009 chain and not a claim about it.">2026 pair</span>
     <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
     
-    <h3>A separate Bitcoin genesis is mined, on a chain of its own</h3>
+    <h3>A second Bitcoin genesis is mined, on a chain of its own</h3>
   </header>
   <p class="claim">Genesis 00000000ad12f3ecd9b14e4276ac98936fb0d658f05dce95ad35d18fceee208a is mined at difficulty 1 by the released January 2009 client, its coinbase quoting The Times of 3 August 2026 - a separate chain, network magic f00ba726, not interoperable with the 2009 one.</p>
   <details><summary>evidence &amp; reproduction</summary>
@@ -912,7 +897,7 @@ our own, mined in 2026</a>, and they are graded by the same table and carry a NO
 </article><article class="ev" data-axis="bitcoin" data-grade="PARTY-RELEASED" data-gap="false" data-era="lab" id="2026-08-06-relayed-spend">
   <header>
     <time>2026-08-06</time>
-    <span class="era era-lab" title="A different chain and a different author: a separate Bitcoin genesis, mined August 2026 on its own network. Not a fork of the 2009 chain, not a claim about it, and no claim about how many others may exist.">2026 pair</span>
+    <span class="era era-lab" title="A different chain and a different author: the second Bitcoin genesis, mined August 2026 on its own network. Not a fork of the 2009 chain and not a claim about it.">2026 pair</span>
     <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
     
     <h3>A matured coinbase is spent and relayed — and maturity is 120 blocks, not 100</h3>
@@ -924,7 +909,7 @@ our own, mined in 2026</a>, and they are graded by the same table and carry a NO
 </article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" data-era="lab" id="2026-08-08-released-client-mines">
   <header>
     <time>2026-08-08 22:19:22 UTC</time>
-    <span class="era era-lab" title="A different chain and a different author: a separate Bitcoin genesis, mined August 2026 on its own network. Not a fork of the 2009 chain, not a claim about it, and no claim about how many others may exist.">2026 pair</span>
+    <span class="era era-lab" title="A different chain and a different author: the second Bitcoin genesis, mined August 2026 on its own network. Not a fork of the 2009 chain and not a claim about it.">2026 pair</span>
     <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
     
     <h3>A published Bitcoin client is shown to have mined its own chain&#x27;s blocks</h3>
@@ -936,19 +921,19 @@ our own, mined in 2026</a>, and they are graded by the same table and carry a NO
 </article><article class="ev gap" data-axis="bitcoin" data-grade="NONE" data-gap="true" data-era="lab" id="2026-08-08-unsealed-blocks">
   <header>
     <time>2026-08-08 23:18:52 UTC</time>
-    <span class="era era-lab" title="A different chain and a different author: a separate Bitcoin genesis, mined August 2026 on its own network. Not a fork of the 2009 chain, not a claim about it, and no claim about how many others may exist.">2026 pair</span>
+    <span class="era era-lab" title="A different chain and a different author: the second Bitcoin genesis, mined August 2026 on its own network. Not a fork of the 2009 chain and not a claim about it.">2026 pair</span>
     <span class="g g-NONE">NONE</span>
-    <span class="gapflag">TRACKED</span>
-    <h3>The chain outruns its evidence set — a lag that is structural, not a backlog</h3>
+    <span class="gapflag">NOT HELD</span>
+    <h3>The chain outruns its evidence set — NOT YET SEALED</h3>
   </header>
-  <p class="claim"><b>On this date the sealed evidence set stopped at block 4</b> while the chain had already mined past it &mdash; later blocks had no published findings, no hash manifest and no binding record. <b>That particular gap was filled:</b> findings sets covering <b>blocks 1&ndash;63 with no gaps</b> were published between 5 and 12 August 2026, each carrying its own <code>SHA256SUMS</code> and the pre/post binary-binding records of the process that mined it. <b>But the lag itself does not close, and should not be described as closed.</b> The chain keeps mining; sealing is a deliberate, batched act. At any instant the tip is ahead of the last sealed block, and that is a property of a running chain rather than a backlog to be cleared. <b>This row therefore names no current height on purpose</b> &mdash; any number written here is stale the moment the next block is found. <i>What is worth publishing is the coverage of the evidence set, not the height of the chain</i>; the live tip is on the status feed, and the sealed coverage is in the findings sets themselves.</p>
+  <p class="claim">The sealed evidence set for the 2026 chain stops at block 4. Block 5 was mined at this timestamp and the chain has continued past it; every block beyond 4 has no published findings, no hash manifest and no binding record. This row deliberately names no current height — the height moves, the gap is what persists.</p>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>the live anchor&#x27;s reported tip</b><br><a class="w" href="https://bitcoin-lab.org/status.html" rel="noopener nofollow">https://bitcoin-lab.org/status.html</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>curl -s https://raw.githubusercontent.com/original-bitcoin-laboratory/genesis/status/status.json | jq &#x27;.chains.bitcoin.height&#x27;</code></div><div class="notes"><span class="lbl">caveats</span>Marked NOT HELD against ourselves, on the same rule applied to everyone else on this page: the event demonstrably happened and we do not hold the artifact in publishable form. Graded NONE because a status file we generate is not independent support for our own chain. The reproduce command reads the live height rather than this row asserting one, so the row cannot go stale while the miner runs. It will be upgraded when the blocks are captured and sealed, and not before.</div>
   </details>
 </article><article class="ev" data-axis="both" data-grade="CHAIN" data-gap="false" data-era="lab" id="2026-08-09-anchor">
   <header>
     <time>2026-08-09 00:16:42 UTC</time>
-    <span class="era era-lab" title="A different chain and a different author: a separate Bitcoin genesis, mined August 2026 on its own network. Not a fork of the 2009 chain, not a claim about it, and no claim about how many others may exist.">2026 pair</span>
+    <span class="era era-lab" title="A different chain and a different author: the second Bitcoin genesis, mined August 2026 on its own network. Not a fork of the 2009 chain and not a claim about it.">2026 pair</span>
     <span class="g g-CHAIN">CHAIN</span>
     
     <h3>The 2026 chain&#x27;s release is anchored in the 2009 chain</h3>
@@ -971,7 +956,7 @@ our own, mined in 2026</a>, and they are graded by the same table and carry a NO
 <br><br><b>Nothing here is cryptographic.</b> No genesis-era or Patoshi key has ever produced a
 verifying signature, so no row on this timeline identifies a person. That is a fact about the world,
 not a gap in the research — and only a signature would change it.
-<br><br>Generated 2026-08-09 from <code>events.json</code>. The page is a function of that file.
+<br><br>Generated 2026-09-09 from <code>events.json</code>. The page is a function of that file.
 </div>
 
 <footer class="legend" style="margin-top:26px">
@@ -1042,8 +1027,4 @@ apply();
      applied later would mis-file the pageview under the account default (bitcoin-lab.org). -->
 <script>window.goatcounter = { path: function (p) { return 'satoshioncha.in' + p } }</script>
 <script data-goatcounter="https://parthod0x.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<!-- umami-tracker: self-hosted, first-party, no cookies, no third party -->
-<script defer src="https://analytics.bitcoin-lab.org/script.js" data-website-id="3959d386-fab2-45b8-9045-30c2d09b2f7c"></script>
 <script src="analytics.js"></script>
-</body>
-</html>

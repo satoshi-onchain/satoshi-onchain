@@ -34,12 +34,12 @@
    },
    {
     "what": "Wei Dai to Bird & Bird, Oct 2023: the three published emails are the entirety of his communications with Satoshi",
-    "where": "archives/copa-hf-dataset/",
+    "where": "COPA v Wright, trial disclosure — https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
     "hash": null
    },
    {
     "what": "abstract text as preserved (hash of the text, not of the file)",
-    "where": "archives/august-2008-draft/SOURCES.md",
+    "where": "First Witness Statement of Dr Adam Back, 17 July 2023, COPA v Wright — reproduced at https://github.com/lugaxker/nakamoto-archive",
     "hash": "6dd156197af8ee359d0852a236997e843b2f8e39a20ca326d17883420d82d9bd"
    }
   ],
@@ -126,7 +126,7 @@
    },
    {
     "what": "Satoshi's emails quoting the URL (Exhibit AB1; Wei Dai correspondence)",
-    "where": "archives/august-2008-draft/SOURCES.md",
+    "where": "First Witness Statement of Dr Adam Back, 17 July 2023, COPA v Wright — reproduced at https://github.com/lugaxker/nakamoto-archive",
     "hash": null
    }
   ],

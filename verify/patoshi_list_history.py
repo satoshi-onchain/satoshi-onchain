@@ -11,7 +11,7 @@ that serves it, and reports exactly when the membership changed and by which blo
 
 ⚠️ FAIRNESS NOTE, AND IT CORRECTS AN EARLIER DRAFT OF OUR OWN WRITE-UP.
 The change was NOT undocumented and NOT quiet. The commit message says exactly what it did and
-cites the discussion that prompted it. An earlier draft of entry 108 called it "silent"; that was
+cites the discussion that prompted it. An earlier draft of our write-up called it "silent"; that was
 unfair and is retracted. The maintainer documented the change in the normal way.
 
   ⇒ The real problem is STRUCTURAL, not behavioural: the DATA carries no version field and no
