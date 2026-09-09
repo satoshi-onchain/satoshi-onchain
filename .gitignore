@@ -43,3 +43,10 @@ BLOCKSTREAM_TOKEN*
 /SHA256SUMS.*
 /satoshi-onchain-*.tar.gz
 /satoshi-onchain-*.tar.gz.asc
+
+# Blockstream API response cache for verify/noncoinbase_data_scan.py. 2.7 MB of raw
+# transaction JSON for the 219 first-year non-coinbase transactions, keyed by txid.
+# It is a resume checkpoint, not a result: delete it and the scan refetches and
+# reproduces the same output. Tracking it would pin an explorer's serialisation as
+# though it were our evidence, which is the opposite of what the scan is for.
+noncoinbase_scripts.json
