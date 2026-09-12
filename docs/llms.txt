@@ -39,3 +39,11 @@ This site studies **Satoshi's 2009 chain**. A separate laboratory (bitcoin-lab.o
 a **2026 experimental chain that is also called Bitcoin and also uses v0.1.x version
 numbers.** They are unrelated. Read the coinbase of block 0 to tell them apart, never
 the version number.
+
+## Scope
+
+Experimental laboratory research, in progress and expected to change. It reports what published,
+re-runnable methods find in public material — statistical and machine-verifiable findings, graded
+by their evidence — and draws no conclusion beyond them. It has no knowledge or insight beyond the
+material it names. Not money, not advice, no warranty. Neutral: no chain, project or person is
+endorsed or characterised; public records are cited.

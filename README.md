@@ -1,5 +1,10 @@
 # Satoshi on-chain: a reproducible verifier + Patoshi classifier
 
+> **Scope.** Experimental laboratory research, in progress and expected to change. It reports what
+> published, re-runnable methods find in public material — statistical and machine-verifiable
+> findings, graded by their evidence — and draws no conclusion beyond them. Not money, not advice,
+> no warranty. Details in [RIGHTS.md](RIGHTS.md).
+
 **Goal.** Reconstruct *the verifiable on-chain footprint of the original Satoshi on the
 original Bitcoin chain* — nothing that rests on off-chain claims or the word "Satoshi"
 in someone's mouth. Every figure here is meant to be re-derivable from the chain itself
