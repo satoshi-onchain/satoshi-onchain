@@ -16,11 +16,11 @@ coinbase height(s), then feed those heights here.
 
 Verdicts (never over-claimed):
   GENESIS      height 0        -- Satoshi's by construction (Tier A, definitional).
-  PATOSHI      confirmed set   -- Satoshi-attributed (Tier B, forensic; phi >= 0.5).
+  PATOSHI      confirmed set   -- Satoshi-attributed (Tier B, statistical; phi >= 0.5).
   AMBIGUOUS    LSB-pass, low phi -- passes the *necessary* condition but sits in the diluted
                                   zone; genuinely ~50/50 Patoshi vs ordinary miner.
   NOT PATOSHI  LSB-fail        -- fails the necessary nonce-LSB condition; an ordinary miner.
-Attribution is [forensic], never [cryptographic]: no key here has ever signed.
+Attribution is [statistical], never [cryptographic]: no key here has ever signed.
 """
 import csv, sys
 
@@ -50,7 +50,7 @@ def verdict(rec):
     if h == 0:
         return "GENESIS", "Satoshi's by construction (Tier A). 50 BTC, permanently unspendable."
     if rec["confirmed"]:
-        return "PATOSHI", f"Satoshi-attributed (Tier B, forensic; phi={rec['phi']:.2f})."
+        return "PATOSHI", f"Satoshi-attributed (Tier B, statistical; phi={rec['phi']:.2f})."
     if rec["lsb"]:
         return "AMBIGUOUS", (f"passes the necessary nonce-LSB test but phi={rec['phi']:.2f} "
                              f"(diluted zone) -- ~50/50 Patoshi vs ordinary miner; not attributable.")

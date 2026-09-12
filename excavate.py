@@ -9,7 +9,7 @@ Reports, with NO interpretation, four machine-derived facts about the Patoshi/Sa
   3. EXTRANONCE TRACKS        — the coinbase ExtraNonce progression (single-miner structure).
   4. NONCE-LSB BAND STRUCTURE — the exact low-byte bands that constitute the fingerprint.
 
-Grade: [forensic], never [cryptographic]. Every number is a count over public block data.
+Grade: [statistical], never [cryptographic]. Every number is a count over public block data.
 """
 import csv, sys
 from collections import Counter, defaultdict

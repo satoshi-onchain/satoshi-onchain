@@ -22,7 +22,7 @@ LSB test never sees (whether the coinbase was ever spent):
 
   python slots.py patoshi_labeled.csv        # -> patoshi_confirmed.csv, patoshi_intensity.png
 
-Grade: [forensic], not [cryptographic].
+Grade: [statistical], not [cryptographic].
 """
 import csv, sys
 from collections import deque

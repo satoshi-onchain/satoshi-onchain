@@ -8,7 +8,7 @@
   C. NONCE BAND DENSITIES  — the exact per-value shape of the {0-9}u{19-58} fingerprint.
 
 Reads early_blocks_merged.csv (+ patoshi_confirmed.csv for the label). No interpretation.
-Grade: [forensic]. Run: python deepdig.py
+Grade: [statistical]. Run: python deepdig.py
 """
 import csv, statistics as st
 from collections import Counter, defaultdict

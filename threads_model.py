@@ -20,7 +20,7 @@ double-SHA-256 rate (a 2009 hardware/software fact, OFF-chain — this is the er
 Result: the hashrate is pinned to a few MH/s; the core count is a RANGE that depends entirely on the
 per-core assumption. We report the range and refuse to invent a single integer.
 
-Grade: [forensic] for the hashrate; [modeled / bounded] for the core count. No key, no signature.
+Grade: [statistical] for the hashrate; [modeled / bounded] for the core count. No key, no signature.
 Run: python threads_model.py
 """
 import csv

@@ -18,7 +18,7 @@ Findings (all reproduced, pure-Python secp256k1, no deps):
     is quantum (the P2PK pubkey is on-chain), not any classical nonce flaw.
 
 Boundary: "unspent => never-signed" is a per-key empirical fact, not a theorem (the block-9 key was
-itself reused as change), so it is checked here, not assumed. Grade: [forensic] — no key is recovered,
+itself reused as change), so it is checked here, not assumed. Grade: [statistical] — no key is recovered,
 no third party or identity claim; only what Satoshi's own keys did on-chain.
 Run: python nonce_safety.py
 """

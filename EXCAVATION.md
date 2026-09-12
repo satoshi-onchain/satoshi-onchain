@@ -4,7 +4,7 @@ Machine-derived facts from the labeled early-block data (`patoshi_confirmed.csv`
 `early_blocks_merged.csv`, blocks 0–60,000). Every number is a count or arithmetic over public block
 data. **No interpretation, no narrative.** Reproduce: `python excavate.py`.
 
-Grade: **[forensic]**, never [cryptographic] — nothing here involves a key or a signature. The one
+Grade: **[statistical]**, never [cryptographic] — nothing here involves a key or a signature. The one
 key/signature anchor tying this footprint to "Satoshi" lives outside this file (block 9 → block 170
 Finney transaction), and it is an anchor to a *key*, not to a person.
 

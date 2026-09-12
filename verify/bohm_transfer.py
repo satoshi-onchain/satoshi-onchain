@@ -34,7 +34,7 @@ WHAT IT ESTABLISHES, AND HOW STRONGLY.
     - Both funding coinbases carry the Patoshi nonce-LSB fingerprint. That is CONSISTENT with
       Satoshi's miner, but in this era ~74% of ALL blocks are Patoshi, so two Patoshi inputs
       would arise by chance about 55% of the time. It corroborates; it does not identify.
-    - The Patoshi fingerprint is [forensic], never [cryptographic]. No signature here proves
+    - The Patoshi fingerprint is [statistical], never [cryptographic]. No signature here proves
       who sent anything.
     - Bohm's date came from his own email archive, and a send date is not a confirmation date.
 
@@ -164,7 +164,7 @@ def main():
          precise date a named recipient swore to; it is shaped like a gift; the receiving address
          takes a second early payment days later (his "two other transactions") and is emptied in
          2011 (his account of spending it down before losing wallet access).
-  DOES NOT: prove who signed it. The Patoshi fingerprint on the funding coinbases is [forensic] and
+  DOES NOT: prove who signed it. The Patoshi fingerprint on the funding coinbases is [statistical] and
          weakly discriminating here -- ~74% of blocks in this era are Patoshi, so two Patoshi inputs
          arise by chance roughly half the time. No signature identifies a sender.""")
 

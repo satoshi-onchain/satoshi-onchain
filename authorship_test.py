@@ -19,7 +19,7 @@ or a spend of a known-Satoshi coin has never returned True on-chain. This is neu
 epistemics -- no person, no external source, only public bytes -- and it is the foundation the
 three-tier model (README) rests on: identity is a key-control predicate, not a claim.
 
-Grade: [definitional]/[forensic]. Run: python authorship_test.py
+Grade: [definitional]/[statistical]. Run: python authorship_test.py
 """
 import hashlib
 from nonce_safety import verify, extract, FULL_K9        # secp256k1 verify + sig/digest extractor

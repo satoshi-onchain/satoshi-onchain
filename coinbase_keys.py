@@ -15,7 +15,7 @@ block's P2PK coinbase pubkey, and counts distinct keys + flags any reuse over th
 Until that column is acquired, this confirms the pattern on a SMALL real sample fetched from the
 chain (blocks 0,1,2,3,9). Every early coinbase is bare P2PK: `41 <65-byte pubkey> ac`.
 
-Grade: [forensic]. Run: python coinbase_keys.py
+Grade: [statistical]. Run: python coinbase_keys.py
 """
 import csv
 

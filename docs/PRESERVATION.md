@@ -115,7 +115,7 @@ This adds nothing to the *classification* and attaches no value to anything — 
 already-verifiable method harder to lose and easier to reach. It extends the project's own standard (source
 preserved as primary evidence; results independently regenerable from the public chain) from "published on
 one host" to "retrievable from several independent, content-addressed archives." Still **not money**: no
-token, no sale by us — a forensic instrument to which this project assigns no value, preserved.
+token, no sale by us — a measuring instrument to which this project assigns no value, preserved.
 *(What a third party might do is not ours to bind; the commitment is about our own conduct.)*
 
 ## Enabling the two scaffolded layers

@@ -17,7 +17,7 @@ coinbase_script_hex OR coinbase_param). coinbase_value defaults to 50 BTC (corre
 blocks 0..~209,999); coinbase_spent defaults to '?' (dormancy not computed until you
 run the spent anti-join and merge it in).
 
-Grade: [forensic], never [cryptographic]. No key here has ever signed anything.
+Grade: [statistical], never [cryptographic]. No key here has ever signed anything.
 """
 import csv, sys
 from collections import deque
@@ -148,7 +148,7 @@ def main():
         print(f"                                 merge coinbase_spent by height and re-run)")
     print(f"Lerner clustered reference     : ~22,000 blocks, ~1,100,000 BTC, essentially all unspent")
     print(f"wrote patoshi_labeled.csv  ->  feed to plots.py for the ExtraNonce fingerprint")
-    print("\nGrade: [forensic], not [cryptographic]. Attribution to Satoshi rests on the")
+    print("\nGrade: [statistical], not [cryptographic]. Attribution to Satoshi rests on the")
     print("fingerprint + the block-170/Finney anchor, never on a signature.")
 
 

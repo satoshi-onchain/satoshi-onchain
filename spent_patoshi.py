@@ -7,7 +7,7 @@ the Patoshi coins that MOVED — the rest of the ~1.1M sits dormant.
 
 The map "which spending tx (awakening) spent which coinbase" needs the spending-txid join
 (acquire.sql Query C, or an outspends fetch per coinbase). The worked example is block 9 → the
-block-9 spend chain (`spend_chain.py`). Grade: [forensic]. Run: python spent_patoshi.py
+block-9 spend chain (`spend_chain.py`). Grade: [statistical]. Run: python spent_patoshi.py
 """
 import csv
 from collections import Counter

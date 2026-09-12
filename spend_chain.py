@@ -6,7 +6,7 @@ traces its full spend path from the raw transaction bytes (verbatim from the cha
 a value + a P2PK pubkey; the ONLY reused key is the block-9 key itself, kept as change at each hop.
 
 Empirical facts only — no interpretation, no third parties beyond the on-chain recipient keys.
-Grade: [forensic]. The block-9 key never signed anything except these spends (all on-chain).
+Grade: [statistical]. The block-9 key never signed anything except these spends (all on-chain).
 Run: python spend_chain.py
 """
 
@@ -92,7 +92,7 @@ def main():
     print(f"  residual change at the reused block-9 key: {change/1e8:.0f} BTC")
     print(f"  that {change/1e8:.0f}-BTC change output (block 183) is UNSPENT to date: {TERMINUS_CHANGE_UNSPENT}")
     print("\n  Empirical: Satoshi reused ONE key (block-9 coinbase) as change through 5 spends in Jan 2009,")
-    print("  paid 5 distinct new keys, and left the final 18 BTC untouched. [forensic]")
+    print("  paid 5 distinct new keys, and left the final 18 BTC untouched. [statistical]")
 
 if __name__ == "__main__":
     main()

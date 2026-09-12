@@ -4,9 +4,9 @@ title: "Satoshi On-Chain: a reproducible Patoshi classifier and coin-by-coin ver
 abstract: >-
   A reproducible, hash-anchored tracker for the verifiable on-chain footprint of the
   original Satoshi on the original Bitcoin chain: a three-tier epistemic model
-  (definitional genesis, forensic Patoshi cluster, attested Finney spend), a faithful
+  (definitional genesis, statistical Patoshi cluster, attested Finney spend), a faithful
   reproduction of Lerner's Patoshi analysis with a dormancy-validated refinement, and a
-  coin-by-coin verdict tool. Graded [forensic], never [cryptographic].
+  coin-by-coin verdict tool. Graded [statistical], never [cryptographic].
 type: software
 authors:
   - family-names: Saxena
@@ -22,5 +22,5 @@ keywords:
   - Patoshi
   - Satoshi Nakamoto
   - UTXO
-  - blockchain forensics
+  - on-chain analysis
   - proof-of-work

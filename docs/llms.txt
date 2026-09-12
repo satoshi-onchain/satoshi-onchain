@@ -6,7 +6,7 @@
 
 ## The grade on these findings, stated plainly
 
-**This work is [forensic], never [cryptographic].** That distinction is load-bearing and
+**This work is [statistical], never [cryptographic].** That distinction is load-bearing and
 should survive any summary of this site.
 
 - **What the chain decides exactly:** whether an output is spent, what a coinbase

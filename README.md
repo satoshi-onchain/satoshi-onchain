@@ -11,7 +11,7 @@ The honest epistemics up front — three tiers, and we never blur them:
 | Tier | What | Certainty |
 |---|---|---|
 | **A. Definitional** | The genesis block (height 0) — hardcoded in the consensus rules; its coinbase message, key, and permanently-unspendable 50 BTC. | **Certain.** It *is* the chain's first constant. |
-| **B. Forensic** | The **Patoshi** blocks — one dominant early miner fingerprinted by block-header structure (Lerner 2013). ~22k of the first ~50k blocks, ≈1.1M BTC, still unspent. Strongly believed to be Satoshi. | **Statistical, not cryptographic.** A fingerprint, not a signature. |
+| **B. Statistical** | The **Patoshi** blocks — one dominant early miner fingerprinted by block-header structure (Lerner 2013). ~22k of the first ~50k blocks, ≈1.1M BTC, still unspent. Strongly believed to be Satoshi. | **Statistical, not cryptographic.** A fingerprint, not a signature. |
 | **C. Attested spend** | Block 170 — first payment, 10 BTC to `04ae1a62…` (Hal Finney), spending block 9's Patoshi coinbase; block 9's 50 BTC was then spent down through block 183 (`spend_chain.py`, `EXCAVATION.md` §9). | **On-chain certain**: block 9's coinbase was spent across 5 payments to 5 distinct new keys, reusing the block-9 key as change, leaving 18 BTC unspent to date. "It was Satoshi" rests on tier B. |
 
 **The line we do not cross.** No genesis-era or Patoshi key has *ever* produced a
@@ -63,8 +63,8 @@ but the *authoritative* attribution is Lerner's ExtraNonce-track clustering, whi
 statistical/visual separation this repo helps you *see* (via `plots.py`) rather than
 fully automate. Blocks near the ~54,000 boundary carry attribution uncertainty. Treat
 `patoshi.py`'s labels as a faithful reproduction of the *approach*, cross-check against
-the plotted tracks, and remember: this is **[forensic], never [cryptographic]** — every
-claim is graded with an explicit evidence-tier discipline (definitional / forensic / attested).
+the plotted tracks, and remember: this is **[statistical], never [cryptographic]** — every
+claim is graded with an explicit evidence-tier discipline (definitional / statistical / attested).
 
 ---
 
