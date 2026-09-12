@@ -16,14 +16,14 @@ The honest epistemics up front — three tiers, and we never blur them:
 | Tier | What | Certainty |
 |---|---|---|
 | **A. Definitional** | The genesis block (height 0) — hardcoded in the consensus rules; its coinbase message, key, and permanently-unspendable 50 BTC. | **Certain.** It *is* the chain's first constant. |
-| **B. Statistical** | The **Patoshi** blocks — one dominant early miner fingerprinted by block-header structure (Lerner 2013). ~22k of the first ~50k blocks, ≈1.1M BTC, still unspent. Strongly believed to be Satoshi. | **Statistical, not cryptographic.** A fingerprint, not a signature. |
+| **B. Statistical** | The **Patoshi** blocks — one dominant early miner fingerprinted by block-header structure (Lerner 2013). ~22.5k of the first ~54k blocks, ≈1.13M BTC (Lerner 2013: ~22k, ~1.1M), still unspent. Widely attributed to Satoshi. | **Statistical, not cryptographic.** A fingerprint, not a signature. |
 | **C. Attested spend** | Block 170 — first payment, 10 BTC to `04ae1a62…` (Hal Finney), spending block 9's Patoshi coinbase; block 9's 50 BTC was then spent down through block 183 (`spend_chain.py`, `EXCAVATION.md` §9). | **On-chain certain**: block 9's coinbase was spent across 5 payments to 5 distinct new keys, reusing the block-9 key as change, leaving 18 BTC unspent to date. "It was Satoshi" rests on tier B. |
 
 **The line we do not cross.** No genesis-era or Patoshi key has *ever* produced a
 verifying signature. Only that would upgrade Tier B from *attributable* to *proven*.
-Every public "I am Satoshi" claim (incl. the BSV-side ones rejected in *COPA v Wright*,
-2024) fails exactly this test. The ~1.1M BTC staying silent for 15+ years is itself the
-strongest ongoing statement: the keys don't speak, and no impostor can make them.
+Every public "I am Satoshi" claim (including the one rejected in *COPA v Wright* [2024] EWHC
+1198 (Ch)) fails exactly this test. The ≈1.13M BTC staying silent for 15+ years is itself the
+strongest ongoing statement: the keys have not spoken, and no one else can make them speak.
 
 ---
 
@@ -31,7 +31,7 @@ strongest ongoing statement: the keys don't speak, and no impostor can make them
 
 | File | Role |
 |---|---|
-| `TIEBREAKER-CONSEQUENCES.md` | Three previously-unpublished consequences of Lerner's disclosed unspent-coinbase tiebreaker (time-unstable membership; circularity of dormancy-keyed freeze policies; spent-subsample error rates as a structural worst case). Original analysis, prior-art-checked 21 Aug 2026. |
+| `TIEBREAKER-CONSEQUENCES.md` | Three consequences of Lerner's disclosed unspent-coinbase tiebreaker that we have not found stated elsewhere (time-unstable membership; circularity of dormancy-keyed freeze policies; spent-subsample error rates as a structural worst case). The search is recorded in the file; pointers to prior statements are welcome. |
 | `anchors.py` | The Tier-A/C verified anchors (genesis, block 9→170) as checkable claims + a `verify()` that confirms them against real block/tx data you supply. |
 | `acquire.sql` | BigQuery: pull `height, timestamp, nonce, coinbase_script_hex, coinbase_value, coinbase_spent` for blocks 0–60,000. |
 | `acquire_rpc.py` | The authoritative alternative: build the same CSV from a synced Bitcoin Core node via `getblock` RPC (node-derived, [C-chain]-grade). |
@@ -93,7 +93,7 @@ python plots.py patoshi_labeled.csv          # -> extranonce_fingerprint.png, no
 
 Expected order-of-magnitude from step 3: ~22k Patoshi blocks, ≈1.05–1.1M BTC, of which
 essentially 0 BTC has ever been spent from the Patoshi set. (Non-Patoshi early miners
-*have* moved coins — e.g. the 2025–2026 250-BTC and 2,000-BTC awakenings — and the
+*have* moved coins — e.g. the “Satoshi-era wallet” movements reported in 2025–26 — and the
 classifier is exactly what lets you show those are **not** Satoshi.)
 
 ---
@@ -117,7 +117,7 @@ The nonce-LSB rate starts at ~97% (Satoshi mining nearly alone), holds ~80% to b
 ~16,000, then declines as other miners arrive and collapses to the 19.5% chance baseline
 at ~54,000–55,000 — see `nonce_lsb_rate.png`. **Dormancy cross-check:** the ~1.17M BTC
 unspent here is a subset of Bitcoin's standing bare-public-key value (~1.7–1.9M BTC by
-public estimates, e.g. Glassnode's structural figure) — these early Satoshi/Patoshi
+public analytics estimates; this project has not re-derived that range) — these early Satoshi/Patoshi
 coinbases *are* part of that quantum-exposed standing value.
 
 ### Refined estimate — `slots.py` (excess-over-chance, dormancy-validated)
@@ -169,8 +169,8 @@ python judge.py --file heights.csv
 A Patoshi coin is a coinbase P2PK output, so a spend consumes a coinbase directly — the
 spending tx's input outpoint *is* an early coinbase. **Query C** turns a spending txid (or a
 funding address) into originating coinbase height(s); `judge.py` rules each PATOSHI /
-AMBIGUOUS / NOT-PATOSHI against the validated set. This is exactly what shows the 2025–26
-250-BTC and 2,000-BTC awakenings were **not** Satoshi — and, conversely, would flag it
+AMBIGUOUS / NOT-PATOSHI against the validated set. This is exactly what shows the “Satoshi-era wallet”
+movements reported in 2025–26 were **not** Satoshi — and, conversely, would flag it
 instantly and unambiguously if the Patoshi cluster ever moved. Teaching case from the demo:
 **block 12 is dormant but NOT Patoshi** (nonce LSB = 63, out of range) — dormancy alone is
 never proof of Satoshi.
@@ -209,7 +209,7 @@ visible payment paths contain no `OP_DUP`/`OP_HASH160`/`OP_EQUALVERIFY`, only ba
 - S. D. Lerner, "The Well Deserved Fortune of Satoshi Nakamoto" (bitslog, 2013) and
   follow-up Patoshi analyses — the ExtraNonce/nonce methodology.
 - Genesis + block-170/Hal-Finney facts: the chain itself (verify via `anchors.py`).
-- Dormancy status (2026): Arkham Intelligence / Glassnode supply-by-age; the Patoshi
+- Dormancy status (2026): public analytics dashboards (not re-derived here); the Patoshi
   cluster remains unmoved while non-Patoshi Satoshi-era coins have awakened.
 
 ---

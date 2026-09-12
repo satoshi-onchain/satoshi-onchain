@@ -1,10 +1,10 @@
-# The unspent-coinbase tiebreaker, and three consequences nobody had drawn
+# The unspent-coinbase tiebreaker, and three consequences we have not found stated elsewhere
 
-*First published in this repository, 21 August 2026. A prior-art search on that date — academic
-papers, Bitslog, Lopp's tools and blog, Whale Alert, Elementus, the Gudmundsson thesis, GitHub
-code and discussions, X — found sources that note classifier uncertainty in general, and none
-that identify the spend-history dependency below or its consequences. We therefore state them
-here as original analysis, citing only the disclosed design they follow from.*
+*Published in this repository on 21 August 2026. On that date we searched academic papers, Bitslog,
+Lopp's tools and blog, Whale Alert, Elementus, the Gudmundsson thesis, GitHub code and discussions,
+and X, and found sources that note classifier uncertainty in general but none stating the
+spend-history dependency below or its consequences. A pointer to a prior statement is welcome and
+will be recorded here. Only the disclosed design is cited.*
 
 ---
 
@@ -33,6 +33,9 @@ frozen one evaluation of a moving function.
 
 ## Consequence 2 — a dormancy-keyed freeze policy on this set is circular
 
+*This document takes no position on whether any coins should be frozen or reassigned; it analyses
+the logical structure of one class of proposal.*
+
 Proposals of the form *"freeze the dormant coins attributed to Satoshi"*, keyed on such a set,
 use dormancy twice: once as an **input** to the attribution (the tiebreaker) and once as the
 **trigger** of the policy. For every doubt-case block the reasoning is: *it is attributed because
@@ -58,11 +61,11 @@ This repository's evidence-tier discipline already labels the Patoshi set **[sta
 rather than proven, its *membership rule itself is time-dependent* for the doubt cases. Nothing
 in this repository keys any claim on dormancy, and the tier table in `README.md` is unaffected.
 
-## A live instance, added the same day
+## Appendix — an instance in a published codebase
 
 Hours after this document was first published, a review of primary sources for the LayerTwo Labs
-"eCash" (ECX) hard fork — `ecash-com/fast-facts` and Paul Sztorc's own posts — showed the exact
-structure Consequences 1 and 2 describe, deployed: *"220 whitelisted 'repurpose' transactions
+"eCash" (ECX) hard fork — `ecash-com/fast-facts` and Paul Sztorc's own posts — showed the
+structure Consequences 1 and 2 describe: *"220 whitelisted 'repurpose' transactions
 reassign Satoshi-era (Patoshi) coins without signatures"* (`setRepurposeTx`, `src/repo_txns.h`),
 with the subset selected, in Sztorc's words, because *"having never availed the opportunity to
 sell any portion of them … makes it nearly certain they were abandoned."*
@@ -72,10 +75,6 @@ reassignment (Consequence 2), executed through a hard-coded transaction list tha
 evaluation of a time-dependent membership function (Consequence 1). We quote the project's own
 materials and characterise nothing beyond what the structure entails; whether the policy is wise
 is not this document's question. What it demonstrates is that these consequences are not
-hypothetical: reassignment policies keyed on dormancy over Patoshi-derived sets exist in shipping
+hypothetical: reassignment policies keyed on dormancy over Patoshi-derived sets exist in published
 code, and their soundness turns on exactly the properties analysed above.
 
----
-
-Anyone citing these consequences should cite Lerner's 2022 disclosure for the design and this
-document for the consequences — that is the entire public chain as of the search date above.
