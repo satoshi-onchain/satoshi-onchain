@@ -1,6 +1,6 @@
 # verify/ — reproduce the off-chain record yourself
 
-Six scripts. Between them they rebuild every off-chain claim this project makes about Satoshi's
+Scripts and queries, each stating what it establishes and what it does not. Between them they rebuild every off-chain claim this project makes about Satoshi's
 footprint, from public sources, with no API key, no login, and no trust in us.
 
 Python 3.9+, standard library only. Each is polite: identified User-Agent, sequential requests,

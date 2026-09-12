@@ -185,7 +185,7 @@
         <div>
           <h3>The Patoshi cluster</h3>
           <p>One dominant early miner, fingerprinted by structure its software leaked into every
-            header (Lerner 2013). ~22.5k of the first ~54k blocks; ≈1.13M BTC; still unspent.</p>
+            header (Lerner 2013). ~22.5k of the first ~54k blocks; ≈1.13M BTC attributed, about 94% of it never spent.</p>
           <span class="cert">statistical, not cryptographic — a fingerprint, not a signature</span>
         </div>
       </div>
@@ -389,7 +389,7 @@
       <div class="vd"><span class="h">block 54455</span><span class="tag amb">AMBIGUOUS</span><span class="desc">φ 0.05 — the honest 50/50 zone near the exit. Not attributable per-block.</span></div>
     </div>
     <p class="sm" style="margin-top:16px">This is exactly what shows the “Satoshi-era wallet” movements reported
-      in 2025–26 were <b style="color:var(--ink)">not</b> Satoshi — and what would flag it instantly,
+      in 2025–26 fall <b style="color:var(--ink)">outside</b> the Patoshi set (verdict NOT-PATOSHI) — and what would flag it instantly,
       unambiguously, if the real cluster ever stirred.</p>
   </section>
 
@@ -411,8 +411,8 @@
       bitcoin address and send 0.01 to it.”</p>
     <p class="sm">Finney had proposed that four days earlier, adding — and Satoshi endorsed the method
       while letting the caveat stand — that it was <i>“arguably not a good use of the Bitcoin
-      distributed database”</i>. <b>So this is not a question of capability or of knowledge. Block 0's
-      own coinbase carries 77 bytes of text, so the field was never too small. It was a choice.</b></p>
+      distributed database”</i>. <b>So the absence is not explained by capability or by knowledge: the method was described in public, and
+      block 0's own coinbase carries 77 bytes of text. Why no commitment was made is not recorded anywhere we have found.</b></p>
 
     <h3>Every channel, scanned</h3>
     <p class="sm">All known whitepaper versions, in both byte orders, under MD5, SHA-1, SHA-256,
@@ -431,7 +431,7 @@
     </div>
 
     <div class="verdicts">
-      <div class="vd"><span class="h">whole era</span><span class="tag no">NO COMMITMENT</span><span class="desc"><b>Nothing Satoshi put on any chain commits to the whitepaper, or to any document.</b> Established across both on-chain populations, over the whole of their active period, with a passing control behind every negative — an empty result and a broken query are indistinguishable without one.</span></div>
+      <div class="vd"><span class="h">whole era</span><span class="tag no">NO COMMITMENT</span><span class="desc"><b>Nothing Satoshi put on any chain commits to the whitepaper, or to any document.</b> Established over the scopes stated in the table above, with a passing control behind every negative — an empty result and a broken query are indistinguishable without one.</span></div>
       <div class="vd"><span class="h">2013-10-16</span><span class="tag amb">THIRD PARTY</span><span class="desc">An address derived from the canonical paper receives 1 satoshi — as output 65 of <b>83 one-satoshi outputs</b> in a single bulk send. A dust-spray whose address list happened to include one. Intent unknown, and almost certainly nothing to do with the whitepaper.</span></div>
       <div class="vd"><span class="h">2014-04-22</span><span class="tag amb">THIRD PARTY</span><span class="desc">A second derived address receives 5,432 satoshi. Its sender made <b>51 transactions in eight weeks, fifty identical in shape</b>, paying <b>100 distinct addresses once each</b> — a timestamping bot working a queue, for 0.0054 BTC in total. The whitepaper was one file of a hundred.</span></div>
       <div class="vd"><span class="h">11 Nov 2008</span><span class="tag no">NOTHING</span><span class="desc"><b>The version nobody holds was never timestamped by anyone.</b> It can be tested for without possessing a byte of it, because its SHA-256 is published in the court record. If someone had held that file and wanted to prove it, this was the cheap, publicly-endorsed way — and it cost one cent.</span></div>
@@ -444,12 +444,10 @@
       applies to the 2013 transaction that embedded the entire paper in block 230009 — a third
       party's act, four years after publication.</p>
 
-    <p class="sm">Why they declined is not a mystery either. They versioned, announced and hashed their
-      <b>code</b>; they linked the paper, revised it at least twice, and <b>never once announced a
-      revision</b> — measured across every surviving corpus of their writing. In their own release
-      announcement the software download comes first and the paper is a footnote they call
-      <i>“the design paper”</i>. <b>The code was the artifact. The paper explained it.</b> You do not
-      commit your documentation to an immutable ledger, least of all while still editing it.</p>
+    <p class="sm">Two measured facts sit beside that absence. The code was versioned, announced and hashed;
+      the paper was linked, revised at least twice, and no revision was ever announced in any surviving
+      corpus of their writing. In the release announcement the download comes first and the paper is
+      described as <i>“the design paper”</i>. This page records the pattern and draws no motive from it.</p>
   </section>
 
   <section id="offchain">
@@ -500,7 +498,7 @@
 
     <div class="xlink"><b>Rebuild all of it yourself.</b>
       <a href="https://github.com/satoshi-onchain/satoshi-onchain/tree/main/verify"><b>verify/</b></a>
-      holds six scripts — Python 3, standard library only, no API key and no login — that regenerate
+      holds the scripts and queries — Python 3, standard library only, no API key and no login — that regenerate
       every line above from its public source: the SourceForge account pages and their sequential
       user IDs, the 252 SVN revisions from Software Heritage, all 539 forum posts with their raw
       HTML, and a full copy of the cryptography-list archive. Each carries a README stating what it
@@ -614,12 +612,11 @@
   <section>
     <h2>The line</h2>
     <p class="close">No genesis-era or Patoshi key has ever produced a verifying signature. Only that
-      would turn <i>attributable</i> into <i>proven</i>. The ≈1.13M BTC staying silent for fifteen years
+      would turn <i>attributable</i> into <i>proven</i>. The ≈1.13M BTC staying largely silent since it was mined
       is itself the strongest statement: the keys don’t speak — and no one else can make them speak.</p>
-    <div class="xlink">Cross-check with the quantum threat model: these ~1.13M dormant Patoshi coins are bare
-      <b>P2PK</b> outputs — a subset of the <b>~1.7–1.9M BTC</b> of standing exposed-public-key value on
-      Bitcoin (public analytics estimates; this project has not re-derived that range). A large share of the single most
-      quantum-exposed coin class is one dormant miner.</div>
+    <div class="xlink">Cross-check with the quantum threat model: these dormant Patoshi coinbases are bare
+      <b>P2PK</b> outputs, so their public keys have been on the chain since 2009; they belong to the class
+      most exposed to a break of elliptic-curve signatures.</div>
   </section>
 
   <footer aria-label="provenance and license">
@@ -630,7 +627,7 @@
 
     <div><span class="k">pipeline</span> &nbsp;acquire → classify → refine → validate → judge</div>
     <div><span class="k">reproduce</span> &nbsp;patoshi.py · slots.py · judge.py &nbsp;·&nbsp; excavation: excavate.py · deepdig.py · spend_chain.py · nonce_safety.py · authorship_test.py</div>
-    <div><span class="k">excavation (v1.1.1)</span> &nbsp;dormant ledger · diurnal null (24/7) · hashrate &amp; restraint · no thread-count signal · block-9 spend chain · 1,145 awakenings · nonce-safety · the key-control standard &nbsp;·&nbsp; <a href="https://github.com/satoshi-onchain/satoshi-onchain/blob/main/EXCAVATION.md">EXCAVATION.md §1–15</a></div>
+    <div><span class="k">excavation</span> &nbsp;dormant ledger · diurnal null (24/7) · hashrate &amp; restraint · no thread-count signal · block-9 spend chain · 1,145 awakenings · nonce-safety · the key-control standard &nbsp;·&nbsp; <a href="https://github.com/satoshi-onchain/satoshi-onchain/blob/main/EXCAVATION.md">EXCAVATION.md §1–15</a></div>
     <div><span class="k">sources</span> &nbsp;S. D. Lerner, Patoshi analyses (2013) · the chain itself (genesis, block 170)</div>
 
     <p class="sf-links">
@@ -664,7 +661,7 @@
      depth, copies, and this page's filters. More KINDS of event; never more identification. -->
 <script>window.goatcounter = { path: function (p) { return 'satoshioncha.in' + p } }</script>
 <script data-goatcounter="https://parthod0x.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<!-- umami-tracker: self-hosted, first-party, no cookies, no third party -->
+<!-- umami: self-hosted by the laboratory at analytics.bitcoin-lab.org; no cookies, aggregate only -->
 <script defer src="https://analytics.bitcoin-lab.org/script.js" data-website-id="3959d386-fab2-45b8-9045-30c2d09b2f7c"></script>
 <script src="analytics.js"></script>
 

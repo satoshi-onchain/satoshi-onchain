@@ -113,7 +113,7 @@ ERA_NOTE = '''<div class="eradiv" id="era-2026">
   chain. <b>It is not a fork of the chain above and shares no history, no balances and no units
   with it.</b> The chain is experimental and its coins have no value: nothing is sold, offered,
   priced or traded.</p>
-  <p><b>The rows are graded by the same table, and it does not flatter them.</b> Six of the seven are
+  <p><b>The rows are graded by the same table, and it does not flatter them.</b> Five of the seven are
   <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span> &mdash; our own record of our own runs, the
   same grade this timeline gives Satoshi&rsquo;s own releases. Exactly one reaches
   <span class="g g-CHAIN">CHAIN</span>, and it earns that on the 2009 chain rather than on ours. One

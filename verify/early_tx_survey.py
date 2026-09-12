@@ -2,7 +2,9 @@
 
 Early Bitcoin is almost entirely empty. For roughly the first year the chain is a near-unbroken run
 of coinbase-only blocks, which means every actual PAYMENT in that period can be listed exhaustively
--- and, as far as we can find, nobody has published that list.
+-- Bitcointalk user TheArchaeologist enumerated the 2009 transactions in 2018 (topic 5044418) and the
+COPA v Wright judgment states the count at paragraph 716; this script is an independent reproduction,
+not the first list.
 
 That matters because it turns claims about early transfers into checkable ones. When a named person
 says "Satoshi sent me N coins on date D", you do not need to trust it, or trust us: you look at the
