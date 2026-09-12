@@ -51,8 +51,7 @@ from resolve_coinbase_addresses import build_address_index, load_patoshi, is_pat
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ap = argparse.ArgumentParser()
-ap.add_argument("--payments", default=os.path.join(HERE, "..", "..", "archives", "bigquery-onchain",
-                                                   "first_year_payments.csv"))
+ap.add_argument("--payments", default=os.path.join(HERE, "..", "first_year_payments.csv"))
 ap.add_argument("--cb", default=os.path.join(HERE, "..", "cb_outputs.csv"))
 ap.add_argument("--patoshi", default=os.path.join(HERE, "..", "patoshi_confirmed.csv"))
 ap.add_argument("--out", default=os.path.join(HERE, "..", "first_year_patoshi_map.csv"))

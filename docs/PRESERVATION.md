@@ -61,13 +61,22 @@ parthod0x-pgp=B128526AF85AE4A8F22B949FB0145F74B78CF1DA; manifest=https://bitcoin
 > the zone.** One domain's change read as "not applied" on both `1.1.1.1` and `8.8.8.8` while
 > `dns1`/`dns2.registrar-servers.com` already served it, with 1,755 s of TTL still to run.
 
-**Anchored 11 August 2026 in Bitcoin block 962049** — all three proofs upgraded from pending to
-complete, each carrying `BitcoinBlockHeaderAttestation(962049)`:
+**Revision 1 anchored 11 August 2026 in Bitcoin block 962049** — its three proofs upgraded from
+pending to complete, each carrying `BitcoinBlockHeaderAttestation(962049)`:
 
 ```
 block hash     00000000000000000000b1914635ada20cd0992856ebba4ba21b5ea4815eda1b
 merkle root    cf62d5d80f9e0a2fecdba1c129eff6fb42ce259572649c163e42e8641ea90864
 block time     2026-08-11 20:03:25 UTC
+```
+
+**Revision 2 (`4825c4c0…`, 12,930 B) anchored 12 August 2026 in Bitcoin block 962081** — the three
+proofs published beside it each carry `BitcoinBlockHeaderAttestation(962081)`:
+
+```
+block hash     000000000000000000000d3c4cb24b2fd84a2f65eb39c14f5708285820e9e0a1
+merkle root    cbf9d141073c02fc3d955dfa6c8e7e758b5ec7388eb529eb9c4f7ee86d8d9b48
+block time     2026-08-12 03:29:39 UTC
 ```
 
 **The merkle root was read off the chain and compared, not taken from the `ots` output** — which is

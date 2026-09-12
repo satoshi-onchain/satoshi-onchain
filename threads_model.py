@@ -176,7 +176,7 @@ def main():
     print("    and the per-core rate of the 2009 unoptimized miner is an OFF-chain unknown.")
     print(f"  * Under plausible per-core rates (0.5-2.0 MH/s) the count is ~{lo_cores:.0f}-"
           f"{hi_cores:.0f} cores;")
-    print("    at the likely ~1-2 MH/s/core it is a SINGLE ordinary multi-core desktop (~2-4 cores).")
+    print("    at the likely ~1-2 MH/s/core it is a SINGLE ordinary multi-core desktop (~2-5 cores).")
     print("  * The low-byte fingerprint is a CONTIGUOUS-RANGE counter artifact, not a mod-K residue")
     print("    (thread-id) partition (§5) — so the nonces carry no thread-count signal either.")
     print("  * A single integer cannot be claimed from on-chain data alone. Reported as a range.")

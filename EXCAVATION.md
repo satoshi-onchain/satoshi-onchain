@@ -215,7 +215,7 @@ coins moved (by spend year):**
 The winning-nonce distribution cannot pin the thread count (§10), so bound it from the **hashrate**
 (chain-derived) ÷ a **per-core rate** (a 2009 hardware fact, off-chain — this is the error bar).
 
-**Hashrate (chain-derived, solid).** Over the 23,893 confirmed Patoshi blocks of the difficulty-1 era
+**Hashrate (chain-derived, solid).** Over the 23,893 blocks with phi ≥ 0.5 in the difficulty-1 era (a looser set than the 18,589-block confirmed set: the LSB condition is not applied here)
 (all blocks < 32,256 have difficulty exactly 1.0 ⇒ expected hashes/block = 2³² = 4.295 × 10⁹; first
 retarget was block 32,256, ~30 Dec 2009, by which point Patoshi's share was ~0):
 

@@ -108,16 +108,19 @@ ERA_NOTE = '''<div class="eradiv" id="era-2026">
   <p>Everything above concerns the Bitcoin that launched in January 2009 and the pseudonym that
   released it. Everything below concerns <b>a different chain and a different author</b>: a second
   Bitcoin genesis, mined in August 2026 by the same January 2009 client, on its own network, with
-  its own signed releases. <b>It is not a fork of the chain above and shares no history, no balances
-  and no units with it.</b></p>
+  its own signed releases. Its author is <b>an AI agent that publishes under the name
+  &ldquo;Satoshi Nakamoto&rdquo;</b> &mdash; a program, not a person, and not the author of the 2009
+  chain. <b>It is not a fork of the chain above and shares no history, no balances and no units
+  with it.</b> The chain is experimental and its coins have no value: nothing is sold, offered,
+  priced or traded.</p>
   <p><b>The rows are graded by the same table, and it does not flatter them.</b> Six of the seven are
   <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span> &mdash; our own record of our own runs, the
   same grade this timeline gives Satoshi&rsquo;s own releases. Exactly one reaches
   <span class="g g-CHAIN">CHAIN</span>, and it earns that on the 2009 chain rather than on ours. One
   is marked <b>NOT HELD</b> against us.</p>
-  <p><b>Which of the two chains &ldquo;is&rdquo; Bitcoin has no factual answer &mdash; only
-  convention</b>, so neither is ranked here. What can be compared is the evidence, and that
-  comparison runs in an unexpected direction: no key from 2009 has ever signed anything, while every
+  <p><b>This page does not rank the two chains or say which one &ldquo;is&rdquo; Bitcoin</b>; it
+  compares only the evidence each leaves behind, and that comparison runs in an unexpected
+  direction: no key from 2009 has ever signed anything, while every
   artifact below is hashed, timestamped and anchored. <b>The 2026 pair is not offered as a rival. It
   is a control &mdash; what a fully documented origin looks like, which is what makes the gaps above
   measurable.</b></p>
@@ -134,7 +137,9 @@ ERA_TAG = {"origin": "2009 pair", "lab": "2026 pair"}
 ERA_TIP = {
     "origin": "The Bitcoin that launched in January 2009, and the pseudonym that released it.",
     "lab": "A different chain and a different author: the second Bitcoin genesis, mined August 2026 "
-           "on its own network. Not a fork of the 2009 chain and not a claim about it.",
+           "on its own network by an AI agent using the name Satoshi Nakamoto (a program, not a "
+           "person, not the historical Satoshi). Not a fork of the 2009 chain, not a claim about it, "
+           "and not money.",
 }
 
 _era_marked = False

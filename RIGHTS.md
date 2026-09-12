@@ -63,14 +63,14 @@ court, or a document they themselves published. This project:
   with its limits stated alongside.
 
 **If you are named here and want something corrected or removed, ask.** You do not need to explain
-why, and you will not be argued with. Corrections are made promptly and recorded openly.
+why. Requests are considered promptly and the outcome is recorded openly.
 
 ## Errors
 
 This project publishes its mistakes on purpose. Several published claims here have been wrong and
 were corrected in place, with the error and its cause described rather than quietly edited away —
-because a result is worth what its checking is worth. If you find an error, report it and it will be
-fixed and credited.
+because a result is worth what its checking is worth. If you find an error, report it; it will be
+reviewed and, where confirmed, corrected and credited.
 
 ## Licence
 

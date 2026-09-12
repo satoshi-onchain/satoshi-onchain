@@ -31,8 +31,12 @@ BLOCK170 = {
     "txid": "f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16",
     "spends": "block 9 coinbase (50 BTC, a Patoshi block)",
     "out0_value_sat": 10 * SAT,       # -> Hal Finney (first person-to-person tx)
-    "out1_value_sat": 40 * SAT,       # -> change back to Satoshi
-    "finney_pubkey_hex": ("0411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909"
+    "out1_value_sat": 40 * SAT,       # -> change back to the block-9 key
+    # output 0 (10 BTC) pays Hal Finney's P2PK key; read it off the transaction, not from memory
+    "finney_pubkey_hex": ("04ae1a62fe09c5f51b13905f07f06b99a2f7159b2225f374cd378d71302fa28414e"
+                          "7aab37397f554a7df5f142c21c1b7303b8a0626f1baded5c72a704f7e6cd84c"),
+    # output 1 (40 BTC) is change, paid back to the block-9 coinbase key itself
+    "block9_pubkey_hex": ("0411db93e1dcdb8a016b49840f8c53bc1eb68a382e97b1482ecad7b148a6909"
                           "a5cb2e0eaddfb84ccf9744464f82e160bfa9b8b64f9d4c03f999b8643f656b412a3"),
 }
 
@@ -89,8 +93,11 @@ def verify_block170(url):
                  vals == [BLOCK170["out1_value_sat"], BLOCK170["out0_value_sat"]][::-1]
                  or vals == [BLOCK170["out0_value_sat"], BLOCK170["out1_value_sat"]])
     finney = any(BLOCK170["finney_pubkey_hex"] in o["scriptPubKey"].get("hex", "")
-                 for o in tx["vout"])
+                 and round(o["value"] * SAT) == BLOCK170["out0_value_sat"] for o in tx["vout"])
     ok &= _check("10-BTC output pays Hal Finney's P2PK key", finney)
+    change = any(BLOCK170["block9_pubkey_hex"] in o["scriptPubKey"].get("hex", "")
+                 and round(o["value"] * SAT) == BLOCK170["out1_value_sat"] for o in tx["vout"])
+    ok &= _check("40-BTC change output pays block 9's own key", change)
     return ok
 
 
