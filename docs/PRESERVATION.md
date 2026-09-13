@@ -55,7 +55,7 @@ parthod0x-pgp=B128526AF85AE4A8F22B949FB0145F74B78CF1DA; manifest=https://bitcoin
 > ★ **It pins the KEY FINGERPRINT, not a manifest hash.** The first version pinned
 > `parthod0x-manifest=<sha256>` and went stale within a day when the manifest was revised. **A
 > binding that breaks whenever the thing it binds is improved is the wrong binding.** The record
-> proves domain control and publishes only a fingerprint, which is already public — never a key.
+> proves domain control and publishes only a fingerprint, which is already public — not a key.
 >
 > ⚠️ **Check it against the authoritative nameservers, not a public resolver — a cached answer is not
 > the zone.** One domain's change read as "not applied" on both `1.1.1.1` and `8.8.8.8` while
@@ -217,7 +217,7 @@ already recorded** (`QmWXhPWbgULBJJSTvpUss2vg17wyKBmWLNydsdciCGZYWW`), so the re
 only the object had gone. The retrieved bytes are identical to the offline copy of that manifest held in the project's cold
 backup (path deliberately not named here — it is a secret store).
 
-The same run pinned v1.2.0's post-quantum artifacts for the first time — they were never covered
+The same run pinned v1.2.0's post-quantum artifacts for the first time — they were not covered
 before the workflow fix above:
 
 ```
@@ -254,5 +254,5 @@ SHA256SUMS.slhdsa.ots  QmawXftYvbVbcpP4r3bjXAGLrJmGMw7RySfYxVa3ZGH3v4
 ```
 
 ⇒ **The counter-signature and its Bitcoin anchor are now content-addressed, signed and archived in
-three independent places.** That is the state this file always claimed and, until today, did not
+three independent places.** That is the state this file claimed and, until today, did not
 have.

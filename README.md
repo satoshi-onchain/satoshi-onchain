@@ -15,11 +15,11 @@ The honest epistemics up front — three tiers, and we do not blur them:
 
 | Tier | What | Certainty |
 |---|---|---|
-| **A. Definitional** | The genesis block (height 0) — hardcoded in the consensus rules; its coinbase message, key, and permanently-unspendable 50 BTC. | **Certain.** It *is* the chain's first constant. |
+| **A. Definitional** | The genesis block (height 0) — hardcoded in the consensus rules; its coinbase message, key, and unspendable 50 BTC. | **Certain.** It *is* the chain's first constant. |
 | **B. Statistical** | The **Patoshi** blocks — one dominant early miner fingerprinted by block-header structure (Lerner 2013). ~22.5k of the first ~54k blocks, ≈1.13M BTC attributed (Lerner 2013: ~22k, ~1.1M), of which about 94% has never been spent. Widely attributed to Satoshi. | **Statistical, not cryptographic.** A fingerprint, not a signature. |
 | **C. Attested spend** | Block 170 — first payment, 10 BTC to `04ae1a62…` (Hal Finney), spending block 9's Patoshi coinbase; block 9's 50 BTC was then spent down through block 183 (`spend_chain.py`, `EXCAVATION.md` §9). | **On-chain certain**: block 9's coinbase was spent across 5 payments to 5 distinct new keys, reusing the block-9 key as change, leaving 18 BTC unspent to date. "It was Satoshi" rests on tier B. |
 
-**The line we do not cross.** No genesis-era or Patoshi key has *ever* produced a
+**The line we do not cross.** No genesis-era or Patoshi key has produced a
 verifying signature. Only that would upgrade Tier B from *attributable* to *proven*.
 Every public "I am Satoshi" claim (including the one rejected in *COPA v Wright* [2024] EWHC
 1198 (Ch)) fails exactly this test. The ≈1.13M BTC staying largely silent since 2009 is itself the
@@ -37,7 +37,7 @@ strongest ongoing statement: the keys have not spoken, and no one else can make 
 | `acquire_rpc.py` | The authoritative alternative: build the same CSV from a synced Bitcoin Core node via `getblock` RPC (node-derived, [C-chain]-grade). |
 | `patoshi.py` | Parse the ExtraNonce from each coinbase, apply Lerner's LSB criterion, tally the attributed coins, and check dormancy. Emits `patoshi_labeled.csv` + a summary. |
 | `merge_spent.py` | Fold the optional dormancy result (Query B) into the classification CSV by height. |
-| `slots.py` | **Refine the LSB upper bound into a Patoshi *estimate*** via local excess-over-chance, and **validate it against dormancy** (a signal the LSB test never sees). Emits `patoshi_confirmed.csv` + `patoshi_intensity.png`. |
+| `slots.py` | **Refine the LSB upper bound into a Patoshi *estimate*** via local excess-over-chance, and **validate it against dormancy** (a signal the LSB test does not see). Emits `patoshi_confirmed.csv` + `patoshi_intensity.png`. |
 | `judge.py` | **The verdict tool.** For any block height, is the coin Satoshi's? GENESIS / PATOSHI / AMBIGUOUS / NOT-PATOSHI, with dormancy. Turns every "old wallet moved" headline into a checkable answer. |
 | `plots.py` | Reproduce the "fingerprint": ExtraNonce-vs-height scatter (the Patoshi tracks) and the rolling nonce-LSB pass-rate (the era curve). |
 
@@ -68,7 +68,7 @@ but the *authoritative* attribution is Lerner's ExtraNonce-track clustering, whi
 statistical/visual separation this repo helps you *see* (via `plots.py`) rather than
 fully automate. Blocks near the ~54,000 boundary carry attribution uncertainty. Treat
 `patoshi.py`'s labels as a faithful reproduction of the *approach*, cross-check against
-the plotted tracks, and remember: this is **[statistical], never [cryptographic]** — every
+the plotted tracks, and remember: this is **[statistical], not [cryptographic]** — every
 claim is graded with an explicit evidence-tier discipline (definitional / statistical / attested).
 
 ---
@@ -92,7 +92,7 @@ python plots.py patoshi_labeled.csv          # -> extranonce_fingerprint.png, no
 ```
 
 Expected order-of-magnitude from step 3: ~22k Patoshi blocks, ≈1.05–1.1M BTC, of which
-about 6% (1,145 coinbases, 57,250 BTC) has ever been spent; the rest is unspent. (Non-Patoshi early
+about 6% (1,145 coinbases, 57,250 BTC) has been spent; the rest is unspent. (Non-Patoshi early
 miners *have* moved coins — e.g. the “Satoshi-era wallet” movements reported in 2025–26 — and the
 classifier is exactly what lets you show those fall outside the Patoshi set.)
 
@@ -109,7 +109,7 @@ as hex, the dataset's format):
 | Predicted if ~22k Patoshi + 19.5% chance on the rest | ~29,400 | — | **Measured 29,837 ≈ predicted** ✓ |
 | Coins under the LSB filter | **1,491,850 BTC** | — | Upper bound (includes chance passers) |
 | — of which **unspent** | **1,170,350 BTC** | ≈1.1M BTC | **Lands on Lerner** ✓ |
-| — of which ever spent | 321,500 BTC | ~0 (true Patoshi) | Mostly chance-passers; block 9 → Finney is in here |
+| — of which spent | 321,500 BTC | ~0 (true Patoshi) | Mostly chance-passers; block 9 → Finney is in here |
 | Patoshi-era end (LSB rate → baseline) | **block 54,458** | ~54,000 (late 2010) | **Lands on Lerner** ✓ |
 | Fingerprint | sawtooth ExtraNonce tracks, visible by eye | Lerner's tracks | See `extranonce_fingerprint.png` |
 
@@ -146,7 +146,7 @@ the era end. **The area under it is the count.**
 
 The confirmed set is **14× more dormant than background** and **6.9× more than the discarded
 chance-passers** — ordered exactly as the labels predict, corroborated by a signal the
-classifier never used. (The residual 6.2% is genuine early Satoshi test-spends — e.g. block
+classifier did not use. (The residual 6.2% is genuine early Satoshi test-spends — e.g. block
 9 → Finney — plus some transition-zone contamination; it is not zero, and we don't pretend it
 is.)
 
@@ -170,9 +170,9 @@ spending tx's input outpoint *is* an early coinbase. **Query C** turns a spendin
 funding address) into originating coinbase height(s); `judge.py` rules each PATOSHI /
 AMBIGUOUS / NOT-PATOSHI against the validated set. This is exactly what shows the “Satoshi-era wallet”
 movements reported in 2025–26 fall outside the Patoshi set (verdict NOT-PATOSHI) — and, conversely, would flag it
-instantly and unambiguously if the Patoshi cluster ever moved. Teaching case from the demo:
+instantly and unambiguously if the Patoshi cluster moved. Teaching case from the demo:
 **block 12 is dormant but NOT Patoshi** (nonce LSB = 63, out of range) — dormancy alone is
-never proof of Satoshi.
+not proof of Satoshi.
 
 ---
 

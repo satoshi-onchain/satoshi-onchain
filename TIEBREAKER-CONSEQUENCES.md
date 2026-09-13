@@ -25,7 +25,7 @@ appear to have been published by anyone.
 ## Consequence 1 — membership is partly a function of spend history, so the set is not stable in time
 
 A doubt-case block is *in* the Patoshi set **because its coinbase has not moved**. If that
-coinbase ever moves, the same algorithm run again assigns the block differently: the set's
+coinbase moves, the same algorithm run again assigns the block differently: the set's
 membership depends on an input that changes over time. "The Patoshi set" is therefore not a fixed
 historical attribution but a time-indexed one — *the set as of the spend state at evaluation
 time* — and any consumer that hard-codes a block list (every public consumer we found does) has
@@ -41,7 +41,7 @@ use dormancy twice: once as an **input** to the attribution (the tiebreaker) and
 **trigger** of the policy. For every doubt-case block the reasoning is: *it is attributed because
 it is dormant; it is frozen because it is attributed*. The policy manufactures part of its own
 target class. Any such proposal must either restrict itself to the unequivocal subset (where the
-tiebreaker never fired) or accept that its scope is partly self-referential.
+tiebreaker did not fire) or accept that its scope is partly self-referential.
 
 ## Consequence 3 — error rates measured on the spent subsample are a structural worst case
 

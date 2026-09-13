@@ -28,7 +28,7 @@ kind of artifact, and gets the same discipline.**
 | `NONE` | asserted, no independent support | — |
 
 **No grade above `ADJUDICATED` implies identity.** Nothing here is `[cryptographic]`, because **no
-genesis-era or Patoshi key has ever produced a verifying signature.** That ceiling is a property of
+genesis-era or Patoshi key has produced a verifying signature.** That ceiling is a property of
 the world, not of our research, and the timeline must not blur it.
 
 ## Fields
@@ -65,4 +65,4 @@ missing. Speculation does not get a row in any form.
 - Anything resting on "widely believed", forum consensus, or a chain of inference with no artifact
 - Identity attributions of any kind
 - Anything whose only support is a mail `Date:` header **presented as location** — those are `SELF`
-  and appear as claims about a header, never about a person's whereabouts
+  and appear as claims about a header, not about a person's whereabouts

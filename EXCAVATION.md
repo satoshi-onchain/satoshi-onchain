@@ -4,7 +4,7 @@ Machine-derived facts from the labeled early-block data (`patoshi_confirmed.csv`
 `early_blocks_merged.csv`, blocks 0–60,000). Every number is a count or arithmetic over public block
 data. **No interpretation, no narrative.** Reproduce: `python excavate.py`.
 
-Grade: **[statistical]**, never [cryptographic] — nothing here involves a key or a signature. The one
+Grade: **[statistical]**, not [cryptographic] — nothing here involves a key or a signature. The one
 key/signature anchor tying this footprint to "Satoshi" lives outside this file (block 9 → block 170
 Finney transaction), and it is an anchor to a *key*, not to a person.
 
@@ -15,7 +15,7 @@ Finney transaction), and it is an anchor to a *key*, not to a person.
 | high-confidence Patoshi blocks | 18,589 |
 | total coinbase | 929,450 BTC |
 | **unspent (dormant)** | **872,200 BTC** (17,444 blocks, **93.8%**) |
-| ever spent | 57,250 BTC (1,145 blocks, 6.2%) |
+| spent | 57,250 BTC (1,145 blocks, 6.2%) |
 | era-wide estimate (excess-over-chance) | **~22,540 blocks ≈ 1,127,001 BTC** |
 
 The high-confidence set is a lower bound (counts only where Patoshi dominates); the excess-over-chance
@@ -63,7 +63,7 @@ Per-value average count of each low-byte value across blocks 1–54,458:
 | gap {59–255} | 197 | 124.8 | ×1.00 (baseline) |
 
 The gaps sit exactly at the non-Patoshi baseline (~124.7/value): **Patoshi's winning nonce low-byte was
-never in {10–18} or {59–255}.** Excess per in-band value × 50 = **~22,540 blocks** (independent
+not in {10–18} or {59–255} in any block of the set.** Excess per in-band value × 50 = **~22,540 blocks** (independent
 cross-check of §1). The full nonce is only mildly low-biased (53.7% < 2³¹ vs 50% uniform) — the sharp
 signal is the low-byte bands, not the magnitude.
 
@@ -74,7 +74,7 @@ signal is the low-byte bands, not the magnitude.
 - ExtraNonce slope within a track: median **~46 / block** (mean skewed by outliers).
 - Consistent with a single machine: ExtraNonce climbs ~linearly within a session, then restarts.
 
-## 6. Which Patoshi coins moved (the 6.2% ever spent)
+## 6. Which Patoshi coins moved (the 6.2% spent)
 
 - 1,145 spent Patoshi coinbases (57,250 BTC).
 - **Spend rate rises with height** — the *earliest* coins are the *most* dormant:
@@ -99,7 +99,7 @@ signal is the low-byte bands, not the magnitude.
   (Sep) → **3% (Oct) → 0% (Nov 2009)**. Patoshi *dominance* is a 2009 phenomenon; the weaker LSB tail
   persists to block ~54,458 (late 2010) but the high-confidence set is essentially the first ~10 months.
 - Network hashrate was **~5–12 MH/s** in 2009 (diff·2³²/interval).
-- **The restraint is visible:** difficulty never left 1.00 while Patoshi produced 58–85% of blocks — the
+- **The restraint is visible:** difficulty stayed at 1.00 while Patoshi produced 58–85% of blocks — the
   miner held a roughly constant, modest rate and **did not ramp**; difficulty rose only in 2010, *after*
   Patoshi's share had collapsed and others arrived.
 
@@ -114,19 +114,19 @@ signal is the low-byte bands, not the magnitude.
 
 ## 9. What Satoshi did with block 9 — the first spent coinbase (Tier C) — `spend_chain.py`
 
-Block 9's 50-BTC coinbase (P2PK to key `0411db93…`) is the **first Patoshi coinbase ever spent.** Its
+Block 9's 50-BTC coinbase (P2PK to key `0411db93…`) is the **first Patoshi coinbase spent.** Its
 full spend path, parsed from the raw transactions (chain-linked, self-verifying):
 
 | block | tx | payment (new key) | change (block-9 key) |
 |--:|---|--:|--:|
-| 170 | `f4184fc5…` | 10 BTC → `04ae1a62…` (first-ever payment, recipient Hal Finney) | 40 BTC |
+| 170 | `f4184fc5…` | 10 BTC → `04ae1a62…` (the first payment, recipient Hal Finney) | 40 BTC |
 | 181 | `a16f3ce4…` | 10 BTC → `04b5abd4…` | 30 BTC |
 | 182 | `591e91f8…` | 1 BTC → `0401518f…` | 29 BTC |
 | 182 | `12b5633b…` | 1 BTC → `04baa9d3…` | 28 BTC |
 | 183 | `828ef3b0…` | 10 BTC → `04bed827…` | **18 BTC (UNSPENT to date)** |
 
 - **32 BTC** paid out to **5 distinct new keys**; the **block-9 key was reused as change** at every hop.
-- The final **18 BTC change (block 183, 12 Jan 2009) has never moved** (blockstream: `828ef3b0` vout1
+- The final **18 BTC change (block 183, 12 Jan 2009) has not moved** (blockstream: `828ef3b0` vout1
   unspent; vout0 spent at block 496).
 - Key-reuse fact: the block-9 key signed 5 times here (nonces all distinct — verified separately). No
   other Satoshi coinbase key appears in these spends — **fresh recipient key per payment.**
@@ -182,7 +182,7 @@ includes the genesis block 0 coinbase, which D1's `BETWEEN 1 AND 54458` excluded
 
 ## 12. The spent Patoshi coinbases fed to the verdict tool (`spent_patoshi.py`)
 
-The **1,145** high-confidence Patoshi coinbases that were ever spent (57,250 BTC moved) — all fall in
+The **1,145** high-confidence Patoshi coinbases that were spent (57,250 BTC moved) — all fall in
 **blocks 9–24,182** (the dominance window); earliest is **block 9** (→ `spend_chain.py`). Heights are
 written to `spent_patoshi_heights.txt` (feed `judge.py`). The unspent complement (~1.1M BTC) is the
 dormant hoard.
@@ -230,7 +230,7 @@ retarget was block 32,256, ~30 Dec 2009, by which point Patoshi's share was ~0):
 difficulty a constant-hashrate miner finds a constant #blocks/month, so the drop is **either a real
 throttle-down or the φ≥0.5 set undercounting Patoshi in the diluted zone** (more interleaved
 non-Patoshi blocks → lower local LSB rate → φ falls below 0.5) — not cleanly separable. The clean
-machine-capability number is the **early-2009 peak ≈ 4.5–4.9 MH/s**. It **never ramped** (cf. §7).
+machine-capability number is the **early-2009 peak ≈ 4.5–4.9 MH/s**. It **did not ramp** (cf. §7).
 
 **Implied cores = hashrate ÷ per-core rate** (Satoshi's v0.1 miner used the *unoptimized* CryptoPP
 path; the 4-way SSE2 speedup came later, ~mid-2010):
@@ -265,7 +265,7 @@ fingerprint and the mining mechanics are the same fact from two sides. *(The neu
 
 A reused or biased ECDSA nonce `k` recovers the private key from public signatures alone (reuse:
 `k=(z₁−z₂)/(s₁−s₂)`, then `d=(s₁k−z₁)/r`). So "could a Satoshi key have leaked?" is a **checkable
-predicate over public data** (`GROUP BY r`), never an assumption. The only place Satoshi keys ever
+predicate over public data** (`GROUP BY r`), not an assumption. The only place Satoshi keys
 signed is the **block-9 coinbase key `0411db93`**, which signed the five spends of the block-9 change
 chain (§9). Reconstructing each `SIGHASH_ALL` digest from the raw bytes and verifying:
 
@@ -280,10 +280,10 @@ chain (§9). Reconstructing each `SIGHASH_ALL` digest from the raw bytes and ver
 - **All 5 signatures verify; all 5 nonces are distinct (5/5 unique) → no reuse, no leak.** The RNG
   behaved. (Corroborating context: the real ECDSA-nonce key thefts — Android 2013, lattice sweeps
   2019 — all cluster post-2012; no Satoshi-era key appears in them.)
-- **The ~1.1M-BTC unspent Patoshi coinbases (§1) are different keys that never signed at all** → no
+- **The ~1.1M-BTC unspent Patoshi coinbases (§1) are different keys that have not signed at all** → no
   nonce exists to attack → **nonce-immune**. Their only exposure is quantum (the P2PK pubkey is
   on-chain, §11), not any classical nonce flaw.
-- Boundary: "unspent ⇒ never-signed" is a **per-key empirical fact, not a theorem** — the block-9 key
+- Boundary: "unspent ⇒ unsigned" is a **per-key empirical fact, not a theorem** — the block-9 key
   was itself reused as change — so it is *checked* here, per key, not assumed.
 
 ## 15. What would machine-verifiably prove control of a Satoshi key? (`authorship_test.py`)
@@ -305,14 +305,14 @@ private key:
 - **[2] is what a real proof requires** — signing a challenge chosen after the fact needs the private
   key. The control predicate
   `ECDSA_verify(known_satoshi_pubkey, H(fresh_challenge), sig) == True` (or a spend of a known-Satoshi
-  coin) **has never returned True on-chain.**
-- The **~1.1M-BTC dormant coinbases (§1) never signed at all** — there isn't even a public signature to
-  re-present; only a fresh signature or a coin move could speak for them (§14: never-signed ⇒
+  coin) **has not returned True on-chain.**
+- The **~1.1M-BTC dormant coinbases (§1) have not signed at all** — there isn't even a public signature to
+  re-present; only a fresh signature or a coin move could speak for them (§14: unsigned ⇒
   nonce-immune, quantum-only exposure).
 
 Neutral cryptographic epistemics — no person, no external source, only public bytes. This is the
 foundation under Tiers A/B/C: the tracker measures key-checkable facts and would flag instantly if any
-known-Satoshi key ever signed a fresh message or moved a coin (`judge.py`).
+known-Satoshi key signed a fresh message or moved a coin (`judge.py`).
 
 ## Next excavations (fetch-gated — not in the current CSV)
 
@@ -337,7 +337,7 @@ audit, §15 the machine-verifiable key-control standard.)*
 
 *6 Aug 2026. `verify/first_year_patoshi_map.py`, offline.*
 
-Everything above measures the cluster by **balance** — coins mined, coins never moved. This measures
+Everything above measures the cluster by **balance** — coins mined, coins not moved. This measures
 it by **flow**: across the 219 payments that make up Bitcoin's entire first year, what share of the
 coins actually being spent came from flagged blocks?
 
@@ -362,7 +362,7 @@ to do with keys or addresses, while the payment record is pure transaction data.
 r["patoshi_confirmed"] = int(r["nonce_lsb_ok"] and r["phi"] >= CONF and 1 <= r["height"] <= ee)
 ```
 
-It is a **high-confidence subset**, and the `phi` threshold means it can only ever be set up to
+It is a **high-confidence subset**, and the `phi` threshold means it can only be set up to
 **block 24,184** — even though the era runs to ~54,458 and the rigorous era-wide count is ~22,540.
 Compare spent coins against the *whole* chain and every block above ~24,184 counts as "not Patoshi"
 **by construction**.

@@ -27,7 +27,7 @@ python spend_chain.py       # section 9  — the block-9 spend chain, from raw t
 > and verifies nothing — and `early_blocks.csv` is in `.gitignore`, so on the clean checkout this
 > section asks for, the file is absent. **Regenerate it first** (`acquire.sql` via BigQuery, or
 > `acquire_rpc.py` against a synced node — see the README's *Reproduce*), or point `--rpc` at a
-> node. This line read `python anchors.py` until v1.3.0: a checklist step that had only ever been
+> node. This line read `python anchors.py` until v1.3.0: a checklist step that had only been
 > run in a working directory where the ignored CSV happened to exist.
 
 Confirm the tree is clean (`git status`), the author is correct (`parthod0x`), and there are **no**

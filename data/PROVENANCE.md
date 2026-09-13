@@ -46,6 +46,6 @@ python verify/adjudicated_blocks.py         # score the three retracted blocks
 ## What this file is NOT
 
 **It is not evidence that any of these blocks were mined by Satoshi Nakamoto.** No 2009-era key has
-ever signed anything, so every Patoshi set — theirs and ours alike — is a claim about extranonce
-and nonce patterns, never about a person. **The analysis measures the gap between two such claims.
+signed anything, so every Patoshi set — theirs and ours alike — is a claim about extranonce
+and nonce patterns, not about a person. **The analysis measures the gap between two such claims.
 It does not adjudicate them.**

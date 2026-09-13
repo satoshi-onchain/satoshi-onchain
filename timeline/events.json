@@ -45,7 +45,7 @@
   ],
   "reproduce": null,
   "gap": true,
-  "notes": "NOT LOCATED, and now closed against both named recipients by their own sworn or published words. What is lost is the FILE - the bytes, and whatever the body said between abstract and references. What survives is adjudicated: the title, the complete abstract, the Hashcash citation at [5], and sworn confirmation from its only known reader that b-money was absent. No hash of the file exists anywhere, so a recovered candidate could never be verified cryptographically - only by those four discriminators plus custody. A reconstruction built from the correspondence is already in circulation and would pass the wording tests by construction; the reference numbering is the discriminator that matters."
+  "notes": "NOT LOCATED, and now closed against both named recipients by their own sworn or published words. What is lost is the FILE - the bytes, and whatever the body said between abstract and references. What survives is adjudicated: the title, the complete abstract, the Hashcash citation at [5], and sworn confirmation from its only known reader that b-money was absent. No hash of the file exists anywhere, so a recovered candidate could not be verified cryptographically - only by those four discriminators plus custody. A reconstruction built from the correspondence is already in circulation and would pass the wording tests by construction; the reference numbering is the discriminator that matters."
  },
  {
   "id": "2008-08-17-netcoin",
@@ -132,7 +132,7 @@
   ],
   "reproduce": "curl -s 'http://web.archive.org/cdx/search/cdx?url=upload.ae&matchType=domain&output=json&from=2008&to=2010&fl=timestamp,original&limit=40000'   # use a HIGH limit; at 8000 the neighbours truncate away",
   "gap": false,
-  "notes": "Corroborates TIMING only. It does not recover the file, say anything about its contents, or identify who uploaded it. Its value is that the bracketing party had no interest in the question: the Internet Archive crawled an Emirati file host in 2008 for its own reasons. Note also that it captured 6145, 6160 and 6161 that day and never captured 6157 - consistent with an unlisted upload whose URL travelled only by private email, though a crawl gap has many innocent causes. The file itself was never archived and structurally could not be: the download sat behind a form POST, which crawlers do not submit."
+  "notes": "Corroborates TIMING only. It does not recover the file, say anything about its contents, or identify who uploaded it. Its value is that the bracketing party had no interest in the question: the Internet Archive crawled an Emirati file host in 2008 for its own reasons. Note also that it captured 6145, 6160 and 6161 that day and did not capture 6157 - consistent with an unlisted upload whose URL travelled only by private email, though a crawl gap has many innocent causes. The file itself was not archived and structurally could not be: the download sat behind a form POST, which crawlers do not submit."
  },
  {
   "id": "2008-09-10-nov08-genesis-ntime",
@@ -165,7 +165,7 @@
   "axis": "both",
   "grade": "CAPTURE",
   "title": "The 3 October 2008 pre-release draft exists",
-  "claim": "A pre-release whitepaper PDF is created; we hold the bytes, and its two /ID halves are equal, meaning it was never re-saved after creation.",
+  "claim": "A pre-release whitepaper PDF is created; we hold the bytes, and its two /ID halves are equal, meaning it was not re-saved after creation.",
   "evidence": [
    {
     "what": "prerelease_2008-10-03_ia-bitcoin-foundation.pdf, 183,697 bytes",
@@ -218,7 +218,7 @@
   ],
   "reproduce": null,
   "gap": false,
-  "notes": "GRADED 'SELF' DELIBERATELY: a PGP creation date is written by the creating machine and is trivially forgeable. Period-plausible, entirely unbinding — and no Satoshi artifact was ever PGP-signed with it."
+  "notes": "GRADED 'SELF' DELIBERATELY: a PGP creation date is written by the creating machine and is trivially forgeable. Period-plausible, entirely unbinding — and no Satoshi artifact was PGP-signed with it."
  },
  {
   "id": "2008-10-30-pgp-key-created",
@@ -236,7 +236,7 @@
     "hash": "sha256:f918c6368fe1ba8ceaa9d15c73fb601c68eb3fc542979d04eb34fd5f3b0502e3"
    },
    {
-    "what": "34 successful captures of that URL, all one digest — the file never changed",
+    "what": "34 successful captures of that URL, all one digest — the file did not change",
     "where": "https://web.archive.org/cdx/search/cdx?url=bitcoin.org/Satoshi_Nakamoto.asc&output=json",
     "hash": null
    }
@@ -368,7 +368,7 @@
   ],
   "reproduce": null,
   "gap": false,
-  "notes": "CAUTION: SNI's .tgz is labelled 'Compressed by SNI' — a REPACKAGING, not original bytes. It will not hash to anything Satoshi produced, and must never be cited as an original artifact. Their .rar carries a published MD5; that is the one to check against."
+  "notes": "CAUTION: SNI's .tgz is labelled 'Compressed by SNI' — a REPACKAGING, not original bytes. It will not hash to anything Satoshi produced, and is not to be cited as an original artifact. Their .rar carries a published MD5; that is the one to check against."
  },
  {
   "id": "2008-11-17-list-closes",
@@ -415,8 +415,8 @@
   "until": "2010-12-15",
   "axis": "satoshi",
   "grade": "NONE",
-  "title": "No key has ever signed anything — the ceiling on all of this",
-  "claim": "No genesis-era or Patoshi private key has ever produced a verifying signature. Every identity fact on this timeline is statistical, archival, adjudicated or party-released. None is cryptographic.",
+  "title": "No key has signed anything — the ceiling on all of this",
+  "claim": "No genesis-era or Patoshi private key has produced a verifying signature. Every identity fact on this timeline is statistical, archival, adjudicated or party-released. None is cryptographic.",
   "evidence": [
    {
     "what": "the absence itself; the 2016 demonstration reused a 2009 signature from block 183",
@@ -568,7 +568,7 @@
   "precision": "second",
   "axis": "bitcoin",
   "grade": "CHAIN",
-  "title": "The first payment ever made",
+  "title": "The first payment",
   "claim": "Block 170 carries the first non-coinbase transaction: 50 BTC split into 10 and 40.",
   "evidence": [
    {
@@ -712,7 +712,7 @@
   "precision": "second",
   "axis": "bitcoin",
   "grade": "CHAIN",
-  "title": "The first transaction fees ever paid — a self-test",
+  "title": "The first transaction fees paid — a self-test",
   "claim": "Block 2817 collects 2.01 BTC across three transactions (1.00, 1.00, 0.01), all with the same address on every input and output: someone moving 1 BTC to themselves three times.",
   "evidence": [
    {
@@ -747,7 +747,7 @@
   ],
   "reproduce": "satoshi-onchain/verify/first_year_payments.sql",
   "gap": false,
-  "notes": "That address has never spent a satoshi. Almost every 'Satoshi coin' is inferred from mining patterns; this one Satoshi wrote down."
+  "notes": "That address has not spent a satoshi. Almost every 'Satoshi coin' is inferred from mining patterns; this one Satoshi wrote down."
  },
  {
   "id": "2009-02-11-p2p-research",
@@ -914,7 +914,7 @@
   ],
   "reproduce": null,
   "gap": false,
-  "notes": "The old timestamps are QUOTED TEXT in a repost, not server records -- graded accordingly. Only the threads Satoshi chose to carry across survive, so this is a curated sample selected by the subject, never a representative one. The preserved date format 'Thu 01 of Oct, 2009 (14:12 UTC)' is TikiWiki's, which is evidence about what the lost board ran."
+  "notes": "The old timestamps are QUOTED TEXT in a repost, not server records -- graded accordingly. Only the threads Satoshi chose to carry across survive, so this is a curated sample selected by the subject, not a representative one. The preserved date format 'Thu 01 of Oct, 2009 (14:12 UTC)' is TikiWiki's, which is evidence about what the lost board ran."
  },
  {
   "id": "2009-10-21-svn",
@@ -1088,8 +1088,8 @@
   "axis": "bitcoin",
   "grade": "CHAIN",
   "title": "An example address printed in the 2009 Bitcoin client's UI begins receiving real coin",
-  "claim": "1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L is a hard-coded placeholder in the Send Coins dialog of the January 2009 client (v0.1.0 src/uibase.cpp line 495, unchanged in v0.1.3). On the 2009 chain it received its first payment on 2010-09-10, has since received 102 payments totalling 900.85217683 BTC, and has never spent a single satoshi. Its largest single receipt is 777.00000000 BTC in block 104662, 2011-01-26.",
-  "caption": "This is an address Satoshi published as example text in a form label — not a wallet, and not a holding. WHO, IF ANYONE, HOLDS ITS PRIVATE KEY IS UNKNOWN, and nothing here suggests Satoshi did. The first payment arrives twenty months after the source was published, so the coin was sent by strangers who read the address out of the code. Published in source, funded by others, never spent.",
+  "claim": "1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L is a hard-coded placeholder in the Send Coins dialog of the January 2009 client (v0.1.0 src/uibase.cpp line 495, unchanged in v0.1.3). On the 2009 chain it received its first payment on 2010-09-10, has since received 102 payments totalling 900.85217683 BTC, and has not spent a single satoshi. Its largest single receipt is 777.00000000 BTC in block 104662, 2011-01-26.",
+  "caption": "This is an address Satoshi published as example text in a form label — not a wallet, and not a holding. WHO, IF ANYONE, HOLDS ITS PRIVATE KEY IS UNKNOWN, and nothing here suggests Satoshi did. The first payment arrives twenty months after the source was published, so the coin was sent by strangers who read the address out of the code. Published in source, funded by others, not spent.",
   "evidence": [
    {
     "what": "the string in the released v0.1.0 source",
@@ -1210,7 +1210,7 @@
   ],
   "reproduce": "python satoshi-onchain/verify/bohm_transfer.py",
   "gap": false,
-  "notes": "Matches his own account of spending the wallet down before losing access. Recorded so the address is never presented as a live holding."
+  "notes": "Matches his own account of spending the wallet down before losing access. Recorded so the address is not presented as a live holding."
  },
  {
   "id": "2014-03-02-wei-dai",
@@ -1358,7 +1358,7 @@
   ],
   "reproduce": null,
   "gap": false,
-  "notes": "Turns the whitepaper hunt from an open-ended search into a decidable test. Also note what it does NOT give: a hash lets you recognise the file, never reconstruct it."
+  "notes": "Turns the whitepaper hunt from an open-ended search into a decidable test. Also note what it does NOT give: a hash lets you recognise the file, not reconstruct it."
  },
  {
   "id": "2024-copa-219",
@@ -1425,7 +1425,7 @@
   ],
   "reproduce": null,
   "gap": false,
-  "notes": "The losing node retains its orphan rather than discarding it - an exact +223-byte on-disk delta, one v0.1 block. Difficulty never left 1, so nothing here measures hashrate or difficulty dynamics."
+  "notes": "The losing node retains its orphan rather than discarding it - an exact +223-byte on-disk delta, one v0.1 block. Difficulty stayed at 1, so nothing here measures hashrate or difficulty dynamics."
  },
  {
   "id": "2026-08-03-second-genesis",

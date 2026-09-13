@@ -96,7 +96,7 @@ than hiding it. The 36 difference is real and reproducible — pagination genuin
 cannot read).
 
 *Two parsing traps it handles: SMF re-serves the last page for any `start` beyond the end, so a naive
-loop never terminates; and post bodies must be extracted with balanced `<div>` nesting, because
+loop does not terminate; and post bodies must be extracted with balanced `<div>` nesting, because
 quote blocks live inside the post div and a non-greedy match truncates such posts to the word
 "Quote".*
 
@@ -176,7 +176,7 @@ identity.
 and read the coinbase output. The result is deliberately small enough to verify by hand.
 
 **Carries a warning about this repo's own data.** `early_blocks.csv` has a `coinbase_value` column in
-which every one of its 60,001 rows holds the identical `5000000000` — assumed at acquisition, never
+which every one of its 60,001 rows holds the identical `5000000000` — assumed at acquisition, not
 read from the chain. Searching it for fee-bearing blocks returns **zero**, and the conclusion that
 invites is false. Heights and timestamps in that file are sound; **`coinbase_value` is inert and must
 not be used.**
@@ -197,7 +197,7 @@ Published as-run rather than silently fixed, because the circulating CSV came fr
 ### `resolve_coinbase_addresses.py`
 
 Bitcoin's first year paid almost every coinbase to a **bare public key**, not an address — explorers
-*derive* the address for display; it is never written on the chain. This inverts that derivation
+*derive* the address for display; it is not written on the chain. This inverts that derivation
 offline, so you can ask **"which block minted the coins now at address X"** with no node, no API and
 no network, then place the answer next to the Patoshi labels.
 
@@ -215,7 +215,7 @@ RIPEMD-160 vectors and against the genesis coinbase** on every run, and aborts i
 
 ### `first_year_patoshi_map.py`
 
-Joins the two early-chain datasets that are almost never joined: the **per-block Patoshi labels**
+Joins the two early-chain datasets that are rarely joined: the **per-block Patoshi labels**
 (from nonce/ExtraNonce — nothing to do with keys) and the **complete 219-payment first-year record**.
 The usual Patoshi claim is about *balances*; this measures the same thing as **flow**.
 

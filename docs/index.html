@@ -153,7 +153,7 @@
       node, or the public <span class="mono">bigquery-public-data.crypto_bitcoin</span> mirror. The
       <a href="#offchain">off-chain record</a> is graded separately, and every line of it links to the
       public server that carries the timestamp. Nothing rests on the word “Satoshi” in anyone’s mouth.
-      A separate question — <a href="#documents">did they ever commit a document to the chain?</a> — is
+      A separate question — <a href="#documents">did they commit a document to the chain?</a> — is
       answered the same way, and the answer is no.</p>
 
     <div class="headline">
@@ -164,19 +164,19 @@
         <div>dormant <b>15+ years</b>, not a single signature</div>
       </div>
     </div>
-    <p class="grade">Grade: <b>[statistical]</b>, never [cryptographic]. A fingerprint, not a key.</p>
+    <p class="grade">Grade: <b>[statistical]</b>, not [cryptographic]. A fingerprint, not a key.</p>
   </header>
 
   <section>
     <h2>Epistemics</h2>
-    <p class="lead">Three tiers of certainty, never blurred.</p>
+    <p class="lead">Three tiers of certainty, kept apart.</p>
     <div class="tiers">
       <div class="tier">
         <span class="tchip t-a">A · DEFINITIONAL</span>
         <div>
           <h3>The genesis block</h3>
           <p>Height 0, hardcoded in consensus: the <i>Times 03/Jan/2009</i> headline, and 50 BTC
-            to <span class="mono">1A1zP1eP…DivfNa</span> that the software can never spend.</p>
+            to <span class="mono">1A1zP1eP…DivfNa</span> that the software cannot spend.</p>
           <span class="cert">certain — it is the chain’s first constant</span>
         </div>
       </div>
@@ -185,7 +185,7 @@
         <div>
           <h3>The Patoshi cluster</h3>
           <p>One dominant early miner, fingerprinted by structure its software leaked into every
-            header (Lerner 2013). ~22.5k of the first ~54k blocks; ≈1.13M BTC attributed, about 94% of it never spent.</p>
+            header (Lerner 2013). ~22.5k of the first ~54k blocks; ≈1.13M BTC attributed, about 94% of it unspent.</p>
           <span class="cert">statistical, not cryptographic — a fingerprint, not a signature</span>
         </div>
       </div>
@@ -236,7 +236,7 @@
 
   <section>
     <h2>Refinement</h2>
-    <p class="lead">Removing the chance-passers — and checking the answer against a signal the method never saw.</p>
+    <p class="lead">Removing the chance-passers — and checking the answer against a signal the method did not use.</p>
     <p class="sm">The nonce test is a <i>necessary</i> condition: ~19.5% of ordinary blocks pass it by
       luck, so the raw 28,774 over-counts. Two independent estimators strip the luck out — and land
       one block apart.</p>
@@ -266,7 +266,7 @@
     <h2>The cluster did not spend</h2>
     <p class="lead">The usual claim is about balances. This is the same claim measured from the
       other side — <b>flow</b>.</p>
-    <p class="sm">“~1.1M BTC mined and never moved” is a statement about coins sitting still. It can
+    <p class="sm">“~1.1M BTC mined and not moved” is a statement about coins sitting still. It can
       be turned around: in Bitcoin’s first year, <i>when coins did move, whose were they?</i> Joining
       the 219 first-year payments to the per-block labels answers it — and the two datasets are
       independent, because the labels come from <b>nonce and ExtraNonce</b> fields that have nothing
@@ -297,7 +297,7 @@
     <p class="sm"><b>The correction that made this number honest.</b> Our own label
       <span class="mono">patoshi_confirmed</span> is <i>not</i> “is this a Patoshi block” — it is a
       high-confidence subset (<span class="mono">nonce_lsb_ok AND phi &gt;= CONF</span>), and the phi
-      threshold means it can only ever be set up to about block <b>24,184</b>, though the era runs to
+      threshold means it can only be set up to about block <b>24,184</b>, though the era runs to
       ~54,458. Compare against the whole chain and every later block counts as “not Patoshi”
       <i>by construction</i>, manufacturing an effect from nothing. <b>Our first run did exactly that
       and reported a stronger number than the data supports.</b> The figures above are restricted to
@@ -324,7 +324,7 @@
 
     <p class="sm">This matters for any argument about elliptic-curve cryptography being broken. Such
       an attack needs the <b>public key</b> &mdash; it does not invert SHA-256 or RIPEMD-160. So a
-      long-dormant P2PKH balance that has never been spent from has published no key to attack, while
+      long-dormant P2PKH balance that has not been spent from has published no key to attack, while
       a 2009 P2PK coinbase has published one for over a decade. <b>Two balances of the same age can
       sit in completely different exposure classes</b>, and an argument that treats age as the
       variable has picked the wrong one.</p>
@@ -338,9 +338,9 @@
       fork that inherited the UTXO set, so a spend on Bitcoin Cash, Bitcoin Gold or Bitcoin SV
       publishes the key while the Bitcoin output sits untouched.</p>
 
-    <p class="sm">⚠️ <b>So &ldquo;never spent on Bitcoin&rdquo; is not the same claim as &ldquo;never
+    <p class="sm">⚠️ <b>So &ldquo;not spent on Bitcoin&rdquo; is not the same claim as &ldquo;not
       exposed&rdquo;</b>, and only the first of those is answerable from Bitcoin alone. Anyone
-      reasoning about a specific dormant balance has to check the forks too &mdash; and can only ever
+      reasoning about a specific dormant balance has to check the forks too &mdash; and can only
       report the chains actually checked.</p>
 
     <p class="sm"><b>Prior art, because none of the above is ours.</b> The distinction stated here
@@ -382,24 +382,24 @@
       “old wallet just moved” event back to its coinbase block and get a verdict. Every case below is
       the tool’s real output.</p>
     <div class="verdicts">
-      <div class="vd"><span class="h">block 0</span><span class="tag gen">GENESIS</span><span class="desc">50 BTC, permanently unspendable — Satoshi’s by construction.</span></div>
-      <div class="vd"><span class="h">block 1</span><span class="tag pat">PATOSHI</span><span class="desc">Dormant (φ 0.94). <b>If it ever moves, the first cluster spend in 15+ years.</b></span></div>
+      <div class="vd"><span class="h">block 0</span><span class="tag gen">GENESIS</span><span class="desc">50 BTC, unspendable — Satoshi’s by construction.</span></div>
+      <div class="vd"><span class="h">block 1</span><span class="tag pat">PATOSHI</span><span class="desc">Dormant (φ 0.94). <b>If it moves, the first cluster spend in 15+ years.</b></span></div>
       <div class="vd"><span class="h">block 9</span><span class="tag pat">PATOSHI · SPENT</span><span class="desc">The historic one — spent to <b>Hal Finney</b> in block 170. Genuine Satoshi movement.</span></div>
       <div class="vd"><span class="h">block 12</span><span class="tag no">NOT PATOSHI</span><span class="desc">Dormant, but nonce LSB = 63 (out of range). <b>Dormant ≠ Satoshi.</b></span></div>
       <div class="vd"><span class="h">block 54455</span><span class="tag amb">AMBIGUOUS</span><span class="desc">φ 0.05 — the honest 50/50 zone near the exit. Not attributable per-block.</span></div>
     </div>
     <p class="sm" style="margin-top:16px">This is exactly what shows the “Satoshi-era wallet” movements reported
       in 2025–26 fall <b style="color:var(--ink)">outside</b> the Patoshi set (verdict NOT-PATOSHI) — and what would flag it instantly,
-      unambiguously, if the real cluster ever stirred.</p>
+      unambiguously, if the real cluster stirred.</p>
   </section>
 
   <section id="documents">
-    <h2>Did they ever put a document on the chain?</h2>
+    <h2>Did they put a document on the chain?</h2>
     <p class="lead">The method was known to them and described in public; no such commitment exists on the chain.</p>
     <p class="sm">This gets asked constantly about the whitepaper, and it is answerable the same way
       everything else here is — by reading every byte and saying what is not in them. Had Satoshi
       committed a hash of any document to the chain, it would be the strongest dating evidence that
-      document could ever have: <b>a timestamp its author made, which nobody can backdate.</b> So the
+      document could have: <b>a timestamp its author made, which nobody can backdate.</b> So the
       absence is worth establishing rather than assuming.</p>
 
     <h3>They described the method, in public, on 9 December 2010</h3>
@@ -434,7 +434,7 @@
       <div class="vd"><span class="h">whole era</span><span class="tag no">NO COMMITMENT</span><span class="desc"><b>Nothing Satoshi put on any chain commits to the whitepaper, or to any document.</b> Established over the scopes stated in the table above, with a passing control behind every negative — an empty result and a broken query are indistinguishable without one.</span></div>
       <div class="vd"><span class="h">2013-10-16</span><span class="tag amb">THIRD PARTY</span><span class="desc">An address derived from the canonical paper receives 1 satoshi — as output 65 of <b>83 one-satoshi outputs</b> in a single bulk send. A dust-spray whose address list happened to include one. Intent unknown, and almost certainly nothing to do with the whitepaper.</span></div>
       <div class="vd"><span class="h">2014-04-22</span><span class="tag amb">THIRD PARTY</span><span class="desc">A second derived address receives 5,432 satoshi. Its sender made <b>51 transactions in eight weeks, fifty identical in shape</b>, paying <b>100 distinct addresses once each</b> — a timestamping bot working a queue, for 0.0054 BTC in total. The whitepaper was one file of a hundred.</span></div>
-      <div class="vd"><span class="h">11 Nov 2008</span><span class="tag no">NOTHING</span><span class="desc"><b>The version nobody holds was never timestamped by anyone.</b> It can be tested for without possessing a byte of it, because its SHA-256 is published in the court record. If someone had held that file and wanted to prove it, this was the cheap, publicly-endorsed way — and it cost one cent.</span></div>
+      <div class="vd"><span class="h">11 Nov 2008</span><span class="tag no">NOTHING</span><span class="desc"><b>The version nobody holds was not timestamped by anyone.</b> It can be tested for without possessing a byte of it, because its SHA-256 is published in the court record. If someone had held that file and wanted to prove it, this was the cheap, publicly-endorsed way — and it cost one cent.</span></div>
     </div>
 
     <p class="sm"><b>Calibration, because these two hits get retold badly.</b> A payment to a
@@ -445,7 +445,7 @@
       party's act, four years after publication.</p>
 
     <p class="sm">Two measured facts sit beside that absence. The code was versioned, announced and hashed;
-      the paper was linked, revised at least twice, and no revision was ever announced in any surviving
+      the paper was linked, revised at least twice, and no revision was announced in any surviving
       corpus of their writing. In the release announcement the download comes first and the paper is
       described as <i>“the design paper”</i>. This page records the pattern and draws no motive from it.</p>
   </section>
@@ -555,8 +555,8 @@
     <p class="sm"><b>A trap worth naming.</b> Several published early-chain datasets — including an
       earlier file of our own — carry a <span class="mono">coinbase_value</span> column in which every
       row holds the identical <span class="mono">5000000000</span>. It was assumed at acquisition and
-      never read from the chain. Search such a file for fee-bearing blocks and it returns <b>zero</b>,
-      and the conclusion that invites — <i>no early block ever collected a fee</i> — is false. A column
+      not read from the chain. Search such a file for fee-bearing blocks and it returns <b>zero</b>,
+      and the conclusion that invites — <i>no early block collected a fee</i> — is false. A column
       that is really a constant is the kind of error that survives being copied. This table is read
       from the chain.</p>
     <p class="sm" style="margin-top:14px"><b>The whole first year is 219 payments.</b> For most of
@@ -611,7 +611,7 @@
 
   <section>
     <h2>The line</h2>
-    <p class="close">No genesis-era or Patoshi key has ever produced a verifying signature. Only that
+    <p class="close">No genesis-era or Patoshi key has produced a verifying signature. Only that
       would turn <i>attributable</i> into <i>proven</i>. The ≈1.13M BTC staying largely silent since it was mined
       is itself the strongest statement: the keys don’t speak — and no one else can make them speak.</p>
     <div class="xlink">Cross-check with the quantum threat model: these dormant Patoshi coinbases are bare
@@ -658,7 +658,7 @@
      is prefixed with the host: without it the two would merge into one indistinguishable row
      in the dashboard. No cookies and no cross-site identifier. Since 10 Aug 2026 analytics.js
      adds EVENTS on top of the pageview -- outbound links, downloads, evidence expansion, read
-     depth, copies, and this page's filters. More KINDS of event; never more identification. -->
+     depth, copies, and this page's filters. More KINDS of event; not more identification. -->
 <script>window.goatcounter = { path: function (p) { return 'satoshioncha.in' + p } }</script>
 <script data-goatcounter="https://parthod0x.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <!-- umami: self-hosted by the laboratory at analytics.bitcoin-lab.org; no cookies, aggregate only -->

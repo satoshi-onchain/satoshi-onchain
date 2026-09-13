@@ -120,7 +120,7 @@ ERA_NOTE = '''<div class="eradiv" id="era-2026">
   is marked <b>NOT HELD</b> against us.</p>
   <p><b>This page does not rank the two chains or say which one &ldquo;is&rdquo; Bitcoin</b>; it
   compares only the evidence each leaves behind, and that comparison runs in an unexpected
-  direction: no key from 2009 has ever signed anything, while every
+  direction: no key from 2009 has signed anything, while every
   artifact below is hashed, timestamped and anchored. <b>The 2026 pair is not offered as a rival. It
   is a control &mdash; what a fully documented origin looks like, which is what makes the gaps above
   measurable.</b></p>
@@ -157,8 +157,8 @@ for e in events:
            if e.get("reproduce") else
            '<div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div>')
     notes = f'<div class="notes"><span class="lbl">caveats</span>{esc(e["notes"])}</div>' if e.get("notes") else ""
-    # A caveat that only exists inside a collapsed <details> is a caveat most readers never see.
-    # `caption` renders ALWAYS-VISIBLE, directly under the claim. It is what stops a weakly-graded
+    # A caveat that only exists inside a collapsed <details> is a caveat most readers do not see.
+    # `caption` renders visible without expanding, directly under the claim. It is what stops a weakly-graded
     # row from being quoted as though it were a strong one.
     caption = f'<p class="caption">{esc(e["caption"])}</p>' if e.get("caption") else ""
     rows.append(f'''<article class="ev{' gap' if e['gap'] else ''}" data-axis="{e['axis']}" data-grade="{e['grade']}" data-gap="{str(e['gap']).lower()}" data-era="{era}" id="{esc(e['id'])}">
@@ -291,7 +291,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 <b>ARCHIVE-POS</b> — position in an archive, independently bracketed.
 <b>CAPTURE</b> — a third-party crawl with its own clock.
 <b>SELF</b> — Satoshi's own unsigned assertion; trivially fakeable.
-<br><br><b>Nothing here is cryptographic.</b> No genesis-era or Patoshi key has ever produced a
+<br><br><b>Nothing here is cryptographic.</b> No genesis-era or Patoshi key has produced a
 verifying signature, so no row on this timeline identifies a person. That is a fact about the world,
 not a gap in the research — and only a signature would change it.
 <br><br>Generated {built} from <code>events.json</code>. The page is a function of that file.
