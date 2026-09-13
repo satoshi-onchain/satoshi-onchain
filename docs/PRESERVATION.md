@@ -229,7 +229,7 @@ SHA256SUMS.slhdsa.ots QmWZMQrEqrRKBQMhT7wh8TFLPYMbeWuLbBP7sMBaBPKpYR
 ```
 
 ⇒ **Re-run the retrieval check periodically.** `python _audit_public.py ipfs` in the workspace
-fetches every recorded CID; a listing that is never exercised will eventually be wrong without
+fetches every recorded CID; a listing that is not exercised will eventually be wrong without
 anyone noticing.
 
 ## v1.3.0's timestamp is anchored — Bitcoin block 963620

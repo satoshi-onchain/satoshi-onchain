@@ -56,7 +56,7 @@ error, and quoting the dormant set's stability as accuracy understates the doubt
 
 ## What this changes here, and what it does not
 
-This repository's evidence-tier discipline already labels the Patoshi set **[statistical], never
+This repository's evidence-tier discipline already labels the Patoshi set **[statistical], not
 [cryptographic]**. These three consequences sharpen that label: the set is not merely statistical
 rather than proven, its *membership rule itself is time-dependent* for the doubt cases. Nothing
 in this repository keys any claim on dormancy, and the tier table in `README.md` is unaffected.

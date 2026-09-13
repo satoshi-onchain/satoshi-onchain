@@ -11,7 +11,7 @@ in someone's mouth. Every figure here is meant to be re-derivable from the chain
 (a synced Bitcoin Core node, or the public `bigquery-public-data.crypto_bitcoin`
 dataset), in a reproducible-measurement style — every figure re-derivable from public data.
 
-The honest epistemics up front — three tiers, and we never blur them:
+The honest epistemics up front — three tiers, and we do not blur them:
 
 | Tier | What | Certainty |
 |---|---|---|
