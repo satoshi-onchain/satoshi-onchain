@@ -107,6 +107,6 @@ counter-signature nobody dated is one a forger could also have made.**
 ## The trust model, stated plainly
 
 - A valid signature proves the snapshot came from **you** and is **unmodified**. That's all.
-- The **durable** guarantee isn't the signature — it's the **reproducible method**: anyone can re-derive
+- What **lasts** isn't the signature — it's the **reproducible method**: anyone can re-derive
   the anchors and regenerate the excavation from the public chain, with no key and no service to trust.
 - Nothing here — not a signature, not a tag — makes any claim about who Satoshi is. **Not money.**
