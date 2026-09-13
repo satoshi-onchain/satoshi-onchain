@@ -64,7 +64,7 @@ gpg --armor --detach-sign SHA256SUMS                       # sign the checksum f
 - Attach `satoshi-onchain-X.Y.Z.tar.gz`, its `.asc`, and the signed `SHA256SUMS` to the GitHub release.
 - Publish your **public key** + fingerprint out of band (release notes + a keyserver); the key is committed
   at [`parthod0x-signing-key.asc`](parthod0x-signing-key.asc).
-- These are **full** releases (mark the newest `--latest`), unlike OBL's experimental pre-releases.
+- These are **full** releases (mark the newest `--latest`), unlike the Original Bitcoin Laboratory's experimental pre-releases.
 - If the site (`docs/index.html`) carries a version/footer, bump it to the new tag so the published page
   stays in sync with the newest release.
 - Repeat the **NOT money / not financial advice** framing.

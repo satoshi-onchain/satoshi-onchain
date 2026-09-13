@@ -93,7 +93,8 @@ signal is the low-byte bands, not the magnitude.
 
 ## 7. Hashrate / throttle (difficulty from coinbase nBits × timestamps) — `deepdig.py`
 
-- **Difficulty stayed exactly 1.00 through all of 2009**, then rose only in 2010 (1.27 Jan → 2.27 Feb
+- **Difficulty stayed exactly 1.00 through 30 December 2009 (block 32,255)**, rose to 1.18 at the first
+  retarget (block 32,256) and then through 2010 (1.27 Jan → 2.27 Feb
   → 4.36 Mar → 8.10 Apr → 12.55 May → 16.62 Jun).
 - **Confirmed-Patoshi monthly share:** 85% (2009-01) → 78–82% (spring) → 71% (Jul) → 58% (Aug) → 73%
   (Sep) → **3% (Oct) → 0% (Nov 2009)**. Patoshi *dominance* is a 2009 phenomenon; the weaker LSB tail
@@ -201,7 +202,7 @@ coins moved (by spend year):**
 | | | | 2024 | 1 |
 
 - **97% of all Patoshi awakenings happened in 2009–2011** (1,113 / 1,145); after 2012 the set is
-  essentially frozen — only **34** spends in 13 years, and just **two** since 2015 (one in 2020, one
+  essentially frozen — only **32** spends in 13 years, and just **two** since 2015 (one in 2020, one
   in 2024). The dormant hoard is not merely unspent — the *spending* of Patoshi coins effectively
   stopped after the early years.
 - 2011 is the single biggest awakening year (483) — spends concentrate in the earliest era, then
@@ -259,14 +260,14 @@ not the round `2³²` — a ~0.0015% correction that leaves the ~2–5-core conc
 number exact. (b) The **ExtraNonce sawtooth (§3) is a mining necessity, not a stylistic choice**: at
 difficulty 1 a full 32-bit nonce sweep finds a block only `1−1/e ≈ 63%` of the time, so `~37%` of sweeps
 exhaust the nonce and must roll the coinbase ExtraNonce (→ new merkle root → fresh nonce space). The
-fingerprint and the mining mechanics are the same fact from two sides. *(The neutral difficulty-1 exactness is also in OBL's `retarget` module.)*
+fingerprint and the mining mechanics are the same fact from two sides. *(The neutral difficulty-1 exactness is also in the Original Bitcoin Laboratory's `retarget` module.)*
 
 ## 14. Nonce-safety of Satoshi's keys — the ECDSA-nonce audit (`nonce_safety.py`)
 
 A reused or biased ECDSA nonce `k` recovers the private key from public signatures alone (reuse:
 `k=(z₁−z₂)/(s₁−s₂)`, then `d=(s₁k−z₁)/r`). So "could a Satoshi key have leaked?" is a **checkable
-predicate over public data** (`GROUP BY r`), not an assumption. The only place Satoshi keys
-signed is the **block-9 coinbase key `0411db93`**, which signed the five spends of the block-9 change
+predicate over public data** (`GROUP BY r`), not an assumption. The one Tier-C key whose signatures
+are verified here is the **block-9 coinbase key `0411db93`**, which signed the five spends of the block-9 change
 chain (§9). Reconstructing each `SIGHASH_ALL` digest from the raw bytes and verifying:
 
 | block | tx | verifies vs `0411db93` | nonce `r` |
@@ -311,10 +312,10 @@ private key:
   nonce-immune, quantum-only exposure).
 
 Neutral cryptographic epistemics — no person, no external source, only public bytes. This is the
-foundation under Tiers A/B/C: the tracker measures key-checkable facts and would flag instantly if any
-known-Satoshi key signed a fresh message or moved a coin (`judge.py`).
+foundation under Tiers A/B/C: the tracker measures key-checkable facts and would flag a coin moved by any
+known-Satoshi or Patoshi key (`judge.py`).
 
-## Next excavations (fetch-gated — not in the current CSV)
+## Formerly open items (fetch-gated at the time; since done)
 
 - ~~**Distinct coinbase pubkeys, full count**~~ — **DONE (§11):** BigQuery Query D1 confirms 54,458 /
   54,458 / 54,458 (outputs / distinct scripts / P2PK) over blocks 1–54,458 — fresh key per coinbase,

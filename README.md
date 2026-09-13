@@ -34,7 +34,7 @@ strongest ongoing statement: the keys have not spoken, and no one else can make 
 | `TIEBREAKER-CONSEQUENCES.md` | Three consequences of Lerner's disclosed unspent-coinbase tiebreaker that we have not found stated elsewhere (time-unstable membership; circularity of dormancy-keyed freeze policies; spent-subsample error rates as a structural worst case). The search is recorded in the file; pointers to prior statements are welcome. |
 | `anchors.py` | The Tier-A/C verified anchors (genesis, block 9→170) as checkable claims + a `verify()` that confirms them against real block/tx data you supply. |
 | `acquire.sql` | BigQuery: pull `height, timestamp, nonce, coinbase_script_hex, coinbase_value, coinbase_spent` for blocks 0–60,000. |
-| `acquire_rpc.py` | The authoritative alternative: build the same CSV from a synced Bitcoin Core node via `getblock` RPC (node-derived, [C-chain]-grade). |
+| `acquire_rpc.py` | The authoritative alternative: build the same CSV from a synced Bitcoin Core node via `getblock` RPC (node-derived). |
 | `patoshi.py` | Parse the ExtraNonce from each coinbase, apply Lerner's LSB criterion, tally the attributed coins, and check dormancy. Emits `patoshi_labeled.csv` + a summary. |
 | `merge_spent.py` | Fold the optional dormancy result (Query B) into the classification CSV by height. |
 | `slots.py` | **Refine the LSB upper bound into a Patoshi *estimate*** via local excess-over-chance, and **validate it against dormancy** (a signal the LSB test does not see). Emits `patoshi_confirmed.csv` + `patoshi_intensity.png`. |
@@ -92,7 +92,7 @@ python plots.py patoshi_labeled.csv          # -> extranonce_fingerprint.png, no
 ```
 
 Expected order-of-magnitude from step 3: ~22k Patoshi blocks, ≈1.05–1.1M BTC, of which
-about 6% (1,145 coinbases, 57,250 BTC) has been spent; the rest is unspent. (Non-Patoshi early
+about 6% (1,145 of the 18,589 high-confidence coinbases, 57,250 BTC) has been spent; the rest is unspent. (Non-Patoshi early
 miners *have* moved coins — e.g. the “Satoshi-era wallet” movements reported in 2025–26 — and the
 classifier is exactly what lets you show those fall outside the Patoshi set.)
 
@@ -115,7 +115,7 @@ as hex, the dataset's format):
 
 The nonce-LSB rate starts at ~97% (Satoshi mining nearly alone), holds ~80% to block
 ~16,000, then declines as other miners arrive and collapses to the 19.5% chance baseline
-at ~54,000–55,000 — see `nonce_lsb_rate.png`. **Dormancy cross-check:** these dormant Patoshi coinbases are bare P2PK outputs, so their public keys
+at ~54,000–55,000 — see `nonce_lsb_rate.png`. **Exposure note:** the dormant Patoshi coinbases are bare P2PK outputs, so their public keys
 have been on the chain since 2009; they belong to the class most exposed to a break of elliptic-curve
 signatures.
 
@@ -170,7 +170,7 @@ spending tx's input outpoint *is* an early coinbase. **Query C** turns a spendin
 funding address) into originating coinbase height(s); `judge.py` rules each PATOSHI /
 AMBIGUOUS / NOT-PATOSHI against the validated set. This is exactly what shows the “Satoshi-era wallet”
 movements reported in 2025–26 fall outside the Patoshi set (verdict NOT-PATOSHI) — and, conversely, would flag it
-instantly and unambiguously if the Patoshi cluster moved. Teaching case from the demo:
+if the Patoshi cluster moved (blocks near the exit stay AMBIGUOUS by design). Teaching case from the demo:
 **block 12 is dormant but NOT Patoshi** (nonce LSB = 63, out of range) — dormancy alone is
 not proof of Satoshi.
 
@@ -200,14 +200,14 @@ visible payment paths contain no `OP_DUP`/`OP_HASH160`/`OP_EQUALVERIFY`, only ba
   inherits it; nothing here depends on which chain is consulted.
 - **What we *cannot* get.** Satoshi's identity; cryptographic proof Patoshi = Satoshi. (Satoshi
   *did* spend on-chain in Jan 2009 — block 9's coinbase was spent down through block 183, and ~1,145
-  of the ~22,540 Patoshi coinbases were later spent; see `EXCAVATION.md` §6/§9. But the **bulk — the
+  of the 18,589 high-confidence Patoshi coinbases were later spent; see `EXCAVATION.md` §6/§9. But the **bulk — the
   ~1.1M-BTC Patoshi hoard — sits dormant**, and the dormancy *is* the data.)
 
 ## Sources
 - S. D. Lerner, "The Well Deserved Fortune of Satoshi Nakamoto" (bitslog, 2013) and
   follow-up Patoshi analyses — the ExtraNonce/nonce methodology.
 - Genesis + block-170/Hal-Finney facts: the chain itself (verify via `anchors.py`).
-- Dormancy status (2026): public analytics dashboards (not re-derived here); the Patoshi
+- Dormancy status (2026): re-derived from a full-history snapshot (`EXCAVATION.md` §1, BigQuery, 1 Aug 2026); the Patoshi
   cluster remains unmoved while non-Patoshi Satoshi-era coins have awakened.
 
 ---

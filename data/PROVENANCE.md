@@ -10,7 +10,7 @@ Patoshi block list that explorer actually serves.
 source   https://github.com/janoside/btc-rpc-explorer/tree/master/
          public/txt/mining-pools-configs/BTC/0.json
 fetched  12 August 2026
-bytes    158,525
+bytes    158,544
 sha256   d5749c02cea4662ec96e6bd0478531a0f005714d9d6ca7415c2885eccce3711f
 heights  21,950   range 3 .. 49,973
 upstream MIT licensed. Copyright remains with its authors; this is an unmodified copy.

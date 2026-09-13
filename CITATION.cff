@@ -6,7 +6,7 @@ abstract: >-
   original Satoshi on the original Bitcoin chain: a three-tier epistemic model
   (definitional genesis, statistical Patoshi cluster, attested Finney spend), a faithful
   reproduction of Lerner's Patoshi analysis with a dormancy-validated refinement, and a
-  coin-by-coin verdict tool. Graded [statistical], never [cryptographic].
+  coin-by-coin verdict tool. Graded [statistical], not [cryptographic].
 type: software
 authors:
   - family-names: Saxena

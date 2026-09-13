@@ -39,6 +39,7 @@ the world, not of our research, and the timeline must not blur it.
   "when":      "2009-01-03T18:15:05Z",     // ISO 8601; UTC where known
   "precision": "second",                   // second | minute | hour | day | month | range
   "until":     null,                       // set only when precision == "range"
+  "caption":   null,                       // optional: a short caption rendered with the row
   "axis":      "both",                     // satoshi | bitcoin | both
   "grade":     "CHAIN",
   "title":     "The genesis block",

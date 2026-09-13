@@ -86,7 +86,7 @@ why. Requests are considered promptly and the outcome is recorded openly.
 
 This project publishes its mistakes on purpose. Several published claims here have been wrong and
 were corrected in place, with the error and its cause described rather than quietly edited away —
-because a result is worth what its checking is worth. If you find an error, report it; it will be
+because a result is worth what its checking is worth. If you find an error, report it; it is
 reviewed and, where confirmed, corrected and credited.
 
 ## Licence

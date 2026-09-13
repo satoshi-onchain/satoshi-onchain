@@ -141,7 +141,7 @@ satoshi   n=144   consistent with EU DST: 144   inconsistent: 0
 sirius    n=116   consistent with EU DST: 116   inconsistent: 0
 ```
 
-Perfect on both sides across 22 months. Satoshi's `+0000/+0100` is **GMT/BST**, and notably *not*
+Perfect on both sides across 22 months. Satoshi's `+0000/+0100` follows the **UTC/UTC+1 summer-time pattern** (a machine setting, not a location), and notably *not*
 GMX's German `+0100/+0200`.
 
 **What that does not establish.** A timezone is a machine setting, and a setting is not a location.

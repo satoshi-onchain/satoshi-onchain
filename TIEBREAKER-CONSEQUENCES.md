@@ -4,7 +4,7 @@
 Lopp's tools and blog, Whale Alert, Elementus, the Gudmundsson thesis, GitHub code and discussions,
 and X, and found sources that note classifier uncertainty in general but none stating the
 spend-history dependency below or its consequences. A pointer to a prior statement is welcome and
-will be recorded here. Only the disclosed design is cited.*
+is recorded here. Only the disclosed design is cited.*
 
 ---
 

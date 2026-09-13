@@ -10,10 +10,10 @@
  * a server log would not already see. Aggregate-only is a property of the tools chosen; it is
  * stated here so it cannot drift quietly.
  *
- * PATH PREFIX: this site is the account's DEFAULT and reports bare paths ("/verify.html").
- * satoshioncha.in and bitcoinwhitepaper.online prefix themselves with their host, so the three
- * do not merge in the dashboard. Do NOT add a prefix here: it would split every page's existing
- * history into a before and an after for no gain.
+ * PATH PREFIX: bitcoin-lab.org is the account's DEFAULT and reports bare paths; this site and
+ * bitcoinwhitepaper.online prefix every path with their host ("satoshioncha.in/…"), so the three
+ * do not merge in the dashboard. Keep the prefix: removing it would fold this site's history into
+ * the default site's.
  */
 (function () {
   'use strict';

@@ -1,7 +1,7 @@
 # Preservation — keeping the tracker retrievable, from more than one root
 
-The durable artifact of this project is not a service; it is the **reproducible method** — the classifier,
-the source-anchored axes, and the checks that let anyone re-derive the Satoshi/Patoshi on-chain footprint
+The durable artifact of this project is not a service; it is the **reproducible method** — the classifier
+and the checks that let anyone re-derive the Satoshi/Patoshi on-chain footprint
 from public block data without trusting us (`anchors.py` re-derives the genesis block from its own bytes;
 `EXCAVATION.md` regenerates every figure from the public chain). A method is only as durable as its
 availability, so preservation is part of the mission: keep the source of truth **retrievable,
@@ -118,7 +118,7 @@ one host" to "retrievable from several independent, content-addressed archives."
 token, no sale by us — a measuring instrument to which this project assigns no value, preserved.
 *(What a third party might do is not ours to bind; the commitment is about our own conduct.)*
 
-## Enabling the two scaffolded layers
+## How the two layers were enabled (historical)
 
 ### IPFS (content-addressed pinning) — automated once a token is set
 1. Create an account at a pinning service and generate an **API JWT** (e.g. Pinata → *API Keys* → *New Key*
@@ -153,7 +153,7 @@ the repository, so keep a node online or arrange a seed to hold the RID.
 *(Optional CI:* add the exported key as `RAD_KEYPAIR` (and passphrase as `RAD_PASSPHRASE`) to let the
 `radicle` job attempt an automated sync — but the local `git push rad` above is the reliable path.)*
 
-Until the secrets/identity are set, the scaffolded jobs log "skipped — not configured"; Software Heritage
+Before the secrets were set (they are now, and the table above says so), the jobs logged "skipped — not configured"; Software Heritage
 archival runs regardless.
 
 **NOT money.**
@@ -166,7 +166,7 @@ OpenTimestamps proof had no content-addressed copy** — the two artifacts whose
 outlive a break of the Ed25519 key were the only release assets not preserved by content address.
 
 The durable half was the half that was not being kept. Fixed in `preserve.yml` from v1.3.0; the
-v1.3.0 `.slhdsa`/`.ots` will be pinned on the next run of the workflow and their CIDs recorded here.
+v1.3.0 `.slhdsa`/`.ots` were pinned on the next run of the workflow and their CIDs are recorded below.
 
 ## Radicle, measured rather than assumed — 22 August 2026 (historical; in sync since 12 September 2026)
 
@@ -228,8 +228,8 @@ SHA256SUMS.slhdsa     QmYJhj9Kk2rGW2AKo8KgqaH5yhXRoFEmpJpZug3wjjsRUu
 SHA256SUMS.slhdsa.ots QmWZMQrEqrRKBQMhT7wh8TFLPYMbeWuLbBP7sMBaBPKpYR
 ```
 
-⇒ **Re-run the retrieval check periodically.** `python _audit_public.py ipfs` in the workspace
-fetches every recorded CID; a listing that is not exercised will eventually be wrong without
+⇒ **Re-run the retrieval check periodically:** fetch every CID recorded here from a public gateway
+and compare the bytes; a listing that is not exercised will eventually be wrong without
 anyone noticing.
 
 ## v1.3.0's timestamp is anchored — Bitcoin block 963620

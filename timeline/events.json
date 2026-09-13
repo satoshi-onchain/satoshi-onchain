@@ -88,7 +88,7 @@
  {
   "id": "2008-08-20-anonymousspeech",
   "when": "2008-08-20",
-  "precision": "day",
+  "precision": "range",
   "until": "2008-08-22",
   "axis": "satoshi",
   "grade": "ADJUDICATED",
@@ -200,25 +200,6 @@
   "reproduce": "python satoshi-onchain/verify/sourceforge_identity.py",
   "gap": false,
   "notes": "Server-written and bracketed by neighbouring account IDs, so it cannot have been backdated by the holder."
- },
- {
-  "id": "2008-10-30-pgp-key",
-  "when": "2008-10-30T18:19:19Z",
-  "precision": "second",
-  "axis": "satoshi",
-  "grade": "SELF",
-  "title": "A PGP key carries a self-dated creation time",
-  "claim": "Key 18C09E865EC948A1, later associated with satoshin@gmx.com, declares this creation timestamp.",
-  "evidence": [
-   {
-    "what": "the key's own self-assertion",
-    "where": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
-    "hash": null
-   }
-  ],
-  "reproduce": null,
-  "gap": false,
-  "notes": "GRADED 'SELF' DELIBERATELY: a PGP creation date is written by the creating machine and is trivially forgeable. Period-plausible, entirely unbinding — and no Satoshi artifact was PGP-signed with it."
  },
  {
   "id": "2008-10-30-pgp-key-created",
@@ -622,7 +603,7 @@
   ],
   "reproduce": "satoshi-onchain/verify/first_year_payments.sql",
   "gap": false,
-  "notes": "An earlier reading of ours called this support for a 'first transfer of 25.00' account. The full transaction reverses the direction; the erratum is recorded in entry 45 §10(k)."
+  "notes": "An earlier reading of ours called this support for a 'first transfer of 25.00' account. The full transaction reverses the direction; this row is the corrected reading."
  },
  {
   "id": "2009-01-18-bohm-downloads",
@@ -646,7 +627,7 @@
  {
   "id": "2009-01-30-bc014",
   "when": "2009-01-30",
-  "precision": "day",
+  "precision": "range",
   "until": "2009-02-28",
   "axis": "both",
   "grade": "ADJUDICATED",
@@ -766,7 +747,7 @@
   ],
   "reproduce": null,
   "gap": false,
-  "notes": "Date offset is +0000 here against +0800 on vistomail — the offset tracks the provider. The Mozilla Message-ID's embedded Unix timestamp decodes to the Date header exactly, an authenticity check but NOT a location check."
+  "notes": "Date offset is +0000 here against +0800 on vistomail — the offset is a setting on the sending side (see the +0800 verdict on the site), not a location. The Mozilla Message-ID's embedded Unix timestamp decodes to the Date header exactly, an authenticity check but NOT a location check."
  },
  {
   "id": "2009-02-18-p2pfoundation",
@@ -1260,7 +1241,7 @@
   "claim": "The first person to run the software besides Satoshi dies, having been asked about the earliest draft and not answered.",
   "evidence": [
    {
-    "what": "public record; entry 39",
+    "what": "public record; his role and statements are discussed in the judgment",
     "where": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
     "hash": null
    }
@@ -1338,7 +1319,7 @@
  },
  {
   "id": "2024-pm3-hashes-published",
-  "when": "2024-02-01",
+  "when": "2024-02",
   "precision": "month",
   "axis": "both",
   "grade": "ADJUDICATED",
@@ -1447,7 +1428,7 @@
     "hash": null
    }
   ],
-  "reproduce": "python derivatives/bitcoin/net.py   # re-derives the genesis from its parameters",
+  "reproduce": "python derivatives/bitcoin/net.py   # in the genesis repository (github.com/original-bitcoin-laboratory/genesis); re-derives the genesis from its parameters",
   "gap": false,
   "notes": "Not the 2009 chain and not a fork of it: its own genesis, its own network, no inherited balances, and its units are not historical satoshis. NOT money - no premine, no sale, no value assigned. The coinbase headline is a newspaper front page of that day, which fixes the earliest date the block can have been made; the OpenTimestamps row fixes the latest."
  },
@@ -1481,7 +1462,7 @@
   "evidence": [
    {
     "what": "the release, its signature and its timestamp proofs",
-    "where": "https://github.com/original-bitcoin-laboratory/genesis/releases/tag/Bitcoin-v0.1.4",
+    "where": "https://github.com/original-bitcoin-laboratory/genesis/releases/tag/Bitcoin-v0.1.3",
     "hash": null
    },
    {
@@ -1511,7 +1492,7 @@
   ],
   "reproduce": "curl -s https://raw.githubusercontent.com/original-bitcoin-laboratory/genesis/status/status.json | jq '.chains.bitcoin.height'",
   "gap": true,
-  "notes": "Marked NOT HELD against ourselves, on the same rule applied to everyone else on this page: the event demonstrably happened and we do not hold the artifact in publishable form. Graded NONE because a status file we generate is not independent support for our own chain. The reproduce command reads the live height rather than this row asserting one, so the row cannot go stale while the miner runs. It will be upgraded when the blocks are captured and sealed, and not before."
+  "notes": "Marked NOT HELD against ourselves, on the same rule applied to everyone else on this page: the event demonstrably happened and we do not hold the artifact in publishable form. Graded NONE because a status file we generate is not independent support for our own chain. The reproduce command reads the live height rather than this row asserting one, so the row cannot go stale while the miner runs. Upgrading it requires the blocks to be captured and sealed. Sealed sets have since covered blocks 5-731 (genesis repository, bitcoin-findings/, 6 September 2026); the tip beyond the last sealed set is as described."
  },
  {
   "id": "2026-08-09-anchor",
