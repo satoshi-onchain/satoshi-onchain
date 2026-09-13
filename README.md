@@ -16,7 +16,7 @@ The honest epistemics up front — three tiers, and we do not blur them:
 | Tier | What | Certainty |
 |---|---|---|
 | **A. Definitional** | The genesis block (height 0) — hardcoded in the consensus rules; its coinbase message, key, and unspendable 50 BTC. | **Certain.** It *is* the chain's first constant. |
-| **B. Statistical** | The **Patoshi** blocks — one dominant early miner fingerprinted by block-header structure (Lerner 2013). ~22.5k of the first ~54k blocks, ≈1.13M BTC attributed (Lerner 2013: ~22k, ~1.1M), of which about 94% has never been spent. Widely attributed to Satoshi. | **Statistical, not cryptographic.** A fingerprint, not a signature. |
+| **B. Statistical** | The **Patoshi** blocks — one dominant early miner fingerprinted by block-header structure (Lerner 2013). ~22.5k of the first ~54k blocks, ≈1.13M BTC attributed (Lerner 2013: ~22k, ~1.1M), of which about 94% has not been spent. Widely attributed to Satoshi. | **Statistical, not cryptographic.** A fingerprint, not a signature. |
 | **C. Attested spend** | Block 170 — first payment, 10 BTC to `04ae1a62…` (Hal Finney), spending block 9's Patoshi coinbase; block 9's 50 BTC was then spent down through block 183 (`spend_chain.py`, `EXCAVATION.md` §9). | **On-chain certain**: block 9's coinbase was spent across 5 payments to 5 distinct new keys, reusing the block-9 key as change, leaving 18 BTC unspent to date. "It was Satoshi" rests on tier B. |
 
 **The line we do not cross.** No genesis-era or Patoshi key has produced a
