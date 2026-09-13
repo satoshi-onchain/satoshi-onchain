@@ -7,7 +7,7 @@ deployed open-source Bitcoin block explorer. Its `block_heights.Patoshi.heights`
 Patoshi block list that explorer actually serves.
 
 ```
-source   https://raw.githubusercontent.com/janoside/btc-rpc-explorer/master/
+source   https://github.com/janoside/btc-rpc-explorer/tree/master/
          public/txt/mining-pools-configs/BTC/0.json
 fetched  12 August 2026
 bytes    158,525

@@ -1093,7 +1093,7 @@
   "evidence": [
    {
     "what": "the string in the released v0.1.0 source",
-    "where": "https://bitcoin-lab.org/V010_TO_V013.html",
+    "where": "https://github.com/original-bitcoin-laboratory/genesis/blob/main/docs/V010_TO_V013.md",
     "hash": null
    },
    {
