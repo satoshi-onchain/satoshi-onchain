@@ -303,7 +303,7 @@ not a gap in the research — and only a signature would change it.
 have been revised and more will be. A row states what the evidence supported when it was checked; it
 is not a settled fact. Re-derive it from <code>events.json</code> and the tools rather than relying
 on it. The project itself may change or be retired at any time; what has been published stays as
-published, corrected forward rather than rewritten.
+published and corrected forward.
 <br><br>[statistical], not [cryptographic] · experimental laboratory research, in progress, no conclusions beyond the findings · MIT &copy; 2026
 <a href="https://github.com/parthod0x">parthod0x</a> · <b>not money</b>, not financial advice ·
 no warranty
