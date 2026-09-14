@@ -1,70 +1,22 @@
 [
  {
-  "id": "2008-07-20-ecash-org",
-  "when": "2008-07-20",
-  "precision": "day",
-  "axis": "satoshi",
-  "grade": "SERVER-DB",
-  "title": "e-cash.org is registered — the earliest domain date in the register",
-  "claim": "e-cash.org is registered, a month before bitcoin.org.",
-  "evidence": [
-   {
-    "what": "registry record",
-    "where": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
-    "hash": null
-   }
-  ],
-  "reproduce": null,
-  "gap": false,
-  "notes": "Earliest verifiable domain date in the project's orbit. A registration is not an attribution."
- },
- {
   "id": "2008-08-xx-first-draft",
   "when": "2008-08",
   "precision": "month",
   "axis": "both",
   "grade": "ADJUDICATED",
   "title": "An August 2008 draft existed — title and abstract survive; the FILE does not",
-  "claim": "A draft titled \"Electronic Cash Without a Trusted Third Party\" was linked, not attached, to Adam Back on 20 Aug 2008 and Wei Dai on 22 Aug 2008. Its title, full abstract and Hashcash citation at [5] are preserved verbatim inside Back's witness statement. Back downloaded it, later searched for it, and swore he could not find it.",
+  "claim": "A pre-release draft was linked, not attached, to Adam Back on 20 August 2008 and to Wei Dai on 22 August 2008. The judgment quotes the email to Back — the Hashcash citation at [5] and the upload.ae link — and Back's reply pointing to b-money. The file is not located.",
   "evidence": [
    {
-    "what": "First Witness Statement of Dr Adam Back, 17 July 2023 — §5 quotes Satoshi's email in full (title, abstract, Hashcash at [5]); §6 'I believe I did download the paper at the time'; §7 b-money 'was not mentioned in the pre-release draft he sent me'; §11 'I don't think I have a copy … I haven't been able to find one from the checks I have made'",
-    "where": "COPA v Wright [2024] EWHC 1198 (Ch), Exhibit AB1 / witness statement C/9",
-    "hash": null
-   },
-   {
-    "what": "Wei Dai to Bird & Bird, Oct 2023: the three published emails are the entirety of his communications with Satoshi",
-    "where": "COPA v Wright, trial disclosure — https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
-    "hash": null
-   },
-   {
-    "what": "abstract text as preserved (hash of the text, not of the file)",
-    "where": "First Witness Statement of Dr Adam Back, 17 July 2023, COPA v Wright — reproduced at https://github.com/lugaxker/nakamoto-archive",
-    "hash": "6dd156197af8ee359d0852a236997e843b2f8e39a20ca326d17883420d82d9bd"
-   }
-  ],
-  "reproduce": null,
-  "gap": true,
-  "notes": "NOT LOCATED, and now closed against both named recipients by their own sworn or published words. What is lost is the FILE - the bytes, and whatever the body said between abstract and references. What survives is adjudicated: the title, the complete abstract, the Hashcash citation at [5], and sworn confirmation from its only known reader that b-money was absent. No hash of the file exists anywhere, so a recovered candidate could not be verified cryptographically - only by those four discriminators plus custody. A reconstruction built from the correspondence is already in circulation and would pass the wording tests by construction; the reference numbering is the discriminator that matters."
- },
- {
-  "id": "2008-08-17-netcoin",
-  "when": "2008-08-17",
-  "precision": "day",
-  "axis": "satoshi",
-  "grade": "SERVER-DB",
-  "title": "netcoin.org is registered the day before bitcoin.org, same registrar",
-  "claim": "netcoin.org is registered through AnonymousSpeech one day before bitcoin.org, at the same registrar.",
-  "evidence": [
-   {
-    "what": "registry records for both domains",
+    "what": "the judgment quotes Satoshi's 20 August 2008 email (¶661) and Back's reply (¶663); ¶23.2 records the 22 August email to Wei Dai",
     "where": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
     "hash": null
    }
   ],
   "reproduce": null,
-  "gap": false,
-  "notes": "Suggestive of one actor trying names. Suggestive is not proof, and no name attaches to either."
+  "gap": true,
+  "notes": "NOT LOCATED. What survives in the public record is the citation line and the link; the title and abstract reported in evidence at trial are not reproduced here."
  },
  {
   "id": "2008-08-18-domain",
@@ -93,22 +45,17 @@
   "axis": "satoshi",
   "grade": "ADJUDICATED",
   "title": "The earliest known Satoshi communication of any kind",
-  "claim": "satoshi@anonymousspeech.com writes to Adam Back querying the Hashcash citation, ten weeks before the paper is public.",
+  "claim": "Satoshi writes to Adam Back querying the Hashcash citation, ten weeks before the paper is public; Back replies the next day; Satoshi writes to Wei Dai on 22 August.",
   "evidence": [
    {
-    "what": "Adam Back witness statement §5, full header quoted under a statement of truth",
-    "where": "https://github.com/lugaxker/nakamoto-archive",
-    "hash": null
-   },
-   {
-    "what": "COPA Opening Skeleton §16",
+    "what": "judgment ¶23.2 (the sequence) and ¶661–663 (the emails quoted)",
     "where": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
     "hash": null
    }
   ],
   "reproduce": null,
   "gap": false,
-  "notes": "Establishes the identifier sequence anonymousspeech -> vistomail -> gmx, not the reverse."
+  "notes": "The sending address is in evidence given at trial and not published. The vistomail → gmx sequence that follows rests on the public mailing-list archives and the March 2009 paper."
  },
  {
   "id": "2008-08-20-upload-host",
@@ -125,8 +72,8 @@
     "hash": null
    },
    {
-    "what": "Satoshi's emails quoting the URL (Exhibit AB1; Wei Dai correspondence)",
-    "where": "First Witness Statement of Dr Adam Back, 17 July 2023, COPA v Wright — reproduced at https://github.com/lugaxker/nakamoto-archive",
+    "what": "Satoshi's emails quoting the URL: to Adam Back, quoted in the judgment (¶661); to Wei Dai, published by Wei Dai",
+    "where": "https://gwern.net/doc/bitcoin/2008-nakamoto",
     "hash": null
    }
   ],
@@ -300,32 +247,22 @@
  },
  {
   "id": "2008-11-11-lost-version",
-  "when": "2008-11-11T16:00:34Z",
-  "precision": "second",
+  "when": "2009-01",
+  "precision": "month",
   "axis": "both",
   "grade": "ADJUDICATED",
-  "title": "The 11 November 2008 whitepaper is created — WE DO NOT HOLD IT, BUT WE CAN NOW RECOGNISE IT",
-  "claim": "A whitepaper version is created at this exact second. It is the version the public could obtain in January 2009. We do not have the file -- but its MD5 and SHA256 are published in a court expert report, so any candidate copy can be tested against them.",
+  "title": "A whitepaper version exists in the court record that is in no public hands",
+  "claim": "The judgment records that Nicholas Bohm, a retired solicitor who corresponded with Satoshi shortly after the January 2009 release, provided a version of the whitepaper he had downloaded in January 2009, which the court's expert authenticated and which was used in the evidence as a control copy. It is not in public hands.",
   "evidence": [
    {
-    "what": "COPA Appendix PM3, giving the creation timestamp",
-    "where": "https://huggingface.co/datasets/YL95/copa_v_wright_CPT_raw",
+    "what": "judgment ¶271.9: a version downloaded in January 2009, authenticated by the court's expert and used as a control copy",
+    "where": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
     "hash": null
-   },
-   {
-    "what": "identified across three exhibit references as AR3 = NB1 = BWP-NB1",
-    "where": "https://huggingface.co/datasets/YL95/copa_v_wright_CPT_raw",
-    "hash": null
-   },
-   {
-    "what": "Madden Appendix PM3 §42 publishing BWP-NB1's hashes: MD5 3e5e11e1e3208d2829e887fb1c86bd05, SHA256 e6cc7c952c688b234f9872c3e2f50060ae6556fd27925cba503c6460048e50a9",
-    "where": "https://huggingface.co/datasets/YL95/copa_v_wright_CPT_raw",
-    "hash": "e6cc7c952c688b234f9872c3e2f50060ae6556fd27925cba503c6460048e50a9"
    }
   ],
   "reproduce": null,
   "gap": true,
-  "notes": "STILL THE PRINCIPAL OPEN ITEM as an artifact -- but no longer an open-ended search. PM3 §45 records that as of the report, searching those hashes returned nothing, while the control copies' hashes returned many results. So a hash search today is a new test, not a repeat. PM3 also finds BWP-NB1 is neither in the disclosure dataset nor among the archive-sourced copies: a genuinely distinct file. VERIFIED 7 Aug 2026: both hashes were re-read from the original Appendix PM3 PDF and are present verbatim -- the SHA256 is a contiguous 64-character string. (A page header falls between the 'SHA256:' label and its value in the extracted layout, which is what prompted the earlier caution; the value itself is unbroken.) The source is a court document, quoted and cited rather than re-hosted, so there is no public reproduce script for it."
+  "notes": "Until 14 September 2026 this row gave a creation date to the second and two hashes taken from an expert appendix in circulation. That material is in evidence that is not published, and it is no longer reproduced here: the row states what the judgment records and nothing more. The file's date, hashes, size and text stay unstated on this site."
  },
  {
   "id": "2008-11-15-prerelease-code",
@@ -606,86 +543,23 @@
   "notes": "An earlier reading of ours called this support for a 'first transfer of 25.00' account. The full transaction reverses the direction; this row is the corrected reading."
  },
  {
-  "id": "2009-01-18-bohm-downloads",
-  "when": "2009-01-18T13:27:00Z",
-  "precision": "minute",
-  "axis": "both",
-  "grade": "ADJUDICATED",
-  "title": "A member of the public downloads the whitepaper",
-  "claim": "The retired solicitor Nicholas Bohm, reading the cryptography list, downloads the whitepaper. His copy's creation date is 11 November 2008.",
-  "evidence": [
-   {
-    "what": "witness statement §19, under a statement of truth",
-    "where": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
-    "hash": null
-   }
-  ],
-  "reproduce": null,
-  "gap": false,
-  "notes": "This is what fixes the 11 November version as what the public could actually get in January 2009."
- },
- {
-  "id": "2009-01-30-bc014",
-  "when": "2009-01-30",
-  "precision": "range",
-  "until": "2009-02-28",
-  "axis": "both",
-  "grade": "ADJUDICATED",
-  "title": "Pre-release builds bc014 / bc014a / bc015 / bc015a — NOT LOCATED",
-  "claim": "Satoshi sends links to at least four pre-release Bitcoin builds between the public v0.1.3 and v0.1.5. The URLs are in disclosed correspondence; the payloads are not located.",
-  "evidence": [
-   {
-    "what": "upload.ae URLs quoted in the Bohm correspondence",
-    "where": "https://huggingface.co/datasets/YL95/copa_v_wright_CPT_raw",
-    "hash": null
-   }
-  ],
-  "reproduce": null,
-  "gap": true,
-  "notes": "NOT LOCATED, which is not the same as destroyed. They were also sent as mail attachments, so the likeliest surviving copy is inside Bohm's Thunderbird profile rather than on any web archive."
- },
- {
   "id": "2009-02-01-block-2616",
-  "when": "2009-02-01T16:25:12Z",
-  "precision": "second",
+  "when": "2009-01",
+  "precision": "month",
   "axis": "both",
-  "grade": "CHAIN",
-  "title": "100 BTC is sent to Nicholas Bohm",
-  "claim": "Exactly one payment of exactly 100 BTC exists in a 1,501-block window, at the minute and address Bohm's own 2009 email quotes.",
-  "evidence": [
-   {
-    "what": "block 2616, tx 7d73200e...db6fc3d5, to 1CHE5JRfc5mr8ZtVUP7nnsS5HC4bWcXoc6",
-    "where": "the Bitcoin blockchain",
-    "hash": null
-   },
-   {
-    "what": "Bohm's contemporaneous email, disclosed in court",
-    "where": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
-    "hash": null
-   }
-  ],
-  "reproduce": "python satoshi-onchain/verify/bohm_transfer.py",
-  "gap": false,
-  "notes": "A 2009 record and the chain agree exactly. The address was emptied in 2011 and implies nothing about Mr Bohm's estate."
- },
- {
-  "id": "2009-02-03-gmx-changeover",
-  "when": "2009-02-03",
-  "precision": "day",
-  "axis": "satoshi",
   "grade": "ADJUDICATED",
-  "title": "Satoshi moves from vistomail to gmx",
-  "claim": "The changeover is pinned to a few hours of one day: Bohm writes to vistomail at 11:55 and to satoshin@gmx.com at 19:14.",
+  "title": "Satoshi transfers bitcoin to Nicholas Bohm",
+  "claim": "Satoshi made transfers of Bitcoin to Nicholas Bohm, a retired solicitor who corresponded with Satoshi shortly after the January 2009 release — a finding of the judgment, from Bohm's evidence.",
   "evidence": [
    {
-    "what": "Bohm correspondence, Exhibit NB1",
+    "what": "judgment ¶771 (Bohm1 [5], [15]); ¶271.9 for the correspondence",
     "where": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
     "hash": null
    }
   ],
   "reproduce": null,
   "gap": false,
-  "notes": "Seven weeks earlier than the canonical PDF, which had been the earliest gmx attestation."
+  "notes": "Which transactions they were is stated in correspondence given in evidence and not published; this row does not identify them, and the script that once located a payment from that correspondence was withdrawn on 14 September 2026. Nothing about Mr Bohm's holdings is implied."
  },
  {
   "id": "2009-02-03-first-fees",
@@ -705,30 +579,6 @@
   "reproduce": "satoshi-onchain/verify/fees_2009.sql",
   "gap": false,
   "notes": "The largest single fee of 2009 is therefore 1.00 BTC on a 1.00 BTC payment. Not a donation — a test."
- },
- {
-  "id": "2009-02-03-19-btc",
-  "when": "2009-02-03T22:55:58Z",
-  "precision": "second",
-  "axis": "both",
-  "grade": "CHAIN",
-  "title": "A Satoshi address, named by Satoshi",
-  "claim": "Satoshi gives Bohm 1GtkM4wviwohP192tec9g83hd9X5qtbk9j; block 2914 pays it 19 BTC and block 2915 returns 19.01 — the payment plus the promised penny.",
-  "evidence": [
-   {
-    "what": "blocks 2914 and 2915",
-    "where": "the Bitcoin blockchain",
-    "hash": null
-   },
-   {
-    "what": "the correspondence naming the address",
-    "where": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
-    "hash": null
-   }
-  ],
-  "reproduce": "satoshi-onchain/verify/first_year_payments.sql",
-  "gap": false,
-  "notes": "That address has not spent a satoshi. Almost every 'Satoshi coin' is inferred from mining patterns; this one Satoshi wrote down."
  },
  {
   "id": "2009-02-11-p2p-research",
@@ -814,7 +664,7 @@
   ],
   "reproduce": "python verify/whitepaper_from_chain.py out.pdf; sha256sum out.pdf   # the script lives in github.com/original-bitcoin-laboratory/bitcoin-whitepaper; carves the canonical out of block 230009 -> b1674191a88ec5cd…",
   "gap": false,
-  "notes": "Madden's court expert report §180 publishes this file's MD5 and SHA256; both match our bytes. Four independent paths, one hash."
+  "notes": "The judgment in COPA v Wright records (¶320) the court's control copy of this file as hash-identical to a SourceForge web-archive capture of 28 November 2009; that capture hashes to our bytes. Four independent paths, one hash."
  },
  {
   "id": "2009-05-11-block-14047",
@@ -822,8 +672,8 @@
   "precision": "second",
   "axis": "bitcoin",
   "grade": "CHAIN",
-  "title": "A private miner's own block, identified",
-  "claim": "Block 14047 pays a coinbase of 50.10 — the +50.10 Bohm wrote to Satoshi about, his 15:58 being BST. Only eight blocks in all of 2009 collected any fee.",
+  "title": "A 2009 block that collected a fee",
+  "claim": "Block 14047 pays a coinbase of 50.10 — one of only eight blocks in all of 2009 that collected any fee.",
   "evidence": [
    {
     "what": "the eight fee-bearing blocks of 2009",
@@ -833,7 +683,7 @@
   ],
   "reproduce": "satoshi-onchain/verify/fees_2009.sql",
   "gap": false,
-  "notes": "[statistical], not [cryptographic] — they signed nothing. Predicted from the letter before the chain was queried. The coinbase address received that one coinbase and nothing else, and was emptied 28 Dec 2011."
+  "notes": "[statistical], not [cryptographic] — the miner signed nothing. The coinbase address received that one coinbase and nothing else, and was emptied 28 Dec 2011."
  },
  {
   "id": "2009-06-01-block-16226",
@@ -841,8 +691,8 @@
   "precision": "second",
   "axis": "bitcoin",
   "grade": "CHAIN",
-  "title": "The 0.01 that carried a message",
-  "claim": "The only payment of any size in a three-day window is exactly 0.01 BTC — matching a reported receipt of 1 June 2009 03:59 BST.",
+  "title": "A 0.01 BTC payment, sender unidentified",
+  "claim": "The only payment of any size in a three-day window is exactly 0.01 BTC.",
   "evidence": [
    {
     "what": "first_year_payments.csv",
@@ -987,7 +837,7 @@
   ],
   "reproduce": "http://web.archive.org/cdx/search/cdx?url=bitcoin.sourceforge.net*&output=json&filter=statuscode:200&fl=timestamp,original",
   "gap": true,
-  "notes": "A Satoshi venue absent from every compilation we have checked. NOT ARCHIVED is not the same as destroyed. The remaining route is reconstruction from the 'Repost:' threads they carried across."
+  "notes": "A Satoshi venue absent from every compilation we have checked. NOT ARCHIVED is not the same as destroyed. The remaining route is reconstruction from the 'Repost:' threads they carried across. The reproduce query filters the index to status 200: redirects and errors are excluded, so the count is of successful captures, not of every row the archive holds for the domain."
  },
  {
   "id": "2009-12-xx-sf-project-edit",
@@ -1069,7 +919,7 @@
   "axis": "bitcoin",
   "grade": "CHAIN",
   "title": "An example address printed in the 2009 Bitcoin client's UI begins receiving real coin",
-  "claim": "1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L is a hard-coded placeholder in the Send Coins dialog of the January 2009 client (v0.1.0 src/uibase.cpp line 495, unchanged in v0.1.3). On the 2009 chain it received its first payment on 2010-09-10, has since received 102 payments totalling 900.85217683 BTC, and has not spent a single satoshi. Its largest single receipt is 777.00000000 BTC in block 104662, 2011-01-26.",
+  "claim": "1NS17iag9jJgTHD1VXjvLCEnZuQ3rJED9L is a hard-coded placeholder in the Send Coins dialog of the January 2009 client (v0.1.0 src/uibase.cpp line 495, unchanged in v0.1.3). On the 2009 chain it received its first payment on 2010-09-10, has since received 102 payments totalling 900.85217683 BTC (as of 10 August 2026), and has not spent a single satoshi. Its largest single receipt is 777.00000000 BTC in block 104662, 2011-01-26.",
   "caption": "This is an address Satoshi published as example text in a form label — not a wallet, and not a holding. WHO, IF ANYONE, HOLDS ITS PRIVATE KEY IS UNKNOWN, and nothing here suggests Satoshi did. The first payment arrives twenty months after the source was published, so the coin was sent by strangers who read the address out of the code. Published in source, funded by others, not spent.",
   "evidence": [
    {
@@ -1173,25 +1023,6 @@
   "reproduce": null,
   "gap": false,
   "notes": "Two independent distributions of one key file. It still signs nothing."
- },
- {
-  "id": "2011-06-19-bohm-100-leaves",
-  "when": "2011-06-19",
-  "precision": "day",
-  "axis": "bitcoin",
-  "grade": "CHAIN",
-  "title": "The 100 BTC leaves Bohm's address",
-  "claim": "The address that received Satoshi's 100 BTC gift in February 2009 is spent down; it has held nothing since 2011.",
-  "evidence": [
-   {
-    "what": "on-chain spend of 1CHE5JRfc5mr8ZtVUP7nnsS5HC4bWcXoc6",
-    "where": "the Bitcoin blockchain",
-    "hash": null
-   }
-  ],
-  "reproduce": "python satoshi-onchain/verify/bohm_transfer.py",
-  "gap": false,
-  "notes": "Matches his own account of spending the wallet down before losing access. Recorded so the address is not presented as a live holding."
  },
  {
   "id": "2014-03-02-wei-dai",
@@ -1316,30 +1147,6 @@
   "reproduce": "sha256sum <your copy of the 3 Oct 2008 draft>   # the hash Dillinger confirmed in Aug 2017: 427c63b364c6db914cf23072a09ffd53ee078397b7c6ab2d604e12865a982faa",
   "gap": false,
   "notes": "Nine years after the fact, by someone who held the original. Testimony about a hash is much stronger than testimony about a document, because the hash is checkable and the memory is not load-bearing."
- },
- {
-  "id": "2024-pm3-hashes-published",
-  "when": "2024-02",
-  "precision": "month",
-  "axis": "both",
-  "grade": "ADJUDICATED",
-  "title": "A court expert publishes the missing whitepaper's hashes",
-  "claim": "Madden's Appendix PM3 publishes the MD5 and SHA256 of BWP-NB1, the 11 November 2008 whitepaper supplied from Nicholas Bohm's exhibit, and records that neither hash returned any internet result.",
-  "evidence": [
-   {
-    "what": "Appendix PM3 §§41-45",
-    "where": "https://huggingface.co/datasets/YL95/copa_v_wright_CPT_raw",
-    "hash": null
-   },
-   {
-    "what": "PM3 confirms our own labelling of both control copies, including the 3 Oct 2008 created date",
-    "where": "https://github.com/original-bitcoin-laboratory/bitcoin-whitepaper",
-    "hash": null
-   }
-  ],
-  "reproduce": null,
-  "gap": false,
-  "notes": "Turns the whitepaper hunt from an open-ended search into a decidable test. Also note what it does NOT give: a hash lets you recognise the file, not reconstruct it."
  },
  {
   "id": "2024-copa-219",

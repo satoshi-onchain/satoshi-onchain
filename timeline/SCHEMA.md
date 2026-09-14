@@ -54,9 +54,9 @@ the world, not of our research, and the timeline must not blur it.
 ### `gap: true` rows
 
 Used for events that demonstrably occurred but whose artifact we do not hold. They render
-distinctly and are counted separately. Examples: the 11 November 2008 whitepaper (dated to the
-second, three exhibit references, **no bytes**); the `bc014`/`bc015`/`bc015a` builds (URLs in
-disclosed correspondence, payloads not located).
+distinctly and are counted separately. Example: the whitepaper version the judgment in COPA v Wright
+records as downloaded in January 2009 and used as a control copy (¶271.9) — a version in the court record,
+**no bytes** in public hands.
 
 **A gap is not a guess.** It requires the same evidence that the event happened; only the artifact is
 missing. Speculation does not get a row in any form.

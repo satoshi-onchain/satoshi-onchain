@@ -236,6 +236,23 @@ did, so they bias the result **towards** the null. The true depletion is if anyt
 
 **Does not establish:** any person. A cluster label is a statistical fingerprint, not a signature.
 
+## Also in this directory
+
+Each of these is self-describing at the top of the file; the one-line summaries are its own docstring.
+
+| script | what it does |
+|---|---|
+| `adjudicated_blocks.py` | The only externally adjudicated blocks in the Patoshi problem, scored by our classifier. |
+| `audit_published_hashes.py` | Stress test: every SHA-256 published in our documents, checked against the real artifact. |
+| `coinbase_data_scan.py` | Scans every early coinbase — scriptSig and output script — for a whitepaper commitment. |
+| `noncoinbase_data_scan.py` | Scans the scripts of every non-coinbase transaction in Bitcoin's first year for the same. |
+| `patoshi_list_history.py` | The complete version history of a deployed Patoshi block list, reconstructed from git. |
+| `patoshi_setdiff.py` | The pairwise Patoshi set difference between published classifiers. |
+| `patoshi_spend_axis.py` | Two Patoshi classifiers disagree almost entirely along one axis: whether the coinbase was spent. |
+| `sourceforge_download_stats.py` | SourceForge's own download statistics for the Bitcoin project, back to 2008. |
+| `verify_signed_message.py` | Verifies a Bitcoin signed message from first principles, with no dependencies. |
+| `wayback_orig_headers.py` | Recovers the original server's response headers from an Internet Archive capture. |
+
 ## What none of this establishes
 
 **No identity.** Every anchored fact above is about an artifact or an account. Read the anchor column

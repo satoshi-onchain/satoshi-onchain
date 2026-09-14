@@ -40,6 +40,19 @@ strongest ongoing statement: the keys have not spoken, and no one else can make 
 | `slots.py` | **Refine the LSB upper bound into a Patoshi *estimate*** via local excess-over-chance, and **validate it against dormancy** (a signal the LSB test does not see). Emits `patoshi_confirmed.csv` + `patoshi_intensity.png`. |
 | `judge.py` | **The verdict tool.** For any block height, is the coin Satoshi's? GENESIS / PATOSHI / AMBIGUOUS / NOT-PATOSHI, with dormancy. Turns every "old wallet moved" headline into a checkable answer. |
 | `plots.py` | Reproduce the "fingerprint": ExtraNonce-vs-height scatter (the Patoshi tracks) and the rolling nonce-LSB pass-rate (the era curve). |
+| `excavate.py` | Empirical excavations from the labelled early-block data: dormant ledger, diurnal null, ExtraNonce sessions, nonce bands, spent coinbases (`EXCAVATION.md` §1–6). |
+| `deepdig.py` | Deeper excavations from data already in the CSVs: hashrate and difficulty by month, dark gaps, band densities (§7–8). |
+| `spend_chain.py` | Tier C: what Satoshi did with the first-spent coinbase (block 9), re-derived from the raw transactions (§9). |
+| `coinbase_keys.py` | Fresh-key-per-coinbase across the era: every coinbase public key distinct (§11). |
+| `spent_patoshi.py` | The ~1,145 Patoshi coinbases that have been spent (§12). |
+| `awakening_map.py` | Joins the spent-map query to the Patoshi labels: which Patoshi coinbases moved, when (§12). |
+| `threads.py` / `threads_model.py` | The winning-nonce structure, and the bounded inference of the miner's thread count from the hashrate the chain pins (§10, §13). |
+| `nonce_safety.py` | Are Satoshi's on-chain signatures nonce-safe? Reused or biased nonces would leak a key; checked, not assumed (§14). |
+| `authorship_test.py` | The key-control standard: what would machine-verifiably prove control of a Satoshi key, and why re-verifying a public 2009 signature proves nothing (§15). |
+| `EXCAVATION.md` | The excavation findings, §1–15, each tied to the script that produces it. |
+| `verify/` | Anchored facts about artifacts and accounts (SourceForge, SVN, the mailing lists, bitcointalk), each with its own script; see `verify/README.md`. |
+| `timeline/` | `events.json` (the graded timeline) and `build.py`, which renders `docs/timeline.html`. |
+| `data/` | The third-party mining-pool list used to label later coinbases, with its provenance. |
 
 Stdlib only, except `plots.py` (matplotlib). Nothing here needs network access at
 run time once you have the block CSV.

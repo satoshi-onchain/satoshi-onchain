@@ -33,7 +33,6 @@ sys.stdout.reconfigure(encoding="utf-8")
 HASHES = {
     "b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553": "canonical 24 Mar 2009",
     "427c63b364c6db914cf23072a09ffd53ee078397b7c6ab2d604e12865a982faa": "draft 3 Oct 2008",
-    "e6cc7c952c688b234f9872c3e2f50060ae6556fd27925cba503c6460048e50a9": "11 Nov 2008 (not held)",
 }
 for _h, _l in list(HASHES.items()):
     HASHES[binascii.hexlify(binascii.unhexlify(_h)[::-1]).decode()] = _l + " (byte-reversed)"

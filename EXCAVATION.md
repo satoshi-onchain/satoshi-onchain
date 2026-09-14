@@ -16,7 +16,7 @@ Finney transaction), and it is an anchor to a *key*, not to a person.
 | total coinbase | 929,450 BTC |
 | **unspent (dormant)** | **872,200 BTC** (17,444 blocks, **93.8%**) |
 | spent | 57,250 BTC (1,145 blocks, 6.2%) |
-| era-wide estimate (excess-over-chance) | **~22,540 blocks ≈ 1,127,001 BTC** |
+| era-wide estimate (excess-over-chance count × 50) | **~22,540 blocks ≈ 1,127,001 BTC** (the intensity-integrated estimate in `slots.py` gives ≈1,126,974; the two methods agree to within 30 BTC) |
 
 The high-confidence set is a lower bound (counts only where Patoshi dominates); the excess-over-chance
 estimate (~22,540 / ~1.13M) is the rigorous count and matches Lerner (~22,000 / ~1.1M).
@@ -136,7 +136,7 @@ full spend path, parsed from the raw transactions (chain-linked, self-verifying)
 
 Do the winning nonces reveal how many threads the miner ran? Over the confirmed set:
 - **High bits are NOT a clean thread partition.** The nonce is ~uniform across the 32-bit range
-  **except a ~2× excess in the lowest 1/16** (top nibble `0x0` = 11.3% vs 6.25% uniform; `0x1` slightly
+  **except a ~2× excess in the lowest 1/16** (top nibble `0x0` = 11.3% over the 18,589 high-confidence Patoshi blocks, vs 6.25% uniform; `0x1` slightly
   up; `0x2..0xf` ~flat). That low-end excess is the signature of an **incremental search restarting
   from a low nonce each block** (blocks found early land at low nonces).
 - Splitting the range into K even slices, the per-slice spread grows *smoothly* with K (15% at K=2 →
@@ -244,7 +244,7 @@ path; the 4-way SSE2 speedup came later, ~mid-2010):
 which equals hashrate ÷ an off-chain per-core rate. Under plausible per-core rates the count is
 **~2–10 cores**; at the likely ~1–2 MH/s/core it is a **single ordinary multi-core desktop (~2–5
 cores).** No single integer is claimable from on-chain data alone — reported as a range. (Nonce
-cross-check: winning-nonce top-nibble = 0 in **26.3%** of blocks vs 6.25% uniform — a single low-end
+cross-check: winning-nonce top-nibble = 0 in **26.3%** of the 23,893 φ≥0.5 blocks of the difficulty-1 era (a looser set than §10's 18,589 high-confidence blocks, where the figure is 11.3%) vs 6.25% uniform — a single low-end
 excess from frequent block rebuilds/ExtraNonce bumps, **not** K discrete thread bands; §10.)
 
 **Band-structure cross-check (`threads_model.py` §5) — the fingerprint is a counter, not a thread map.**

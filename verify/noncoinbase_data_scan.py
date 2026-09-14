@@ -65,14 +65,8 @@ HASHES = {
     # The pre-release draft circulated 3 October 2008, before the 31 October announcement.
     "427c63b364c6db914cf23072a09ffd53ee078397b7c6ab2d604e12865a982faa":
         "whitepaper, pre-release draft 2008-10-03",
-    # "BWP-NB1": the copy Nicholas Bohm downloaded on 18 January 2009. This digest is recorded
-    # in Patrick Madden's expert report, Appendix PM3 section 42, in COPA v Wright -- and NOT,
-    # so far as any search has found, anywhere else. NO PUBLIC COPY OF THE FILE IS KNOWN TO
-    # EXIST; the hash is cited from the court record, not computed from a file in hand.
-    # It is scanned for anyway, precisely because a hit would be extraordinary: it would mean
-    # a version known only from a court exhibit was committed to the chain.
-    "e6cc7c952c688b234f9872c3e2f50060ae6556fd27925cba503c6460048e50a9":
-        "whitepaper BWP-NB1 2008-11-11, hash from COPA v Wright Appendix PM3 s42 (no public copy)",
+    # A fourth version exists in the court record (COPA v Wright, judgment para 271.9) and is in no
+    # public hands; its hash is in evidence that is not published and is not scanned for here.
 }
 for _h, _l in list(HASHES.items()):
     HASHES[binascii.hexlify(binascii.unhexlify(_h)[::-1]).decode()] = _l + " (byte-reversed)"
