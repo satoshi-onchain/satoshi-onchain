@@ -119,8 +119,8 @@ so each message sits in a bracket of independently-dated messages from other peo
 
 ### `malmi_satoshi_emails.py`
 
-The Satoshi ↔ Martti Malmi correspondence, 2009–2011 — released by Malmi in February 2024 as a
-witness in COPA v Wright. 260 messages, 144 of them Satoshi's. Saves the source HTML alongside the
+The Satoshi ↔ Martti Malmi correspondence, 2009–2011 — self-published by Malmi in February 2024 at
+<https://mmalmi.github.io/satoshi/>. 260 messages, 144 of them Satoshi's. Saves the source HTML alongside the
 parse so the parse can be audited against the bytes.
 
 **This corpus contains its own control**, which is why it is worth more than a one-sided archive.
@@ -132,7 +132,7 @@ satoshi   satoshin@gmx.com    +0000 x98    +0100 x46
 sirius    mmalmi@… (redacted)    +0200 x74    +0300 x42
 ```
 
-Malmi wrote from Helsinki University of Technology; Finland is EET/EEST — **+0200 winter, +0300
+Malmi's own messages place him in Finland, which is EET/EEST — **+0200 winter, +0300
 summer** — which is exactly what his headers say. So the offset is the **sender's machine**. And
 checking every message against the EU daylight-saving boundary:
 
@@ -263,3 +263,7 @@ the thing worth checking.
 **No 2008 cryptographic timestamp** exists for any of it. The strongest classes available are
 proof-of-work (the chain), live server database fields, and position in third-party archives — in
 that order. They are not interchangeable and this project does not present them as though they were.
+
+---
+
+*[statistical], not [cryptographic] — no verifying signature exists and none is claimed. Experimental research, in progress, no conclusions beyond the findings. Not money. Not financial advice. No warranty. [Rights, sourcing and corrections](../RIGHTS.md).*

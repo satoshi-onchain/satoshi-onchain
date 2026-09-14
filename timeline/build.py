@@ -167,7 +167,7 @@ for e in events:
     <span class="era era-{era}" title="{ERA_TIP[era]}">{ERA_TAG[era]}</span>
     <span class="g g-{e['grade']}">{e['grade']}</span>
     {'<span class="gapflag">NOT HELD</span>' if e['gap'] else ''}
-    <h3>{esc(e['title'])}</h3>
+    <h2>{esc(e['title'])}</h2>
   </header>
   <p class="claim">{esc(e['claim'])}</p>{caption}
   <details><summary>evidence &amp; reproduction</summary>
@@ -199,6 +199,14 @@ doc = f'''<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="A verifiable timeline of Satoshi Nakamoto and Bitcoin: every row carries an evidence grade and, where one exists, a command that regenerates it. Statistical, not cryptographic.">
+<link rel="canonical" href="https://satoshioncha.in/timeline.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://satoshioncha.in/timeline.html">
+<meta property="og:title" content="Satoshi &amp; Bitcoin — a verifiable timeline">
+<meta property="og:description" content="Every row carries an evidence grade and a reproduction path; rows that cannot be verified are shown too, marked NOT HELD.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M8 1l7 7-7 7-7-7z%27 fill=%27%232f6df6%27/%3E%3C/svg%3E">
 <title>Satoshi &amp; Bitcoin — a verifiable timeline</title>
 <style>
 :root{{--bg:#f6f7f9;--fg:#14161a;--mut:#586170;--faint:#8b93a0;--line:#e4e7ec;--card:#ffffff;--accent:#2f6df6;--accent-soft:rgba(47,109,246,.09);--gap:#fff8e1;--gapline:#e0b400}}
@@ -225,7 +233,7 @@ h1{{font-size:clamp(26px,4.4vw,34px);line-height:1.12;letter-spacing:-.02em;marg
 .ev.gap{{background:var(--gap);border-color:var(--gapline)}}
 .ev header{{display:flex;flex-wrap:wrap;gap:8px;align-items:center}}
 .ev time{{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:var(--mut);white-space:nowrap}}
-.ev h3{{font-size:16px;margin:4px 0 0;flex-basis:100%}}
+.ev h2{{font-size:16px;font-weight:600;margin:4px 0 0;flex-basis:100%}}
 span.era{{font-size:10.5px;letter-spacing:.04em;padding:2px 7px;border-radius:4px;
   border:1px dashed var(--line);color:var(--mut);background:transparent;white-space:nowrap;cursor:help}}
 .g{{font-size:10.5px;letter-spacing:.06em;padding:2px 7px;border-radius:4px;border:1px solid var(--line);color:var(--mut)}}
@@ -325,7 +333,7 @@ on it. The project itself may change or be retired at any time; what has been pu
 published and corrected forward.
 <br><br>[statistical], not [cryptographic] · experimental laboratory research, in progress, no conclusions beyond the findings · MIT &copy; 2026
 <a href="https://github.com/parthod0x">parthod0x</a> · <b>not money</b>, not financial advice ·
-no warranty
+no warranty · aggregate, cookie-less analytics, no identifiers
 <br><a href="https://github.com/satoshi-onchain/satoshi-onchain/blob/main/RIGHTS.md">Rights, sourcing
 &amp; corrections</a> — independent research; not affiliated with any party; makes no claim about the
 identity of Satoshi Nakamoto. If you are named here and want something corrected or removed, ask.
@@ -385,6 +393,7 @@ apply();
      applied later would mis-file the pageview under the account default (bitcoin-lab.org). -->
 <script>window.goatcounter = {{ path: function (p) {{ return 'satoshioncha.in' + p }} }}</script>
 <script data-goatcounter="https://parthod0x.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script defer src="https://analytics.bitcoin-lab.org/script.js" data-website-id="3959d386-fab2-45b8-9045-30c2d09b2f7c"></script>
 <script src="analytics.js"></script>
 </body>
 </html>

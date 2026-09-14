@@ -34,3 +34,4 @@
 *.asc    binary
 *.sig    binary
 *.parquet binary
+.mailmap export-ignore

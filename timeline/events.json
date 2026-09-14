@@ -38,7 +38,7 @@
   "notes": "A registrar's own database row. It says nothing about who registered it."
  },
  {
-  "id": "2008-08-20-anonymousspeech",
+  "id": "2008-08-20-back-email",
   "when": "2008-08-20",
   "precision": "range",
   "until": "2008-08-22",
@@ -67,7 +67,7 @@
   "claim": "Satoshi emailed a LINK, not an attachment, to Adam Back on 20 Aug 2008 and Wei Dai on 22 Aug 2008: upload.ae/file/6157/ecash-pdf.html. That host's file ids are sequential, and the Internet Archive crawled it through 2008 for unrelated reasons. Ids 6145, 6160 and 6161 - immediately either side of 6157 - were all first captured on 23 August 2008, placing 6157's upload on or before that date.",
   "evidence": [
    {
-    "what": "2,421 upload.ae file ids across 14,810 captures (2008-2010) via the Wayback CDX API; independently corroborated by a third party's own extraction of 17,255 upload.ae URLs listing the same nearest neighbours, 6145 and 6160",
+    "what": "2,421 upload.ae file ids across 14,810 captures (2008-2010) via the Wayback CDX API",
     "where": "http://web.archive.org/cdx/search/cdx?url=upload.ae&matchType=domain&output=json&from=2008&to=2010&fl=timestamp,original&limit=40000",
     "hash": null
    },
@@ -252,10 +252,10 @@
   "axis": "both",
   "grade": "ADJUDICATED",
   "title": "A whitepaper version exists in the court record that is in no public hands",
-  "claim": "The judgment records that Nicholas Bohm, a retired solicitor who corresponded with Satoshi shortly after the January 2009 release, provided a version of the whitepaper he had downloaded in January 2009, which the court's expert authenticated and which was used in the evidence as a control copy. It is not in public hands.",
+  "claim": "The judgment records that Nicholas Bohm, a retired solicitor who corresponded with Satoshi shortly after the January 2009 release, provided a version of the whitepaper he had downloaded in January 2009, which an expert witness (Mr Madden, ¶271.9) authenticated and which was used in the evidence as a control copy. It is not in public hands.",
   "evidence": [
    {
-    "what": "judgment ¶271.9: a version downloaded in January 2009, authenticated by the court's expert and used as a control copy",
+    "what": "judgment ¶271.9: a version downloaded in January 2009, authenticated in evidence and used as a control copy",
     "where": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
     "hash": null
    }
@@ -337,7 +337,7 @@
   "claim": "No genesis-era or Patoshi private key has produced a verifying signature. Every identity fact on this timeline is statistical, archival, adjudicated or party-released. None is cryptographic.",
   "evidence": [
    {
-    "what": "the absence itself; the 2016 demonstration reused a 2009 signature from block 183",
+    "what": "the absence itself; the judgment records that the 2016 demonstration presented a signature lifted from the public blockchain, derivable from the Satoshi/Finney transaction and the block 9 generation transaction (¶886–887)",
     "where": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
     "hash": null
    }
@@ -543,23 +543,24 @@
   "notes": "An earlier reading of ours called this support for a 'first transfer of 25.00' account. The full transaction reverses the direction; this row is the corrected reading."
  },
  {
-  "id": "2009-02-01-block-2616",
+  "id": "2009-early-bohm-transfer",
   "when": "2009-01",
-  "precision": "month",
+  "precision": "range",
   "axis": "both",
   "grade": "ADJUDICATED",
   "title": "Satoshi transfers bitcoin to Nicholas Bohm",
   "claim": "Satoshi made transfers of Bitcoin to Nicholas Bohm, a retired solicitor who corresponded with Satoshi shortly after the January 2009 release — a finding of the judgment, from Bohm's evidence.",
   "evidence": [
    {
-    "what": "judgment ¶771 (Bohm1 [5], [15]); ¶271.9 for the correspondence",
+    "what": "judgment ¶771; ¶271.9 for the correspondence",
     "where": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
     "hash": null
    }
   ],
   "reproduce": null,
   "gap": false,
-  "notes": "Which transactions they were is stated in correspondence given in evidence and not published; this row does not identify them, and the script that once located a payment from that correspondence was withdrawn on 14 September 2026. Nothing about Mr Bohm's holdings is implied."
+  "notes": "Which transactions they were is stated in correspondence given in evidence and not published; this row does not identify them, and the script that once located a payment from that correspondence was withdrawn on 14 September 2026. Nothing about Mr Bohm's holdings is implied. The judgment does not date the transfers; the range is this timeline's own bound, the year in which the correspondence began shortly after the January 2009 release (¶271.9), not a finding.",
+  "until": "2009-12"
  },
  {
   "id": "2009-02-03-first-fees",
@@ -1069,7 +1070,7 @@
   "axis": "satoshi",
   "grade": "ADJUDICATED",
   "title": "Hal Finney dies",
-  "claim": "The first person to run the software besides Satoshi dies, having been asked about the earliest draft and not answered.",
+  "claim": "The first person to run the software besides Satoshi dies.",
   "evidence": [
    {
     "what": "public record; his role and statements are discussed in the judgment",
@@ -1079,7 +1080,7 @@
   ],
   "reproduce": null,
   "gap": false,
-  "notes": "Recorded because it closes a route: the native email files his family gave a journalist in 2014 remain unpublished."
+  "notes": "Recorded because it closes a route to a first-hand account."
  },
  {
   "id": "2015-01-30-mixmaster",
@@ -1158,7 +1159,7 @@
   "claim": "The COPA v Wright judgment records that there were just 219 non-coinbase transactions in the 32,489 blocks created up to the end of 2009 — the same figure our independent query returns.",
   "evidence": [
    {
-    "what": "judgment paragraph 716, held in our own archive",
+    "what": "judgment ¶716",
     "where": "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198",
     "hash": null
    },
@@ -1299,7 +1300,7 @@
   ],
   "reproduce": "curl -s https://raw.githubusercontent.com/original-bitcoin-laboratory/genesis/status/status.json | jq '.chains.bitcoin.height'",
   "gap": true,
-  "notes": "Marked NOT HELD against ourselves, on the same rule applied to everyone else on this page: the event demonstrably happened and we do not hold the artifact in publishable form. Graded NONE because a status file we generate is not independent support for our own chain. The reproduce command reads the live height rather than this row asserting one, so the row cannot go stale while the miner runs. Upgrading it requires the blocks to be captured and sealed. Sealed sets have since covered blocks 5-731 (genesis repository, bitcoin-findings/, 6 September 2026); the tip beyond the last sealed set is as described."
+  "notes": "Marked NOT HELD against ourselves, on the same rule applied to everyone else on this page: the event demonstrably happened and we do not hold the artifact in publishable form. Graded NONE because a status file we generate is not independent support for our own chain. The reproduce command reads the live height rather than this row asserting one, so the row cannot go stale while the miner runs. Upgrading it requires the blocks to be captured and sealed. Sealed sets have since covered blocks 5-861 (genesis repository, bitcoin-findings/, 13 September 2026); the tip beyond the last sealed set is as described."
  },
  {
   "id": "2026-08-09-anchor",

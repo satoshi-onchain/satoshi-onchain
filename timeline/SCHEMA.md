@@ -20,7 +20,7 @@ kind of artifact, and gets the same discipline.**
 |---|---|---|
 | `CHAIN` | written into the Bitcoin blockchain; reproducible from any full node or public mirror | no — would require redoing the proof-of-work |
 | `SERVER-DB` | a timestamp written by a third-party server's own database (SourceForge account rows, SVN commit times, forum registration) | not by the subject; only by the operator |
-| `ADJUDICATED` | tested in court — sworn evidence, expert report, or judicial finding | contested and survived |
+| `ADJUDICATED` | a finding recorded in a published judgment, cited by paragraph | contested and survived |
 | `PARTY-RELEASED` | published by a named counterparty from their own records | depends on that party |
 | `ARCHIVE-POS` | position in an archive with independent bracketing (e.g. arrival order among other senders) | hard, but the archive operator could |
 | `CAPTURE` | a third-party crawl with its own timestamp (Wayback and similar) | hard |
@@ -67,3 +67,7 @@ missing. Speculation does not get a row in any form.
 - Identity attributions of any kind
 - Anything whose only support is a mail `Date:` header **presented as location** — those are `SELF`
   and appear as claims about a header, not about a person's whereabouts
+
+---
+
+*[statistical], not [cryptographic] — no verifying signature exists and none is claimed. Experimental research, in progress, no conclusions beyond the findings. Not money. Not financial advice. No warranty. [Rights, sourcing and corrections](../RIGHTS.md).*

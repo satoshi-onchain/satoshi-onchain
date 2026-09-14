@@ -83,8 +83,8 @@ block time     2026-08-12 03:29:39 UTC
 
 **Revision 3 (`632a4680…`, 13,274 B), 14 September 2026 — wording only**: present tense, no absolutes,
 no identifier changed; the same text as on bitcoin-lab.org, signed once. Revision 2 and its signatures
-and proofs are kept beside it as `IDENTITY-MANIFEST.r2.txt*`. Revision 3's proofs are pending until a
-calendar anchors them.
+and proofs are kept beside it as `IDENTITY-MANIFEST.r2.txt*`. Revision 3's proofs are anchored in Bitcoin blocks 966942 and
+966945 (read off the chain, 14 September 2026).
 
 **The merkle root was read off the chain and compared, not taken from the `ots` output** — which is
 the point of an anchor: checkable against Bitcoin by anyone, trusting neither the calendars nor us.
@@ -247,7 +247,7 @@ Stamped 22 August 2026 and upgraded 23 August once a calendar folded it into a b
 SHA256SUMS.slhdsa.ots     600 B pending  ->  2,534 B, Bitcoin block 963620
 ```
 
-The proof still carries pending markers for two of the three calendars it was submitted to. **That
+The proof still carries pending markers for the calendars it was submitted to. **That
 is normal and is not a defect** — a proof branches per calendar, and one Bitcoin attestation is what
 makes it verifiable. The release asset was replaced with the upgraded proof, so anyone downloading
 now gets the anchored one rather than a promise, and the same bytes are in the cold backup.

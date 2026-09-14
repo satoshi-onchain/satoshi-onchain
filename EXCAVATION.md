@@ -19,7 +19,7 @@ Finney transaction), and it is an anchor to a *key*, not to a person.
 | era-wide estimate (excess-over-chance count × 50) | **~22,540 blocks ≈ 1,127,001 BTC** (the intensity-integrated estimate in `slots.py` gives ≈1,126,974; the two methods agree to within 30 BTC) |
 
 The high-confidence set is a lower bound (counts only where Patoshi dominates); the excess-over-chance
-estimate (~22,540 / ~1.13M) is the rigorous count and matches Lerner (~22,000 / ~1.1M).
+estimate (~22,540 / ~1.13M) is the rigorous count and matches [Lerner (2013)](https://bitslog.com/2013/04/17/the-well-deserved-fortune-of-satoshi-nakamoto/) (~22,000 / ~1.1M).
 
 **Dormancy freshness (re-checked 1 Aug 2026):** a current full-history spend snapshot (BigQuery
 `acquire.sql` Query B) vs the prior snapshot shows **0** Patoshi coinbases newly spent — the count
@@ -383,3 +383,7 @@ appear to spend **more** than it did, biasing the result **towards the null**. T
 if anything stronger than 3.9×.
 
 **A cluster label is a statistical fingerprint, not a signature. Nothing here identifies a person.**
+
+---
+
+*[statistical], not [cryptographic] — no verifying signature exists and none is claimed. Experimental research, in progress, no conclusions beyond the findings. Not money. Not financial advice. No warranty. [Rights, sourcing and corrections](RIGHTS.md).*

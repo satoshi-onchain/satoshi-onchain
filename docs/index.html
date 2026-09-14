@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Cpath d=%27M8 1l7 7-7 7-7-7z%27 fill=%27%232f6df6%27/%3E%3C/svg%3E">
 <meta name="description" content="What the Bitcoin chain itself records about its earliest mining: a reproducible Patoshi classifier and a coin-by-coin verdict tool. Statistical, not cryptographic; identifies nobody. Not money.">
 <title>Satoshi On-Chain — The Verifiable Footprint</title>
 <link rel="canonical" href="https://satoshioncha.in/">
@@ -280,9 +281,9 @@
       independent, because the labels come from <b>nonce and ExtraNonce</b> fields that have nothing
       to do with keys or addresses.</p>
     <p class="sm"><b>The question is not ours, and we should say so.</b> Sergio Lerner — who
-      identified the pattern in the first place — asked it directly in 2013, reporting that he saw
+      identified the pattern in the first place — <a href="https://bitslog.com/2013/04/24/satoshi-s-fortune-a-more-accurate-figure/">asked it directly in 2013</a>, reporting that he saw
       <i>&ldquo;only two blocks rewards (100 BTC) that seem to be part of a Satoshi mining pattern
-      being spent&rdquo;</i>, and quantified it in 2019: <i>&ldquo;99.9% of all Patoshi blocks are
+      being spent&rdquo;</i>, and <a href="https://bitslog.com/2019/04/16/the-return-of-the-deniers-and-the-revenge-of-patoshi/">quantified it in 2019</a>: <i>&ldquo;99.9% of all Patoshi blocks are
       unspent. While only 10% of all non-Patoshi blocks are unspent.&rdquo;</i> His measurement is
       <b>per block, across the whole era</b>. The figures below are a different cut — <b>per spent
       coin, inside the first year&rsquo;s payments</b> — and they agree with him. Agreement with
@@ -355,13 +356,13 @@
       &mdash; that quantum exposure is decided by <i>script type and public-key exposure</i> rather
       than by how long a balance has sat still &mdash; was published before we wrote any of it, and
       before the July 2025 movement that made it topical. <b>Milton and Shikhelman,
-      <i>Bitcoin and Quantum Computing: Current Status and Future Directions</i>, Chaincode Labs,
+      <a href="https://chaincode.com/bitcoin-post-quantum.pdf"><i>Bitcoin and Quantum Computing: Current Status and Future Directions</i></a>, Chaincode Labs,
       May 2025</b> sets out the same taxonomy and the long-range / short-range attack distinction it
       rests on. Later, clearer statements of the P2PK-versus-P2PKH split appear from
-      <b>Project Eleven</b> (July 2025) and <b>Chainalysis</b>.</p>
+      <a href="https://blog.projecteleven.com/posts/quantum-vulnerability-of-bitcoin-addresses"><b>Project Eleven</b></a> (July 2025) and <b>Chainalysis</b>.</p>
 
     <p class="sm">★ <b>And one formulation is better than ours, so it is worth borrowing rather than
-      restating.</b> <b>Coin Metrics</b> observes that a Taproot output embeds a tweaked public key
+      restating.</b> <a href="https://coinmetrics.substack.com/p/state-of-the-network-issue-362"><b>Coin Metrics</b></a> observes that a Taproot output embeds a tweaked public key
       directly &mdash; so <b>Bitcoin&rsquo;s <i>newest</i> script type is exposed at rest while a
       2011 P2PKH is not.</b> That disposes of the age argument in a single sentence, running down the
       timeline rather than up it, and needs no reasoning about 2009 at all.</p>
@@ -442,7 +443,7 @@
       <div class="vd"><span class="h">whole era</span><span class="tag no">NO COMMITMENT</span><span class="desc"><b>Nothing Satoshi put on any chain commits to any known version of the whitepaper.</b> Established over the scopes stated in the table above, with a passing control behind every negative — an empty result and a broken query are indistinguishable without one.</span></div>
       <div class="vd"><span class="h">2013-10-16</span><span class="tag amb">THIRD PARTY</span><span class="desc">An address derived from the canonical paper receives 1 satoshi — as output 65 of <b>83 one-satoshi outputs</b> in a single bulk send. A dust-spray whose address list happened to include one. Intent unknown, and almost certainly nothing to do with the whitepaper.</span></div>
       <div class="vd"><span class="h">2014-04-22</span><span class="tag amb">THIRD PARTY</span><span class="desc">A second derived address receives 5,432 satoshi. Its sender made <b>51 transactions in eight weeks, fifty identical in shape</b>, paying <b>100 distinct addresses once each</b> — a timestamping bot working a queue, for 0.0054 BTC in total. The whitepaper was one file of a hundred.</span></div>
-      <div class="vd"><span class="h">11 Nov 2008</span><span class="tag no">NOTHING</span><span class="desc"><b>The version nobody holds was not timestamped by anyone.</b> It can be tested for without possessing a byte of it, because its SHA-256 is published in the court record. If someone had held that file and wanted to prove it, this was the cheap, publicly-endorsed way — and it cost one cent.</span></div>
+      <div class="vd"><span class="h">Jan 2009 download</span><span class="tag no">UNTESTABLE</span><span class="desc"><b>The version nobody holds — the January 2009 download known only from the judgment in COPA v Wright (¶271.9) — cannot be tested for.</b> No public hash of it exists, so no address can be derived from it and no timestamp for it can be looked for. The row stays so that the absence is stated rather than implied.</span></div>
     </div>
 
     <p class="sm"><b>Calibration, because these two hits get retold badly.</b> A payment to a
@@ -467,7 +468,7 @@
 
     <div class="verdicts">
       <div class="vd"><span class="h">2008-08-18</span><span class="tag amb">REGISTRY</span><span class="desc"><span class="mono">bitcoin.org</span> registered, 13:19:55Z — <b>but the registrant is not recorded.</b> RDAP holds no name and no historical registrant data. There is no machine-verifiable link between the domain and Satoshi at any date.</span></div>
-      <div class="vd"><span class="h">2008-08-20</span><span class="tag gen">COURT</span><span class="desc"><b>The earliest known Satoshi communication.</b> They email <b>Adam Back</b> to check a Hashcash citation and link a pre-release draft. Back replies next day pointing them to Wei Dai's b-money — which, in the exchange the court quotes, Satoshi had not been aware of. Quoted in <b>COPA v Wright</b> at ¶661–665; Back's own account is in his witness statement, under a statement of truth — which reproduces the header, so the <b>earliest Satoshi address of any kind is <span class="mono">satoshi@anonymousspeech.com</span></b>, not the vistomail one used to announce the paper ten weeks later.</span></div>
+      <div class="vd"><span class="h">2008-08-20</span><span class="tag gen">COURT</span><span class="desc"><b>The earliest known Satoshi communication.</b> They email <b>Adam Back</b> to check a Hashcash citation and link a pre-release draft. Back replies next day pointing them to Wei Dai's b-money — which, in the exchange the court quotes, Satoshi had not been aware of. Quoted in <b>COPA v Wright</b> at ¶661–665.</span></div>
       <div class="vd"><span class="h">2008-10-05</span><span class="tag pat">SERVER</span><span class="desc">SourceForge account <span class="mono">nakamoto2</span> created — user ID <span class="mono">2238460</span>. Join dates are server-set; sequential IDs corroborate them independently. <b>26 days before the paper was announced.</b></span></div>
       <div class="vd"><span class="h">2008-10-31</span><span class="tag amb">ARCHIVE</span><span class="desc">The paper announced on <span class="mono">cryptography@metzdowd.com</span>, abstract quoted inline. 18 messages through Jan 2009, in server-recorded arrival order.</span></div>
       <div class="vd"><span class="h">2008-11-02</span><span class="tag amb">ARCHIVE</span><span class="desc">R.A. Hettinga cross-posts the announcement to <span class="mono">cypherpunks</span>, forwarding a <span class="mono">[gsc]</span> thread in which <b>Patrick Chkoreff</b> had written <i>“That is a great paper.”</i> at 09:52 — someone who had <b>read it within two days</b>. Preserved at MARC, but only as a quotation nested inside the forward: <b>Chkoreff was not on cypherpunks</b>, and the primary record of his message is on a list we have not located.</span></div>
@@ -475,7 +476,7 @@
       <div class="vd"><span class="h">2008-11-09</span><span class="tag pat">SERVER</span><span class="desc"><span class="mono">nakamoto2</span> registers the Bitcoin project on SourceForge, 18:58. It later adds <span class="mono">s_nakamoto</span>, which adds <span class="mono">hal</span>.</span></div>
       <div class="vd"><span class="h">2008-11-17</span><span class="tag amb">ARCHIVE</span><span class="desc"><b>The venue closes.</b> Satoshi posts at 17:24:43 UTC; <b>4h 19m later</b>, at 21:43:33 UTC, the list moderator <b>Perry E. Metzger</b> writes <i>“ADMIN: end of bitcoin discussion for now … Maybe later on when Satoshi (or someone else) writes something detailed up and posts it we could have another round.”</i> <b>The 52-day silence that follows is not Satoshi withdrawing — it is a moderated list being moderated.</b> Their next message to it, 52 days later, is <i>“Bitcoin v0.1 released”</i>: exactly the condition Metzger named.</span></div>
       <div class="vd"><span class="h">2009-01-03</span><span class="tag gen">CHAIN</span><span class="desc">The genesis block. The only unforgeable line on this list.</span></div>
-      <div class="vd"><span class="h">2009-01</span><span class="tag amb">COURT</span><span class="desc">A member of the public — the retired solicitor <b>Nicholas Bohm</b>, reading the cryptography list — downloads the whitepaper in January 2009; the court's expert authenticated his copy and it was used as a control copy (judgment ¶271.9). Its date, hashes and text are in evidence that is not published and are not reproduced here.</span></div>
+      <div class="vd"><span class="h">2009-01</span><span class="tag amb">COURT</span><span class="desc">A member of the public — the retired solicitor <b>Nicholas Bohm</b> — downloads the whitepaper in January 2009; an expert witness (Mr Madden) authenticated his copy and it was used as a control copy (judgment ¶271.9). Its date, hashes and text are in evidence that is not published and are not reproduced here.</span></div>
       <div class="vd"><span class="h">2009 (early)</span><span class="tag amb">COURT</span><span class="desc"><b>Satoshi transfers bitcoin to Nicholas Bohm</b> — a finding of the judgment (¶771), from Bohm's evidence. Which transactions they were is stated in correspondence given in evidence and not published; this page does not identify them.</span></div>
       <div class="vd"><span class="h">2009-05-11</span><span class="tag gen">CHAIN</span><span class="desc"><b>One of eight fee-bearing blocks in 2009.</b> Block 14047 pays a coinbase of 50.10 at 14:58:31 UTC; <a href="#fees2009">only eight blocks in all of 2009 collected a fee at all</a>. <b>This is [statistical], not [cryptographic]</b> — nobody signed anything. The coinbase address <span class="mono">1NCAAhBr…qZeZd5</span> received that one coinbase and nothing else, an identifier in the record; balances are not tracked here.</span></div>
       <div class="vd"><span class="h">2009-10-21</span><span class="tag pat">SERVER</span><span class="desc">First of <b>164 SVN commits</b> by <span class="mono">s_nakamoto</span>. Commit times are written by the server — the densest record of Satoshi working that exists off-chain.</span></div>
@@ -518,8 +519,7 @@
       total paid across all of 2009 was <b>2.87 BTC</b>.</p>
     <p class="sm">Out of roughly <b>32,000</b> blocks. Fees were optional and almost nobody set one,
       so the whole of the first year’s fee record fits in a table this size. Satoshi described the
-      design to a correspondent in May 2009 — <i>“including a fee is completely optional, more of a
-      donation to nodes for helping out”</i> — and this is what that policy looked like in practice.
+      design to a correspondent in May 2009 as an optional fee, more a donation to nodes for helping out — and this is what that policy looked like in practice.
       Every other 2009 block paid exactly 50.00.</p>
     <div class="scroll">
       <table>
@@ -578,9 +578,8 @@
       Bitcointalk user <span class="mono">TheArchaeologist</span> enumerated
       <i>&ldquo;all the transactions performed in 2009&rdquo;</i> in
       <a href="https://bitcointalk.org/index.php?topic=5044418.0">topic 5044418</a> on
-      <b>5 October 2018</b>, and the exact figure of <b>219</b> non-coinbase transactions appears in
-      the BTC Core Developers&rsquo; closing submissions in <i>COPA v Wright</i> and again at
-      paragraph 716 of the judgment (2024). Earlier still, user <span class="mono">molecular</span>
+      <b>5 October 2018</b>, and the exact figure of <b>219</b> non-coinbase transactions appears at
+      ¶716 of the judgment in <i>COPA v Wright</i> (2024). Earlier still, user <span class="mono">molecular</span>
       published a Bitcoin-Abe analysis on <b>15 August 2011</b> reporting
       <span class="mono">1,624,252.87 BTC (2.87 BTC fees)</span> —
       <a href="https://bitcointalk.org/index.php?topic=37333.msg458390">topic 37333</a>. <b>That
@@ -614,7 +613,7 @@
     <h2>The line</h2>
     <p class="close">No genesis-era or Patoshi key has produced a verifying signature. Only that
       would turn <i>attributable</i> into <i>proven</i>. The ≈1.13M BTC staying largely silent since it was mined
-      is itself the strongest statement: the keys don’t speak — and no one else can make them speak.</p>
+      is itself the strongest statement: the keys don’t speak — and nobody else has.</p>
     <div class="xlink">Cross-check with the quantum threat model: these dormant Patoshi coinbases are bare
       <b>P2PK</b> outputs, so their public keys have been on the chain since 2009; they belong to the class
       most exposed to a break of elliptic-curve signatures.</div>
@@ -629,7 +628,7 @@
     <div><span class="k">pipeline</span> &nbsp;acquire → classify → refine → validate → judge</div>
     <div><span class="k">reproduce</span> &nbsp;patoshi.py · slots.py · judge.py &nbsp;·&nbsp; excavation: excavate.py · deepdig.py · spend_chain.py · nonce_safety.py · authorship_test.py</div>
     <div><span class="k">excavation</span> &nbsp;dormant ledger · diurnal null (24/7) · hashrate &amp; restraint · no thread-count signal · block-9 spend chain · 1,145 awakenings · nonce-safety · the key-control standard &nbsp;·&nbsp; <a href="https://github.com/satoshi-onchain/satoshi-onchain/blob/main/EXCAVATION.md">EXCAVATION.md §1–15</a></div>
-    <div><span class="k">sources</span> &nbsp;S. D. Lerner, Patoshi analyses (2013) · the chain itself (genesis, block 170)</div>
+    <div><span class="k">sources</span> &nbsp;S. D. Lerner, Patoshi analyses (<a href="https://bitslog.com/2013/04/17/the-well-deserved-fortune-of-satoshi-nakamoto/">2013</a>, <a href="https://bitslog.com/2019/04/16/the-return-of-the-deniers-and-the-revenge-of-patoshi/">2019</a>) · the chain itself (genesis, block 170)</div>
 
     <p class="sf-links">
       <a href="https://github.com/satoshi-onchain/satoshi-onchain">source</a> ·
@@ -650,7 +649,7 @@
     <p class="sf-legal">[statistical], not [cryptographic] · experimental laboratory research, in progress,
       no conclusions beyond the findings · MIT © 2026
       <a href="https://github.com/parthod0x">parthod0x</a> · <b>not money</b>, not financial advice ·
-      no warranty</p>
+      no warranty · aggregate, cookie-less analytics, no identifiers</p>
     <p><a href="https://github.com/satoshi-onchain/satoshi-onchain/blob/main/RIGHTS.md">Rights, sourcing &amp; corrections</a> — independent research; not affiliated with any party; not financial advice.</p>
 </footer>
 </main>

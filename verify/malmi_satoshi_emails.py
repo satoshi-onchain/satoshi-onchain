@@ -1,11 +1,11 @@
 """Preservation copy of the Satoshi <-> Martti Malmi ("Sirius") correspondence, 2009-2011.
 
-Released by Malmi in February 2024 as evidence in COPA v Wright, where he was a witness. This is the
-largest body of Satoshi's private correspondence in public, and unlike the mailing-list archive it
-comes from the named counterparty rather than from a pseudonym.
+Self-published by Malmi in February 2024 at https://mmalmi.github.io/satoshi/. This is the largest body
+of Satoshi's private correspondence in public, and unlike the mailing-list archive it comes from the
+named counterparty rather than from a pseudonym.
 
-Evidential class: released by an identified party and entered in court proceedings. That is stronger
-than an anonymous claim and weaker than a server-recorded timestamp -- the dates are as Malmi's mail
+Evidential class: released by an identified party from their own records. That is stronger than an
+anonymous claim and weaker than a server-recorded timestamp -- the dates are as Malmi's mail
 client recorded them, not as an independent server stamped them. Treat accordingly.
 
 Saves the source HTML alongside the parse so the parse can be audited against the bytes.

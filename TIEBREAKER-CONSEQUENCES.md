@@ -10,13 +10,13 @@ is recorded here. Only the disclosed design is cited.*
 
 ## The disclosed design
 
-On 29 August 2022, in GitHub discussion `janoside/btc-rpc-explorer#465`, Sergio Demian Lerner
+On 29 August 2022, in GitHub discussion [`janoside/btc-rpc-explorer#465`](https://github.com/janoside/btc-rpc-explorer/discussions/465), Sergio Demian Lerner
 described his Patoshi classifier:
 
 > "The Patoshi pattern finding algorithm attributes blocks with different probabilities. Some
 > blocks are unequivocally Patoshi's, some are really hard to tell. **In case of doubt, the
 > algorithm checks if the coinbase is unspent, and in that case it considers the block part of
-> Patoshi.**"
+> Patoshi.**" (emphasis added)
 
 For a historical study this is a reasonable heuristic, and it was disclosed voluntarily. Nothing
 below is a criticism of the choice. What follows are its logical consequences, which do not
@@ -45,8 +45,7 @@ tiebreaker did not fire) or accept that its scope is partly self-referential.
 
 ## Consequence 3 — error rates measured on the spent subsample are a structural worst case
 
-Published spot-checks of the classifier measure error on **spent** blocks (e.g. the ~31-of-50
-figure circulated from the Whale Alert analysis), because a spend can expose evidence that
+Published spot-checks of the classifier measure error on **spent** blocks, because a spend can expose evidence that
 contradicts the attribution. But the tiebreaker *discriminates against spent coinbases by
 construction*: a doubt-case block only entered the set while unspent. The spent subsample is
 therefore enriched for exactly the borderline attributions most likely to be wrong — the
@@ -64,8 +63,8 @@ in this repository keys any claim on dormancy, and the tier table in `README.md`
 ## Appendix — an instance in a published codebase
 
 Hours after this document was first published, a review of primary sources for the LayerTwo Labs
-"eCash" (ECX) hard fork — `ecash-com/fast-facts` and Paul Sztorc's own posts — showed the
-structure Consequences 1 and 2 describe: *"220 whitelisted 'repurpose' transactions
+"eCash" (ECX) hard fork — [`ecash-com/fast-facts`](https://github.com/ecash-com/fast-facts) (README, "Consensus quirk" row) and [Paul Sztorc's own post](https://x.com/Truthcoin/status/2048788567246467318) — showed the
+structure Consequences 1 and 2 describe: *"220 whitelisted "repurpose" transactions
 reassign Satoshi-era (Patoshi) coins without signatures"* (`setRepurposeTx`, `src/repo_txns.h`),
 with the subset selected, in Sztorc's words, because *"having never availed the opportunity to
 sell any portion of them … makes it nearly certain they were abandoned."*
@@ -78,3 +77,6 @@ is not this document's question. What it demonstrates is that these consequences
 hypothetical: reassignment policies keyed on dormancy over Patoshi-derived sets exist in published
 code, and their soundness turns on exactly the properties analysed above.
 
+---
+
+*[statistical], not [cryptographic] — no verifying signature exists and none is claimed. Experimental research, in progress, no conclusions beyond the findings. Not money. Not financial advice. No warranty. [Rights, sourcing and corrections](RIGHTS.md).*

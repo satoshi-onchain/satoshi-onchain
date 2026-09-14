@@ -1,4 +1,4 @@
-# Satoshi on-chain: a reproducible verifier + Patoshi classifier
+# Satoshi On-Chain: a reproducible verifier + Patoshi classifier
 
 > **Scope.** Experimental laboratory research, in progress and expected to change. It reports what
 > published, re-runnable methods find in public material — statistical and machine-verifiable
@@ -22,8 +22,8 @@ The honest epistemics up front — three tiers, and we do not blur them:
 **The line we do not cross.** No genesis-era or Patoshi key has produced a
 verifying signature. Only that would upgrade Tier B from *attributable* to *proven*.
 Every public "I am Satoshi" claim (including the one rejected in *COPA v Wright* [2024] EWHC
-1198 (Ch)) fails exactly this test. The ≈1.13M BTC staying largely silent since 2009 is itself the
-strongest ongoing statement: the keys have not spoken, and no one else can make them speak.
+1198 (Ch), ¶7.2) fails exactly this test. The ≈1.13M BTC staying largely silent since 2009 is itself the
+strongest ongoing statement: the keys have not spoken, and nobody else has.
 
 ---
 
@@ -61,7 +61,7 @@ run time once you have the block CSV.
 
 ## The method (faithful to Lerner 2013)
 
-Sergio Demian Lerner's "Patoshi pattern" separates one early miner from the rest using
+Sergio Demian Lerner's ["Patoshi pattern"](https://bitslog.com/2013/04/17/the-well-deserved-fortune-of-satoshi-nakamoto/) (2013) separates one early miner from the rest using
 structure the miner's software inadvertently leaked into every block header:
 
 1. **ExtraNonce slope (primary).** The coinbase scriptSig carries an ExtraNonce the
@@ -217,13 +217,16 @@ visible payment paths contain no `OP_DUP`/`OP_HASH160`/`OP_EQUALVERIFY`, only ba
   ~1.1M-BTC Patoshi hoard — sits dormant**, and the dormancy *is* the data.)
 
 ## Sources
-- S. D. Lerner, "The Well Deserved Fortune of Satoshi Nakamoto" (bitslog, 2013) and
-  follow-up Patoshi analyses — the ExtraNonce/nonce methodology.
+- S. D. Lerner, "The Well Deserved Fortune of Satoshi Nakamoto" (bitslog, 2013,
+  https://bitslog.com/2013/04/17/the-well-deserved-fortune-of-satoshi-nakamoto/) and
+  follow-up Patoshi analyses (https://bitslog.com/2019/04/16/the-return-of-the-deniers-and-the-revenge-of-patoshi/) — the ExtraNonce/nonce methodology.
 - Genesis + block-170/Hal-Finney facts: the chain itself (verify via `anchors.py`).
 - Dormancy status (2026): re-derived from a full-history snapshot (`EXCAVATION.md` §1, BigQuery, 1 Aug 2026); the Patoshi
   cluster remains unmoved while non-Patoshi Satoshi-era coins have awakened.
 
 ---
+
+MIT © 2026 parthod0x — see `LICENSE` for the named copyright holder; data files keep their upstream licences as stated in `data/PROVENANCE.md`.
 
 **Rights, sourcing and corrections:** see [RIGHTS.md](RIGHTS.md) — what this project uses,
 where it comes from, how named people are treated, and how to ask for a correction.
