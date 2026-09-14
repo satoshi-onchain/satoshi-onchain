@@ -35,7 +35,9 @@ organisations, the three sites, and the Radicle identity including this reposito
 `rad:z4AkHVo5aTCwsbJFR8Q1AsJqszsjL`.
 
 ```
-IDENTITY-MANIFEST.txt          12,930 B   sha256 4825c4c0984209bf64c478d011a1933dd28d186ad1659101aa4098f77deb72b7
+IDENTITY-MANIFEST.txt          13,257 B   sha256 1c350426a29d530bbb3050b4e1380092e0663a273e097703eca7809f9ae76fbd
+                                          revision 2, 14 Sep 2026 (wording only); revision 1 and its
+                                          signatures and proofs are kept beside it as IDENTITY-MANIFEST.r1.txt*
 IDENTITY-MANIFEST.txt.asc         273 B   OpenPGP, B128526AF85AE4A8F22B949FB0145F74B78CF1DA
 IDENTITY-MANIFEST.txt.slhdsa    7,856 B   SLH-DSA-SHA2-128s, verified against the published pk
   + a .ots proof over each of the three
