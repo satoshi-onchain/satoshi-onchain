@@ -830,14 +830,14 @@
     "hash": null
    },
    {
-    "what": "CDX sweep of the whole domain: 27 archived URLs, none under /boards/",
+    "what": "CDX sweep of the whole domain, all status codes (14 September 2026): 616 capture rows; 79 of them request /boards/ and every one is a 404 or 403, the earliest on 2011-06-27 — the archive asked for the forum and held nothing. 27 distinct URLs have a status-200 capture; none is under /boards/.",
     "where": "https://web.archive.org/web/2009*/bitcoin.sourceforge.net*",
     "hash": null
    }
   ],
-  "reproduce": "http://web.archive.org/cdx/search/cdx?url=bitcoin.sourceforge.net*&output=json&filter=statuscode:200&fl=timestamp,original",
+  "reproduce": "http://web.archive.org/cdx/search/cdx?url=bitcoin.sourceforge.net*&output=json&fl=timestamp,original,statuscode (unfiltered; count the rows whose URL contains /boards/ and read their status codes). Add &filter=statuscode:200&collapse=urlkey to reproduce the 27 URLs with content.",
   "gap": true,
-  "notes": "A Satoshi venue absent from every compilation we have checked. NOT ARCHIVED is not the same as destroyed. The remaining route is reconstruction from the 'Repost:' threads they carried across. The reproduce query filters the index to status 200: redirects and errors are excluded, so the count is of successful captures, not of every row the archive holds for the domain."
+  "notes": "A Satoshi venue absent from every compilation we have checked. NOT ARCHIVED is not the same as destroyed. The remaining route is reconstruction from the 'Repost:' threads they carried across. The reproduce query is deliberately unfiltered: a status-200 filter would hide the 79 /boards/ rows, and those rows are the evidence that the archive requested the forum and found nothing. Row counts can grow as the archive adds captures; the figures are as of the date stated."
  },
  {
   "id": "2009-12-xx-sf-project-edit",
