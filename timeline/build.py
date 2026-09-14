@@ -194,28 +194,39 @@ CORPUS_LINE = ("It is a deliberate subset of unpublished research rather than a 
 
 N_LAB = sum(1 for e in events if e["when"] >= "2026")
 built = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
-doc = f'''<title>Satoshi &amp; Bitcoin — a verifiable timeline</title>
+doc = f'''<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Satoshi &amp; Bitcoin — a verifiable timeline</title>
 <style>
-:root{{--bg:#fff;--fg:#111;--mut:#666;--line:#e3e3e3;--card:#fafafa;--gap:#fff8e1;--gapline:#e0b400}}
-@media(prefers-color-scheme:dark){{:root{{--bg:#0f1115;--fg:#e8e8ea;--mut:#9aa0aa;--line:#262a33;--card:#161922;--gap:#241f10;--gapline:#7a5c00}}}}
-:root[data-theme=dark]{{--bg:#0f1115;--fg:#e8e8ea;--mut:#9aa0aa;--line:#262a33;--card:#161922;--gap:#241f10;--gapline:#7a5c00}}
-:root[data-theme=light]{{--bg:#fff;--fg:#111;--mut:#666;--line:#e3e3e3;--card:#fafafa;--gap:#fff8e1;--gapline:#e0b400}}
+:root{{--bg:#f6f7f9;--fg:#14161a;--mut:#586170;--faint:#8b93a0;--line:#e4e7ec;--card:#ffffff;--accent:#2f6df6;--accent-soft:rgba(47,109,246,.09);--gap:#fff8e1;--gapline:#e0b400}}
+@media(prefers-color-scheme:dark){{:root{{--bg:#0d0f13;--fg:#e7eaf0;--mut:#9aa2af;--faint:#6b7482;--line:#252b35;--card:#161a21;--accent:#5b8cff;--accent-soft:rgba(91,140,255,.12);--gap:#241f10;--gapline:#7a5c00}}}}
+:root[data-theme=dark]{{--bg:#0d0f13;--fg:#e7eaf0;--mut:#9aa2af;--faint:#6b7482;--line:#252b35;--card:#161a21;--accent:#5b8cff;--accent-soft:rgba(91,140,255,.12);--gap:#241f10;--gapline:#7a5c00}}
+:root[data-theme=light]{{--bg:#f6f7f9;--fg:#14161a;--mut:#586170;--faint:#8b93a0;--line:#e4e7ec;--card:#ffffff;--accent:#2f6df6;--accent-soft:rgba(47,109,246,.09);--gap:#fff8e1;--gapline:#e0b400}}
 *{{box-sizing:border-box}}
-body{{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}}
-.wrap{{max-width:900px;margin:0 auto;padding:28px 18px 80px}}
-h1{{font-size:24px;margin:0 0 6px}}
+body{{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}}
+.wrap{{max-width:860px;margin:0 auto;padding:clamp(28px,5vw,72px) clamp(20px,5vw,40px) 80px}}
+a{{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-soft)}}
+a:hover,a:focus-visible{{border-color:var(--accent)}}
+.eyebrow{{font-family:ui-monospace,"SF Mono","Cascadia Code","JetBrains Mono",Menlo,Consolas,monospace;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 18px}}
+.eyebrow a{{color:inherit;border:0}}
+h1{{font-size:clamp(26px,4.4vw,34px);line-height:1.12;letter-spacing:-.02em;margin:0 0 8px}}
+.incomplete{{border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:14px 18px;margin:0 0 22px;background:var(--card);font-size:14.5px;line-height:1.65;color:var(--mut)}}
+.incomplete b{{color:var(--fg)}}
 .sub{{color:var(--mut);margin:0 0 22px}}
 .bar{{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);padding:12px 0;margin-bottom:18px;z-index:5}}
 .bar button{{font:inherit;font-size:13px;padding:5px 12px;margin-right:6px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:999px;cursor:pointer}}
 .bar button[aria-pressed=true]{{background:var(--fg);color:var(--bg);border-color:var(--fg)}}
 .bar .grp{{margin-top:8px}}
 .bar label{{font-size:13px;color:var(--mut);margin-right:10px}}
-.ev{{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:14px 16px;margin:0 0 12px}}
+.ev{{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:14px 16px;margin:0 0 12px;overflow-wrap:anywhere}}
 .ev.gap{{background:var(--gap);border-color:var(--gapline)}}
 .ev header{{display:flex;flex-wrap:wrap;gap:8px;align-items:center}}
-.ev time{{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:var(--mut)}}
+.ev time{{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:var(--mut);white-space:nowrap}}
 .ev h3{{font-size:16px;margin:4px 0 0;flex-basis:100%}}
-.era{{font-size:10.5px;letter-spacing:.04em;padding:2px 7px;border-radius:4px;
+span.era{{font-size:10.5px;letter-spacing:.04em;padding:2px 7px;border-radius:4px;
   border:1px dashed var(--line);color:var(--mut);background:transparent;white-space:nowrap;cursor:help}}
 .g{{font-size:10.5px;letter-spacing:.06em;padding:2px 7px;border-radius:4px;border:1px solid var(--line);color:var(--mut)}}
 .g-CHAIN{{background:#0a7f3f;color:#fff;border-color:#0a7f3f}}
@@ -232,7 +243,7 @@ details summary{{cursor:pointer;color:var(--mut);font-size:13px}}
 .evid{{margin:10px 0;padding-left:18px}}
 .evid li{{margin-bottom:8px;font-size:13.5px}}
 .w{{color:var(--mut);font-size:12.5px;word-break:break-all}}
-a.w{{text-decoration:underline;text-decoration-style:dotted;text-underline-offset:2px}}
+a.w{{color:var(--mut);border:0;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:2px}}
 a.w:hover,a.w:focus-visible{{color:var(--fg);text-decoration-style:solid}}
 code{{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;word-break:break-all}}
 .h{{color:var(--mut)}}
@@ -241,6 +252,11 @@ code{{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;wor
 .lbl{{display:inline-block;min-width:82px;color:var(--mut);font-size:11px;letter-spacing:.06em;text-transform:uppercase}}
 .count{{color:var(--mut);font-size:13px;margin:6px 0 16px}}
 .legend{{border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:22px 0;font-size:13.5px;color:var(--mut)}}
+.sitefoot{{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;line-height:1.8;color:var(--faint);
+  font-family:ui-monospace,"SF Mono","Cascadia Code","JetBrains Mono",Menlo,Consolas,monospace}}
+.sitefoot b{{color:var(--mut);font-weight:600}}
+.sitefoot a{{color:var(--faint);border-bottom:1px solid var(--line)}}
+.sitefoot a:hover{{color:var(--fg);border-color:var(--accent)}}
 .eradiv{{border:1px solid var(--line);border-left:3px solid var(--fg);border-radius:10px;
   padding:16px 20px;margin:34px 0 26px;background:var(--card)}}
 .eradiv h2{{font-size:15px;margin:0 0 10px;letter-spacing:.01em}}
@@ -249,7 +265,10 @@ code{{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;wor
 .eradiv b{{color:var(--fg)}}
 .eradiv .g{{font-size:10px;vertical-align:baseline}}
 </style>
+</head>
+<body>
 <div class="wrap">
+<p class="eyebrow"><a href="index.html" title="Satoshi On-Chain — home">◆ Satoshi On-Chain</a> · timeline</p>
 <h1>Satoshi &amp; Bitcoin — a verifiable timeline</h1>
 <p class="sub">Every row carries an evidence grade and, where one exists, a command that regenerates
 it. Rows we <b>cannot</b> verify are shown too, marked <b>NOT HELD</b> — because a timeline showing
@@ -297,7 +316,7 @@ not a gap in the research — and only a signature would change it.
 <br><br>Generated {built} from <code>events.json</code>. The page is a function of that file.
 </div>
 
-<footer class="legend" style="margin-top:26px">
+<footer class="sitefoot">
 <b>Status of the work.</b> Experimental research, published as it develops and provided
 <b>as is, without warranties or guarantees of any kind</b>. Findings here are provisional — several
 have been revised and more will be. A row states what the evidence supported when it was checked; it
@@ -367,6 +386,8 @@ apply();
 <script>window.goatcounter = {{ path: function (p) {{ return 'satoshioncha.in' + p }} }}</script>
 <script data-goatcounter="https://parthod0x.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="analytics.js"></script>
+</body>
+</html>
 '''
 # newline="\n" is load-bearing: without it Python writes CRLF on Windows while the committed blob
 # is LF, so every regeneration produced a whole-file diff of pure line-ending churn.
