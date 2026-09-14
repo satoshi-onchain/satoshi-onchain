@@ -35,9 +35,9 @@ organisations, the three sites, and the Radicle identity including this reposito
 `rad:z4AkHVo5aTCwsbJFR8Q1AsJqszsjL`.
 
 ```
-IDENTITY-MANIFEST.txt          13,257 B   sha256 1c350426a29d530bbb3050b4e1380092e0663a273e097703eca7809f9ae76fbd
-                                          revision 2, 14 Sep 2026 (wording only); revision 1 and its
-                                          signatures and proofs are kept beside it as IDENTITY-MANIFEST.r1.txt*
+IDENTITY-MANIFEST.txt          13,274 B   sha256 632a46806183a87fb52dc307923550fff79a2060dbdcb47958902a92b7f205c5
+                                          revision 3, 14 Sep 2026 (wording only); revision 2 and its
+                                          signatures and proofs are kept beside it as IDENTITY-MANIFEST.r2.txt*
 IDENTITY-MANIFEST.txt.asc         273 B   OpenPGP, B128526AF85AE4A8F22B949FB0145F74B78CF1DA
 IDENTITY-MANIFEST.txt.slhdsa    7,856 B   SLH-DSA-SHA2-128s, verified against the published pk
   + a .ots proof over each of the three
@@ -80,6 +80,11 @@ block hash     000000000000000000000d3c4cb24b2fd84a2f65eb39c14f5708285820e9e0a1
 merkle root    cbf9d141073c02fc3d955dfa6c8e7e758b5ec7388eb529eb9c4f7ee86d8d9b48
 block time     2026-08-12 03:29:39 UTC
 ```
+
+**Revision 3 (`632a4680…`, 13,274 B), 14 September 2026 — wording only**: present tense, no absolutes,
+no identifier changed; the same text as on bitcoin-lab.org, signed once. Revision 2 and its signatures
+and proofs are kept beside it as `IDENTITY-MANIFEST.r2.txt*`. Revision 3's proofs are pending until a
+calendar anchors them.
 
 **The merkle root was read off the chain and compared, not taken from the `ots` output** — which is
 the point of an anchor: checkable against Bitcoin by anyone, trusting neither the calendars nor us.
