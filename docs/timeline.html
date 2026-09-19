@@ -87,7 +87,7 @@ it. Rows we <b>cannot</b> verify are shown too, marked <b>NOT HELD</b> — becau
 only what was found looks complete when it is not.</p>
 
 <div class="incomplete"><b>This timeline is incomplete, and says so on purpose.</b>
-It currently holds <b>61</b> events. It is a deliberate subset of unpublished research rather than a bulk export — each row has to acquire a grade, a source and a reproduction path before it can appear here. The material behind it is not published, and its extent is deliberately not characterised: a figure nobody can verify is not evidence.
+It currently holds <b>62</b> events. It is a deliberate subset of unpublished research rather than a bulk export — each row has to acquire a grade, a source and a reproduction path before it can appear here. The material behind it is not published, and its extent is deliberately not characterised: a figure nobody can verify is not evidence.
 <b>Absence of a row here is not evidence that nothing happened on that date.</b>
 Applying the same standard to ourselves that we apply to everyone else — literally, since
 7 of these rows are about <a href="https://bitcoin-lab.org/bitcoin">a second Bitcoin, mined in
@@ -519,6 +519,18 @@ Applying the same standard to ourselves that we apply to everyone else — liter
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>SourceForge SVN log</b><br><a class="w" href="https://sourceforge.net/projects/bitcoin/" rel="noopener nofollow">https://sourceforge.net/projects/bitcoin/</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/sourceforge_svn_log.py</code></div>
   </details>
+</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2009-08-30-github-two-lineages">
+  <header>
+    <time>2009-08-30 &rarr; 2010-12-17</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
+    <span class="g g-SERVER-DB">SERVER-DB</span>
+    
+    <h2>The canonical git history carries Satoshi&#x27;s 2009–2010 commits twice</h2>
+  </header>
+  <p class="claim">bitcoin/bitcoin was converted from SourceForge SVN. Between its first commit (30 Aug 2009) and the last SVN-trailer commit (17 Dec 2010), 122 of its 341 non-merge commits exist as a pair: one copy carrying the git-svn-id trailer (author s_nakamoto, SVN revision number) and one copy without, dated the same day or up to 8.09 days later, under the author strings s_nakamoto (76), Satoshi Nakamoto (25), the literal option text --author=Satoshi Nakamoto (7), sirius-m (12) or Gavin Andresen (5). 112 of 120 compared pairs are the same change; 8 differ by a few lines. The doubling starts at the root: two &#x27;First commit&#x27; objects.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>GitHub&#x27;s own commit records for bitcoin/bitcoin in the window, via the public API (four unauthenticated calls)</b><br><a class="w" href="https://api.github.com/repos/bitcoin/bitcoin/commits?since=2009-08-30T00:00:00Z&amp;until=2011-01-01T00:00:00Z&amp;per_page=100" rel="noopener nofollow">https://api.github.com/repos/bitcoin/bitcoin/commits?since=2009-08-30T00:00:00Z&amp;until=2011-01-01T00:00:00Z&amp;per_page=100</a></li><li><b>census output of the run of 2026-09-19</b><br><span class="w">satoshi-onchain/data/github-history-census-2026-09-19.json</span></li><li><b>the laboratory&#x27;s dated note, with the eight differing pairs listed</b><br><a class="w" href="https://github.com/original-bitcoin-laboratory/genesis/blob/main/docs/BITCOIN-GIT-HISTORY-PROVENANCE.md" rel="noopener nofollow">https://github.com/original-bitcoin-laboratory/genesis/blob/main/docs/BITCOIN-GIT-HISTORY-PROVENANCE.md</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/github_history_census.py --out census.json   (add --stats to compare each pair; needs GITHUB_TOKEN)</code></div><div class="notes"><span class="lbl">caveats</span>What this establishes: a date or hash cited from the non-trailer copy differs from the SVN copy by up to eight days, so a citation must say which lineage it reads; this project&#x27;s SVN-derived dates (2009-10-21-svn, 2010-12-15-last-action) come from the SourceForge log itself and are unaffected. The trailer copies carry server-assigned SVN revision numbers; the non-trailer copies&#x27; dates are author-supplied. It does not establish how the second lineage arose, or anything about identity: the strings &#x27;Satoshi Nakamoto&#x27; and &#x27;satoshin@gmx.com&#x27; are author fields anyone can set. GitHub&#x27;s history can be rewritten by the repository&#x27;s owners, so the run is dated.</div>
+  </details>
 </article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" data-era="origin" id="2009-10-01-lost-forum-activity">
   <header>
     <time>2009-10-01 14:12:00 UTC</time>
@@ -878,7 +890,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 <br><br><b>Nothing here is cryptographic.</b> No genesis-era or Patoshi key has produced a
 verifying signature, so no row on this timeline identifies a person. That is a fact about the world,
 not a gap in the research — and only a signature would change it.
-<br><br>Generated 2026-09-14 from <code>events.json</code>. The page is a function of that file.
+<br><br>Generated 2026-09-19 from <code>events.json</code>. The page is a function of that file.
 </div>
 
 <footer class="sitefoot">

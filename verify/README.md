@@ -13,6 +13,7 @@ python verify/sourceforge_svn_files.py   ./svn-archive   # the file bodies for e
 python verify/bitcointalk_satoshi.py     ./bitcointalk   # 539 posts + raw HTML
 python verify/metzdowd_backup.py         ./metzdowd      # 274 mboxes, full headers
 python verify/wayback_backup.py          ./wayback-pages # original bytes of the cited captures
+python verify/github_history_census.py   --out census.json   # bitcoin/bitcoin 2009-2010: 385 commits, 122 carried twice
 ```
 
 ---
@@ -41,6 +42,25 @@ monotonicity and exits non-zero if it fails.
 
 *Note the page layout changed: captures before ~mid-2009 label the field "Site Member Since", later
 ones say "Joined". The script handles both.*
+
+### `github_history_census.py`
+
+Counts the `bitcoin/bitcoin` commits from its first commit (30 Aug 2009) to the end of 2010 from
+GitHub's public API, four unauthenticated calls, and measures the SVN conversion's doubling: pairs of
+one `git-svn-id` copy and one copy without, their date offsets, and the author strings on each copy.
+`--stats` (needs `GITHUB_TOKEN`) compares each pair's additions, deletions and file list.
+
+```
+385 commits · 42 merges · 341 non-merge · 202 with git-svn-id
+122 pairs: non-trailer copy 0.00 d (median) to 8.09 d (max) later, not earlier in any pair
+112 of 120 compared pairs identical · 8 differ by a few lines · 8 commits with the literal author "--author=Satoshi Nakamoto"
+```
+
+**Establishes:** that the canonical repository is two records of one history for this period, and
+that a date read from the non-trailer copy can be up to eight days late. **Does not establish:** how
+the second lineage arose, or anything about identity (author fields are self-asserted). The
+SourceForge SVN log (`sourceforge_svn_log.py`) is the server-timestamped record; this census is about
+the GitHub copy that most people read instead.
 
 ### `sourceforge_svn_log.py`
 

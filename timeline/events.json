@@ -768,6 +768,36 @@
   "notes": "The densest record of Satoshi working that exists off-chain."
  },
  {
+  "id": "2009-08-30-github-two-lineages",
+  "when": "2009-08-30",
+  "precision": "range",
+  "until": "2010-12-17",
+  "axis": "satoshi",
+  "grade": "SERVER-DB",
+  "title": "The canonical git history carries Satoshi's 2009–2010 commits twice",
+  "claim": "bitcoin/bitcoin was converted from SourceForge SVN. Between its first commit (30 Aug 2009) and the last SVN-trailer commit (17 Dec 2010), 122 of its 341 non-merge commits exist as a pair: one copy carrying the git-svn-id trailer (author s_nakamoto, SVN revision number) and one copy without, dated the same day or up to 8.09 days later, under the author strings s_nakamoto (76), Satoshi Nakamoto (25), the literal option text --author=Satoshi Nakamoto (7), sirius-m (12) or Gavin Andresen (5). 112 of 120 compared pairs are the same change; 8 differ by a few lines. The doubling starts at the root: two 'First commit' objects.",
+  "evidence": [
+   {
+    "what": "GitHub's own commit records for bitcoin/bitcoin in the window, via the public API (four unauthenticated calls)",
+    "where": "https://api.github.com/repos/bitcoin/bitcoin/commits?since=2009-08-30T00:00:00Z&until=2011-01-01T00:00:00Z&per_page=100",
+    "hash": null
+   },
+   {
+    "what": "census output of the run of 2026-09-19",
+    "where": "satoshi-onchain/data/github-history-census-2026-09-19.json",
+    "hash": null
+   },
+   {
+    "what": "the laboratory's dated note, with the eight differing pairs listed",
+    "where": "https://github.com/original-bitcoin-laboratory/genesis/blob/main/docs/BITCOIN-GIT-HISTORY-PROVENANCE.md",
+    "hash": null
+   }
+  ],
+  "reproduce": "python satoshi-onchain/verify/github_history_census.py --out census.json   (add --stats to compare each pair; needs GITHUB_TOKEN)",
+  "gap": false,
+  "notes": "What this establishes: a date or hash cited from the non-trailer copy differs from the SVN copy by up to eight days, so a citation must say which lineage it reads; this project's SVN-derived dates (2009-10-21-svn, 2010-12-15-last-action) come from the SourceForge log itself and are unaffected. The trailer copies carry server-assigned SVN revision numbers; the non-trailer copies' dates are author-supplied. It does not establish how the second lineage arose, or anything about identity: the strings 'Satoshi Nakamoto' and 'satoshin@gmx.com' are author fields anyone can set. GitHub's history can be rewritten by the repository's owners, so the run is dated."
+ },
+ {
   "id": "tracker-comments-absent",
   "when": "2009-10-21",
   "precision": "range",

@@ -1,0 +1,72 @@
+{
+  "window": [
+    "2009-08-30T00:00:00Z",
+    "2011-01-01T00:00:00Z"
+  ],
+  "commits_on_default_branch_history": 385,
+  "author_name_strings": {
+    "Witchspace": 2,
+    "Gavin Andresen": 58,
+    "gavinandresen": 19,
+    "s_nakamoto": 245,
+    "Satoshi Nakamoto": 26,
+    "laszloh": 1,
+    "--author=Satoshi Nakamoto": 8,
+    "sirius-m": 26
+  },
+  "with_git_svn_id_trailer": 202,
+  "merge_commits": 42,
+  "non_merge_commits": 341,
+  "duplicate_groups_trailer_plus_non_trailer": 122,
+  "non_trailer_copy_author_strings": {
+    "Satoshi Nakamoto": 25,
+    "--author=Satoshi Nakamoto": 7,
+    "Gavin Andresen": 5,
+    "s_nakamoto": 76,
+    "sirius-m": 12
+  },
+  "non_trailer_minus_trailer_days": {
+    "min": 0.0,
+    "median": 0.0,
+    "p90": 1.75,
+    "max": 8.09,
+    "non_trailer_earlier": 0
+  },
+  "author_eq_literal_option_string": [
+    [
+      "2689f4d02",
+      "2010-07-27"
+    ],
+    [
+      "31ffe954b",
+      "2010-07-30"
+    ],
+    [
+      "3dd20ff2f",
+      "2010-07-27"
+    ],
+    [
+      "872d60f6e",
+      "2010-07-30"
+    ],
+    [
+      "9f35575ca",
+      "2010-07-27"
+    ],
+    [
+      "a75560d82",
+      "2010-07-30"
+    ],
+    [
+      "e1cb7ce01",
+      "2010-07-31"
+    ],
+    [
+      "ec82517c8",
+      "2010-07-30"
+    ]
+  ],
+  "pairs_compared": "not run (--stats)",
+  "source": "https://api.github.com/repos/bitcoin/bitcoin/commits (GitHub's own records, read on the run date; the history can be rewritten by its owners)",
+  "run_date": "2026-09-19T17:50:46+00:00"
+}
