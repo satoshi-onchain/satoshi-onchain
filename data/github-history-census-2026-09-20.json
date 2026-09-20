@@ -1,0 +1,190 @@
+{
+  "window": [
+    "2009-08-30T00:00:00Z",
+    "2011-01-01T00:00:00Z"
+  ],
+  "commits_on_default_branch_history": 385,
+  "author_name_strings": {
+    "Witchspace": 2,
+    "Gavin Andresen": 58,
+    "gavinandresen": 19,
+    "s_nakamoto": 245,
+    "Satoshi Nakamoto": 26,
+    "laszloh": 1,
+    "--author=Satoshi Nakamoto": 8,
+    "sirius-m": 26
+  },
+  "with_git_svn_id_trailer": 202,
+  "merge_commits": 42,
+  "non_merge_commits": 341,
+  "same_first_line_pairs": 132,
+  "pair_types": {
+    "one_trailer_copy": 121,
+    "both_copies_trailer": 10,
+    "neither_copy_trailer": 1
+  },
+  "larger_same_line_groups": {
+    "misc": 8
+  },
+  "non_trailer_copy_author_strings_one_trailer_pairs": {
+    "Satoshi Nakamoto": 25,
+    "--author=Satoshi Nakamoto": 7,
+    "Gavin Andresen": 5,
+    "s_nakamoto": 72,
+    "sirius-m": 12
+  },
+  "non_trailer_minus_trailer_days_one_trailer_pairs": {
+    "min": 0.0,
+    "median": 0.0,
+    "p90": 1.75,
+    "max": 8.09,
+    "non_trailer_earlier": 0
+  },
+  "author_eq_literal_option_string": [
+    [
+      "2689f4d02",
+      "2010-07-27"
+    ],
+    [
+      "31ffe954b",
+      "2010-07-30"
+    ],
+    [
+      "3dd20ff2f",
+      "2010-07-27"
+    ],
+    [
+      "872d60f6e",
+      "2010-07-30"
+    ],
+    [
+      "9f35575ca",
+      "2010-07-27"
+    ],
+    [
+      "a75560d82",
+      "2010-07-30"
+    ],
+    [
+      "e1cb7ce01",
+      "2010-07-31"
+    ],
+    [
+      "ec82517c8",
+      "2010-07-30"
+    ]
+  ],
+  "pairs_compared": {
+    "identical": 124,
+    "differ": 8,
+    "not_compared": 0,
+    "differing": [
+      {
+        "a": "15399da9f",
+        "b": "bb3fd0293",
+        "a_add_del": [
+          81,
+          48
+        ],
+        "b_add_del": [
+          91,
+          49
+        ],
+        "message": "blocks-1,"
+      },
+      {
+        "a": "4bd188c43",
+        "b": "6ac7f9f14",
+        "a_add_del": [
+          538,
+          52
+        ],
+        "b_add_del": [
+          538,
+          58
+        ],
+        "message": "misc changes"
+      },
+      {
+        "a": "01bed1828",
+        "b": "e1cb7ce01",
+        "a_add_del": [
+          13,
+          18
+        ],
+        "b_add_del": [
+          12,
+          29
+        ],
+        "message": "simplified makefile.unix, updated build-unix.txt instruction"
+      },
+      {
+        "a": "813505cc1",
+        "b": "3dd20ff2f",
+        "a_add_del": [
+          6085,
+          893
+        ],
+        "b_add_del": [
+          6091,
+          893
+        ],
+        "message": "added a subset of Crypto++ 5.6.0 with 48% faster ASM SHA-256"
+      },
+      {
+        "a": "793200e5e",
+        "b": "b6dc3b517",
+        "a_add_del": [
+          539,
+          483
+        ],
+        "b_add_del": [
+          537,
+          469
+        ],
+        "message": "bitcoind now compiles without wxWidgets or wxBase"
+      },
+      {
+        "a": "6966768a5",
+        "b": "f0c11b191",
+        "a_add_del": [
+          2,
+          5
+        ],
+        "b_add_del": [
+          2,
+          1
+        ],
+        "message": "Gavin: BIO_FLAGS_BASE64_NO_NL"
+      },
+      {
+        "a": "3b7cd5d89",
+        "b": "40cd03694",
+        "a_add_del": [
+          405,
+          137
+        ],
+        "b_add_del": [
+          93,
+          25
+        ],
+        "message": "Gavin Andresen's JSON-RPC HTTP authentication,"
+      },
+      {
+        "a": "d01eaf042",
+        "b": "9d2174b6f",
+        "a_add_del": [
+          5,
+          5
+        ],
+        "b_add_del": [
+          30,
+          9
+        ],
+        "message": "version 0.3.1 rc1"
+      }
+    ]
+  },
+  "source": "https://api.github.com/repos/bitcoin/bitcoin/commits (GitHub's own records, read on the run date; the history can be rewritten by its owners)",
+  "run_date": "2026-09-20T09:05:47+00:00"
+}

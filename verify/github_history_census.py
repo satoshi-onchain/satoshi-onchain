@@ -17,9 +17,10 @@ GitHub's own commit records and writes one JSON summary. [statistical]
 
 Standard library only. Without `--stats` it stays inside GitHub's unauthenticated rate limit. Method:
 list every commit on the default-branch history in the window (paginated), exclude merge commits and
-the root, group the rest by first message line, and count groups that pair a trailer copy with a
-non-trailer copy. Counting by message is a proxy for "the same change"; `--stats` is what makes a
-pairing a fact rather than a coincidence of wording.
+the root, group the rest by first message line, and classify each two-member group by how many copies
+carry the trailer: one, both, or neither. Larger same-line groups are reported separately. Counting by
+message is a proxy for "the same change"; `--stats` is what makes a pairing a fact rather than a
+coincidence of wording.
 """
 from __future__ import annotations
 
@@ -79,32 +80,43 @@ def main() -> int:
     by_msg: dict[str, list[dict]] = collections.defaultdict(list)
     for r in non_merge:
         by_msg[r["msg"]].append(r)
-    pairs = [v for v in by_msg.values() if {x["svn"] for x in v} == {True, False}]
+    # Groups of exactly two same-line commits, classified by how many copies carry the trailer:
+    # one (the common Subversion import + re-push), both (a contiguous run where both copies were
+    # re-pushed with the trailer), or neither. Larger same-line groups (only the first line "misc")
+    # are reported separately, not counted as pairs. (Before 20 September 2026 this script counted
+    # every group with at least one trailer and one non-trailer copy as a pair, which merged the
+    # eight-member "misc" group into the count and ignored the both-trailer and neither pairs; an
+    # adversarial review of the laboratory's note recounted and this method now matches it.)
+    groups2 = [v for v in by_msg.values() if len(v) == 2]
+    one_trailer = [v for v in groups2 if sum(x["svn"] for x in v) == 1]
+    both_trailer = [v for v in groups2 if sum(x["svn"] for x in v) == 2]
+    neither = [v for v in groups2 if sum(x["svn"] for x in v) == 0]
+    larger = {k: len(v) for k, v in by_msg.items() if len(v) > 2}
     gaps: list[float] = []
     copy_names: collections.Counter = collections.Counter()
-    same = differ = failed = 0
-    differing: list[dict] = []
-    for v in pairs:
+    for v in one_trailer:
         svn = [x for x in v if x["svn"]][0]
         non = [x for x in v if not x["svn"]][0]
         d0 = datetime.fromisoformat(svn["date"].replace("Z", "+00:00"))
         d1 = datetime.fromisoformat(non["date"].replace("Z", "+00:00"))
         gaps.append(round((d1 - d0).total_seconds() / 86400, 2))
-        for x in v:
-            if not x["svn"]:
-                copy_names[x["name"]] += 1
-        if a.stats:
+        copy_names[non["name"]] += 1
+    gaps.sort()
+    same = differ = failed = 0
+    differing: list[dict] = []
+    if a.stats:
+        for v in groups2:
+            a2, b2 = sorted(v, key=lambda x: (not x["svn"], x["sha"]))   # trailer copy first when present
             try:
-                s0, s1 = stats(svn["sha"]), stats(non["sha"])
-            except Exception as e:  # noqa: BLE001 - a failed fetch is reported, not hidden
+                s0, s1 = stats(a2["sha"]), stats(b2["sha"])
+            except Exception:  # noqa: BLE001 - a failed fetch is reported, not hidden
                 failed += 1
                 continue
             if s0 == s1:
                 same += 1
             else:
                 differ += 1
-                differing.append({"trailer": svn["sha"][:9], "other": non["sha"][:9], "trailer_add_del": s0[:2], "other_add_del": s1[:2], "message": svn["msg"][:60]})
-    gaps.sort()
+                differing.append({"a": a2["sha"][:9], "b": b2["sha"][:9], "a_add_del": s0[:2], "b_add_del": s1[:2], "message": a2["msg"][:60]})
     summary = {
         "window": [SINCE, UNTIL],
         "commits_on_default_branch_history": len(rows),
@@ -112,9 +124,11 @@ def main() -> int:
         "with_git_svn_id_trailer": trailer,
         "merge_commits": sum(1 for r in rows if r["parents"] > 1),
         "non_merge_commits": len(non_merge),
-        "duplicate_groups_trailer_plus_non_trailer": len(pairs),
-        "non_trailer_copy_author_strings": dict(copy_names),
-        "non_trailer_minus_trailer_days": {"min": gaps[0], "median": gaps[len(gaps) // 2], "p90": gaps[int(len(gaps) * 0.9)], "max": gaps[-1],
+        "same_first_line_pairs": len(groups2),
+        "pair_types": {"one_trailer_copy": len(one_trailer), "both_copies_trailer": len(both_trailer), "neither_copy_trailer": len(neither)},
+        "larger_same_line_groups": larger,
+        "non_trailer_copy_author_strings_one_trailer_pairs": dict(copy_names),
+        "non_trailer_minus_trailer_days_one_trailer_pairs": {"min": gaps[0], "median": gaps[len(gaps) // 2], "p90": gaps[int(len(gaps) * 0.9)], "max": gaps[-1],
                                            "non_trailer_earlier": sum(1 for g in gaps if g < 0)} if gaps else None,
         "author_eq_literal_option_string": sorted((r["sha"][:9], r["date"][:10]) for r in rows if r["name"].startswith("--author=")),
         "pairs_compared": {"identical": same, "differ": differ, "not_compared": failed, "differing": differing} if a.stats else "not run (--stats)",
