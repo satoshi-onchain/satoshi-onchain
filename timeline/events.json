@@ -548,8 +548,8 @@
   "precision": "range",
   "axis": "both",
   "grade": "ADJUDICATED",
-  "title": "Satoshi transfers bitcoin to Nicholas Bohm",
-  "claim": "Satoshi made transfers of Bitcoin to Nicholas Bohm, a retired solicitor who corresponded with Satoshi shortly after the January 2009 release and who died shortly before the trial began (¶271.9) — a finding of the judgment, from his evidence.",
+  "title": "The judgment records transfers of bitcoin from Satoshi to a 2009 correspondent",
+  "claim": "The judgment records (¶771), from the evidence of Nicholas Bohm, a retired solicitor who corresponded with Satoshi shortly after the January 2009 release and who died shortly before the trial began (¶271.9), that Satoshi made transfers of bitcoin to him.",
   "evidence": [
    {
     "what": "judgment ¶771; ¶271.9 for the correspondence",
@@ -559,7 +559,7 @@
   ],
   "reproduce": null,
   "gap": false,
-  "notes": "Which transactions they were is stated in correspondence given in evidence and not published; this row does not identify them, and the script that once located a payment from that correspondence was withdrawn on 14 September 2026. Nothing about Mr Bohm's holdings, or his estate's, is implied. The judgment does not date the transfers; the range is this timeline's own bound, the year in which the correspondence began shortly after the January 2009 release (¶271.9), not a finding.",
+  "notes": "Which transactions they were is stated in correspondence given in evidence and not published; this row does not identify them, and the script that once located a payment from that correspondence was withdrawn on 14 September 2026. This row implies nothing about any holdings. The judgment does not date the transfers; the range is this timeline's own bound, the year in which the correspondence began shortly after the January 2009 release (¶271.9), not a finding.",
   "until": "2009-12"
  },
  {
