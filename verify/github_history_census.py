@@ -6,14 +6,18 @@ The canonical repository's early history was imported from SourceForge SVN and c
 twice: one copy with a `git-svn-id` trailer (author `s_nakamoto`, the SVN account) and one without,
 dated the same day or up to eight days later, some under the author string `Satoshi Nakamoto` and a
 few under the literal string `--author=Satoshi Nakamoto`. A date read from the wrong copy is off by up
-to eight days, and in eight pairs the two copies differ by a few lines. This script measures that from
-GitHub's own commit records and writes one JSON summary. [statistical]
+to eight days, and in eight pairs the two copies differ in content. ("By a few lines" until
+28 September 2026: one of the eight differs +405/-137 against +93/-25, which is not a few lines. The
+count of eight is unchanged; only the size of the difference was overstated.) This script measures that
+from GitHub's own commit records and writes one JSON summary. [statistical]
 
     python verify/github_history_census.py                     # four unauthenticated API calls
     python verify/github_history_census.py --out census.json
     python verify/github_history_census.py --stats             # also compares each pair's additions,
                                                                # deletions and file list: one call per
                                                                # commit, so it needs GITHUB_TOKEN
+    python verify/github_history_census.py --pairs pairs.tsv   # the 18-column pair table; implies
+                                                               # --stats, so it needs GITHUB_TOKEN
 
 Standard library only. Without `--stats` it stays inside GitHub's unauthenticated rate limit. Method:
 list every commit on the default-branch history in the window (paginated), exclude merge commits and
@@ -28,6 +32,7 @@ import argparse
 import collections
 import json
 import os
+import re
 import sys
 import time
 import urllib.request
@@ -53,9 +58,10 @@ def commits() -> list[dict]:
         got = get(f"{API}?since={SINCE}&until={UNTIL}&per_page=100&page={page}")
         for c in got:
             msg = c["commit"]["message"]
+            m = re.search(r"git-svn-id:\s*\S+?trunk@(\d+)", msg)
             rows.append({"sha": c["sha"], "date": c["commit"]["author"]["date"], "name": c["commit"]["author"]["name"],
                          "email": c["commit"]["author"]["email"], "msg": msg.split("\n")[0], "parents": len(c["parents"]),
-                         "svn": "git-svn-id" in msg})
+                         "svn": "git-svn-id" in msg, "svn_rev": m.group(1) if m else ""})
         if len(got) < 100:
             break
         time.sleep(1)
@@ -72,7 +78,11 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--out", default=None)
     ap.add_argument("--stats", action="store_true", help="compare each pair's change statistics (needs GITHUB_TOKEN)")
+    ap.add_argument("--pairs", metavar="TSV", default=None,
+                    help="write the 18-column pair table; implies --stats (needs GITHUB_TOKEN)")
     a = ap.parse_args()
+    if a.pairs:
+        a.stats = True                       # the table carries add/del, which only --stats fetches
     rows = commits()
     names = collections.Counter(r["name"] for r in rows)
     trailer = sum(1 for r in rows if r["svn"])
@@ -104,6 +114,7 @@ def main() -> int:
     gaps.sort()
     same = differ = failed = 0
     differing: list[dict] = []
+    pair_stats: dict[str, tuple] = {}
     if a.stats:
         for v in groups2:
             a2, b2 = sorted(v, key=lambda x: (not x["svn"], x["sha"]))   # trailer copy first when present
@@ -112,6 +123,7 @@ def main() -> int:
             except Exception:  # noqa: BLE001 - a failed fetch is reported, not hidden
                 failed += 1
                 continue
+            pair_stats[a2["sha"]], pair_stats[b2["sha"]] = s0, s1
             if s0 == s1:
                 same += 1
             else:
@@ -135,6 +147,33 @@ def main() -> int:
         "source": API + " (GitHub's own records, read on the run date; the history can be rewritten by its owners)",
         "run_date": datetime.now(timezone.utc).isoformat(timespec="seconds"),
     }
+    # ⛔ THE PAIR TABLE IS WRITTEN HERE, NOT SHIPPED IN THE DEPOSIT. Until 28 September 2026 nothing
+    # in the deposited package regenerated `bitcoin-git-history-pairs.tsv`: the file was evidence a
+    # reader had to take on trust. A cold read asked for a writer whose output could be compared with
+    # the deposited bytes. Order and format are the deposited file's, so a diff is the check.
+    if a.pairs:
+        lines = ["\t".join(("sha_a", "date_a", "author_a", "trailer_a", "svn_rev_a", "add_a", "del_a",
+                            "sha_b", "date_b", "author_b", "trailer_b", "svn_rev_b", "add_b", "del_b",
+                            "pair_type", "same_change", "offset_days_b_minus_a", "first_message_line"))]
+        for label, group in (("one-trailer", one_trailer), ("both-trailer", both_trailer), ("neither", neither)):
+            ordered = sorted(group, key=lambda v: sorted(v, key=lambda x: (not x["svn"], x["sha"]))[0]["date"])
+            for v in ordered:
+                ra, rb = sorted(v, key=lambda x: (not x["svn"], x["sha"]))   # trailer copy first when present
+                sa, sb = pair_stats[ra["sha"]], pair_stats[rb["sha"]]
+                da = datetime.fromisoformat(ra["date"].replace("Z", "+00:00"))
+                db = datetime.fromisoformat(rb["date"].replace("Z", "+00:00"))
+                lines.append("\t".join((
+                    ra["sha"][:9], ra["date"], ra["name"], "T" if ra["svn"] else "-", ra["svn_rev"],
+                    str(sa[0]), str(sa[1]),
+                    rb["sha"][:9], rb["date"], rb["name"], "T" if rb["svn"] else "-", rb["svn_rev"],
+                    str(sb[0]), str(sb[1]),
+                    label, "identical" if sa == sb else "differs",
+                    f"{(db - da).total_seconds() / 86400:.2f}",
+                    ra["msg"].rstrip())))          # the deposited table carries no trailing space
+        with open(a.pairs, "w", encoding="utf-8", newline="\n") as f:
+            f.write("\n".join(lines) + "\n")
+        print(f"wrote {a.pairs}: {len(lines) - 1} pairs", file=sys.stderr)
+
     text = json.dumps(summary, indent=2)
     print(text)
     if a.out:
