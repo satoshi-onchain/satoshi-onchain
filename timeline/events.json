@@ -1355,5 +1355,135 @@
   "reproduce": "ots verify bitcoin-0.1.4.tar.gz.ots   # or walk the proof and match block 961652's merkle root",
   "gap": false,
   "notes": "The only 2026 row graded CHAIN, and it earns it on the 2009 chain rather than on ours - the proof is backed by mainnet proof-of-work, not by us. It fixes the LATEST date these artifacts can have; the newspaper in the 2026 coinbase fixes the earliest. This project declines to treat the satoshin@gmx.com key's self-asserted 2008 date as evidence, so it anchors its own artifacts rather than asking for a weaker ruler than it hands everyone else."
+ },
+ {
+  "id": "2010-07-20-bit-gold-named",
+  "when": "2010-07-20T18:38:28Z",
+  "precision": "second",
+  "axis": "satoshi",
+  "grade": "SERVER-DB",
+  "title": "Satoshi names bit gold — on the forum, not in the paper",
+  "claim": "A forum post describes Bitcoin as an implementation of Wei Dai's b-money proposal and Nick Szabo's Bitgold proposal, with a link to the 2005 bit gold post. Neither whitepaper cites bit gold.",
+  "evidence": [
+   {
+    "what": "bitcointalk topic 342, message 4508 (server-stamped post time)",
+    "where": "https://bitcointalk.org/index.php?topic=342.msg4508#msg4508",
+    "hash": null
+   }
+  ],
+  "reproduce": null,
+  "gap": false,
+  "notes": "The post was edited on 22 July 2010 and the surviving text is the edited one, so whether the bit gold sentence stood in the 20 July original is not settled by the forum's record. A citation is a statement about sources, not about authorship."
+ },
+ {
+  "id": "2010-08-25-alert-system",
+  "when": "2010-08-25T00:05:37Z",
+  "precision": "second",
+  "axis": "both",
+  "grade": "SERVER-DB",
+  "title": "The alert system: one key that can message every node",
+  "claim": "An SVN commit adds a network alert message verified against one hard-coded public key. An alert could display a warning and, as committed, make the money-handling RPC commands of every node return an error.",
+  "evidence": [
+   {
+    "what": "commit 401926283 (SVN r142), message 'alert system'",
+    "where": "https://github.com/bitcoin/bitcoin/commit/401926283a200994ecd7df8eae8ced8e0b067c46",
+    "hash": null
+   }
+  ],
+  "reproduce": "git show 401926283a200994ecd7df8eae8ced8e0b067c46   # in a clone of bitcoin/bitcoin",
+  "gap": false,
+  "notes": "Not a block-validity rule: it changes no node's view of the chain. Its power over RPC was removed on 12 December 2010 (next row)."
+ },
+ {
+  "id": "2010-12-12-alert-rpc-removed",
+  "when": "2010-12-12T18:38:02Z",
+  "precision": "second",
+  "axis": "satoshi",
+  "grade": "SERVER-DB",
+  "title": "The alert key loses its power over RPC, under the message 'correction'",
+  "claim": "Seventeen minutes after a commit titled 'added some DoS limits, removed safe mode', a commit titled 'correction' deletes the line through which an alert put every node's RPC into safe mode, and renames the alert field that carried the RPC error. From here on an alert sets a status message only.",
+  "evidence": [
+   {
+    "what": "commit 97ee01ad8 (SVN r199, 18:20:36Z)",
+    "where": "https://github.com/bitcoin/bitcoin/commit/97ee01ad898b0699c2319a1283313881ef4ba430",
+    "hash": null
+   },
+   {
+    "what": "commit 986b5e257 (SVN r200, 18:38:02Z): strRPC = alert.strRPCError removed, field renamed strReserved",
+    "where": "https://github.com/bitcoin/bitcoin/commit/986b5e257e2bb9d7aaed5111ca335732f8808b2d",
+    "hash": null
+   }
+  ],
+  "reproduce": "git show 986b5e257e2bb9d7aaed5111ca335732f8808b2d   # in a clone of bitcoin/bitcoin",
+  "gap": false,
+  "notes": "The power existed for 109 days and was removed before the key changed hands. The commit message does not describe the change."
+ },
+ {
+  "id": "2014-09-sourceforge-account-removed",
+  "when": "2014-09-08",
+  "precision": "range",
+  "until": "2014-09-11",
+  "axis": "satoshi",
+  "grade": "PARTY-RELEASED",
+  "title": "The s_nakamoto SourceForge account is taken over, then removed by SourceForge",
+  "claim": "The account, still a project Admin about 3 years 9 months after its last commit, was accessed by an attacker; SourceForge suspended it 2 hours 17 minutes later, restored the project to its pre-attack state and removed the account from the project, reporting that file content was not modified.",
+  "evidence": [
+   {
+    "what": "the same ticket as captured on 13 September 2014 (CDX digest SBX7UIFX65OPENKV5NOINCT63NRMJI5T)",
+    "where": "https://web.archive.org/web/20140913122813/http://sourceforge.net/p/forge/site-support/8512/",
+    "hash": null
+   },
+   {
+    "what": "SourceForge site-support ticket #8512, 'Satoshi Nakamoto s_nakamoto account compromised' (opened by Gavin Andresen; staff reply) (the live page currently refuses automated fetches)",
+    "where": "https://sourceforge.net/p/forge/site-support/8512/",
+    "hash": null
+   }
+  ],
+  "reproduce": null,
+  "gap": false,
+  "notes": "The ticket does not say how access was gained. The account had kept the role through which a project's release files are published; the last lever under that name was not retired by its holder."
+ },
+ {
+  "id": "2018-07-03-alert-key-published",
+  "when": "2018-07-03",
+  "precision": "day",
+  "axis": "both",
+  "grade": "PARTY-RELEASED",
+  "title": "The alert private key is published — and it is the 2010 key",
+  "claim": "The private key published with the alert system's vulnerabilities derives, by scalar multiplication on secp256k1, exactly the public key hard-coded in the August 2010 commit; the next scalar does not.",
+  "evidence": [
+   {
+    "what": "bitcoin.org, 'Alert Key and Vulnerabilities Disclosure'",
+    "where": "https://github.com/bitcoin-dot-org/Bitcoin.org/blob/master/_posts/2018-07-03-alert-key-and-vulnerabilities-disclosure.md",
+    "hash": null
+   },
+   {
+    "what": "commit 401926283 (the key as introduced)",
+    "where": "https://github.com/bitcoin/bitcoin/commit/401926283a200994ecd7df8eae8ced8e0b067c46",
+    "hash": null
+   }
+  ],
+  "reproduce": "python verify/alert_key.py   # in github.com/original-bitcoin-laboratory/genesis; fetches both inputs",
+  "gap": false,
+  "notes": "Shows the key, not who held it at any earlier date. The key was shared after 2010; the disclosure states that the sender of an alert cannot be identified."
+ },
+ {
+  "id": "2026-05-18-whitepaper-reinscribed",
+  "when": "2026-05-18T18:30:04Z",
+  "precision": "second",
+  "axis": "both",
+  "grade": "CHAIN",
+  "title": "The whitepaper is put on chain again, with a ground hash, and the genesis key is paid",
+  "claim": "A transaction carries the canonical whitepaper as one OP_RETURN push, with one 11-byte PDF comment line inserted before %%EOF that grinds the file's SHA-256 to twelve leading zero hex digits, a note reading 'Bitcoin Whitepaper', and a 21,000-satoshi payment to the genesis block's public key.",
+  "evidence": [
+   {
+    "what": "transaction 00000000000ad996…b65de07, block 949,973",
+    "where": "https://blockstream.info/tx/00000000000ad99639585eb5fb0dc0bb093575719ecd78cfede972637b65de07",
+    "hash": "0000000000003c2287e2a94e93882e1f56fcbfa3c71c5b1c75edf11c6946e6cb"
+   }
+  ],
+  "reproduce": "python verify/whitepaper_from_chain_2026.py   # in github.com/original-bitcoin-laboratory/genesis",
+  "gap": false,
+  "notes": "Removing the inserted line restores the canonical file (b1674191…) exactly: the same paper, not another version. The transaction does not say who made it, and a payment to the genesis key is a gesture, not a signal from it."
  }
 ]

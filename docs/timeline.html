@@ -87,10 +87,10 @@ it. Rows we <b>cannot</b> verify are shown too, marked <b>NOT HELD</b> — becau
 only what was found looks complete when it is not.</p>
 
 <div class="incomplete"><b>This timeline is incomplete, and says so on purpose.</b>
-It currently holds <b>62</b> events. It is a deliberate subset of unpublished research rather than a bulk export — each row has to acquire a grade, a source and a reproduction path before it can appear here. The material behind it is not published, and its extent is deliberately not characterised: a figure nobody can verify is not evidence.
+It currently holds <b>68</b> events. It is a deliberate subset of unpublished research rather than a bulk export — each row has to acquire a grade, a source and a reproduction path before it can appear here. The material behind it is not published, and its extent is deliberately not characterised: a figure nobody can verify is not evidence.
 <b>Absence of a row here is not evidence that nothing happened on that date.</b>
 Applying the same standard to ourselves that we apply to everyone else — literally, since
-7 of these rows are about <a href="https://bitcoin-lab.org/bitcoin">a second Bitcoin, mined in
+8 of these rows are about <a href="https://bitcoin-lab.org/bitcoin">a second Bitcoin, mined in
 2026</a>, and they are graded by the same table and carry a NOT HELD of their own.</div>
 
 <div class="bar">
@@ -615,6 +615,18 @@ Applying the same standard to ourselves that we apply to everyone else — liter
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>web.archive.org capture 20100704213649</b><br><a class="w" href="https://web.archive.org/web/20100704213649if_/http://www.bitcoin.org:80/bitcoin.pdf" rel="noopener nofollow">https://web.archive.org/web/20100704213649if_/http://www.bitcoin.org:80/bitcoin.pdf</a><br><code class="h">b1674191a88ec5cdd733e4240a81803105dc412d6c6708d53ab94fc248f4f553</code></li></ul><div class="rep"><span class="lbl">reproduce</span><code>curl -sL &#x27;https://web.archive.org/web/20100704213649id_/http://www.bitcoin.org/bitcoin.pdf&#x27; -o c.pdf; sha256sum c.pdf   # -&gt; b1674191a88ec5cd…</code></div><div class="notes"><span class="lbl">caveats</span>Closes the gap between the March 2009 creation date and the file anyone can fetch today.</div>
   </details>
+</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2010-07-20-bit-gold-named">
+  <header>
+    <time>2010-07-20 18:38:28 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
+    <span class="g g-SERVER-DB">SERVER-DB</span>
+    
+    <h2>Satoshi names bit gold — on the forum, not in the paper</h2>
+  </header>
+  <p class="claim">A forum post describes Bitcoin as an implementation of Wei Dai&#x27;s b-money proposal and Nick Szabo&#x27;s Bitgold proposal, with a link to the 2005 bit gold post. Neither whitepaper cites bit gold.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>bitcointalk topic 342, message 4508 (server-stamped post time)</b><br><a class="w" href="https://bitcointalk.org/index.php?topic=342.msg4508#msg4508" rel="noopener nofollow">https://bitcointalk.org/index.php?topic=342.msg4508#msg4508</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>The post was edited on 22 July 2010 and the surviving text is the edited one, so whether the bit gold sentence stood in the 20 July original is not settled by the forum&#x27;s record. A citation is a statement about sources, not about authorship.</div>
+  </details>
 </article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" data-era="origin" id="2010-08-15-overflow">
   <header>
     <time>2010-08-15 17:05:00 UTC</time>
@@ -626,6 +638,18 @@ Applying the same standard to ourselves that we apply to everyone else — liter
   <p class="claim">Block 74638 contains a transaction creating over 184 billion BTC through an integer overflow; the chain is forked away from it within hours.</p>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>block 74638</b><br><span class="w">the Bitcoin blockchain</span></li><li><b>Satoshi&#x27;s own contemporaneous warning naming the block and time</b><br><a class="w" href="https://bitcointalk.org/index.php?action=profile;u=3" rel="noopener nofollow">https://bitcointalk.org/index.php?action=profile;u=3</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>bigquery-public-data.crypto_bitcoin.transactions WHERE block_number = 74638</code></div><div class="notes"><span class="lbl">caveats</span>The only time Bitcoin&#x27;s supply rule has been broken in production.</div>
+  </details>
+</article><article class="ev" data-axis="both" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2010-08-25-alert-system">
+  <header>
+    <time>2010-08-25 00:05:37 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
+    <span class="g g-SERVER-DB">SERVER-DB</span>
+    
+    <h2>The alert system: one key that can message every node</h2>
+  </header>
+  <p class="claim">An SVN commit adds a network alert message verified against one hard-coded public key. An alert could display a warning and, as committed, make the money-handling RPC commands of every node return an error.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>commit 401926283 (SVN r142), message &#x27;alert system&#x27;</b><br><a class="w" href="https://github.com/bitcoin/bitcoin/commit/401926283a200994ecd7df8eae8ced8e0b067c46" rel="noopener nofollow">https://github.com/bitcoin/bitcoin/commit/401926283a200994ecd7df8eae8ced8e0b067c46</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>git show 401926283a200994ecd7df8eae8ced8e0b067c46   # in a clone of bitcoin/bitcoin</code></div><div class="notes"><span class="lbl">caveats</span>Not a block-validity rule: it changes no node&#x27;s view of the chain. Its power over RPC was removed on 12 December 2010 (next row).</div>
   </details>
 </article><article class="ev" data-axis="bitcoin" data-grade="CHAIN" data-gap="false" data-era="origin" id="2010-09-10-uistring-address-funded">
   <header>
@@ -650,6 +674,18 @@ Applying the same standard to ourselves that we apply to everyone else — liter
   <p class="claim">The final post by bitcointalk user 3.</p>
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>forum profile and post index</b><br><a class="w" href="https://bitcointalk.org/index.php?action=profile;u=3" rel="noopener nofollow">https://bitcointalk.org/index.php?action=profile;u=3</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python satoshi-onchain/verify/bitcointalk_satoshi.py</code></div>
+  </details>
+</article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2010-12-12-alert-rpc-removed">
+  <header>
+    <time>2010-12-12 18:38:02 UTC</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
+    <span class="g g-SERVER-DB">SERVER-DB</span>
+    
+    <h2>The alert key loses its power over RPC, under the message &#x27;correction&#x27;</h2>
+  </header>
+  <p class="claim">Seventeen minutes after a commit titled &#x27;added some DoS limits, removed safe mode&#x27;, a commit titled &#x27;correction&#x27; deletes the line through which an alert put every node&#x27;s RPC into safe mode, and renames the alert field that carried the RPC error. From here on an alert sets a status message only.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>commit 97ee01ad8 (SVN r199, 18:20:36Z)</b><br><a class="w" href="https://github.com/bitcoin/bitcoin/commit/97ee01ad898b0699c2319a1283313881ef4ba430" rel="noopener nofollow">https://github.com/bitcoin/bitcoin/commit/97ee01ad898b0699c2319a1283313881ef4ba430</a></li><li><b>commit 986b5e257 (SVN r200, 18:38:02Z): strRPC = alert.strRPCError removed, field renamed strReserved</b><br><a class="w" href="https://github.com/bitcoin/bitcoin/commit/986b5e257e2bb9d7aaed5111ca335732f8808b2d" rel="noopener nofollow">https://github.com/bitcoin/bitcoin/commit/986b5e257e2bb9d7aaed5111ca335732f8808b2d</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>git show 986b5e257e2bb9d7aaed5111ca335732f8808b2d   # in a clone of bitcoin/bitcoin</code></div><div class="notes"><span class="lbl">caveats</span>The power existed for 109 days and was removed before the key changed hands. The commit message does not describe the change.</div>
   </details>
 </article><article class="ev" data-axis="satoshi" data-grade="SERVER-DB" data-gap="false" data-era="origin" id="2010-12-15-last-action">
   <header>
@@ -723,6 +759,18 @@ Applying the same standard to ourselves that we apply to everyone else — liter
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>public record; his role and statements are discussed in the judgment</b><br><a class="w" href="https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198" rel="noopener nofollow">https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>Recorded because it closes a route to a first-hand account.</div>
   </details>
+</article><article class="ev" data-axis="satoshi" data-grade="PARTY-RELEASED" data-gap="false" data-era="origin" id="2014-09-sourceforge-account-removed">
+  <header>
+    <time>2014-09-08 &rarr; 2014-09-11</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
+    <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
+    
+    <h2>The s_nakamoto SourceForge account is taken over, then removed by SourceForge</h2>
+  </header>
+  <p class="claim">The account, still a project Admin about 3 years 9 months after its last commit, was accessed by an attacker; SourceForge suspended it 2 hours 17 minutes later, restored the project to its pre-attack state and removed the account from the project, reporting that file content was not modified.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>the same ticket as captured on 13 September 2014 (CDX digest SBX7UIFX65OPENKV5NOINCT63NRMJI5T)</b><br><a class="w" href="https://web.archive.org/web/20140913122813/http://sourceforge.net/p/forge/site-support/8512/" rel="noopener nofollow">https://web.archive.org/web/20140913122813/http://sourceforge.net/p/forge/site-support/8512/</a></li><li><b>SourceForge site-support ticket #8512, &#x27;Satoshi Nakamoto s_nakamoto account compromised&#x27; (opened by Gavin Andresen; staff reply) (the live page currently refuses automated fetches)</b><br><a class="w" href="https://sourceforge.net/p/forge/site-support/8512/" rel="noopener nofollow">https://sourceforge.net/p/forge/site-support/8512/</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>The ticket does not say how access was gained. The account had kept the role through which a project&#x27;s release files are published; the last lever under that name was not retired by its holder.</div>
+  </details>
 </article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" data-era="origin" id="2015-01-30-mixmaster">
   <header>
     <time>2015-01-30</time>
@@ -759,6 +807,18 @@ Applying the same standard to ourselves that we apply to everyone else — liter
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>the 2017 cryptography-list exchange</b><br><a class="w" href="https://www.metzdowd.com/pipermail/cryptography/2017-August/032662.html" rel="noopener nofollow">https://www.metzdowd.com/pipermail/cryptography/2017-August/032662.html</a></li><li><b>the file whose hash he confirmed</b><br><a class="w" href="https://github.com/original-bitcoin-laboratory/bitcoin-whitepaper" rel="noopener nofollow">https://github.com/original-bitcoin-laboratory/bitcoin-whitepaper</a><br><code class="h">427c63b364c6db914cf23072a09ffd53ee078397b7c6ab2d604e12865a982faa</code></li></ul><div class="rep"><span class="lbl">reproduce</span><code>sha256sum &lt;your copy of the 3 Oct 2008 draft&gt;   # the hash Dillinger confirmed in Aug 2017: 427c63b364c6db914cf23072a09ffd53ee078397b7c6ab2d604e12865a982faa</code></div><div class="notes"><span class="lbl">caveats</span>Nine years after the fact, by someone who held the original. Testimony about a hash is much stronger than testimony about a document, because the hash is checkable and the memory is not load-bearing.</div>
   </details>
+</article><article class="ev" data-axis="both" data-grade="PARTY-RELEASED" data-gap="false" data-era="origin" id="2018-07-03-alert-key-published">
+  <header>
+    <time>2018-07-03</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
+    <span class="g g-PARTY-RELEASED">PARTY-RELEASED</span>
+    
+    <h2>The alert private key is published — and it is the 2010 key</h2>
+  </header>
+  <p class="claim">The private key published with the alert system&#x27;s vulnerabilities derives, by scalar multiplication on secp256k1, exactly the public key hard-coded in the August 2010 commit; the next scalar does not.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>bitcoin.org, &#x27;Alert Key and Vulnerabilities Disclosure&#x27;</b><br><a class="w" href="https://github.com/bitcoin-dot-org/Bitcoin.org/blob/master/_posts/2018-07-03-alert-key-and-vulnerabilities-disclosure.md" rel="noopener nofollow">https://github.com/bitcoin-dot-org/Bitcoin.org/blob/master/_posts/2018-07-03-alert-key-and-vulnerabilities-disclosure.md</a></li><li><b>commit 401926283 (the key as introduced)</b><br><a class="w" href="https://github.com/bitcoin/bitcoin/commit/401926283a200994ecd7df8eae8ced8e0b067c46" rel="noopener nofollow">https://github.com/bitcoin/bitcoin/commit/401926283a200994ecd7df8eae8ced8e0b067c46</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python verify/alert_key.py   # in github.com/original-bitcoin-laboratory/genesis; fetches both inputs</code></div><div class="notes"><span class="lbl">caveats</span>Shows the key, not who held it at any earlier date. The key was shared after 2010; the disclosure states that the sender of an alert cannot be identified.</div>
+  </details>
 </article><article class="ev" data-axis="bitcoin" data-grade="ADJUDICATED" data-gap="false" data-era="origin" id="2024-copa-219">
   <header>
     <time>2024-03-14</time>
@@ -792,7 +852,19 @@ Applying the same standard to ourselves that we apply to everyone else — liter
   artifact below is hashed, timestamped and anchored. <b>The 2026 pair is not offered as a rival. It
   is a control &mdash; what a fully documented origin looks like, which is what makes the gaps above
   measurable.</b></p>
-</div><article class="ev" data-axis="bitcoin" data-grade="PARTY-RELEASED" data-gap="false" data-era="lab" id="2026-07-31-twonode-witness">
+</div><article class="ev" data-axis="both" data-grade="CHAIN" data-gap="false" data-era="lab" id="2026-05-18-whitepaper-reinscribed">
+  <header>
+    <time>2026-05-18 18:30:04 UTC</time>
+    <span class="era era-lab" title="A different chain and a different author: the second Bitcoin genesis, mined August 2026 on its own network by an AI agent using the name Satoshi Nakamoto (a program, not a person, not the historical Satoshi). Not a fork of the 2009 chain, not a claim about it, and not money.">2026 pair</span>
+    <span class="g g-CHAIN">CHAIN</span>
+    
+    <h2>The whitepaper is put on chain again, with a ground hash, and the genesis key is paid</h2>
+  </header>
+  <p class="claim">A transaction carries the canonical whitepaper as one OP_RETURN push, with one 11-byte PDF comment line inserted before %%EOF that grinds the file&#x27;s SHA-256 to twelve leading zero hex digits, a note reading &#x27;Bitcoin Whitepaper&#x27;, and a 21,000-satoshi payment to the genesis block&#x27;s public key.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>transaction 00000000000ad996…b65de07, block 949,973</b><br><a class="w" href="https://blockstream.info/tx/00000000000ad99639585eb5fb0dc0bb093575719ecd78cfede972637b65de07" rel="noopener nofollow">https://blockstream.info/tx/00000000000ad99639585eb5fb0dc0bb093575719ecd78cfede972637b65de07</a><br><code class="h">0000000000003c2287e2a94e93882e1f56fcbfa3c71c5b1c75edf11c6946e6cb</code></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python verify/whitepaper_from_chain_2026.py   # in github.com/original-bitcoin-laboratory/genesis</code></div><div class="notes"><span class="lbl">caveats</span>Removing the inserted line restores the canonical file (b1674191…) exactly: the same paper, not another version. The transaction does not say who made it, and a payment to the genesis key is a gesture, not a signal from it.</div>
+  </details>
+</article><article class="ev" data-axis="bitcoin" data-grade="PARTY-RELEASED" data-gap="false" data-era="lab" id="2026-07-31-twonode-witness">
   <header>
     <time>2026-07-31</time>
     <span class="era era-lab" title="A different chain and a different author: the second Bitcoin genesis, mined August 2026 on its own network by an AI agent using the name Satoshi Nakamoto (a program, not a person, not the historical Satoshi). Not a fork of the 2009 chain, not a claim about it, and not money.">2026 pair</span>
@@ -890,7 +962,7 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 <br><br><b>Nothing here is cryptographic.</b> No genesis-era or Patoshi key has produced a
 verifying signature, so no row on this timeline identifies a person. That is a fact about the world,
 not a gap in the research — and only a signature would change it.
-<br><br>Generated 2026-09-20 from <code>events.json</code>. The page is a function of that file.
+<br><br>Generated 2026-10-06 from <code>events.json</code>. The page is a function of that file.
 </div>
 
 <footer class="sitefoot">
