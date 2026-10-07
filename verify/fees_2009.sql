@@ -29,7 +29,7 @@
 -- A DATA-QUALITY WARNING, INCLUDING ABOUT OUR OWN EARLIER FILE
 --   Several early-chain datasets in circulation -- including this repo's own
 --   early_blocks.csv -- carry a `coinbase_value` column in which EVERY row holds the
---   identical 5000000000. It was assumed at acquisition, never read from the chain.
+--   identical 5000000000. It was assumed at acquisition, not read from the chain.
 --   Searching such a file for fee-bearing blocks returns ZERO, and the conclusion that
 --   invites -- "no early block ever collected a fee" -- is FALSE, as this query shows.
 --   In that file the heights and timestamps are sound; `coinbase_value` is inert and

@@ -35,7 +35,7 @@ WHERE number <= 60000
 ORDER BY height;
 
 -- ============================================================================
--- QUERY B — dormancy (optional). For each early coinbase, was its output ever spent?
+-- QUERY B — dormancy (optional). For each early coinbase, has its output been spent?
 -- The `spent` CTE scans every input in history, so this is the expensive one; it is
 -- a standard full-history anti-join. Export to spent_status.csv, then merge
 -- coinbase_spent back into early_blocks.csv by height (see merge_spent.py) and re-run

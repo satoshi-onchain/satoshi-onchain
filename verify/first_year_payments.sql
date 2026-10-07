@@ -19,7 +19,7 @@
 --
 -- WHAT IT DOES NOT ESTABLISH
 --   Nothing about WHO. Addresses are not names. Nothing here binds a person to a payment;
---   that always requires an outside document, and then it is testimony, not cryptography.
+--   that requires an outside document, and then it is testimony, not cryptography.
 --
 -- WHY BIGQUERY
 --   Sweeping the first year through public explorer APIs gets rate-limited into failure --
