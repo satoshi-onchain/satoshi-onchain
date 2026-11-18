@@ -259,13 +259,13 @@ did, so they bias the result **towards** the null. The true depletion is if anyt
 
 ### `selectcoins_rule.py`
 
-Reads, from the source, what three early client source trees do when one wallet transaction matches
-a payment exactly.
+Reads, from the source, how three early client source trees select coins when one wallet
+transaction matches a payment exactly.
 
 **Method.**
-- It fetches `main.cpp`, `main.h`, `serialize.h` and `uint256.h` of each tree from Software Heritage
-  by content hash and checks each file's git blob hash locally. That is twelve files, nine of them
-  distinct, using the standard library only.
+- It fetches `main.cpp`, `main.h`, `db.cpp`, `serialize.h` and `uint256.h` of each tree from
+  Software Heritage by content hash and checks each file's git blob hash locally. That is fifteen
+  files, twelve of them distinct, using the standard library only.
 - The trees are labelled by the `VERSION` their `serialize.h` declares:
   - **101**: files inside the archive distributed as `bitcoin-0.1.0.rar` (2,132,686 bytes, sha256 `8b17eb9a…`);
   - **103**: files inside the archive distributed as `bitcoin-0.1.3.rar` (2,127,418 bytes, sha256 `3d73b1a8…`);
@@ -277,26 +277,33 @@ The last lines of its output:
 
 ```
   ok    SelectCoins is identical in VERSION 101, 103, 105
-        (100 lines, sha256 of the function text 50a2d40807045fa6...)
+  ok    SelectCoins text matches the pinned sha256 50a2d40807045fa6...
+        (100 lines)
 
 When an eligible wallet transaction's credit equals the requested amount, the one first in
 ascending uint256 order of its transaction ID is selected.
 ```
 
 **What the checks show.** In each tree:
-- The wallet is a `map<uint256, CWalletTx>`, keyed by each transaction's `GetHash()`.
-- `uint256`'s `operator<` compares its `unsigned int` words (32-bit on x86) from the most significant
-  one down. `GetHex()`
-  prints the bytes from last to first, so on a little-endian CPU such as x86 the walk runs in
-  ascending order of the transaction ID as printed.
-- Before comparing amounts, `SelectCoins` skips a wallet transaction that is not final, is marked
-  spent, or has a credit to the wallet of zero or less. A coinbase has zero credit until it is 120
-  blocks deep (`COINBASE_MATURITY` 100, plus 20). `CWalletTx` inherits this from `CMerkleTx` and
-  defines no `GetCredit` of its own.
-- Among the remaining transactions, the first one whose credit equals the requested amount (payment
-  plus fee) is returned. That choice depends only on credit and transaction ID.
-- When no credit equals the amount, other branches of the same function apply (the smallest larger
-  credit, or a randomised subset sum). They are not covered here.
+- **The wallet is keyed by transaction ID.** `mapWallet` is a `map<uint256, CWalletTx>`.
+  `AddToWallet` inserts under `GetHash()`, the wallet file stores each transaction under `GetHash()`,
+  and `LoadWallet` restores each one under its stored key.
+- **The order.** `operator<(uint256, uint256)` compares as `base_uint`, which compares its
+  `unsigned int` words (32-bit on x86) from the most significant one down. `GetHex()` prints the
+  bytes from last to first. So on a little-endian CPU such as x86, the walk runs in ascending order
+  of the transaction ID as printed.
+- **What is skipped.** Before comparing amounts, `SelectCoins` skips a wallet transaction that is
+  not final, is marked spent, or has a credit to the wallet of zero or less. A coinbase has zero
+  credit until its depth is 120, its own block counting as 1 (`COINBASE_MATURITY` 100, plus 20; depth
+  is best height − block height + 1). `CWalletTx` inherits this from `CMerkleTx` and defines no
+  `GetCredit` of its own.
+- **The amount.** The requested amount is payment plus fee: `CreateTransaction` adds the fee and
+  then makes the only call to `SelectCoins` in `main.cpp`.
+- **The choice.** The first wallet transaction whose credit equals that amount is returned. Its
+  whole text is pinned by sha256, so its inputs can be read in full: among eligible wallet
+  transactions the choice depends only on credit and transaction ID.
+- **Not covered.** When no credit equals the amount, other branches of the same function apply (the
+  smallest larger credit, or a randomised subset sum).
 
 The identity check compares the function text character by character, with line endings
 normalised, and fails on any difference.

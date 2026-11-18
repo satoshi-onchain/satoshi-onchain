@@ -591,6 +591,7 @@
       key, no node, no trust in us.</div>
   </section>
 
+
   <section>
     <h2>The timeline</h2>
     <p class="lead">Every dated event we can stand behind, in one place — <b>with the ones we
@@ -605,6 +606,30 @@
       <a href="https://github.com/satoshi-onchain/satoshi-onchain/blob/main/timeline/events.json">events.json</a>
       by <a href="https://github.com/satoshi-onchain/satoshi-onchain/blob/main/timeline/build.py">build.py</a>,
       which <b>refuses to build</b> if any row lacks a grade or a source.</div>
+  </section>
+  <section id="coinselection">
+    <h2>Coin selection in three early source trees</h2>
+    <p class="lead">A property of the client source, read from the source.</p>
+    <p class="sm">In the three early source trees whose <span class="mono">serialize.h</span>
+      declares VERSION 101, 103 and 105, the function <span class="mono">SelectCoins</span> chooses
+      which wallet transactions a payment spends. Call a wallet transaction <i>eligible</i> when it
+      is final, is not marked spent, and credits the wallet more than zero; a coinbase credits zero
+      until its depth is 120, its own block counting as 1. <b>When the amount requested &mdash;
+      payment plus fee &mdash; equals the credit of one or more eligible wallet transactions, the one
+      with the lowest transaction ID is selected</b>, in ascending <span class="mono">uint256</span>
+      order, which on a little-endian CPU such as x86 is the order in which the IDs are printed.
+      Among eligible wallet transactions, age, height and confirmation count are not inputs to that
+      choice. Other amounts follow other branches of the same function, which this section does not
+      cover.</p>
+    <p class="sm" style="opacity:.85">This describes the published source. It does not say which
+      software built any transaction on the chain: a transaction does not record the program that
+      built it, and a wallet can be modified.</p>
+    <div class="xlink"><b>Check it from the source.</b>
+      <a href="https://github.com/satoshi-onchain/satoshi-onchain/tree/main/verify"><b>verify/selectcoins_rule.py</b></a>
+      fetches five files of each tree from Software Heritage by content hash, checks each blob hash,
+      checks each step above in the source, and pins the full text of
+      <span class="mono">SelectCoins</span> by sha256, so every input it reads can be read. Standard
+      library only; no node and no API key.</div>
   </section>
 
   <section>
