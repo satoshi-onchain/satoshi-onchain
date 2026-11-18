@@ -14,6 +14,7 @@ python verify/bitcointalk_satoshi.py     ./bitcointalk   # 539 posts + raw HTML
 python verify/metzdowd_backup.py         ./metzdowd      # 274 mboxes, full headers
 python verify/wayback_backup.py          ./wayback-pages # original bytes of the cited captures
 python verify/github_history_census.py   --out census.json   # bitcoin/bitcoin 2009-2010: 385 commits, 122 carried twice
+python verify/selectcoins_rule.py        ./selectcoins-src  # exact-match coin selection in 3 early source trees
 ```
 
 ---
@@ -255,6 +256,55 @@ range and computes the base rate over that same range.
 did, so they bias the result **towards** the null. The true depletion is if anything stronger.
 
 **Does not establish:** any person. A cluster label is a statistical fingerprint, not a signature.
+
+### `selectcoins_rule.py`
+
+Reads, from the source, what three early client source trees do when one wallet transaction matches
+a payment exactly.
+
+**Method.**
+- It fetches `main.cpp`, `main.h`, `serialize.h` and `uint256.h` of each tree from Software Heritage
+  by content hash and checks each file's git blob hash locally. That is twelve files, nine of them
+  distinct, using the standard library only.
+- The trees are labelled by the `VERSION` their `serialize.h` declares:
+  - **101**: files inside the archive distributed as `bitcoin-0.1.0.rar` (2,132,686 bytes, sha256 `8b17eb9a…`);
+  - **103**: files inside the archive distributed as `bitcoin-0.1.3.rar` (2,127,418 bytes, sha256 `3d73b1a8…`);
+  - **105**: revision 1 of the SourceForge SVN repository (2009-08-30).
+
+  The script checks the files' blob hashes, not the archives.
+
+The last lines of its output:
+
+```
+  ok    SelectCoins is identical in VERSION 101, 103, 105
+        (100 lines, sha256 of the function text 50a2d40807045fa6...)
+
+When an eligible wallet transaction's credit equals the requested amount, the one first in
+ascending uint256 order of its transaction ID is selected.
+```
+
+**What the checks show.** In each tree:
+- The wallet is a `map<uint256, CWalletTx>`, keyed by each transaction's `GetHash()`.
+- `uint256`'s `operator<` compares its `unsigned int` words (32-bit on x86) from the most significant
+  one down. `GetHex()`
+  prints the bytes from last to first, so on a little-endian CPU such as x86 the walk runs in
+  ascending order of the transaction ID as printed.
+- Before comparing amounts, `SelectCoins` skips a wallet transaction that is not final, is marked
+  spent, or has a credit to the wallet of zero or less. A coinbase has zero credit until it is 120
+  blocks deep (`COINBASE_MATURITY` 100, plus 20). `CWalletTx` inherits this from `CMerkleTx` and
+  defines no `GetCredit` of its own.
+- Among the remaining transactions, the first one whose credit equals the requested amount (payment
+  plus fee) is returned. That choice depends only on credit and transaction ID.
+- When no credit equals the amount, other branches of the same function apply (the smallest larger
+  credit, or a randomised subset sum). They are not covered here.
+
+The identity check compares the function text character by character, with line endings
+normalised, and fails on any difference.
+
+**Establishes:** what these three source trees do when one eligible wallet transaction's credit
+equals the requested amount, and that `SelectCoins` is the same in all three.
+**Does not establish:** which software built any particular transaction. The chain does not record
+it, and a wallet can be modified.
 
 ## Also in this directory
 
