@@ -15,8 +15,8 @@ authors:
 license: MIT
 repository-code: "https://github.com/satoshi-onchain/satoshi-onchain"
 url: "https://satoshioncha.in"
-version: 1.4.0
-date-released: 2026-10-07
+version: 1.5.0
+date-released: 2026-11-18
 keywords:
   - Bitcoin
   - Patoshi
