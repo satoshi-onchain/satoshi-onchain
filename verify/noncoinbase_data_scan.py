@@ -66,7 +66,7 @@ HASHES = {
     "427c63b364c6db914cf23072a09ffd53ee078397b7c6ab2d604e12865a982faa":
         "whitepaper, pre-release draft 2008-10-03",
     # A fourth version exists in the court record (COPA v Wright, judgment para 271.9) and is in no
-    # public hands; its hash is in evidence that is not published and is not scanned for here.
+    # public hands; its hash is not published by the court or the parties and is not scanned for here.
 }
 for _h, _l in list(HASHES.items()):
     HASHES[binascii.hexlify(binascii.unhexlify(_h)[::-1]).decode()] = _l + " (byte-reversed)"

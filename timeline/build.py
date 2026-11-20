@@ -175,11 +175,13 @@ for e in events:
   </details>
 </article>''')
 
-# This page is a curated subset of unpublished research, and it says so WITHOUT quantifying it.
+# This page is curated, and it says so without describing anything that is not on it.
 #
-# An earlier version measured the local research corpus at build time and printed its size into the
-# live page. That was removed deliberately. The size of an unpublished archive is not a finding,
-# no reader can check it, and stating it describes a filesystem rather than Bitcoin's history.
+# An earlier version measured a local research corpus at build time and printed its size into the
+# live page. That was removed deliberately: no reader can check such a figure, and it describes a
+# filesystem rather than Bitcoin's history. A later version still called the page a subset of
+# unpublished research; that was removed on 21 Nov 2026 for the same reason. A reader can check a row,
+# not a description of what is not here.
 # What a reader actually needs is the epistemic warning below -- that absence of a row is not
 # absence of an event -- and that stands on its own with no number attached.
 #
@@ -187,10 +189,8 @@ for e in events:
 # existed so an unreachable corpus could not be published as a measured zero, and a build that
 # measures nothing has no zero to mistake for a count.
 CORPUS_MEASURED = False
-CORPUS_LINE = ("It is a deliberate subset of unpublished research rather than a bulk export — each row "
-               "has to acquire a grade, a source and a reproduction path before it can appear here. "
-               "The material behind it is not published, and its extent is deliberately not "
-               "characterised: a figure nobody can verify is not evidence.")
+CORPUS_LINE = ("It is curated rather than a bulk export: a row appears here only once it has an "
+               "evidence grade and a source anyone can check.")
 
 N_LAB = sum(1 for e in events if e["when"] >= "2026")
 built = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
