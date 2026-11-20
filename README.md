@@ -19,11 +19,19 @@ The honest epistemics up front — three tiers, and we do not blur them:
 | **B. Statistical** | The **Patoshi** blocks — one dominant early miner fingerprinted by block-header structure (Lerner 2013). ~22.5k of the first ~54k blocks, ≈1.13M BTC attributed (Lerner 2013: ~22k, ~1.1M), of which about 94% has not been spent. Widely attributed to Satoshi. | **Statistical, not cryptographic.** A fingerprint, not a signature. |
 | **C. Attested spend** | Block 170 — first payment, 10 BTC to `04ae1a62…` (Hal Finney), spending block 9's Patoshi coinbase; block 9's 50 BTC was then spent down through block 183 (`spend_chain.py`, `EXCAVATION.md` §9). | **On-chain certain**: block 9's coinbase was spent across 5 payments to 5 distinct new keys, reusing the block-9 key as change, leaving 18 BTC unspent to date. "It was Satoshi" rests on tier B. |
 
-**The line we do not cross.** No genesis-era or Patoshi key has produced a
-verifying signature. Only that would upgrade Tier B from *attributable* to *proven*.
-Every public "I am Satoshi" claim (including the one rejected in *COPA v Wright* [2024] EWHC
-1198 (Ch), ¶7.2) fails exactly this test. The ≈1.13M BTC staying largely silent since 2009 is itself the
-strongest ongoing statement: the keys have not spoken, and nobody else has.
+**The line we do not cross.** No key of the genesis block, and no key of a block that both deployed
+Patoshi classifications label Patoshi, has produced a verifying signature. Only such a signature would
+upgrade Tier B from *attributable* to *proven*. Every public "I am Satoshi" claim (including the one
+rejected in *COPA v Wright* [2024] EWHC 1198 (Ch), ¶7.2) fails exactly this test. The ≈1.13M BTC staying
+largely silent since 2009 is itself the strongest ongoing statement.
+
+*Corrected 20 Nov 2026.* This paragraph previously said that no genesis-era or Patoshi key had produced a
+verifying signature, and that "the keys have not spoken". A text published on 25 May 2020 carries
+signatures by the keys of 145 coinbases, blocks 14,083 to 33,935 (May 2009 to January 2010), and all 145
+verify ([`verify/signed_message_2020.py`](verify/signed_message_2020.py)). Two of those blocks are Patoshi
+under this project's classification (14203, 14385) and one under the btc-rpc-explorer list (30169); none is
+Patoshi under both. The signatures show that the keys were held when they were made, which was no later than 25 May 2020.
+They do not show by whom.
 
 ---
 

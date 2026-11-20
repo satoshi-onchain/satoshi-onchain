@@ -632,11 +632,37 @@
       library only; no node and no API key.</div>
   </section>
 
+  <section id="signed2020">
+    <h2>A text signed with the keys of 145 early coinbases (2020)</h2>
+    <p class="lead">A property of 145 signatures, checked against the published text.</p>
+    <p class="sm">A text published on 25 May 2020 carries 145 lines, each an address and a signature
+      (<a href="https://web.archive.org/web/20200525113441/https://paste.debian.net/plain/1148565">archived copy</a>,
+      raw bytes sha256 <span class="mono">0bcad43b&hellip;</span>). <b>All 145 signatures verify for their
+      addresses over that text.</b> Each address is the key paid by a coinbase, from block 14,083
+      (11 May 2009) to block 33,935 (10 January 2010). Under this project&rsquo;s Patoshi classification two
+      of those blocks are labelled Patoshi (14203 and 14385); under the btc-rpc-explorer list, one is (30169).
+      <b>No block is labelled Patoshi under both.</b></p>
+    <p class="sm" style="opacity:.85">A verifying signature shows that whoever made it held the key when
+      signing. It does not show who that was or whether the keys are held now. This page does not assess
+      the statements in the text.</p>
+    <div class="xlink"><b>Check it.</b>
+      <a href="https://github.com/satoshi-onchain/satoshi-onchain/tree/main/verify"><b>verify/signed_message_2020.py</b></a>
+      fetches the archived copy, checks it against the pinned sha256, verifies every signature with
+      <span class="mono">verify_signed_message.py</span>, and looks each address up among the coinbase
+      outputs of blocks 0&ndash;60,000. Standard library only; the block lookup reads the coinbase CSV
+      described under Reproduce.</div>
+  </section>
+
   <section>
     <h2>The line</h2>
-    <p class="close">No genesis-era or Patoshi key has produced a verifying signature. Only that
-      would turn <i>attributable</i> into <i>proven</i>. The ≈1.13M BTC staying largely silent since it was mined
-      is itself the strongest statement: the keys don’t speak — and nobody else has.</p>
+    <p class="close">No key of the genesis block, and no key of a block that both deployed Patoshi
+      classifications label Patoshi, has produced a verifying signature. Only such a signature would turn
+      <i>attributable</i> into <i>proven</i>. The ≈1.13M BTC staying largely silent since it was mined
+      is itself the strongest statement.</p>
+    <p class="sm" style="opacity:.85"><i>Corrected 20 Nov 2026.</i> This section previously read &ldquo;No
+      genesis-era or Patoshi key has produced a verifying signature&rdquo; and &ldquo;the keys don&rsquo;t
+      speak&rdquo;. The keys of 145 coinbases from 2009 and 2010 signed one text published in 2020 (section above);
+      none of those blocks is labelled Patoshi under both classifications.</p>
     <div class="xlink">Cross-check with the quantum threat model: these dormant Patoshi coinbases are bare
       <b>P2PK</b> outputs, so their public keys have been on the chain since 2009; they belong to the class
       most exposed to a break of elliptic-curve signatures.</div>

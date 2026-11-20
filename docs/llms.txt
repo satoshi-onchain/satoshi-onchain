@@ -13,8 +13,11 @@ should survive any summary of this site.
   contains, what a block hashes to, what a signature verifies against.
 - **What it cannot decide:** who mined a block. **"Patoshi" is a PATTERN in extranonce
   and nonce structure - a statistical attribution, not a proof of identity.** No
-  2009-era key has signed a challenge, so no set of coins anywhere has been
-  cryptographically tied to any person.
+  key of the genesis block, and no key of a block both deployed Patoshi lists label,
+  has produced a verifying signature. (The keys of 145 other coinbases from 2009-10
+  signed one text published in 2020; see verify/signed_message_2020.py. Signatures show a key
+  was held, not by whom.) No set of coins anywhere has been cryptographically tied
+  to any person.
 
 **Two deployed implementations of the Patoshi heuristic disagree on 5-10% of the blocks
 where both are live, and on when the pattern ended; no test settles it

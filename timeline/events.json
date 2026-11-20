@@ -333,8 +333,8 @@
   "until": "2010-12-15",
   "axis": "satoshi",
   "grade": "NONE",
-  "title": "No key has signed anything — the ceiling on all of this",
-  "claim": "No genesis-era or Patoshi private key has produced a verifying signature. Every identity fact on this timeline is statistical, archival, adjudicated or party-released. None is cryptographic.",
+  "title": "No genesis key, and no key both Patoshi lists agree on, has signed — the ceiling on all of this",
+  "claim": "No key of the genesis block, and no key of a block that both deployed Patoshi classifications label Patoshi, has produced a verifying signature. Every identity fact on this timeline is statistical, archival, adjudicated or party-released. None is cryptographic.",
   "evidence": [
    {
     "what": "the absence itself; the judgment records that the 2016 demonstration presented a signature lifted from the public blockchain, derivable from the Satoshi/Finney transaction and the block 9 generation transaction (¶886–887)",
@@ -344,7 +344,7 @@
   ],
   "reproduce": null,
   "gap": true,
-  "notes": "This is a property of the world, not a gap in the research. Only a signature would change it. Recorded as a row so the timeline cannot be read as answering 'who'."
+  "notes": "This is a property of the world, not a gap in the research. Only a signature would change it. Recorded as a row so the timeline cannot be read as answering 'who'. Corrected 20 Nov 2026: this row previously said that no genesis-era or Patoshi key had produced a verifying signature. The keys of 145 coinbases from blocks 14,083 to 33,935 signed one text published in 2020 (row of 25 May 2020); two of those blocks are Patoshi under this project's classification and one under the btc-rpc-explorer list, none under both."
  },
  {
   "id": "2009-01-03-genesis",
@@ -1485,5 +1485,24 @@
   "reproduce": "python verify/whitepaper_from_chain_2026.py   # in github.com/original-bitcoin-laboratory/genesis",
   "gap": false,
   "notes": "Removing the inserted line restores the canonical file (b1674191…) exactly: the same paper, not another version. The transaction does not say who made it, and a payment to the genesis key is a gesture, not a signal from it."
+ },
+ {
+  "id": "2020-05-25-145-signatures",
+  "when": "2020-05-25",
+  "precision": "day",
+  "axis": "bitcoin",
+  "grade": "CAPTURE",
+  "title": "A text signed with the keys of 145 coinbases from 2009 and 2010",
+  "claim": "A text published on 25 May 2020 carries 145 address/signature pairs. All 145 signatures verify for their addresses. Each address is the key paid by a coinbase between block 14,083 (11 May 2009) and block 33,935 (10 January 2010). Two of those blocks are Patoshi under this project's classification (14203, 14385) and one under the btc-rpc-explorer list (30169); none under both.",
+  "evidence": [
+   {
+    "what": "the Wayback Machine's capture of paste.debian.net/plain/1148565, 2020-05-25 11:34:41 UTC; raw bytes sha256 0bcad43befa311eec9c78eb946e622efcfbe987ba495f955cec81b43a8b92a7d",
+    "where": "https://web.archive.org/web/20200525113441/https://paste.debian.net/plain/1148565",
+    "hash": "0bcad43befa311eec9c78eb946e622efcfbe987ba495f955cec81b43a8b92a7d"
+   }
+  ],
+  "reproduce": "python verify/signed_message_2020.py",
+  "gap": false,
+  "notes": "A verifying signature shows that its maker held the key when signing; it does not identify the maker or show whether the keys are held now. The statements in the text are not assessed here."
  }
 ]

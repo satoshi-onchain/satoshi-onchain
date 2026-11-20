@@ -120,8 +120,8 @@ ERA_NOTE = '''<div class="eradiv" id="era-2026">
   is marked <b>NOT HELD</b> against us.</p>
   <p><b>This page does not rank the two chains or say which one &ldquo;is&rdquo; Bitcoin</b>; it
   compares only the evidence each leaves behind, and that comparison runs in an unexpected
-  direction: no key from 2009 has signed anything, while every
-  artifact below is hashed, timestamped and anchored. <b>The 2026 pair is not offered as a rival. It
+  direction: no key of the genesis block or of a block both deployed Patoshi classifications label has
+  signed anything, while every artifact below is hashed, timestamped and anchored. <b>The 2026 pair is not offered as a rival. It
   is a control &mdash; what a fully documented origin looks like, which is what makes the gaps above
   measurable.</b></p>
 </div>'''
@@ -318,9 +318,13 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 <b>ARCHIVE-POS</b> — position in an archive, independently bracketed.
 <b>CAPTURE</b> — a third-party crawl with its own clock.
 <b>SELF</b> — Satoshi's own unsigned assertion; trivially fakeable.
-<br><br><b>Nothing here is cryptographic.</b> No genesis-era or Patoshi key has produced a
-verifying signature, so no row on this timeline identifies a person. That is a fact about the world,
-not a gap in the research — and only a signature would change it.
+<br><br><b>No row on this timeline identifies a person.</b> No key of the genesis block, and no key of a
+block both deployed Patoshi classifications label, has produced a verifying signature. The one row that rests
+on signatures (25 May 2020) shows that the keys of 145 early coinbases were held when the signatures were made, no later than
+25 May 2020, not by whom.
+That is a fact about the world, not a gap in the research.
+<br><i>Corrected 20 Nov 2026:</i> this note previously read &ldquo;Nothing here is cryptographic. No genesis-era or
+Patoshi key has produced a verifying signature&rdquo;.
 <br><br>Generated {built} from <code>events.json</code>. The page is a function of that file.
 </div>
 

@@ -386,4 +386,4 @@ if anything stronger than 3.9×.
 
 ---
 
-*[statistical], not [cryptographic] — no verifying signature exists and none is claimed. Experimental research, in progress, no conclusions beyond the findings. Not money. Not financial advice. No warranty. [Rights, sourcing and corrections](RIGHTS.md).*
+*[statistical], not [cryptographic] — no verifying signature by a genesis key, or by the key of a block both deployed Patoshi lists label, exists, and none is claimed. Experimental research, in progress, no conclusions beyond the findings. Not money. Not financial advice. No warranty. [Rights, sourcing and corrections](RIGHTS.md).*

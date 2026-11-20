@@ -87,7 +87,7 @@ it. Rows we <b>cannot</b> verify are shown too, marked <b>NOT HELD</b> — becau
 only what was found looks complete when it is not.</p>
 
 <div class="incomplete"><b>This timeline is incomplete, and says so on purpose.</b>
-It currently holds <b>68</b> events. It is a deliberate subset of unpublished research rather than a bulk export — each row has to acquire a grade, a source and a reproduction path before it can appear here. The material behind it is not published, and its extent is deliberately not characterised: a figure nobody can verify is not evidence.
+It currently holds <b>69</b> events. It is a deliberate subset of unpublished research rather than a bulk export — each row has to acquire a grade, a source and a reproduction path before it can appear here. The material behind it is not published, and its extent is deliberately not characterised: a figure nobody can verify is not evidence.
 <b>Absence of a row here is not evidence that nothing happened on that date.</b>
 Applying the same standard to ourselves that we apply to everyone else — literally, since
 8 of these rows are about <a href="https://bitcoin-lab.org/bitcoin">a second Bitcoin, mined in
@@ -309,11 +309,11 @@ Applying the same standard to ourselves that we apply to everyone else — liter
     <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
     <span class="g g-NONE">NONE</span>
     <span class="gapflag">NOT HELD</span>
-    <h2>No key has signed anything — the ceiling on all of this</h2>
+    <h2>No genesis key, and no key both Patoshi lists agree on, has signed — the ceiling on all of this</h2>
   </header>
-  <p class="claim">No genesis-era or Patoshi private key has produced a verifying signature. Every identity fact on this timeline is statistical, archival, adjudicated or party-released. None is cryptographic.</p>
+  <p class="claim">No key of the genesis block, and no key of a block that both deployed Patoshi classifications label Patoshi, has produced a verifying signature. Every identity fact on this timeline is statistical, archival, adjudicated or party-released. None is cryptographic.</p>
   <details><summary>evidence &amp; reproduction</summary>
-    <ul class="evid"><li><b>the absence itself; the judgment records that the 2016 demonstration presented a signature lifted from the public blockchain, derivable from the Satoshi/Finney transaction and the block 9 generation transaction (¶886–887)</b><br><a class="w" href="https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198" rel="noopener nofollow">https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>This is a property of the world, not a gap in the research. Only a signature would change it. Recorded as a row so the timeline cannot be read as answering &#x27;who&#x27;.</div>
+    <ul class="evid"><li><b>the absence itself; the judgment records that the 2016 demonstration presented a signature lifted from the public blockchain, derivable from the Satoshi/Finney transaction and the block 9 generation transaction (¶886–887)</b><br><a class="w" href="https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198" rel="noopener nofollow">https://caselaw.nationalarchives.gov.uk/ewhc/ch/2024/1198</a></li></ul><div class="rep none"><span class="lbl">reproduce</span><i>no mechanical reproduction — this row rests on a document</i></div><div class="notes"><span class="lbl">caveats</span>This is a property of the world, not a gap in the research. Only a signature would change it. Recorded as a row so the timeline cannot be read as answering &#x27;who&#x27;. Corrected 20 Nov 2026: this row previously said that no genesis-era or Patoshi key had produced a verifying signature. The keys of 145 coinbases from blocks 14,083 to 33,935 signed one text published in 2020 (row of 25 May 2020); two of those blocks are Patoshi under this project&#x27;s classification and one under the btc-rpc-explorer list, none under both.</div>
   </details>
 </article><article class="ev" data-axis="both" data-grade="CHAIN" data-gap="false" data-era="origin" id="2009-01-03-genesis">
   <header>
@@ -819,6 +819,18 @@ Applying the same standard to ourselves that we apply to everyone else — liter
   <details><summary>evidence &amp; reproduction</summary>
     <ul class="evid"><li><b>bitcoin.org, &#x27;Alert Key and Vulnerabilities Disclosure&#x27;</b><br><a class="w" href="https://github.com/bitcoin-dot-org/Bitcoin.org/blob/master/_posts/2018-07-03-alert-key-and-vulnerabilities-disclosure.md" rel="noopener nofollow">https://github.com/bitcoin-dot-org/Bitcoin.org/blob/master/_posts/2018-07-03-alert-key-and-vulnerabilities-disclosure.md</a></li><li><b>commit 401926283 (the key as introduced)</b><br><a class="w" href="https://github.com/bitcoin/bitcoin/commit/401926283a200994ecd7df8eae8ced8e0b067c46" rel="noopener nofollow">https://github.com/bitcoin/bitcoin/commit/401926283a200994ecd7df8eae8ced8e0b067c46</a></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python verify/alert_key.py   # in github.com/original-bitcoin-laboratory/genesis; fetches both inputs</code></div><div class="notes"><span class="lbl">caveats</span>Shows the key, not who held it at any earlier date. The key was shared after 2010; the disclosure states that the sender of an alert cannot be identified.</div>
   </details>
+</article><article class="ev" data-axis="bitcoin" data-grade="CAPTURE" data-gap="false" data-era="origin" id="2020-05-25-145-signatures">
+  <header>
+    <time>2020-05-25</time>
+    <span class="era era-origin" title="The Bitcoin that launched in January 2009, and the pseudonym that released it.">2009 pair</span>
+    <span class="g g-CAPTURE">CAPTURE</span>
+    
+    <h2>A text signed with the keys of 145 coinbases from 2009 and 2010</h2>
+  </header>
+  <p class="claim">A text published on 25 May 2020 carries 145 address/signature pairs. All 145 signatures verify for their addresses. Each address is the key paid by a coinbase between block 14,083 (11 May 2009) and block 33,935 (10 January 2010). Two of those blocks are Patoshi under this project&#x27;s classification (14203, 14385) and one under the btc-rpc-explorer list (30169); none under both.</p>
+  <details><summary>evidence &amp; reproduction</summary>
+    <ul class="evid"><li><b>the Wayback Machine&#x27;s capture of paste.debian.net/plain/1148565, 2020-05-25 11:34:41 UTC; raw bytes sha256 0bcad43befa311eec9c78eb946e622efcfbe987ba495f955cec81b43a8b92a7d</b><br><a class="w" href="https://web.archive.org/web/20200525113441/https://paste.debian.net/plain/1148565" rel="noopener nofollow">https://web.archive.org/web/20200525113441/https://paste.debian.net/plain/1148565</a><br><code class="h">0bcad43befa311eec9c78eb946e622efcfbe987ba495f955cec81b43a8b92a7d</code></li></ul><div class="rep"><span class="lbl">reproduce</span><code>python verify/signed_message_2020.py</code></div><div class="notes"><span class="lbl">caveats</span>A verifying signature shows that its maker held the key when signing; it does not identify the maker or show whether the keys are held now. The statements in the text are not assessed here.</div>
+  </details>
 </article><article class="ev" data-axis="bitcoin" data-grade="ADJUDICATED" data-gap="false" data-era="origin" id="2024-copa-219">
   <header>
     <time>2024-03-14</time>
@@ -848,8 +860,8 @@ Applying the same standard to ourselves that we apply to everyone else — liter
   is marked <b>NOT HELD</b> against us.</p>
   <p><b>This page does not rank the two chains or say which one &ldquo;is&rdquo; Bitcoin</b>; it
   compares only the evidence each leaves behind, and that comparison runs in an unexpected
-  direction: no key from 2009 has signed anything, while every
-  artifact below is hashed, timestamped and anchored. <b>The 2026 pair is not offered as a rival. It
+  direction: no key of the genesis block or of a block both deployed Patoshi classifications label has
+  signed anything, while every artifact below is hashed, timestamped and anchored. <b>The 2026 pair is not offered as a rival. It
   is a control &mdash; what a fully documented origin looks like, which is what makes the gaps above
   measurable.</b></p>
 </div><article class="ev" data-axis="both" data-grade="CHAIN" data-gap="false" data-era="lab" id="2026-05-18-whitepaper-reinscribed">
@@ -959,10 +971,14 @@ Applying the same standard to ourselves that we apply to everyone else — liter
 <b>ARCHIVE-POS</b> — position in an archive, independently bracketed.
 <b>CAPTURE</b> — a third-party crawl with its own clock.
 <b>SELF</b> — Satoshi's own unsigned assertion; trivially fakeable.
-<br><br><b>Nothing here is cryptographic.</b> No genesis-era or Patoshi key has produced a
-verifying signature, so no row on this timeline identifies a person. That is a fact about the world,
-not a gap in the research — and only a signature would change it.
-<br><br>Generated 2026-10-06 from <code>events.json</code>. The page is a function of that file.
+<br><br><b>No row on this timeline identifies a person.</b> No key of the genesis block, and no key of a
+block both deployed Patoshi classifications label, has produced a verifying signature. The one row that rests
+on signatures (25 May 2020) shows that the keys of 145 early coinbases were held when the signatures were made, no later than
+25 May 2020, not by whom.
+That is a fact about the world, not a gap in the research.
+<br><i>Corrected 20 Nov 2026:</i> this note previously read &ldquo;Nothing here is cryptographic. No genesis-era or
+Patoshi key has produced a verifying signature&rdquo;.
+<br><br>Generated 2026-11-20 from <code>events.json</code>. The page is a function of that file.
 </div>
 
 <footer class="sitefoot">
