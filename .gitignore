@@ -46,3 +46,6 @@ BLOCKSTREAM_TOKEN*
 # reproduces the same output. Tracking it would pin an explorer's serialisation as
 # though it were our evidence, which is the opposite of what the scan is for.
 noncoinbase_scripts.json
+
+# Cache of the archived 2020 text fetched by verify/signed_message_2020.py (re-fetchable, pinned by sha256)
+signed-2020/

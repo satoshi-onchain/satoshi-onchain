@@ -15,6 +15,7 @@ python verify/metzdowd_backup.py         ./metzdowd      # 274 mboxes, full head
 python verify/wayback_backup.py          ./wayback-pages # original bytes of the cited captures
 python verify/github_history_census.py   --out census.json   # bitcoin/bitcoin 2009-2010: 385 commits, 122 carried twice
 python verify/selectcoins_rule.py        ./selectcoins-src  # exact-match coin selection in 3 early source trees
+python verify/signed_message_2020.py     ./signed-2020    # the 25 May 2020 text: 145 signatures, coinbase blocks, Patoshi labels
 ```
 
 ---
@@ -344,3 +345,37 @@ that order. They are not interchangeable and this project does not present them 
 ---
 
 *[statistical], not [cryptographic] — no verifying signature exists and none is claimed. Experimental research, in progress, no conclusions beyond the findings. Not money. Not financial advice. No warranty. [Rights, sourcing and corrections](../RIGHTS.md).*
+
+### `signed_message_2020.py`
+
+Checks every signature in a text published on 25 May 2020 with 145 address/signature lines, and finds
+the coinbase that paid each address.
+
+**Method.**
+- It fetches the Wayback Machine's capture of `paste.debian.net/plain/1148565` (2020-05-25 11:34:41 UTC)
+  as raw bytes and checks them against the pinned sha256 `0bcad43b…`.
+- It verifies each signature with `verify_signed_message.py`: the two structural checks, then public-key
+  recovery, then a comparison of the recovered address with the address on the line.
+- It looks each address up among the coinbase outputs of blocks 0–60,000 (`cb_outputs.csv`, via
+  `resolve_coinbase_addresses.py`), with block 0 → `1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa` as a control.
+- It labels each block under two Patoshi classifications: this project's `patoshi_confirmed.csv`, and the
+  btc-rpc-explorer snapshot that `patoshi_setdiff.py` compares against.
+
+The message text is not printed; its length and sha256 are. The last lines of its output:
+
+```
+signatures that verify for their address: 145 of 145
+signing addresses that are coinbase outputs: 145 of 145
+  lowest block 14083 (2009-05-11 21:37:45 UTC); highest block 33935 (2010-01-10 00:16:01 UTC)
+  A  this project (patoshi_confirmed.csv): 2  [14203, 14385]
+  B  btc-rpc-explorer snapshot:            1  [30169]
+  labelled by both:                        0  []
+```
+
+**What it establishes.** All 145 signatures verify for their addresses over the published text, and each
+signing key is the key paid by one coinbase of a block mined between May 2009 and January 2010. The blocks the
+two classifications label Patoshi here are exactly blocks on which they disagree.
+
+**What it does not establish.** Who signed; whether the keys are held now; anything about the statements in
+the text, which this project does not assess.
+
